@@ -1,0 +1,234 @@
+[
+  {
+    "title": "Home",
+    "path": "/",
+    "template": "home",
+    "priority": 1,
+    "changefreq": "weekly",
+    "legalState": null
+  },
+  {
+    "title": "About Us",
+    "path": "/about/",
+    "template": "static",
+    "priority": 0.6,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Our Story",
+    "path": "/about/our-story/",
+    "template": "static",
+    "priority": 0.4,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Meet the Team",
+    "path": "/agents/",
+    "template": "team-hub",
+    "priority": 0.6,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "Careers",
+    "path": "/careers/",
+    "template": "static",
+    "priority": 0.4,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "Contact Us",
+    "path": "/contact/",
+    "template": "static",
+    "priority": 0.6,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Get a Quote",
+    "path": "/quote/",
+    "template": "quote-hub",
+    "priority": 0.9,
+    "changefreq": "weekly",
+    "legalState": null
+  },
+  {
+    "title": "Claims Center",
+    "path": "/claims/",
+    "template": "claims-hub",
+    "priority": 0.7,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "How to File a Claim",
+    "path": "/claims/how-to-file/",
+    "template": "static",
+    "priority": 0.6,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Claim Status Lookup",
+    "path": "/claims/status/",
+    "template": "static",
+    "priority": 0.5,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Claims FAQ",
+    "path": "/claims/faq/",
+    "template": "static",
+    "priority": 0.5,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Billing & Payments",
+    "path": "/billing/",
+    "template": "static",
+    "priority": 0.5,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Make a Payment",
+    "path": "/billing/pay/",
+    "template": "static",
+    "priority": 0.5,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Insurance Products",
+    "path": "/insurance/",
+    "template": "products-hub",
+    "priority": 0.8,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "Locations We Serve",
+    "path": "/locations/",
+    "template": "locations-hub",
+    "priority": 0.7,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "Carrier Partners",
+    "path": "/carriers/",
+    "template": "carriers-hub",
+    "priority": 0.5,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "Client Reviews",
+    "path": "/reviews/",
+    "template": "static",
+    "priority": 0.6,
+    "changefreq": "weekly",
+    "legalState": null
+  },
+  {
+    "title": "Resources & Blog",
+    "path": "/resources/",
+    "template": "blog-hub",
+    "priority": 0.7,
+    "changefreq": "daily",
+    "legalState": null
+  },
+  {
+    "title": "Frequently Asked Questions",
+    "path": "/faq/",
+    "template": "static",
+    "priority": 0.5,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "Site Map",
+    "path": "/sitemap/",
+    "template": "static",
+    "priority": 0.3,
+    "changefreq": "monthly",
+    "legalState": null
+  },
+  {
+    "title": "Privacy Policy",
+    "path": "/legal/privacy-policy/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": null
+  },
+  {
+    "title": "Terms of Use",
+    "path": "/legal/terms-of-use/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": null
+  },
+  {
+    "title": "Accessibility Statement",
+    "path": "/legal/accessibility/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": null
+  },
+  {
+    "title": "Cookie Policy",
+    "path": "/legal/cookie-policy/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": null
+  },
+  {
+    "title": "Do Not Sell or Share My Info",
+    "path": "/legal/do-not-sell-my-info/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": null
+  },
+  {
+    "title": "Licensing Disclosures (AZ)",
+    "path": "/legal/licensing/arizona/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": "arizona"
+  },
+  {
+    "title": "Licensing Disclosures (NV)",
+    "path": "/legal/licensing/nevada/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": "nevada"
+  },
+  {
+    "title": "Licensing Disclosures (UT)",
+    "path": "/legal/licensing/utah/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": "utah"
+  },
+  {
+    "title": "Licensing Disclosures (ID)",
+    "path": "/legal/licensing/idaho/",
+    "template": "legal-static",
+    "priority": null,
+    "changefreq": null,
+    "legalState": "idaho"
+  }
+]

@@ -170,9 +170,12 @@ mark is a separator, diacritics are stripped.
 
 **`reviewed` is admin-only through a field hook, not `validate`.** The hook
 sees `previousValue`, so an editor can move draft → in-review and back, and
-only the transition *into* `reviewed` by a non-admin throws (403). A userless
-local-API call is system code (seed, migrations) and is exempt. `indexWave`
-is admin-only at the field level outright: promotion is a deliberate act.
+only the transition *into* `reviewed` by a non-admin throws (403). **A request
+with no user is non-admin, not trusted** (corrected after Phase 2 review): the
+seed never sets `reviewed`, so it needs no exception. The one server-side
+escape hatch is an explicit `context.allowReviewed = true`, which is logged
+with the collection and user on every use. `indexWave` is admin-only at the
+field level outright: promotion is a deliberate act.
 
 **No Payload versions/drafts.** `reviewStatus` is the workflow the prompts
 specify, and drafts would add a second, parallel "published" notion plus a
@@ -209,3 +212,48 @@ states every role × collection × operation; `tests/access/access.test.ts`
 executes every cell through the local API with `overrideAccess: false` on a
 throwaway Docker database (`pnpm test:access`: 300 cases). Adding a
 collection without a matrix row is a type error.
+
+## Phase 3
+
+**The seed fills, it never overwrites.** `scripts/seed.ts` upserts by slug
+(path for pages, `from` for redirects). On an existing document only empty
+fields are written, where empty means null, "", [] or a `{{TODO:…}}` token.
+A field holding a different non-empty value is a conflict: counted, listed by
+slug and field, left alone. `tests/db/seed.test.ts` proves it: an editor's
+county survives a re-seed and is reported; a TODO token is filled when the
+seed knows the value; a real license number is kept over a TODO.
+
+**Seed data is derived, not typed.** `pnpm import:package` converts the XML
+package into `src/seed-data/*.json` (page-generation Phase 1's rule). The
+186 article and 221 glossary slugs are the one thing only `full-sitemap.xml`
+holds, so the import reads them from it once; after that the fixture is a
+regression input only. Placeholder titles derive from the slug and are
+replaced by generation.
+
+**The seed never sets `reviewed`.** Every article, glossary term, page and
+product shell is created `draft` with `generation.status = pending`, and the
+seed does not carry `reviewStatus` on updates at all.
+
+**Facts in the seed and where they came from.** Product, state and city
+names and slugs: the package. Counties and size bands: the hand-committed
+`src/seed-data/city-facts.json` (public geography; size band is an editorial
+bucket that is never displayed). Phone, email and social links: the legacy
+crawl, which wins on facts about the business, still flagged in
+`TODO-CLIENT-DATA.md` #7 for confirmation under the new entity. DOI links:
+only Nevada and Utah, the two that answered HTTP 200 from the build machine;
+Arizona (403 behind a bot wall) and Idaho (unreachable) are TODO tokens rather
+than URLs typed from memory. License numbers, statutory minimums, every other
+`CityFacts` field: TODO tokens.
+
+**Six legacy URLs are unresolved on purpose** (`REDIRECTS-UNRESOLVED.md`):
+the two intake forms and their WordPress `-2` alias have no route in the IA,
+and adding `/forms/*` changes the route count (page-generation rule 4: ask,
+do not absorb); the two agent-facing pages wait for the Phase 4 partner
+portal route. Nothing is redirected to `/`.
+
+**Forms are seeded with the legacy fields exactly** (parity rows 5, 7, 8),
+with `autocomplete`, `inputmode` and `pii` per field, as `createOnly` data so
+an editor's later edits are never overwritten by a re-seed.
+
+**No admin user is seeded.** Payload's first-user screen creates it; a
+password in a seed file is a secret in git.

@@ -4,6 +4,8 @@ import { isAdmin, userOf } from "../lib/roles.ts";
 import { isNormalizedSlug, slugify } from "../lib/slug.ts";
 
 export const REVIEW_STATUSES = ["draft", "in-review", "reviewed"] as const;
+/** The only non-admin way to set `reviewed`: `payload.update({ ..., context: { [ALLOW_REVIEWED_CONTEXT]: true } })`. Logged on every use. */
+export const ALLOW_REVIEWED_CONTEXT = "allowReviewed";
 export type ReviewStatus = (typeof REVIEW_STATUSES)[number];
 
 /**
@@ -24,12 +26,16 @@ export const reviewFields = (): Field[] => [
     admin: { position: "sidebar", description: "Only an admin can set reviewed. Everything else renders noindex." },
     hooks: {
       beforeChange: [
-        ({ value, previousValue, req }) => {
-          // A userless local-API call (seed, migrations) is system code; the rule binds every signed-in non-admin.
-          if (req.user && value === "reviewed" && previousValue !== "reviewed" && !isAdmin(userOf(req))) {
-            throw new APIError("Only an admin can mark a document reviewed.", 403);
+        ({ value, previousValue, req, collection }) => {
+          if (value !== "reviewed" || previousValue === "reviewed") return value;
+          if (isAdmin(userOf(req))) return value;
+          // No user is not trusted. A server path that must set reviewed passes
+          // req.context.allowReviewed = true, and that is logged, never silent.
+          if (req.context?.[ALLOW_REVIEWED_CONTEXT] === true) {
+            req.payload.logger.warn({ msg: "reviewStatus set to reviewed via context flag", collection: collection?.slug, user: req.user?.id ?? null });
+            return value;
           }
-          return value;
+          throw new APIError("Only an admin can mark a document reviewed.", 403);
         },
       ],
     },

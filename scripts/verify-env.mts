@@ -31,7 +31,7 @@ for (const k of exampleKeys) if (!schemaKeys.has(k)) failures.push(`.env.example
 // 2 + 3. Source scan
 const SCAN_DIRS = ["app", "components", "lib", "src", "packages", "scripts", "tests"];
 const SCAN_FILES = ["next.config.ts", "next.config.mjs", "next.config.js", "payload.config.ts", "middleware.ts"];
-const ALLOW_PROCESS_ENV = new Set(["src/env.ts", "src/env.public.ts", "scripts/verify-env.mts", "scripts/test-db.mts", "scripts/test-rls.mts", "scripts/migrate-check.mts", "scripts/test-media.mts", "scripts/test-access.mts", "scripts/leads-purge.mts", "scripts/verify-glossary.mts"]);
+const ALLOW_PROCESS_ENV = new Set(["src/env.ts", "src/env.public.ts", "scripts/verify-env.mts", "scripts/test-db.mts", "scripts/test-rls.mts", "scripts/migrate-check.mts", "scripts/test-media.mts", "scripts/test-access.mts", "scripts/leads-purge.mts", "scripts/verify-glossary.mts", "scripts/seed.ts"]);
 const SKIP = new Set(["node_modules", ".next", "dist", ".git"]);
 
 function* walk(dir: string): Generator<string> {

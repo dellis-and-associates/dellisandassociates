@@ -1,0 +1,182 @@
+[
+  {
+    "name": "Arizona",
+    "slug": "arizona",
+    "abbr": "AZ",
+    "cities": [
+      {
+        "name": "Phoenix",
+        "slug": "phoenix"
+      },
+      {
+        "name": "Tucson",
+        "slug": "tucson"
+      },
+      {
+        "name": "Mesa",
+        "slug": "mesa"
+      },
+      {
+        "name": "Scottsdale",
+        "slug": "scottsdale"
+      },
+      {
+        "name": "Chandler",
+        "slug": "chandler"
+      },
+      {
+        "name": "Gilbert",
+        "slug": "gilbert"
+      },
+      {
+        "name": "Glendale",
+        "slug": "glendale"
+      },
+      {
+        "name": "Tempe",
+        "slug": "tempe"
+      },
+      {
+        "name": "Peoria",
+        "slug": "peoria"
+      },
+      {
+        "name": "Surprise",
+        "slug": "surprise"
+      },
+      {
+        "name": "Avondale",
+        "slug": "avondale"
+      },
+      {
+        "name": "Goodyear",
+        "slug": "goodyear"
+      },
+      {
+        "name": "Flagstaff",
+        "slug": "flagstaff"
+      },
+      {
+        "name": "Yuma",
+        "slug": "yuma"
+      }
+    ]
+  },
+  {
+    "name": "Nevada",
+    "slug": "nevada",
+    "abbr": "NV",
+    "cities": [
+      {
+        "name": "Las Vegas",
+        "slug": "las-vegas"
+      },
+      {
+        "name": "Henderson",
+        "slug": "henderson"
+      },
+      {
+        "name": "Reno",
+        "slug": "reno"
+      },
+      {
+        "name": "North Las Vegas",
+        "slug": "north-las-vegas"
+      },
+      {
+        "name": "Sparks",
+        "slug": "sparks"
+      },
+      {
+        "name": "Carson City",
+        "slug": "carson-city"
+      },
+      {
+        "name": "Elko",
+        "slug": "elko"
+      },
+      {
+        "name": "Boulder City",
+        "slug": "boulder-city"
+      }
+    ]
+  },
+  {
+    "name": "Utah",
+    "slug": "utah",
+    "abbr": "UT",
+    "cities": [
+      {
+        "name": "Salt Lake City",
+        "slug": "salt-lake-city"
+      },
+      {
+        "name": "West Valley City",
+        "slug": "west-valley-city"
+      },
+      {
+        "name": "Provo",
+        "slug": "provo"
+      },
+      {
+        "name": "West Jordan",
+        "slug": "west-jordan"
+      },
+      {
+        "name": "Orem",
+        "slug": "orem"
+      },
+      {
+        "name": "Sandy",
+        "slug": "sandy"
+      },
+      {
+        "name": "Ogden",
+        "slug": "ogden"
+      },
+      {
+        "name": "St. George",
+        "slug": "st-george"
+      }
+    ]
+  },
+  {
+    "name": "Idaho",
+    "slug": "idaho",
+    "abbr": "ID",
+    "cities": [
+      {
+        "name": "Boise",
+        "slug": "boise"
+      },
+      {
+        "name": "Meridian",
+        "slug": "meridian"
+      },
+      {
+        "name": "Nampa",
+        "slug": "nampa"
+      },
+      {
+        "name": "Idaho Falls",
+        "slug": "idaho-falls"
+      },
+      {
+        "name": "Pocatello",
+        "slug": "pocatello"
+      },
+      {
+        "name": "Caldwell",
+        "slug": "caldwell"
+      },
+      {
+        "name": "Coeur d'Alene",
+        "slug": "coeur-d-alene"
+      },
+      {
+        "name": "Twin Falls",
+        "slug": "twin-falls"
+      }
+    ]
+  }
+]

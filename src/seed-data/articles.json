@@ -1,0 +1,932 @@
+[
+  {
+    "section": "guides",
+    "slug": "auto-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Auto Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "home-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Home Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "renters-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Renters Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "life-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Life Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "general-liability-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "General Liability Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "workers-compensation-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Workers Compensation Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "commercial-auto-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Commercial Auto Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "motorcycle-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Motorcycle Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "umbrella-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Umbrella Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "business-owners-policy-bop-explained-a-beginner-s-guide",
+    "placeholderTitle": "Business Owners Policy Bop Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "boat-watercraft-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Boat Watercraft Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "rv-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Rv Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "atv-off-road-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Atv Off Road Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "pet-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Pet Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "flood-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Flood Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "earthquake-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Earthquake Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "mobile-manufactured-home-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Mobile Manufactured Home Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "landlord-rental-property-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Landlord Rental Property Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "identity-theft-protection-explained-a-beginner-s-guide",
+    "placeholderTitle": "Identity Theft Protection Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "professional-liability-e-o-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Professional Liability E O Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "cyber-liability-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Cyber Liability Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "commercial-umbrella-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Commercial Umbrella Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "contractors-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Contractors Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "restaurant-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Restaurant Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "retail-business-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Retail Business Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "agribusiness-farm-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Agribusiness Farm Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "non-profit-organization-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Non Profit Organization Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "surety-bonds-explained-a-beginner-s-guide",
+    "placeholderTitle": "Surety Bonds Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "travel-insurance-explained-a-beginner-s-guide",
+    "placeholderTitle": "Travel Insurance Explained a Beginner's Guide"
+  },
+  {
+    "section": "guides",
+    "slug": "how-insurance-actually-works-a-plain-english-guide",
+    "placeholderTitle": "How Insurance Actually Works a Plain English Guide"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "minimum-auto-insurance-requirements-in-arizona",
+    "placeholderTitle": "Minimum Auto Insurance Requirements in Arizona"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "sr-22-high-risk-insurance-rules-in-arizona",
+    "placeholderTitle": "Sr 22 High Risk Insurance Rules in Arizona"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "homeowners-insurance-disclosure-requirements-in-arizona",
+    "placeholderTitle": "Homeowners Insurance Disclosure Requirements in Arizona"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "minimum-auto-insurance-requirements-in-nevada",
+    "placeholderTitle": "Minimum Auto Insurance Requirements in Nevada"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "sr-22-high-risk-insurance-rules-in-nevada",
+    "placeholderTitle": "Sr 22 High Risk Insurance Rules in Nevada"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "homeowners-insurance-disclosure-requirements-in-nevada",
+    "placeholderTitle": "Homeowners Insurance Disclosure Requirements in Nevada"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "minimum-auto-insurance-requirements-in-utah",
+    "placeholderTitle": "Minimum Auto Insurance Requirements in Utah"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "sr-22-high-risk-insurance-rules-in-utah",
+    "placeholderTitle": "Sr 22 High Risk Insurance Rules in Utah"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "homeowners-insurance-disclosure-requirements-in-utah",
+    "placeholderTitle": "Homeowners Insurance Disclosure Requirements in Utah"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "minimum-auto-insurance-requirements-in-idaho",
+    "placeholderTitle": "Minimum Auto Insurance Requirements in Idaho"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "sr-22-high-risk-insurance-rules-in-idaho",
+    "placeholderTitle": "Sr 22 High Risk Insurance Rules in Idaho"
+  },
+  {
+    "section": "state-requirements",
+    "slug": "homeowners-insurance-disclosure-requirements-in-idaho",
+    "placeholderTitle": "Homeowners Insurance Disclosure Requirements in Idaho"
+  },
+  {
+    "section": "compare",
+    "slug": "term-life-vs-whole-life-insurance",
+    "placeholderTitle": "Term Life vs Whole Life Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "full-coverage-vs-liability-only-auto-insurance",
+    "placeholderTitle": "Full Coverage vs Liability Only Auto Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "ho-3-vs-ho-5-homeowners-policies",
+    "placeholderTitle": "Ho 3 vs Ho 5 Homeowners Policies"
+  },
+  {
+    "section": "compare",
+    "slug": "actual-cash-value-vs-replacement-cost-coverage",
+    "placeholderTitle": "Actual Cash Value vs Replacement Cost Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "named-perils-vs-open-perils-policies",
+    "placeholderTitle": "Named Perils vs Open Perils Policies"
+  },
+  {
+    "section": "compare",
+    "slug": "admitted-vs-non-admitted-carriers",
+    "placeholderTitle": "Admitted vs Non Admitted Carriers"
+  },
+  {
+    "section": "compare",
+    "slug": "claims-made-vs-occurrence-policies",
+    "placeholderTitle": "Claims Made vs Occurrence Policies"
+  },
+  {
+    "section": "compare",
+    "slug": "bundling-vs-separate-auto-home-policies",
+    "placeholderTitle": "Bundling vs Separate Auto Home Policies"
+  },
+  {
+    "section": "compare",
+    "slug": "independent-agent-vs-captive-agent",
+    "placeholderTitle": "Independent Agent vs Captive Agent"
+  },
+  {
+    "section": "compare",
+    "slug": "standard-vs-non-standard-auto-insurance",
+    "placeholderTitle": "Standard vs Non Standard Auto Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "renters-insurance-vs-landlord-insurance",
+    "placeholderTitle": "Renters Insurance vs Landlord Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "general-liability-vs-professional-liability",
+    "placeholderTitle": "General Liability vs Professional Liability"
+  },
+  {
+    "section": "compare",
+    "slug": "umbrella-policy-vs-higher-liability-limits",
+    "placeholderTitle": "Umbrella Policy vs Higher Liability Limits"
+  },
+  {
+    "section": "compare",
+    "slug": "whole-life-vs-universal-life-insurance",
+    "placeholderTitle": "Whole Life vs Universal Life Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "fixed-vs-variable-annuities",
+    "placeholderTitle": "Fixed vs Variable Annuities"
+  },
+  {
+    "section": "compare",
+    "slug": "comprehensive-vs-collision-coverage",
+    "placeholderTitle": "Comprehensive vs Collision Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "gap-insurance-vs-standard-auto-coverage",
+    "placeholderTitle": "Gap Insurance vs Standard Auto Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "self-insured-retention-vs-deductible",
+    "placeholderTitle": "Self Insured Retention vs Deductible"
+  },
+  {
+    "section": "compare",
+    "slug": "occurrence-based-vs-claims-made-cyber-coverage",
+    "placeholderTitle": "Occurrence Based vs Claims Made Cyber Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "bop-vs-buying-coverages-separately",
+    "placeholderTitle": "Bop vs Buying Coverages Separately"
+  },
+  {
+    "section": "compare",
+    "slug": "actual-loss-sustained-vs-business-income-coverage",
+    "placeholderTitle": "Actual Loss Sustained vs Business Income Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "guaranteed-issue-vs-medically-underwritten-life",
+    "placeholderTitle": "Guaranteed Issue vs Medically Underwritten Life"
+  },
+  {
+    "section": "compare",
+    "slug": "medicare-advantage-vs-medigap",
+    "placeholderTitle": "Medicare Advantage vs Medigap"
+  },
+  {
+    "section": "compare",
+    "slug": "hsa-vs-fsa-for-health-costs",
+    "placeholderTitle": "Hsa vs Fsa for Health Costs"
+  },
+  {
+    "section": "compare",
+    "slug": "named-driver-exclusion-vs-standard-policy",
+    "placeholderTitle": "Named Driver Exclusion vs Standard Policy"
+  },
+  {
+    "section": "compare",
+    "slug": "stated-amount-vs-agreed-value-policies",
+    "placeholderTitle": "Stated Amount vs Agreed Value Policies"
+  },
+  {
+    "section": "compare",
+    "slug": "primary-vs-excess-insurance",
+    "placeholderTitle": "Primary vs Excess Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "first-party-vs-third-party-cyber-coverage",
+    "placeholderTitle": "First Party vs Third Party Cyber Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "replacement-cost-vs-extended-replacement-cost",
+    "placeholderTitle": "Replacement Cost vs Extended Replacement Cost"
+  },
+  {
+    "section": "compare",
+    "slug": "basic-form-vs-special-form-homeowners-coverage",
+    "placeholderTitle": "Basic Form vs Special Form Homeowners Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "assigned-risk-plan-vs-voluntary-market-auto-insurance",
+    "placeholderTitle": "Assigned Risk Plan vs Voluntary Market Auto Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "owner-operator-vs-fleet-commercial-auto-insurance",
+    "placeholderTitle": "Owner Operator vs Fleet Commercial Auto Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "key-person-insurance-vs-buy-sell-agreement-funding",
+    "placeholderTitle": "Key Person Insurance vs Buy Sell Agreement Funding"
+  },
+  {
+    "section": "compare",
+    "slug": "group-life-vs-individual-life-insurance",
+    "placeholderTitle": "Group Life vs Individual Life Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "short-term-vs-long-term-disability-insurance",
+    "placeholderTitle": "Short Term vs Long Term Disability Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "named-insured-vs-additional-insured",
+    "placeholderTitle": "Named Insured vs Additional Insured"
+  },
+  {
+    "section": "compare",
+    "slug": "blanket-vs-scheduled-personal-property-coverage",
+    "placeholderTitle": "Blanket vs Scheduled Personal Property Coverage"
+  },
+  {
+    "section": "compare",
+    "slug": "manufactured-home-vs-modular-home-insurance",
+    "placeholderTitle": "Manufactured Home vs Modular Home Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "builders-risk-vs-standard-property-insurance",
+    "placeholderTitle": "Builders Risk vs Standard Property Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "inland-marine-vs-commercial-property-insurance",
+    "placeholderTitle": "Inland Marine vs Commercial Property Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "non-owner-auto-policy-vs-standard-auto-policy",
+    "placeholderTitle": "Non Owner Auto Policy vs Standard Auto Policy"
+  },
+  {
+    "section": "compare",
+    "slug": "diminished-value-vs-total-loss-claims",
+    "placeholderTitle": "Diminished Value vs Total Loss Claims"
+  },
+  {
+    "section": "compare",
+    "slug": "endorsement-vs-rider-what-s-the-difference",
+    "placeholderTitle": "Endorsement vs Rider What's the Difference"
+  },
+  {
+    "section": "compare",
+    "slug": "peril-vs-hazard-in-insurance-terms",
+    "placeholderTitle": "Peril vs Hazard in Insurance Terms"
+  },
+  {
+    "section": "compare",
+    "slug": "indemnity-vs-reimbursement-claims",
+    "placeholderTitle": "Indemnity vs Reimbursement Claims"
+  },
+  {
+    "section": "compare",
+    "slug": "co-insurance-vs-deductible",
+    "placeholderTitle": "Co Insurance vs Deductible"
+  },
+  {
+    "section": "compare",
+    "slug": "surplus-lines-vs-standard-market-insurance",
+    "placeholderTitle": "Surplus Lines vs Standard Market Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "reinsurance-vs-primary-insurance",
+    "placeholderTitle": "Reinsurance vs Primary Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "loss-ratio-vs-combined-ratio-explained",
+    "placeholderTitle": "Loss Ratio vs Combined Ratio Explained"
+  },
+  {
+    "section": "compare",
+    "slug": "captive-insurance-vs-traditional-insurance",
+    "placeholderTitle": "Captive Insurance vs Traditional Insurance"
+  },
+  {
+    "section": "compare",
+    "slug": "annual-vs-six-month-auto-insurance-policies",
+    "placeholderTitle": "Annual vs Six Month Auto Insurance Policies"
+  },
+  {
+    "section": "compare",
+    "slug": "usage-based-vs-traditional-auto-insurance",
+    "placeholderTitle": "Usage Based vs Traditional Auto Insurance"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-file-an-auto-insurance-claim",
+    "placeholderTitle": "How to File an Auto Insurance Claim"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-lower-your-home-insurance-premium",
+    "placeholderTitle": "How to Lower your Home Insurance Premium"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-switch-insurance-companies-without-a-coverage-lapse",
+    "placeholderTitle": "How to Switch Insurance Companies Without a Coverage Lapse"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-build-a-home-inventory-for-insurance-claims",
+    "placeholderTitle": "How to Build a Home Inventory for Insurance Claims"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-update-insurance-after-a-move",
+    "placeholderTitle": "How to Update Insurance After a Move"
+  },
+  {
+    "section": "how-to",
+    "slug": "a-checklist-for-insuring-your-new-teen-driver",
+    "placeholderTitle": "A Checklist for Insuring your New Teen Driver"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-read-your-auto-insurance-declarations-page",
+    "placeholderTitle": "How to Read your Auto Insurance Declarations Page"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-choose-the-right-deductible",
+    "placeholderTitle": "How to Choose the Right Deductible"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-bundle-home-and-auto-insurance",
+    "placeholderTitle": "How to Bundle Home and Auto Insurance"
+  },
+  {
+    "section": "how-to",
+    "slug": "what-to-do-after-a-car-accident-step-by-step",
+    "placeholderTitle": "What to Do After a Car Accident Step by Step"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-home-based-business",
+    "placeholderTitle": "How to Insure a Home Based Business"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-get-sr-22-insurance",
+    "placeholderTitle": "How to Get Sr 22 Insurance"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-classic-or-collector-car",
+    "placeholderTitle": "How to Insure a Classic or Collector Car"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-leased-vehicle",
+    "placeholderTitle": "How to Insure a Leased Vehicle"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-add-a-teen-driver-to-your-policy",
+    "placeholderTitle": "How to Add a Teen Driver to your Policy"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-cancel-an-insurance-policy-the-right-way",
+    "placeholderTitle": "How to Cancel an Insurance Policy the Right Way"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-dispute-a-denied-insurance-claim",
+    "placeholderTitle": "How to Dispute a Denied Insurance Claim"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-choose-general-liability-coverage-limits",
+    "placeholderTitle": "How to Choose General Liability Coverage Limits"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-get-workers-comp-coverage-for-1099-contractors",
+    "placeholderTitle": "How to Get Workers Comp Coverage for 1099 Contractors"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-food-truck-or-mobile-business",
+    "placeholderTitle": "How to Insure a Food Truck or Mobile Business"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-short-term-rental-property",
+    "placeholderTitle": "How to Insure a Short Term Rental Property"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-prepare-your-home-for-a-wildfire-insurance-inspection",
+    "placeholderTitle": "How to Prepare your Home for a Wildfire Insurance Inspection"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-home-gym-or-pool",
+    "placeholderTitle": "How to Insure a Home Gym or Pool"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-jewelry-and-other-valuables",
+    "placeholderTitle": "How to Insure Jewelry and Other Valuables"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-choose-between-named-perils-and-open-perils-coverage",
+    "placeholderTitle": "How to Choose Between Named Perils and Open Perils Coverage"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-new-business-in-its-first-year",
+    "placeholderTitle": "How to Insure a New Business in Its First Year"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-read-a-certificate-of-insurance",
+    "placeholderTitle": "How to Read a Certificate of Insurance"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-add-additional-insured-status-to-a-policy",
+    "placeholderTitle": "How to Add Additional Insured Status to a Policy"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-equipment-and-tools-for-a-contracting-business",
+    "placeholderTitle": "How to Insure Equipment and Tools for a Contracting Business"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-rental-car",
+    "placeholderTitle": "How to Insure a Rental Car"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-multiple-vehicles-under-one-policy",
+    "placeholderTitle": "How to Insure Multiple Vehicles Under One Policy"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-vehicle-for-rideshare-driving",
+    "placeholderTitle": "How to Insure a Vehicle for Rideshare Driving"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-prepare-an-insurance-claim-after-a-storm",
+    "placeholderTitle": "How to Prepare an Insurance Claim After a Storm"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-vacant-home",
+    "placeholderTitle": "How to Insure a Vacant Home"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-home-during-renovation",
+    "placeholderTitle": "How to Insure a Home During Renovation"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-pool-or-trampoline-for-liability",
+    "placeholderTitle": "How to Insure a Pool or Trampoline for Liability"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-get-coverage-after-a-non-renewal",
+    "placeholderTitle": "How to Get Coverage After a Non Renewal"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-improve-your-insurance-score",
+    "placeholderTitle": "How to Improve your Insurance Score"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-motorcycle-for-the-first-time",
+    "placeholderTitle": "How to Insure a Motorcycle for the First Time"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-an-rv-for-full-time-living",
+    "placeholderTitle": "How to Insure an Rv for Full Time Living"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-choose-life-insurance-coverage-amounts",
+    "placeholderTitle": "How to Choose Life Insurance Coverage Amounts"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-name-life-insurance-beneficiaries-correctly",
+    "placeholderTitle": "How to Name Life Insurance Beneficiaries Correctly"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-boat-for-the-first-time",
+    "placeholderTitle": "How to Insure a Boat for the First Time"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-winterize-and-insure-a-seasonal-property",
+    "placeholderTitle": "How to Winterize and Insure a Seasonal Property"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-farm-or-agricultural-operation",
+    "placeholderTitle": "How to Insure a Farm or Agricultural Operation"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-get-bonded-as-a-contractor",
+    "placeholderTitle": "How to Get Bonded as a Contractor"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-non-profit-organization-s-events",
+    "placeholderTitle": "How to Insure a Non Profit Organization's Events"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-respond-to-a-cyber-incident-as-a-small-business",
+    "placeholderTitle": "How to Respond to a Cyber Incident as a Small Business"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-choose-umbrella-policy-coverage-limits",
+    "placeholderTitle": "How to Choose Umbrella Policy Coverage Limits"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-home-based-daycare-operations",
+    "placeholderTitle": "How to Insure Home Based Daycare Operations"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-insure-a-multi-family-rental-property",
+    "placeholderTitle": "How to Insure a Multi Family Rental Property"
+  },
+  {
+    "section": "how-to",
+    "slug": "how-to-prepare-for-an-insurance-home-inspection",
+    "placeholderTitle": "How to Prepare for an Insurance Home Inspection"
+  },
+  {
+    "section": "life-events",
+    "slug": "insurance-checklist-for-first-time-homebuyers",
+    "placeholderTitle": "Insurance Checklist for First Time Homebuyers"
+  },
+  {
+    "section": "life-events",
+    "slug": "getting-married-how-to-combine-insurance-policies",
+    "placeholderTitle": "Getting Married How to Combine Insurance Policies"
+  },
+  {
+    "section": "life-events",
+    "slug": "having-a-baby-updating-your-life-insurance",
+    "placeholderTitle": "Having a Baby Updating your Life Insurance"
+  },
+  {
+    "section": "life-events",
+    "slug": "starting-a-small-business-insurance-basics",
+    "placeholderTitle": "Starting a Small Business Insurance Basics"
+  },
+  {
+    "section": "life-events",
+    "slug": "retiring-how-your-insurance-needs-change",
+    "placeholderTitle": "Retiring How your Insurance Needs Change"
+  },
+  {
+    "section": "life-events",
+    "slug": "sending-a-kid-to-college-insurance-considerations",
+    "placeholderTitle": "Sending a Kid to College Insurance Considerations"
+  },
+  {
+    "section": "life-events",
+    "slug": "buying-a-new-car-insurance-steps-to-take",
+    "placeholderTitle": "Buying a New Car Insurance Steps to Take"
+  },
+  {
+    "section": "life-events",
+    "slug": "getting-divorced-updating-beneficiaries-and-policies",
+    "placeholderTitle": "Getting Divorced Updating Beneficiaries and Policies"
+  },
+  {
+    "section": "life-events",
+    "slug": "inheriting-a-home-insurance-considerations",
+    "placeholderTitle": "Inheriting a Home Insurance Considerations"
+  },
+  {
+    "section": "life-events",
+    "slug": "becoming-a-landlord-insurance-requirements",
+    "placeholderTitle": "Becoming a Landlord Insurance Requirements"
+  },
+  {
+    "section": "life-events",
+    "slug": "adopting-a-pet-do-you-need-pet-insurance",
+    "placeholderTitle": "Adopting a Pet Do You Need Pet Insurance"
+  },
+  {
+    "section": "life-events",
+    "slug": "buying-your-first-boat-or-rv",
+    "placeholderTitle": "Buying your First Boat or Rv"
+  },
+  {
+    "section": "life-events",
+    "slug": "turning-65-medicare-and-insurance-transitions",
+    "placeholderTitle": "Turning 65 Medicare and Insurance Transitions"
+  },
+  {
+    "section": "life-events",
+    "slug": "relocating-out-of-state-insurance-to-do-list",
+    "placeholderTitle": "Relocating Out of State Insurance to Do List"
+  },
+  {
+    "section": "life-events",
+    "slug": "co-signing-for-a-teen-driver-what-to-know",
+    "placeholderTitle": "Co Signing for a Teen Driver What to Know"
+  },
+  {
+    "section": "life-events",
+    "slug": "downsizing-your-home-insurance-adjustments",
+    "placeholderTitle": "Downsizing your Home Insurance Adjustments"
+  },
+  {
+    "section": "life-events",
+    "slug": "starting-to-work-from-home-insurance-gaps-to-check",
+    "placeholderTitle": "Starting to Work from Home Insurance Gaps to Check"
+  },
+  {
+    "section": "life-events",
+    "slug": "buying-a-vacation-or-second-home",
+    "placeholderTitle": "Buying a Vacation or Second Home"
+  },
+  {
+    "section": "life-events",
+    "slug": "losing-a-job-managing-insurance-coverage-gaps",
+    "placeholderTitle": "Losing a Job Managing Insurance Coverage Gaps"
+  },
+  {
+    "section": "life-events",
+    "slug": "becoming-a-full-time-rver-insurance-basics",
+    "placeholderTitle": "Becoming a Full Time Rver Insurance Basics"
+  },
+  {
+    "section": "seasonal",
+    "slug": "arizona-monsoon-season-home-prep-guide",
+    "placeholderTitle": "Arizona Monsoon Season Home Prep Guide"
+  },
+  {
+    "section": "seasonal",
+    "slug": "wildfire-insurance-preparedness-for-southwest-homeowners",
+    "placeholderTitle": "Wildfire Insurance Preparedness for Southwest Homeowners"
+  },
+  {
+    "section": "seasonal",
+    "slug": "extreme-heat-safety-and-home-insurance-considerations",
+    "placeholderTitle": "Extreme Heat Safety and Home Insurance Considerations"
+  },
+  {
+    "section": "seasonal",
+    "slug": "winter-mountain-driving-safety-tips-for-utah-idaho",
+    "placeholderTitle": "Winter Mountain Driving Safety Tips for Utah Idaho"
+  },
+  {
+    "section": "seasonal",
+    "slug": "spring-snowmelt-flood-risk-in-idaho-and-utah",
+    "placeholderTitle": "Spring Snowmelt Flood Risk in Idaho and Utah"
+  },
+  {
+    "section": "seasonal",
+    "slug": "holiday-season-package-theft-prevention",
+    "placeholderTitle": "Holiday Season Package Theft Prevention"
+  },
+  {
+    "section": "seasonal",
+    "slug": "summer-road-trip-insurance-checklist",
+    "placeholderTitle": "Summer Road Trip Insurance Checklist"
+  },
+  {
+    "section": "seasonal",
+    "slug": "back-to-school-teen-driver-safety-tips",
+    "placeholderTitle": "Back to School Teen Driver Safety Tips"
+  },
+  {
+    "section": "seasonal",
+    "slug": "desert-dust-storm-haboob-driving-safety",
+    "placeholderTitle": "Desert Dust Storm Haboob Driving Safety"
+  },
+  {
+    "section": "seasonal",
+    "slug": "preparing-your-rv-for-winter-storage",
+    "placeholderTitle": "Preparing your Rv for Winter Storage"
+  },
+  {
+    "section": "seasonal",
+    "slug": "pool-season-liability-insurance-checklist",
+    "placeholderTitle": "Pool Season Liability Insurance Checklist"
+  },
+  {
+    "section": "seasonal",
+    "slug": "off-roading-season-atv-utv-insurance-reminders",
+    "placeholderTitle": "Off Roading Season Atv Utv Insurance Reminders"
+  },
+  {
+    "section": "seasonal",
+    "slug": "lake-season-boat-insurance-checklist-for-nevada-utah",
+    "placeholderTitle": "Lake Season Boat Insurance Checklist for Nevada Utah"
+  },
+  {
+    "section": "seasonal",
+    "slug": "ski-season-property-auto-insurance-tips",
+    "placeholderTitle": "Ski Season Property Auto Insurance Tips"
+  },
+  {
+    "section": "seasonal",
+    "slug": "fall-home-maintenance-for-insurance-purposes",
+    "placeholderTitle": "Fall Home Maintenance for Insurance Purposes"
+  },
+  {
+    "section": "seasonal",
+    "slug": "freeze-warning-protecting-pipes-and-your-home-policy",
+    "placeholderTitle": "Freeze Warning Protecting Pipes and your Home Policy"
+  },
+  {
+    "section": "seasonal",
+    "slug": "new-year-insurance-policy-review-checklist",
+    "placeholderTitle": "New Year Insurance Policy Review Checklist"
+  },
+  {
+    "section": "seasonal",
+    "slug": "tax-season-using-refunds-to-improve-coverage",
+    "placeholderTitle": "Tax Season Using Refunds to Improve Coverage"
+  },
+  {
+    "section": "seasonal",
+    "slug": "back-to-school-bus-stop-and-pedestrian-safety",
+    "placeholderTitle": "Back to School Bus Stop and Pedestrian Safety"
+  },
+  {
+    "section": "seasonal",
+    "slug": "fire-season-defensible-space-requirements",
+    "placeholderTitle": "Fire Season Defensible Space Requirements"
+  }
+]

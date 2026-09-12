@@ -14,7 +14,13 @@ const fixtures: Record<string, { own?: number; other?: number }> = {};
 let payload: Payload;
 /** Fixture creation with overrideAccess; typed loosely so fields with defaults can be omitted. */
 const seed = async (collection: CollectionSlug, data: Record<string, unknown>) =>
-  (await payload.create({ collection: collection as never, data: data as never, overrideAccess: true })) as unknown as { id: number; [k: string]: unknown };
+  (await payload.create({
+    collection: collection as never,
+    data: data as never,
+    overrideAccess: true,
+    // Test fixtures are the one legitimate server path that sets reviewed; the flag is logged.
+    context: data.reviewStatus === "reviewed" ? { allowReviewed: true } : undefined,
+  })) as unknown as { id: number; [k: string]: unknown };
 
 const asUser = (role: MatrixRole) => (role === "public" ? undefined : users[role]);
 const forbidden = async (p: Promise<unknown>) => {
@@ -194,6 +200,14 @@ describe("field-level locks", () => {
     await expect(payload.update({ collection: "articles", id, data: { reviewStatus: "reviewed" }, user: users.editor, overrideAccess: false })).rejects.toThrow(/admin/i);
     await payload.update({ collection: "articles", id, data: { reviewStatus: "in-review" }, user: users.editor, overrideAccess: false });
     const ok = await payload.update({ collection: "articles", id, data: { reviewStatus: "reviewed" }, user: users.admin, overrideAccess: false });
+    expect(ok.reviewStatus).toBe("reviewed");
+    await payload.update({ collection: "articles", id, data: { reviewStatus: "draft" }, overrideAccess: true });
+  });
+  it("a userless local-API call cannot set reviewed; the explicit context flag can", async () => {
+    const id = fixtures.articles.other as number;
+    await expect(payload.update({ collection: "articles", id, data: { reviewStatus: "reviewed" }, overrideAccess: true })).rejects.toThrow(/admin/i);
+    await expect(payload.update({ collection: "articles", id, data: { reviewStatus: "reviewed" } })).rejects.toThrow(/admin/i);
+    const ok = await payload.update({ collection: "articles", id, data: { reviewStatus: "reviewed" }, overrideAccess: true, context: { allowReviewed: true } });
     expect(ok.reviewStatus).toBe("reviewed");
     await payload.update({ collection: "articles", id, data: { reviewStatus: "draft" }, overrideAccess: true });
   });

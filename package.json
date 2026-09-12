@@ -32,7 +32,9 @@
     "test:media": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/test-media.mts",
     "test:access": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/test-access.mts",
     "leads:purge": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/leads-purge.mts",
-    "verify:glossary": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/verify-glossary.mts"
+    "verify:glossary": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/verify-glossary.mts",
+    "import:package": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/import-package.mts",
+    "seed": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/seed.ts"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "3.89.0",

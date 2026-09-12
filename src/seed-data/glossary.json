@@ -1,0 +1,886 @@
+[
+  {
+    "slug": "deductible",
+    "placeholderTerm": "Deductible"
+  },
+  {
+    "slug": "premium",
+    "placeholderTerm": "Premium"
+  },
+  {
+    "slug": "subrogation",
+    "placeholderTerm": "Subrogation"
+  },
+  {
+    "slug": "endorsement",
+    "placeholderTerm": "Endorsement"
+  },
+  {
+    "slug": "exclusion",
+    "placeholderTerm": "Exclusion"
+  },
+  {
+    "slug": "rider",
+    "placeholderTerm": "Rider"
+  },
+  {
+    "slug": "underwriting",
+    "placeholderTerm": "Underwriting"
+  },
+  {
+    "slug": "actuary",
+    "placeholderTerm": "Actuary"
+  },
+  {
+    "slug": "claim",
+    "placeholderTerm": "Claim"
+  },
+  {
+    "slug": "peril",
+    "placeholderTerm": "Peril"
+  },
+  {
+    "slug": "liability-coverage",
+    "placeholderTerm": "Liability Coverage"
+  },
+  {
+    "slug": "comprehensive-coverage",
+    "placeholderTerm": "Comprehensive Coverage"
+  },
+  {
+    "slug": "collision-coverage",
+    "placeholderTerm": "Collision Coverage"
+  },
+  {
+    "slug": "uninsured-motorist-coverage",
+    "placeholderTerm": "Uninsured Motorist Coverage"
+  },
+  {
+    "slug": "sr-22",
+    "placeholderTerm": "Sr 22"
+  },
+  {
+    "slug": "non-owner-policy",
+    "placeholderTerm": "Non Owner Policy"
+  },
+  {
+    "slug": "named-insured",
+    "placeholderTerm": "Named Insured"
+  },
+  {
+    "slug": "loss-ratio",
+    "placeholderTerm": "Loss Ratio"
+  },
+  {
+    "slug": "indemnity",
+    "placeholderTerm": "Indemnity"
+  },
+  {
+    "slug": "binder",
+    "placeholderTerm": "Binder"
+  },
+  {
+    "slug": "declarations-page",
+    "placeholderTerm": "Declarations Page"
+  },
+  {
+    "slug": "grace-period",
+    "placeholderTerm": "Grace Period"
+  },
+  {
+    "slug": "policy-lapse",
+    "placeholderTerm": "Policy Lapse"
+  },
+  {
+    "slug": "replacement-cost",
+    "placeholderTerm": "Replacement Cost"
+  },
+  {
+    "slug": "actual-cash-value",
+    "placeholderTerm": "Actual Cash Value"
+  },
+  {
+    "slug": "co-insurance",
+    "placeholderTerm": "Co Insurance"
+  },
+  {
+    "slug": "deductible-waiver",
+    "placeholderTerm": "Deductible Waiver"
+  },
+  {
+    "slug": "no-fault-insurance",
+    "placeholderTerm": "No Fault Insurance"
+  },
+  {
+    "slug": "salvage-title",
+    "placeholderTerm": "Salvage Title"
+  },
+  {
+    "slug": "gap-insurance",
+    "placeholderTerm": "Gap Insurance"
+  },
+  {
+    "slug": "force-placed-insurance",
+    "placeholderTerm": "Force Placed Insurance"
+  },
+  {
+    "slug": "admitted-carrier",
+    "placeholderTerm": "Admitted Carrier"
+  },
+  {
+    "slug": "surplus-lines",
+    "placeholderTerm": "Surplus Lines"
+  },
+  {
+    "slug": "reinsurance",
+    "placeholderTerm": "Reinsurance"
+  },
+  {
+    "slug": "adjuster",
+    "placeholderTerm": "Adjuster"
+  },
+  {
+    "slug": "appraisal-clause",
+    "placeholderTerm": "Appraisal Clause"
+  },
+  {
+    "slug": "betterment",
+    "placeholderTerm": "Betterment"
+  },
+  {
+    "slug": "bodily-injury-liability",
+    "placeholderTerm": "Bodily Injury Liability"
+  },
+  {
+    "slug": "property-damage-liability",
+    "placeholderTerm": "Property Damage Liability"
+  },
+  {
+    "slug": "medical-payments-coverage",
+    "placeholderTerm": "Medical Payments Coverage"
+  },
+  {
+    "slug": "personal-injury-protection",
+    "placeholderTerm": "Personal Injury Protection"
+  },
+  {
+    "slug": "underinsured-motorist-coverage",
+    "placeholderTerm": "Underinsured Motorist Coverage"
+  },
+  {
+    "slug": "stacking",
+    "placeholderTerm": "Stacking"
+  },
+  {
+    "slug": "umbrella-policy",
+    "placeholderTerm": "Umbrella Policy"
+  },
+  {
+    "slug": "excess-liability",
+    "placeholderTerm": "Excess Liability"
+  },
+  {
+    "slug": "aggregate-limit",
+    "placeholderTerm": "Aggregate Limit"
+  },
+  {
+    "slug": "per-occurrence-limit",
+    "placeholderTerm": "Per Occurrence Limit"
+  },
+  {
+    "slug": "sublimit",
+    "placeholderTerm": "Sublimit"
+  },
+  {
+    "slug": "floater",
+    "placeholderTerm": "Floater"
+  },
+  {
+    "slug": "named-peril-policy",
+    "placeholderTerm": "Named Peril Policy"
+  },
+  {
+    "slug": "open-peril-policy",
+    "placeholderTerm": "Open Peril Policy"
+  },
+  {
+    "slug": "all-risk-policy",
+    "placeholderTerm": "All Risk Policy"
+  },
+  {
+    "slug": "ho-3-policy",
+    "placeholderTerm": "Ho 3 Policy"
+  },
+  {
+    "slug": "ho-6-policy",
+    "placeholderTerm": "Ho 6 Policy"
+  },
+  {
+    "slug": "dp-3-policy",
+    "placeholderTerm": "Dp 3 Policy"
+  },
+  {
+    "slug": "named-storm-deductible",
+    "placeholderTerm": "Named Storm Deductible"
+  },
+  {
+    "slug": "wind-hail-deductible",
+    "placeholderTerm": "Wind Hail Deductible"
+  },
+  {
+    "slug": "wildfire-mitigation",
+    "placeholderTerm": "Wildfire Mitigation"
+  },
+  {
+    "slug": "defensible-space",
+    "placeholderTerm": "Defensible Space"
+  },
+  {
+    "slug": "elevation-certificate",
+    "placeholderTerm": "Elevation Certificate"
+  },
+  {
+    "slug": "flood-zone",
+    "placeholderTerm": "Flood Zone"
+  },
+  {
+    "slug": "base-flood-elevation",
+    "placeholderTerm": "Base Flood Elevation"
+  },
+  {
+    "slug": "nfip",
+    "placeholderTerm": "Nfip"
+  },
+  {
+    "slug": "private-flood-insurance",
+    "placeholderTerm": "Private Flood Insurance"
+  },
+  {
+    "slug": "earthquake-retrofit",
+    "placeholderTerm": "Earthquake Retrofit"
+  },
+  {
+    "slug": "liquefaction",
+    "placeholderTerm": "Liquefaction"
+  },
+  {
+    "slug": "experience-modification-rate",
+    "placeholderTerm": "Experience Modification Rate"
+  },
+  {
+    "slug": "osha-recordable-incident",
+    "placeholderTerm": "Osha Recordable Incident"
+  },
+  {
+    "slug": "subrogation-waiver",
+    "placeholderTerm": "Subrogation Waiver"
+  },
+  {
+    "slug": "certificate-of-insurance",
+    "placeholderTerm": "Certificate of Insurance"
+  },
+  {
+    "slug": "additional-insured",
+    "placeholderTerm": "Additional Insured"
+  },
+  {
+    "slug": "hold-harmless-agreement",
+    "placeholderTerm": "Hold Harmless Agreement"
+  },
+  {
+    "slug": "indemnification-clause",
+    "placeholderTerm": "Indemnification Clause"
+  },
+  {
+    "slug": "waiver-of-subrogation",
+    "placeholderTerm": "Waiver of Subrogation"
+  },
+  {
+    "slug": "primary-and-noncontributory",
+    "placeholderTerm": "Primary and Noncontributory"
+  },
+  {
+    "slug": "per-project-aggregate",
+    "placeholderTerm": "Per Project Aggregate"
+  },
+  {
+    "slug": "claims-made-policy",
+    "placeholderTerm": "Claims Made Policy"
+  },
+  {
+    "slug": "occurrence-policy",
+    "placeholderTerm": "Occurrence Policy"
+  },
+  {
+    "slug": "tail-coverage",
+    "placeholderTerm": "Tail Coverage"
+  },
+  {
+    "slug": "extended-reporting-period",
+    "placeholderTerm": "Extended Reporting Period"
+  },
+  {
+    "slug": "retroactive-date",
+    "placeholderTerm": "Retroactive Date"
+  },
+  {
+    "slug": "prior-acts-coverage",
+    "placeholderTerm": "Prior Acts Coverage"
+  },
+  {
+    "slug": "d-o-insurance",
+    "placeholderTerm": "D O Insurance"
+  },
+  {
+    "slug": "epli-insurance",
+    "placeholderTerm": "Epli Insurance"
+  },
+  {
+    "slug": "fiduciary-liability-insurance",
+    "placeholderTerm": "Fiduciary Liability Insurance"
+  },
+  {
+    "slug": "crime-insurance",
+    "placeholderTerm": "Crime Insurance"
+  },
+  {
+    "slug": "fidelity-bond",
+    "placeholderTerm": "Fidelity Bond"
+  },
+  {
+    "slug": "erisa-bond",
+    "placeholderTerm": "Erisa Bond"
+  },
+  {
+    "slug": "key-person-insurance",
+    "placeholderTerm": "Key Person Insurance"
+  },
+  {
+    "slug": "buy-sell-agreement",
+    "placeholderTerm": "Buy Sell Agreement"
+  },
+  {
+    "slug": "business-interruption-insurance",
+    "placeholderTerm": "Business Interruption Insurance"
+  },
+  {
+    "slug": "contingent-business-interruption",
+    "placeholderTerm": "Contingent Business Interruption"
+  },
+  {
+    "slug": "equipment-breakdown-coverage",
+    "placeholderTerm": "Equipment Breakdown Coverage"
+  },
+  {
+    "slug": "spoilage-coverage",
+    "placeholderTerm": "Spoilage Coverage"
+  },
+  {
+    "slug": "builders-risk-insurance",
+    "placeholderTerm": "Builders Risk Insurance"
+  },
+  {
+    "slug": "inland-marine-insurance",
+    "placeholderTerm": "Inland Marine Insurance"
+  },
+  {
+    "slug": "cargo-insurance",
+    "placeholderTerm": "Cargo Insurance"
+  },
+  {
+    "slug": "garage-liability-insurance",
+    "placeholderTerm": "Garage Liability Insurance"
+  },
+  {
+    "slug": "garagekeepers-coverage",
+    "placeholderTerm": "Garagekeepers Coverage"
+  },
+  {
+    "slug": "motor-truck-cargo-insurance",
+    "placeholderTerm": "Motor Truck Cargo Insurance"
+  },
+  {
+    "slug": "non-trucking-liability",
+    "placeholderTerm": "Non Trucking Liability"
+  },
+  {
+    "slug": "bobtail-insurance",
+    "placeholderTerm": "Bobtail Insurance"
+  },
+  {
+    "slug": "physical-damage-coverage",
+    "placeholderTerm": "Physical Damage Coverage"
+  },
+  {
+    "slug": "agreed-value-policy",
+    "placeholderTerm": "Agreed Value Policy"
+  },
+  {
+    "slug": "stated-amount-policy",
+    "placeholderTerm": "Stated Amount Policy"
+  },
+  {
+    "slug": "total-loss-threshold",
+    "placeholderTerm": "Total Loss Threshold"
+  },
+  {
+    "slug": "diminished-value-claim",
+    "placeholderTerm": "Diminished Value Claim"
+  },
+  {
+    "slug": "loss-of-use-coverage",
+    "placeholderTerm": "Loss of Use Coverage"
+  },
+  {
+    "slug": "additional-living-expenses-coverage",
+    "placeholderTerm": "Additional Living Expenses Coverage"
+  },
+  {
+    "slug": "ordinance-or-law-coverage",
+    "placeholderTerm": "Ordinance or Law Coverage"
+  },
+  {
+    "slug": "sewer-backup-coverage",
+    "placeholderTerm": "Sewer Backup Coverage"
+  },
+  {
+    "slug": "service-line-coverage",
+    "placeholderTerm": "Service Line Coverage"
+  },
+  {
+    "slug": "identity-theft-restoration",
+    "placeholderTerm": "Identity Theft Restoration"
+  },
+  {
+    "slug": "cyber-extortion-coverage",
+    "placeholderTerm": "Cyber Extortion Coverage"
+  },
+  {
+    "slug": "data-breach-coverage",
+    "placeholderTerm": "Data Breach Coverage"
+  },
+  {
+    "slug": "first-party-cyber-coverage",
+    "placeholderTerm": "First Party Cyber Coverage"
+  },
+  {
+    "slug": "third-party-cyber-coverage",
+    "placeholderTerm": "Third Party Cyber Coverage"
+  },
+  {
+    "slug": "social-engineering-fraud-coverage",
+    "placeholderTerm": "Social Engineering Fraud Coverage"
+  },
+  {
+    "slug": "funds-transfer-fraud-coverage",
+    "placeholderTerm": "Funds Transfer Fraud Coverage"
+  },
+  {
+    "slug": "employment-practices-liability",
+    "placeholderTerm": "Employment Practices Liability"
+  },
+  {
+    "slug": "wage-and-hour-claims",
+    "placeholderTerm": "Wage and Hour Claims"
+  },
+  {
+    "slug": "ada-compliance-insurance",
+    "placeholderTerm": "Ada Compliance Insurance"
+  },
+  {
+    "slug": "workers-compensation-subrogation",
+    "placeholderTerm": "Workers Compensation Subrogation"
+  },
+  {
+    "slug": "second-injury-fund",
+    "placeholderTerm": "Second Injury Fund"
+  },
+  {
+    "slug": "permanent-partial-disability",
+    "placeholderTerm": "Permanent Partial Disability"
+  },
+  {
+    "slug": "permanent-total-disability",
+    "placeholderTerm": "Permanent Total Disability"
+  },
+  {
+    "slug": "temporary-total-disability",
+    "placeholderTerm": "Temporary Total Disability"
+  },
+  {
+    "slug": "average-weekly-wage",
+    "placeholderTerm": "Average Weekly Wage"
+  },
+  {
+    "slug": "maximum-medical-improvement",
+    "placeholderTerm": "Maximum Medical Improvement"
+  },
+  {
+    "slug": "independent-medical-examination",
+    "placeholderTerm": "Independent Medical Examination"
+  },
+  {
+    "slug": "return-to-work-program",
+    "placeholderTerm": "Return to Work Program"
+  },
+  {
+    "slug": "light-duty-assignment",
+    "placeholderTerm": "Light Duty Assignment"
+  },
+  {
+    "slug": "manual-rate",
+    "placeholderTerm": "Manual Rate"
+  },
+  {
+    "slug": "schedule-rating",
+    "placeholderTerm": "Schedule Rating"
+  },
+  {
+    "slug": "retrospective-rating-plan",
+    "placeholderTerm": "Retrospective Rating Plan"
+  },
+  {
+    "slug": "guaranteed-cost-policy",
+    "placeholderTerm": "Guaranteed Cost Policy"
+  },
+  {
+    "slug": "loss-sensitive-program",
+    "placeholderTerm": "Loss Sensitive Program"
+  },
+  {
+    "slug": "self-insured-retention",
+    "placeholderTerm": "Self Insured Retention"
+  },
+  {
+    "slug": "captive-insurance",
+    "placeholderTerm": "Captive Insurance"
+  },
+  {
+    "slug": "risk-retention-group",
+    "placeholderTerm": "Risk Retention Group"
+  },
+  {
+    "slug": "surplus-lines-tax",
+    "placeholderTerm": "Surplus Lines Tax"
+  },
+  {
+    "slug": "non-admitted-carrier",
+    "placeholderTerm": "Non Admitted Carrier"
+  },
+  {
+    "slug": "a-m-best-rating",
+    "placeholderTerm": "A M Best Rating"
+  },
+  {
+    "slug": "financial-strength-rating",
+    "placeholderTerm": "Financial Strength Rating"
+  },
+  {
+    "slug": "policyholder-surplus",
+    "placeholderTerm": "Policyholder Surplus"
+  },
+  {
+    "slug": "combined-ratio",
+    "placeholderTerm": "Combined Ratio"
+  },
+  {
+    "slug": "underwriting-profit",
+    "placeholderTerm": "Underwriting Profit"
+  },
+  {
+    "slug": "reinsurance-treaty",
+    "placeholderTerm": "Reinsurance Treaty"
+  },
+  {
+    "slug": "facultative-reinsurance",
+    "placeholderTerm": "Facultative Reinsurance"
+  },
+  {
+    "slug": "quota-share-reinsurance",
+    "placeholderTerm": "Quota Share Reinsurance"
+  },
+  {
+    "slug": "excess-of-loss-reinsurance",
+    "placeholderTerm": "Excess of Loss Reinsurance"
+  },
+  {
+    "slug": "catastrophe-bond",
+    "placeholderTerm": "Catastrophe Bond"
+  },
+  {
+    "slug": "actuarial-table",
+    "placeholderTerm": "Actuarial Table"
+  },
+  {
+    "slug": "mortality-table",
+    "placeholderTerm": "Mortality Table"
+  },
+  {
+    "slug": "morbidity-table",
+    "placeholderTerm": "Morbidity Table"
+  },
+  {
+    "slug": "cash-value-life-insurance",
+    "placeholderTerm": "Cash Value Life Insurance"
+  },
+  {
+    "slug": "term-life-insurance",
+    "placeholderTerm": "Term Life Insurance"
+  },
+  {
+    "slug": "whole-life-insurance",
+    "placeholderTerm": "Whole Life Insurance"
+  },
+  {
+    "slug": "universal-life-insurance",
+    "placeholderTerm": "Universal Life Insurance"
+  },
+  {
+    "slug": "variable-life-insurance",
+    "placeholderTerm": "Variable Life Insurance"
+  },
+  {
+    "slug": "indexed-universal-life",
+    "placeholderTerm": "Indexed Universal Life"
+  },
+  {
+    "slug": "guaranteed-insurability-rider",
+    "placeholderTerm": "Guaranteed Insurability Rider"
+  },
+  {
+    "slug": "waiver-of-premium-rider",
+    "placeholderTerm": "Waiver of Premium Rider"
+  },
+  {
+    "slug": "accelerated-death-benefit",
+    "placeholderTerm": "Accelerated Death Benefit"
+  },
+  {
+    "slug": "viatical-settlement",
+    "placeholderTerm": "Viatical Settlement"
+  },
+  {
+    "slug": "life-settlement",
+    "placeholderTerm": "Life Settlement"
+  },
+  {
+    "slug": "beneficiary-designation",
+    "placeholderTerm": "Beneficiary Designation"
+  },
+  {
+    "slug": "contingent-beneficiary",
+    "placeholderTerm": "Contingent Beneficiary"
+  },
+  {
+    "slug": "per-stirpes-designation",
+    "placeholderTerm": "Per Stirpes Designation"
+  },
+  {
+    "slug": "irrevocable-beneficiary",
+    "placeholderTerm": "Irrevocable Beneficiary"
+  },
+  {
+    "slug": "incontestability-clause",
+    "placeholderTerm": "Incontestability Clause"
+  },
+  {
+    "slug": "suicide-clause",
+    "placeholderTerm": "Suicide Clause"
+  },
+  {
+    "slug": "free-look-period",
+    "placeholderTerm": "Free Look Period"
+  },
+  {
+    "slug": "non-forfeiture-options",
+    "placeholderTerm": "Non Forfeiture Options"
+  },
+  {
+    "slug": "paid-up-additions",
+    "placeholderTerm": "Paid Up Additions"
+  },
+  {
+    "slug": "dividend-options",
+    "placeholderTerm": "Dividend Options"
+  },
+  {
+    "slug": "modified-endowment-contract",
+    "placeholderTerm": "Modified Endowment Contract"
+  },
+  {
+    "slug": "1035-exchange",
+    "placeholderTerm": "1035 Exchange"
+  },
+  {
+    "slug": "fixed-annuity",
+    "placeholderTerm": "Fixed Annuity"
+  },
+  {
+    "slug": "variable-annuity",
+    "placeholderTerm": "Variable Annuity"
+  },
+  {
+    "slug": "indexed-annuity",
+    "placeholderTerm": "Indexed Annuity"
+  },
+  {
+    "slug": "surrender-charge",
+    "placeholderTerm": "Surrender Charge"
+  },
+  {
+    "slug": "free-withdrawal-amount",
+    "placeholderTerm": "Free Withdrawal Amount"
+  },
+  {
+    "slug": "qualified-annuity",
+    "placeholderTerm": "Qualified Annuity"
+  },
+  {
+    "slug": "long-term-care-insurance",
+    "placeholderTerm": "Long Term Care Insurance"
+  },
+  {
+    "slug": "hybrid-life-ltc-policy",
+    "placeholderTerm": "Hybrid Life Ltc Policy"
+  },
+  {
+    "slug": "elimination-period",
+    "placeholderTerm": "Elimination Period"
+  },
+  {
+    "slug": "benefit-period",
+    "placeholderTerm": "Benefit Period"
+  },
+  {
+    "slug": "activities-of-daily-living",
+    "placeholderTerm": "Activities of Daily Living"
+  },
+  {
+    "slug": "home-health-care-coverage",
+    "placeholderTerm": "Home Health Care Coverage"
+  },
+  {
+    "slug": "respite-care-coverage",
+    "placeholderTerm": "Respite Care Coverage"
+  },
+  {
+    "slug": "medicare-supplement-insurance",
+    "placeholderTerm": "Medicare Supplement Insurance"
+  },
+  {
+    "slug": "medigap-plan",
+    "placeholderTerm": "Medigap Plan"
+  },
+  {
+    "slug": "medicare-part-a",
+    "placeholderTerm": "Medicare Part a"
+  },
+  {
+    "slug": "medicare-part-b",
+    "placeholderTerm": "Medicare Part B"
+  },
+  {
+    "slug": "medicare-advantage",
+    "placeholderTerm": "Medicare Advantage"
+  },
+  {
+    "slug": "medicare-part-d",
+    "placeholderTerm": "Medicare Part D"
+  },
+  {
+    "slug": "open-enrollment-period",
+    "placeholderTerm": "Open Enrollment Period"
+  },
+  {
+    "slug": "guaranteed-issue-right",
+    "placeholderTerm": "Guaranteed Issue Right"
+  },
+  {
+    "slug": "pre-existing-condition-exclusion",
+    "placeholderTerm": "Pre Existing Condition Exclusion"
+  },
+  {
+    "slug": "coordination-of-benefits",
+    "placeholderTerm": "Coordination of Benefits"
+  },
+  {
+    "slug": "explanation-of-benefits",
+    "placeholderTerm": "Explanation of Benefits"
+  },
+  {
+    "slug": "in-network-vs-out-of-network",
+    "placeholderTerm": "In Network vs Out of Network"
+  },
+  {
+    "slug": "out-of-pocket-maximum",
+    "placeholderTerm": "Out of Pocket Maximum"
+  },
+  {
+    "slug": "copay",
+    "placeholderTerm": "Copay"
+  },
+  {
+    "slug": "coinsurance",
+    "placeholderTerm": "Coinsurance"
+  },
+  {
+    "slug": "health-savings-account",
+    "placeholderTerm": "Health Savings Account"
+  },
+  {
+    "slug": "flexible-spending-account",
+    "placeholderTerm": "Flexible Spending Account"
+  },
+  {
+    "slug": "high-deductible-health-plan",
+    "placeholderTerm": "High Deductible Health Plan"
+  },
+  {
+    "slug": "named-driver-exclusion",
+    "placeholderTerm": "Named Driver Exclusion"
+  },
+  {
+    "slug": "broad-form-named-driver",
+    "placeholderTerm": "Broad Form Named Driver"
+  },
+  {
+    "slug": "pay-per-mile-insurance",
+    "placeholderTerm": "Pay Per Mile Insurance"
+  },
+  {
+    "slug": "telematics-discount",
+    "placeholderTerm": "Telematics Discount"
+  },
+  {
+    "slug": "good-student-discount",
+    "placeholderTerm": "Good Student Discount"
+  },
+  {
+    "slug": "multi-policy-discount",
+    "placeholderTerm": "Multi Policy Discount"
+  },
+  {
+    "slug": "claims-free-discount",
+    "placeholderTerm": "Claims Free Discount"
+  },
+  {
+    "slug": "vanishing-deductible",
+    "placeholderTerm": "Vanishing Deductible"
+  },
+  {
+    "slug": "new-car-replacement-coverage",
+    "placeholderTerm": "New Car Replacement Coverage"
+  },
+  {
+    "slug": "roadside-assistance-coverage",
+    "placeholderTerm": "Roadside Assistance Coverage"
+  },
+  {
+    "slug": "rental-reimbursement-coverage",
+    "placeholderTerm": "Rental Reimbursement Coverage"
+  },
+  {
+    "slug": "towing-and-labor-coverage",
+    "placeholderTerm": "Towing and Labor Coverage"
+  }
+]

@@ -32,6 +32,8 @@ live. Against Supabase it is off: change the config, then
 | `pnpm test:access` | role × collection × operation matrix (300 cases) plus field-level locks, on a throwaway Docker database |
 | `pnpm verify:glossary` | no reviewed glossary term is an orphan; no self-links |
 | `pnpm leads:purge --dry-run` | leads past their retention date (counts only) |
+| `pnpm import:package` | regenerates `src/seed-data/*.json` from the sitemap package |
+| `pnpm seed --dry-run` | reconciliation table (created / updated / skipped / conflicts per collection); `pnpm seed` applies, filling empties only |
 | `pnpm typecheck && pnpm lint && pnpm build` | the usual |
 
 ## Layout
