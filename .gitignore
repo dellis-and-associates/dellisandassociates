@@ -5,3 +5,7 @@ next-env.d.ts
 *.tsbuildinfo
 .DS_Store
 .env*
+
+# Committed template (the .env* rule above would otherwise hide it)
+!.env.example
+!.env.test
