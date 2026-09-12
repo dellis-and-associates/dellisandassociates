@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site-architecture site="Desert Peak Insurance" domain="https://www.desertpeakinsurance.com" generated="2026-09-09" totalPages="1028">
+  <section name="Core Pages" count="20">
+    <page title="Home" url="/" template="home" priority="1.0" changefreq="weekly"/>
+    <page title="About Us" url="/about/" template="static" priority="0.6" changefreq="yearly"/>
+    <page title="Our Story" url="/about/our-story/" template="static" priority="0.4" changefreq="yearly"/>
+    <page title="Meet the Team" url="/agents/" template="team-hub" priority="0.6" changefreq="monthly"/>
+    <page title="Careers" url="/careers/" template="static" priority="0.4" changefreq="monthly"/>
+    <page title="Contact Us" url="/contact/" template="static" priority="0.6" changefreq="yearly"/>
+    <page title="Get a Quote" url="/quote/" template="quote-hub" priority="0.9" changefreq="weekly"/>
+    <page title="Claims Center" url="/claims/" template="claims-hub" priority="0.7" changefreq="monthly"/>
+    <page title="How to File a Claim" url="/claims/how-to-file/" template="static" priority="0.6" changefreq="yearly"/>
+    <page title="Claim Status Lookup" url="/claims/status/" template="static" priority="0.5" changefreq="yearly"/>
+    <page title="Claims FAQ" url="/claims/faq/" template="static" priority="0.5" changefreq="yearly"/>
+    <page title="Billing &amp; Payments" url="/billing/" template="static" priority="0.5" changefreq="yearly"/>
+    <page title="Make a Payment" url="/billing/pay/" template="static" priority="0.5" changefreq="yearly"/>
+    <page title="Insurance Products" url="/insurance/" template="products-hub" priority="0.8" changefreq="monthly"/>
+    <page title="Locations We Serve" url="/locations/" template="locations-hub" priority="0.7" changefreq="monthly"/>
+    <page title="Carrier Partners" url="/carriers/" template="carriers-hub" priority="0.5" changefreq="monthly"/>
+    <page title="Client Reviews" url="/reviews/" template="static" priority="0.6" changefreq="weekly"/>
+    <page title="Resources &amp; Blog" url="/resources/" template="blog-hub" priority="0.7" changefreq="daily"/>
+    <page title="Frequently Asked Questions" url="/faq/" template="static" priority="0.5" changefreq="monthly"/>
+    <page title="Site Map" url="/sitemap/" template="static" priority="0.3" changefreq="monthly"/>
+  </section>
+  <section name="Legal &amp; Policy" count="9">
+    <page title="Privacy Policy" url="/legal/privacy-policy/" template="legal-static"/>
+    <page title="Terms of Use" url="/legal/terms-of-use/" template="legal-static"/>
+    <page title="Accessibility Statement" url="/legal/accessibility/" template="legal-static"/>
+    <page title="Cookie Policy" url="/legal/cookie-policy/" template="legal-static"/>
+    <page title="Do Not Sell or Share My Info" url="/legal/do-not-sell-my-info/" template="legal-static"/>
+    <page title="Licensing Disclosures (AZ)" url="/legal/licensing/arizona/" template="legal-static"/>
+    <page title="Licensing Disclosures (NV)" url="/legal/licensing/nevada/" template="legal-static"/>
+    <page title="Licensing Disclosures (UT)" url="/legal/licensing/utah/" template="legal-static"/>
+    <page title="Licensing Disclosures (ID)" url="/legal/licensing/idaho/" template="legal-static"/>
+  </section>
+  <section name="Product Pages" count="87" note="3 pages per product: hub, coverage, discounts-faq">
+    <page title="Product Overview" urlPattern="/insurance/{product-slug}/" template="product-hub" repeatFor="products" count="29"/>
+    <page title="Coverage Details" urlPattern="/insurance/{product-slug}/coverage/" template="product-subpage" repeatFor="products" count="29"/>
+    <page title="Discounts &amp; FAQ" urlPattern="/insurance/{product-slug}/discounts-faq/" template="product-subpage" repeatFor="products" count="29"/>
+  </section>
+  <section name="State Hub Pages" count="4">
+    <page title="Insurance in {State}" urlPattern="/insurance/{state-slug}/" template="state-hub" repeatFor="states" count="4"/>
+  </section>
+  <section name="Local Product Pages (Tier 1 - city level)" count="380" note="10 highest-intent product lines, full city coverage across all 4 states">
+    <page title="{Product} in {City}, {ST}" urlPattern="/insurance/{product-slug}/{state-slug}/{city-slug}/" template="local-product" repeatFor="tier1-products x cities" count="380"/>
+  </section>
+  <section name="Statewide Product Pages (Tier 2 - state level)" count="76" note="19 lower-search-volume / specialty lines, state-level only to avoid thin duplicate city pages">
+    <page title="{Product} in {State}" urlPattern="/insurance/{product-slug}/{state-slug}/" template="state-product" repeatFor="tier2-products x states" count="76"/>
+  </section>
+  <section name="Resource Library" count="186">
+    <subsection name="Insurance 101 Guides" urlBase="/resources/guides/" template="article" count="30"/>
+    <subsection name="State Requirements" urlBase="/resources/state-requirements/" template="article" count="12"/>
+    <subsection name="Comparison Articles" urlBase="/resources/compare/" template="article" count="52"/>
+    <subsection name="How-To &amp; Checklists" urlBase="/resources/how-to/" template="article" count="52"/>
+    <subsection name="Life-Event Guides" urlBase="/resources/life-events/" template="article" count="20"/>
+    <subsection name="Seasonal &amp; Timely Guides" urlBase="/resources/seasonal/" template="article" count="20"/>
+  </section>
+  <section name="Glossary" count="221">
+    <subsection name="Insurance Glossary" urlBase="/resources/glossary/" template="glossary-term" count="221"/>
+  </section>
+  <section name="Agent Profiles" count="30">
+    <page title="{Agent Name} - Insurance Agent" urlPattern="/agents/{agent-slug}/" template="agent-profile" repeatFor="agents" count="30"/>
+  </section>
+  <section name="Carrier Partners" count="15">
+    <page title="{Carrier Name}" urlPattern="/carriers/{carrier-slug}/" template="carrier-profile" repeatFor="carriers" count="15"/>
+  </section>
+</site-architecture>

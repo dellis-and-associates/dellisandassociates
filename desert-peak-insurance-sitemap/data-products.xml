@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<products count="36">
+  <product slug="auto-insurance" tier="1" category="Personal">Auto Insurance</product>
+  <product slug="home-insurance" tier="1" category="Personal">Home Insurance</product>
+  <product slug="renters-insurance" tier="1" category="Personal">Renters Insurance</product>
+  <product slug="life-insurance" tier="1" category="Personal">Life Insurance</product>
+  <product slug="general-liability-insurance" tier="1" category="Commercial">General Liability Insurance</product>
+  <product slug="workers-compensation-insurance" tier="1" category="Commercial">Workers' Compensation Insurance</product>
+  <product slug="commercial-auto-insurance" tier="1" category="Commercial">Commercial Auto Insurance</product>
+  <product slug="motorcycle-insurance" tier="1" category="Personal">Motorcycle Insurance</product>
+  <product slug="umbrella-insurance" tier="1" category="Personal">Umbrella Insurance</product>
+  <product slug="business-owners-policy" tier="1" category="Commercial">Business Owners Policy (BOP)</product>
+  <product slug="boat-watercraft-insurance" tier="2" category="Personal">Boat &amp; Watercraft Insurance</product>
+  <product slug="rv-insurance" tier="2" category="Personal">RV Insurance</product>
+  <product slug="atv-off-road-insurance" tier="2" category="Personal">ATV &amp; Off-Road Insurance</product>
+  <product slug="pet-insurance" tier="2" category="Personal">Pet Insurance</product>
+  <product slug="flood-insurance" tier="2" category="Personal">Flood Insurance</product>
+  <product slug="earthquake-insurance" tier="2" category="Personal">Earthquake Insurance</product>
+  <product slug="mobile-manufactured-home-insurance" tier="2" category="Personal">Mobile &amp; Manufactured Home Insurance</product>
+  <product slug="landlord-rental-property-insurance" tier="2" category="Personal">Landlord / Rental Property Insurance</product>
+  <product slug="identity-theft-protection" tier="2" category="Personal">Identity Theft Protection</product>
+  <product slug="professional-liability-eo-insurance" tier="2" category="Commercial">Professional Liability (E&amp;O) Insurance</product>
+  <product slug="cyber-liability-insurance" tier="2" category="Commercial">Cyber Liability Insurance</product>
+  <product slug="commercial-umbrella-insurance" tier="2" category="Commercial">Commercial Umbrella Insurance</product>
+  <product slug="contractors-insurance" tier="2" category="Commercial">Contractors Insurance</product>
+  <product slug="restaurant-insurance" tier="2" category="Commercial">Restaurant Insurance</product>
+  <product slug="retail-business-insurance" tier="2" category="Commercial">Retail Business Insurance</product>
+  <product slug="agribusiness-farm-insurance" tier="2" category="Commercial">Agribusiness &amp; Farm Insurance</product>
+  <product slug="non-profit-organization-insurance" tier="2" category="Commercial">Non-Profit Organization Insurance</product>
+  <product slug="surety-bonds" tier="2" category="Commercial">Surety Bonds</product>
+  <product slug="travel-insurance" tier="2" category="Personal">Travel Insurance</product>
+  <!-- Added 2026-09-12 per RECONCILIATION.md decision B: the lines the business sells today. Tier 2 at launch. -->
+  <product slug="medicare" tier="2" category="Personal" subpage3="plans-enrollment-faq">Medicare</product>
+  <product slug="health-insurance" tier="2" category="Personal">Health Insurance</product>
+  <product slug="annuities" tier="2" category="Personal" subpage3="plans-enrollment-faq">Annuities</product>
+  <product slug="dental-and-vision-insurance" tier="2" category="Personal">Dental &amp; Vision Insurance</product>
+  <product slug="term-life-insurance" tier="2" category="Personal" parent="life-insurance">Term Life Insurance</product>
+  <product slug="whole-life-insurance" tier="2" category="Personal" parent="life-insurance">Whole Life Insurance</product>
+  <product slug="indexed-universal-life-insurance" tier="2" category="Personal" parent="life-insurance">Indexed Universal Life (IUL) Insurance</product>
+</products>

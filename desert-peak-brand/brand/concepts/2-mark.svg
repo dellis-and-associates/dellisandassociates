@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" color="#7A4E1E">
+  <title>Concept 2 sketch: contour summit mark</title>
+  <desc>Four closed topographic contours around a single summit point. Alternate lines are heavier, as index contours are on a survey quad. Contours crowd toward the north-west (the steep face) and open toward the south-east (the gentle slope). The summit is a benchmark dot, not a triangle.</desc>
+  <g fill="none" stroke="currentColor" stroke-linejoin="round">
+    <ellipse cx="32" cy="32" rx="28" ry="23" stroke-width="3" transform="rotate(-25 32 32)"/>
+    <ellipse cx="29.5" cy="29.5" rx="21" ry="16.5" stroke-width="1.75" transform="rotate(-25 29.5 29.5)"/>
+    <ellipse cx="27.5" cy="27.5" rx="14.5" ry="10.5" stroke-width="3" transform="rotate(-25 27.5 27.5)"/>
+    <ellipse cx="26" cy="26" rx="8" ry="5.5" stroke-width="1.75" transform="rotate(-25 26 26)"/>
+  </g>
+  <circle cx="25" cy="25" r="2.2" fill="currentColor"/>
+</svg>

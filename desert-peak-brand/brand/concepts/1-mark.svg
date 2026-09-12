@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" color="#8A3A26">
+  <title>Concept 1 sketch: fault-block strata mark</title>
+  <desc>Four horizontal strata cut by a diagonal normal fault. The right-hand block is up-thrown by half a band period, so its top layer rises above the left block: the peak is made by the fault, as in Basin and Range geology.</desc>
+  <g fill="currentColor">
+    <!-- down-thrown (left) block: bars end on the fault line x = 37 - 0.15625y -->
+    <polygon points="4,10 35.4,10 33.9,20 4,20"/>
+    <polygon points="4,24 33.3,24 31.7,34 4,34"/>
+    <polygon points="4,38 31.1,38 29.5,48 4,48"/>
+    <polygon points="4,52 28.9,52 27.3,62 4,62"/>
+    <!-- up-thrown (right) block, shifted up 7: bars start on the fault line x = 41 - 0.15625y -->
+    <polygon points="40.5,3 60,3 60,13 39,13"/>
+    <polygon points="38.3,17 60,17 60,27 36.8,27"/>
+    <polygon points="36.2,31 60,31 60,41 34.6,41"/>
+    <polygon points="34,45 60,45 60,55 32.4,55"/>
+  </g>
+</svg>

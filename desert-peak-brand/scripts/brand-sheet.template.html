@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Desert Peak Insurance — Brand Sheet v{{VERSION}}</title>
+<style>
+/* ---- fonts (embedded; no network) ---- */
+{{FONT_FACES}}
+/* ---- tokens (generated) ---- */
+{{TOKENS_CSS}}
+/* ---- sheet ---- */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-optical-sizing: auto; }
+body { margin: 0; background: var(--dp-surface); color: var(--dp-ink); font-family: var(--dp-font-sans); font-size: var(--dp-text-small-size); line-height: var(--dp-text-small-line-height); }
+.wrap { max-width: 1120px; margin: 0 auto; padding: var(--dp-space-8) var(--dp-space-6) var(--dp-space-24); }
+h1 { font-family: var(--dp-font-sans); font-size: var(--dp-text-headline-size); line-height: var(--dp-text-headline-line-height); letter-spacing: var(--dp-text-headline-letter-spacing); font-weight: var(--dp-text-headline-weight); font-stretch: var(--dp-width-display); margin: 0 0 var(--dp-space-2); }
+h2 { font-size: var(--dp-text-title-lg-size); line-height: var(--dp-text-title-lg-line-height); letter-spacing: var(--dp-text-title-lg-letter-spacing); font-weight: var(--dp-text-title-lg-weight); margin: var(--dp-space-16) 0 var(--dp-space-4); padding-top: var(--dp-space-4); border-top: 3px solid var(--dp-ink); }
+h3 { font-size: var(--dp-text-title-sm-size); line-height: var(--dp-text-title-sm-line-height); letter-spacing: var(--dp-text-title-sm-letter-spacing); font-weight: var(--dp-text-title-sm-weight); margin: var(--dp-space-8) 0 var(--dp-space-3); }
+h4 { font-size: var(--dp-text-small-size); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; color: var(--dp-ink-muted); margin: var(--dp-space-6) 0 var(--dp-space-2); }
+h4 small { text-transform: none; letter-spacing: 0; font-weight: 400; margin-left: var(--dp-space-2); }
+p.lede { font-family: var(--dp-font-serif); font-size: var(--dp-text-lead-size); line-height: var(--dp-text-lead-line-height); max-width: var(--dp-measure-body); color: var(--dp-ink-muted); margin: 0 0 var(--dp-space-6); }
+code { font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: 0.92em; background: var(--dp-surface-sunken); padding: 0 0.3em; border-radius: var(--dp-radius-control); }
+.tab { font-variant-numeric: var(--dp-numeric-tabular); }
+.meta { color: var(--dp-ink-muted); }
+.grid { display: grid; gap: var(--dp-space-4); grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+.panel { background: var(--dp-surface-raised); border: 1px solid var(--dp-border); border-radius: var(--dp-radius-surface); padding: var(--dp-space-6); box-shadow: var(--dp-shadow-0); }
+.panel.dark { background: var(--dp-surface-inverse); color: var(--dp-ink-inverse); }
+.panel.brand { background: var(--dp-brand); color: var(--dp-brand-ink); }
+.panel.sunken { background: var(--dp-surface-sunken); }
+.panel .cap { margin: var(--dp-space-4) 0 0; font-size: var(--dp-text-caption-size); letter-spacing: var(--dp-text-caption-letter-spacing); opacity: .8; }
+.logo svg { width: 100%; height: auto; max-height: 120px; display: block; }
+.logo.sm svg { max-height: 64px; }
+.logo-row { display: flex; align-items: center; gap: var(--dp-space-8); flex-wrap: wrap; }
+.logo-row svg { height: 40px; width: auto; }
+.logo-row .px16 svg { height: 16px; }
+.logo-row .px32 svg { height: 32px; }
+.mono-demo { color: var(--dp-positive); }
+/* ramps */
+.ramp { margin: var(--dp-space-4) 0; }
+.ramp-row { display: grid; grid-template-columns: repeat(12, 1fr); gap: 2px; }
+.sw { aspect-ratio: 1 / 1.35; padding: 6px 5px; display: flex; flex-direction: column; justify-content: space-between; font-size: 10px; line-height: 1.2; border-radius: var(--dp-radius-control); }
+.sw b { font-size: 11px; }
+.sw .cr { opacity: .85; font-variant-numeric: tabular-nums; }
+table { width: 100%; border-collapse: collapse; font-size: var(--dp-text-small-size); }
+th, td { text-align: left; padding: var(--dp-space-2) var(--dp-space-3); border-bottom: 1px solid var(--dp-border); vertical-align: top; }
+th { background: var(--dp-surface-sunken); font-weight: 600; font-size: var(--dp-text-caption-size); text-transform: uppercase; letter-spacing: 0.06em; color: var(--dp-ink-muted); }
+tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-ink); }
+.chip { display: inline-block; width: 28px; height: 28px; border-radius: var(--dp-radius-control); border: 1px solid var(--dp-border); }
+.pair { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 28px; border-radius: var(--dp-radius-control); border: 1px solid var(--dp-border); font-weight: 600; }
+/* type */
+.ts { display: grid; grid-template-columns: 220px 1fr; gap: var(--dp-space-6); padding: var(--dp-space-4) 0; border-bottom: 1px solid var(--dp-border); align-items: baseline; }
+.ts-meta { display: flex; flex-direction: column; gap: 2px; color: var(--dp-ink-muted); font-size: var(--dp-text-caption-size); }
+.ts-meta code { align-self: flex-start; }
+.ts-sample { overflow-wrap: anywhere; }
+/* controls */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: var(--dp-space-2); min-height: 44px; padding: 0 var(--dp-space-5); border-radius: var(--dp-radius-control); border: 1px solid transparent; font: 600 var(--dp-text-small-size)/1 var(--dp-font-sans); letter-spacing: 0.005em; cursor: pointer; transition: background var(--dp-duration-fast) var(--dp-ease-standard), color var(--dp-duration-fast) var(--dp-ease-standard); }
+.btn-primary { background: var(--dp-brand); color: var(--dp-brand-ink); }
+.btn-primary.is-hover, .btn-primary:hover { background: var(--dp-brand-hover); }
+.btn-primary.is-active, .btn-primary:active { background: var(--dp-brand-active); }
+.btn-secondary { background: transparent; color: var(--dp-ink); border-color: var(--dp-border-strong); }
+.btn-secondary.is-hover, .btn-secondary:hover { background: var(--dp-surface-sunken); }
+.btn-secondary.is-active, .btn-secondary:active { background: var(--dp-border); }
+.btn-quiet { background: transparent; color: var(--dp-brand); padding-inline: var(--dp-space-2); }
+.btn-quiet.is-hover, .btn-quiet:hover { color: var(--dp-brand-hover); text-decoration: underline; text-underline-offset: 3px; }
+.btn-danger { background: transparent; color: var(--dp-critical); border-color: var(--dp-critical); }
+.btn-danger.is-hover, .btn-danger:hover { background: var(--dp-critical-surface); }
+.is-focus, :focus-visible { outline: 2px solid var(--dp-focus-ring); outline-offset: 2px; box-shadow: 0 0 0 2px var(--dp-focus-ring-offset); }
+.is-disabled, [disabled] { opacity: .45; cursor: not-allowed; }
+.states { display: flex; flex-wrap: wrap; gap: var(--dp-space-3); align-items: center; margin: var(--dp-space-2) 0 var(--dp-space-5); }
+.states > span { font-size: var(--dp-text-caption-size); color: var(--dp-ink-muted); min-width: 92px; }
+.field { display: flex; flex-direction: column; gap: var(--dp-space-1); max-width: 320px; }
+.field label { font-weight: 600; font-size: var(--dp-text-small-size); }
+.field .help { font-size: var(--dp-text-caption-size); color: var(--dp-ink-muted); }
+.input { min-height: 44px; padding: 0 var(--dp-space-3); border: 1px solid var(--dp-border-strong); border-radius: var(--dp-radius-control); background: var(--dp-surface-raised); color: var(--dp-ink); font: 400 var(--dp-text-body-size)/1 var(--dp-font-sans); }
+.input.is-invalid { border-color: var(--dp-critical); border-width: 2px; }
+.field .error { font-size: var(--dp-text-caption-size); color: var(--dp-critical); font-weight: 600; }
+.check { display: inline-flex; align-items: center; gap: var(--dp-space-2); }
+.check i { width: 20px; height: 20px; border: 1px solid var(--dp-border-strong); border-radius: var(--dp-radius-control); background: var(--dp-surface-raised); display: inline-grid; place-items: center; }
+.check i.on { background: var(--dp-brand); border-color: var(--dp-brand); color: var(--dp-brand-ink); font-style: normal; font-size: 13px; font-weight: 700; }
+.callout { display: grid; grid-template-columns: 24px 1fr; gap: var(--dp-space-3); padding: var(--dp-space-4); border: 1px solid; border-left-width: 4px; border-radius: var(--dp-radius-surface); margin: var(--dp-space-3) 0; }
+.callout b { display: block; margin-bottom: 2px; }
+.callout.positive { background: var(--dp-positive-surface); border-color: var(--dp-positive-border); color: var(--dp-positive-ink); }
+.callout.notice { background: var(--dp-notice-surface); border-color: var(--dp-notice-border); color: var(--dp-notice-ink); }
+.callout.critical { background: var(--dp-critical-surface); border-color: var(--dp-critical-border); color: var(--dp-critical-ink); }
+.callout svg { width: 22px; height: 22px; }
+.callout.positive svg { color: var(--dp-positive); } .callout.notice svg { color: var(--dp-notice); } .callout.critical svg { color: var(--dp-critical); }
+.tag { display: inline-block; padding: 2px 8px; border-radius: var(--dp-radius-control); font-size: var(--dp-text-caption-size); font-weight: 600; letter-spacing: .02em; text-transform: uppercase; background: var(--dp-brand-subtle); color: var(--dp-brand-subtle-ink); }
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: var(--dp-radius-pill); background: var(--dp-positive); margin-right: 6px; }
+/* article */
+.article { max-width: var(--dp-measure-body); font-family: var(--dp-font-serif); font-size: var(--dp-text-body-size); line-height: var(--dp-text-body-line-height); }
+.article h1 { font-family: var(--dp-font-sans); }
+.article h2 { font-family: var(--dp-font-sans); font-size: var(--dp-text-title-size); line-height: var(--dp-text-title-line-height); letter-spacing: var(--dp-text-title-letter-spacing); border: 0; padding: 0; margin: var(--dp-space-8) 0 var(--dp-space-3); }
+.article p { margin: 0 0 var(--dp-space-4); }
+.article a { color: var(--dp-brand); text-decoration: underline; text-underline-offset: 3px; text-decoration-thickness: 1px; }
+.article a:hover { color: var(--dp-brand-hover); }
+.article .kicker { font-family: var(--dp-font-sans); font-size: var(--dp-text-caption-size); text-transform: uppercase; letter-spacing: .08em; color: var(--dp-brand); font-weight: 600; }
+.article .byline { font-family: var(--dp-font-sans); font-size: var(--dp-text-small-size); color: var(--dp-ink-muted); margin-bottom: var(--dp-space-6); }
+.strata-rule { height: 10px; background: repeating-linear-gradient(to bottom, var(--dp-brand) 0 3px, transparent 3px 5px); width: 64px; margin: var(--dp-space-6) 0; }
+/* comparison table */
+.cmp th:not(:first-child), .cmp td:not(:first-child) { text-align: right; font-variant-numeric: var(--dp-numeric-tabular); }
+.cmp td:first-child { font-weight: 500; }
+.cmp .rec { background: var(--dp-brand-subtle); }
+.cmp tfoot td { border-top: 2px solid var(--dp-ink); border-bottom: 0; font-weight: 600; }
+.cmp caption { caption-side: bottom; text-align: left; padding-top: var(--dp-space-2); font-size: var(--dp-text-caption-size); color: var(--dp-ink-muted); }
+.missing { color: var(--dp-critical); }
+.swatch-line { display: flex; gap: var(--dp-space-2); align-items: center; }
+@media (max-width: 720px) { .ts { grid-template-columns: 1fr; gap: var(--dp-space-2); } .ramp-row { grid-template-columns: repeat(6, 1fr); } }
+@media print {
+  body { background: #fff; }
+  .wrap { max-width: none; padding: 0; }
+  h2 { break-before: page; margin-top: 0; }
+  h2:first-of-type { break-before: auto; }
+  .panel, .ts, tr, .callout { break-inside: avoid; }
+  a { color: inherit; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="meta tab">Brand sheet · Direction 1, Strata · tokens v{{VERSION}} · generated from <code>design-tokens.json</code></p>
+  <h1>Desert Peak Insurance</h1>
+  <p class="lede">The complete visual system on one page for sign-off: logo variants, colour ramps with contrast ratios, the type scale in use, every control state, a content block and a comparison table. Everything on this page is drawn from the token file; nothing here is hand-coloured.</p>
+</header>
+
+<h2 id="logos">1. Logo system</h2>
+<p class="meta">Files: {{LOGO_LIST}}. All are hand-authored SVG with a <code>viewBox</code>, no fixed size, no inline styles, a <code>&lt;title&gt;</code> for assistive technology.</p>
+<div class="grid">
+  <div class="panel"><div class="logo">{{LOGO:logo-horizontal.svg}}</div><p class="cap">logo-horizontal.svg · primary lockup on surface-raised</p></div>
+  <div class="panel sunken"><div class="logo">{{LOGO:logo-stacked.svg}}</div><p class="cap">logo-stacked.svg · narrow placements</p></div>
+  <div class="panel dark"><div class="logo">{{LOGO:logo-reversed.svg}}</div><p class="cap">logo-reversed.svg · on surface-inverse</p></div>
+  <div class="panel brand"><div class="logo">{{LOGO:logo-reversed.svg}}</div><p class="cap">logo-reversed.svg · on brand</p></div>
+  <div class="panel"><div class="logo sm">{{LOGO:mark.svg}}</div><p class="cap">mark.svg · symbol alone</p></div>
+  <div class="panel"><div class="logo sm">{{LOGO:wordmark.svg}}</div><p class="cap">wordmark.svg · type only</p></div>
+  <div class="panel"><div class="logo sm mono-demo">{{LOGO:logo-mono.svg}}</div><p class="cap">logo-mono.svg · <code>currentColor</code>, shown inheriting the positive colour to prove it</p></div>
+  <div class="panel"><div class="logo-row"><span class="px16">{{LOGO:favicon.svg}}</span><span class="px32">{{LOGO:favicon.svg}}</span><span>{{LOGO:favicon.svg}}</span></div><p class="cap">favicon.svg at 16, 32 and 40px · three-band variant</p></div>
+</div>
+
+<h2 id="colour">2. Colour</h2>
+<p class="meta">Primitive ramps authored in OKLCH, shown as sRGB hex. Each swatch prints its contrast ratio on <code>surface</code> and on <code>ink</code>. Components never use these directly.</p>
+{{RAMPS}}
+
+<h3>Semantic roles</h3>
+<p class="meta">This is the layer components use. Dark mode, when it ships, re-points these aliases and nothing else.</p>
+<table>
+<thead><tr><th></th><th>Role</th><th>CSS variable</th><th>Primitive</th><th>Hex</th><th>Use</th></tr></thead>
+<tbody>{{SEMANTIC_ROWS}}</tbody>
+</table>
+
+<h3>Contrast gate</h3>
+<p class="meta">Every legitimate pairing, as checked by <code>scripts/audit-contrast.ts</code>. A failing row would be highlighted and the build would not pass.</p>
+<table>
+<thead><tr><th></th><th>Pairing</th><th>Ratio</th><th>Min</th><th>Result</th><th>Use</th></tr></thead>
+<tbody>{{CONTRAST_ROWS}}</tbody>
+</table>
+
+<h2 id="type">3. Typography</h2>
+<p class="meta">Archivo (display, UI, tables) and Source Serif 4 (long-form body). Minor-third scale, ratio 1.2, 17px base. Each step carries its own line-height and letter-spacing. Body measure 68ch.</p>
+{{TYPE_ROWS}}
+<div class="ts"><div class="ts-meta"><code>tabular figures</code><span>font-variant-numeric</span></div><div class="ts-sample tab" style="font-family:var(--dp-font-sans)">$1,000,000 / $2,000,000 aggregate · $500 deductible · 1.2 % · 11/30/2026<br><span style="font-family:var(--dp-font-serif)">$1,000,000 / $2,000,000 aggregate · $500 deductible · 1.2 % · 11/30/2026</span></div></div>
+
+<h2 id="controls">4. Controls</h2>
+<h3>Buttons</h3>
+<div class="states"><span>Primary</span><button class="btn btn-primary">Request the analysis</button><button class="btn btn-primary is-hover">Hover</button><button class="btn btn-primary is-active">Pressed</button><button class="btn btn-primary is-focus">Focused</button><button class="btn btn-primary is-disabled">Disabled</button></div>
+<div class="states"><span>Secondary</span><button class="btn btn-secondary">See coverage options</button><button class="btn btn-secondary is-hover">Hover</button><button class="btn btn-secondary is-active">Pressed</button><button class="btn btn-secondary is-focus">Focused</button><button class="btn btn-secondary is-disabled">Disabled</button></div>
+<div class="states"><span>Quiet</span><button class="btn btn-quiet">Compare plans →</button><button class="btn btn-quiet is-hover">Hover</button><button class="btn btn-quiet is-focus">Focused</button></div>
+<div class="states"><span>Destructive</span><button class="btn btn-danger">Remove driver</button><button class="btn btn-danger is-hover">Hover</button><button class="btn btn-danger is-focus">Focused</button></div>
+<p class="meta">Destructive actions are always outlined in <code>critical</code> and never a solid fill, so they can never be confused with a brand button. Focus is a 2px <code>focus-ring</code> outside a 2px <code>focus-ring-offset</code> halo; the pair passes 3:1 against every surface and against brand.</p>
+
+<h3>Form controls</h3>
+<div class="grid">
+  <div class="field"><label>ZIP code</label><input class="input" value="85251"><span class="help">Default</span></div>
+  <div class="field"><label>ZIP code</label><input class="input is-focus" value="85251"><span class="help">Focused</span></div>
+  <div class="field"><label>ZIP code</label><input class="input is-invalid" value="8525"><span class="error">Enter a five-digit ZIP code.</span></div>
+  <div class="field"><label>ZIP code</label><input class="input is-disabled" value="85251" disabled><span class="help">Disabled</span></div>
+</div>
+<div class="states" style="margin-top:var(--dp-space-4)"><span>Selection</span><label class="check"><i></i> Auto</label><label class="check"><i class="on">✓</i> Home</label><label class="check"><i class="on is-focus">✓</i> Umbrella (focused)</label><span class="tag">Tier 1</span><span><span class="dot"></span>Active policy</span></div>
+
+<h3>Status callouts</h3>
+<div class="callout positive"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></svg><div><b>Keeping your current policy is the right call.</b>We compared four carriers. Nothing beats what you have on price or coverage. That is the answer.</div></div>
+<div class="callout notice"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2.5 20h19L12 3Z"/><path d="M12 10v4M12 17h.01"/></svg><div><b>Your renewal is 21 days out.</b>Rates in Maricopa County moved this quarter. Worth a fresh comparison before the auto-renew date.</div></div>
+<div class="callout critical"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="m9 9 6 6M15 9l-6 6"/></svg><div><b>Coverage gap.</b>Your umbrella policy requires $250,000 per person in underlying auto liability. The auto policy on file carries $100,000.</div></div>
+<p class="meta">Every status carries an icon and a leading word in addition to colour, so the state survives colour-vision deficiency and monochrome print.</p>
+
+<h2 id="content">5. Content block</h2>
+<article class="article">
+  <p class="kicker">Insurance 101 · Umbrella</p>
+  <h1>What an umbrella policy actually covers</h1>
+  <p class="byline">Desert Peak Insurance · Reviewed for Arizona, Nevada, Utah and Idaho</p>
+  <p>An umbrella policy sits above your auto and home liability limits. It does not replace them, and it will not pay a dollar until the policy beneath it has paid its full limit. That is the whole design: cheap, high-limit coverage that only responds to the claims large enough to exhaust everything else.</p>
+  <p>Most carriers require underlying limits of $250,000 per person and $500,000 per accident on auto, and $300,000 on home, before they will write a $1,000,000 umbrella. If your current auto policy carries state minimums, the umbrella quote will come with a condition: raise the underlying limits first. <a href="#">The Arizona minimums are here.</a></p>
+  <div class="strata-rule" aria-hidden="true"></div>
+  <h2>When it is not worth buying</h2>
+  <p>If you rent, own no vehicle and have no assets a judgement could reach, an umbrella policy is protecting something you do not have. We will tell you that. The analysis costs nothing, and if keeping what you have is the right answer, that is the answer you get.</p>
+</article>
+
+<h2 id="table">6. Comparison table</h2>
+<table class="cmp">
+  <caption>Illustrative figures for layout review only. Not a quote.</caption>
+  <thead><tr><th>Coverage</th><th>Current policy</th><th>Option A</th><th class="rec">Option B (recommended)</th></tr></thead>
+  <tbody>
+    <tr><td>Bodily injury, per person</td><td>$100,000</td><td>$250,000</td><td class="rec">$250,000</td></tr>
+    <tr><td>Bodily injury, per accident</td><td>$300,000</td><td>$500,000</td><td class="rec">$500,000</td></tr>
+    <tr><td>Property damage</td><td>$50,000</td><td>$100,000</td><td class="rec">$100,000</td></tr>
+    <tr><td>Collision deductible</td><td>$500</td><td>$500</td><td class="rec">$1,000</td></tr>
+    <tr><td>Umbrella</td><td>—</td><td>—</td><td class="rec">$1,000,000</td></tr>
+  </tbody>
+  <tfoot><tr><td>Annual premium</td><td>$1,842</td><td>$2,106</td><td class="rec">$2,214</td></tr></tfoot>
+</table>
+
+<h2 id="elevation">7. Elevation, radius, motion</h2>
+<div class="grid">
+  <div class="panel" style="box-shadow:var(--dp-shadow-0)">shadow-0<p class="cap">Resting cards</p></div>
+  <div class="panel" style="box-shadow:var(--dp-shadow-1)">shadow-1<p class="cap">Hover, menus</p></div>
+  <div class="panel" style="box-shadow:var(--dp-shadow-2)">shadow-2<p class="cap">Popovers, sticky header</p></div>
+  <div class="panel" style="box-shadow:var(--dp-shadow-3)">shadow-3<p class="cap">Modals, drawers</p></div>
+</div>
+<p class="meta" style="margin-top:var(--dp-space-4)">Radius by role: <code>control</code> 2px, <code>surface</code> 4px, <code>pill</code> for status dots and counters only. Motion: fast 120ms, base 200ms, slow 320ms, deliberate 480ms on <code>cubic-bezier(0.2, 0, 0, 1)</code>; all durations drop to 0ms under <code>prefers-reduced-motion</code>.</p>
+
+<footer style="margin-top:var(--dp-space-16);color:var(--dp-ink-muted);font-size:var(--dp-text-caption-size)">
+  Desert Peak Insurance brand sheet, tokens v{{VERSION}}. Generated by <code>scripts/build-tokens.ts</code>. Fonts: Archivo and Source Serif 4, SIL Open Font License 1.1 (see LICENSES.md).
+</footer>
+</div>
+</body>
+</html>

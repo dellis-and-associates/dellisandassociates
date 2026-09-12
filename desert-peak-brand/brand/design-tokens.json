@@ -1,0 +1,1064 @@
+{
+  "$schema": "https://tr.designtokens.org/format/",
+  "$description": "Desert Peak Insurance design tokens. Single source of truth. Direction 1 (Strata). Everything in dist/ and brand-sheet.html is generated from this file by scripts/build-tokens.ts; do not edit generated files.",
+  "$extensions": {
+    "com.desertpeak": {
+      "version": "1.0.0",
+      "direction": "strata",
+      "theme": {
+        "light": "populated",
+        "dark": "wired, not populated in v1"
+      }
+    }
+  },
+  "color": {
+    "brand": {
+      "50": {
+        "$type": "color",
+        "$value": "oklch(97% 0.014 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FEF2EF"
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": "oklch(94% 0.026 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FCE6E0"
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "oklch(88% 0.048 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#F5CDC3"
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "oklch(79% 0.074 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#E6AA9B"
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "oklch(68% 0.102 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#CF816D"
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "oklch(57% 0.120 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#B25A44"
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "oklch(47% 0.120 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#923D28"
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": "oklch(39% 0.108 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#742A18"
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": "oklch(31% 0.090 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#551A0C"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": "oklch(24% 0.072 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#3A0F05"
+        }
+      },
+      "950": {
+        "$type": "color",
+        "$value": "oklch(17% 0.054 35)",
+        "$extensions": {
+          "com.desertpeak.hex": "#220501"
+        }
+      },
+      "$description": "Hematite. Iron-oxide red-brown of exposed strata; the brand colour."
+    },
+    "neutral": {
+      "0": {
+        "$type": "color",
+        "$value": "oklch(99% 0.005 80)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FEFBF8"
+        },
+        "$description": "Near-white for raised surfaces. Not pure #FFFFFF."
+      },
+      "50": {
+        "$type": "color",
+        "$value": "oklch(97% 0.013 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FAF4EC"
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": "oklch(94% 0.014 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#F1EAE1"
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "oklch(88% 0.014 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#DDD6CE"
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "oklch(79% 0.014 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#C0B9B1"
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "oklch(68% 0.014 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#9D978F"
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "oklch(57% 0.014 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#7C766E"
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "oklch(47% 0.014 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#605A52"
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": "oklch(39% 0.013 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#49443D"
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": "oklch(31% 0.011 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#34302A"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": "oklch(24% 0.010 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#221F1A"
+        }
+      },
+      "950": {
+        "$type": "color",
+        "$value": "oklch(17% 0.008 75)",
+        "$extensions": {
+          "com.desertpeak.hex": "#110F0C"
+        }
+      },
+      "$description": "Caliche to basalt. Warm-tinted neutral; never a pure gray."
+    },
+    "accent": {
+      "50": {
+        "$type": "color",
+        "$value": "oklch(97% 0.016 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FCF4EA"
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": "oklch(94% 0.030 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#F7E9D6"
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "oklch(88% 0.054 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#ECD3B0"
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "oklch(79% 0.084 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#DAB47D"
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "oklch(68% 0.115 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#C18E3D"
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "oklch(57% 0.120 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#9F6C00"
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "oklch(47% 0.099 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#7A5200"
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": "oklch(39% 0.082 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#5E3E00"
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": "oklch(31% 0.066 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#432B00"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": "oklch(24% 0.053 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#2D1B00"
+        }
+      },
+      "950": {
+        "$type": "color",
+        "$value": "oklch(17% 0.041 76)",
+        "$extensions": {
+          "com.desertpeak.hex": "#190C00"
+        }
+      },
+      "$description": "Ochre. Decorative accent for rules and marks; not a text colour on light surfaces."
+    },
+    "positive": {
+      "50": {
+        "$type": "color",
+        "$value": "oklch(97% 0.010 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#EFF7F5"
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": "oklch(94% 0.019 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#DFF0EA"
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "oklch(88% 0.034 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#C1DFD6"
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "oklch(79% 0.053 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#97C6B9"
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "oklch(68% 0.072 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#66A796"
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "oklch(57% 0.085 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#368874"
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "oklch(47% 0.085 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#0D6A58"
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": "oklch(39% 0.074 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#005243"
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": "oklch(31% 0.059 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#003A2F"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": "oklch(24% 0.046 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#00261E"
+        }
+      },
+      "950": {
+        "$type": "color",
+        "$value": "oklch(17% 0.035 175)",
+        "$extensions": {
+          "com.desertpeak.hex": "#00140E"
+        }
+      },
+      "$description": "Agave. Positive / success state. Deliberately blue-leaning: under red-green colour-vision deficiency a yellow-green collapses into amber, a teal-green does not."
+    },
+    "notice": {
+      "50": {
+        "$type": "color",
+        "$value": "oklch(97% 0.016 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FAF5E9"
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": "oklch(94% 0.029 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#F3EBD6"
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "oklch(88% 0.052 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#E6D6B1"
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "oklch(79% 0.081 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#D0B87E"
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "oklch(68% 0.111 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#B5943E"
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "oklch(57% 0.116 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#947202"
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "oklch(47% 0.096 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#715700"
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": "oklch(39% 0.080 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#574200"
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": "oklch(31% 0.064 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#3E2E00"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": "oklch(24% 0.051 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#291D00"
+        }
+      },
+      "950": {
+        "$type": "color",
+        "$value": "oklch(17% 0.040 88)",
+        "$extensions": {
+          "com.desertpeak.hex": "#170E00"
+        }
+      },
+      "$description": "Amber. Notice / caution state."
+    },
+    "critical": {
+      "50": {
+        "$type": "color",
+        "$value": "oklch(97% 0.014 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FFF2F1"
+        }
+      },
+      "100": {
+        "$type": "color",
+        "$value": "oklch(94% 0.030 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FFE4E2"
+        }
+      },
+      "200": {
+        "$type": "color",
+        "$value": "oklch(88% 0.063 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FFC8C5"
+        }
+      },
+      "300": {
+        "$type": "color",
+        "$value": "oklch(79% 0.112 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#FA9D9A"
+        }
+      },
+      "400": {
+        "$type": "color",
+        "$value": "oklch(68% 0.153 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#E76D6C"
+        }
+      },
+      "500": {
+        "$type": "color",
+        "$value": "oklch(57% 0.180 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#CC3C44"
+        }
+      },
+      "600": {
+        "$type": "color",
+        "$value": "oklch(47% 0.180 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#A91228"
+        }
+      },
+      "700": {
+        "$type": "color",
+        "$value": "oklch(39% 0.158 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#86001A"
+        }
+      },
+      "800": {
+        "$type": "color",
+        "$value": "oklch(31% 0.126 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#610010"
+        }
+      },
+      "900": {
+        "$type": "color",
+        "$value": "oklch(24% 0.099 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#430007"
+        }
+      },
+      "950": {
+        "$type": "color",
+        "$value": "oklch(17% 0.074 22)",
+        "$extensions": {
+          "com.desertpeak.hex": "#280002"
+        }
+      },
+      "$description": "Crimson. Critical / error state. Deliberately more saturated and cooler than brand."
+    }
+  },
+  "semantic": {
+    "color": {
+      "$description": "Roles that components reference. A component never references a primitive ramp directly. Dark theme swaps these aliases and nothing else.",
+      "surface": {
+        "$type": "color",
+        "$value": "{color.neutral.50}",
+        "$description": "Page background."
+      },
+      "surface-raised": {
+        "$type": "color",
+        "$value": "{color.neutral.0}",
+        "$description": "Cards, popovers, anything lifted off the page."
+      },
+      "surface-sunken": {
+        "$type": "color",
+        "$value": "{color.neutral.100}",
+        "$description": "Wells, table headers, inset areas."
+      },
+      "surface-inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.950}",
+        "$description": "Dark panels and footers. Pair with ink-inverse."
+      },
+      "ink": {
+        "$type": "color",
+        "$value": "{color.neutral.900}",
+        "$description": "Body and heading text."
+      },
+      "ink-muted": {
+        "$type": "color",
+        "$value": "{color.neutral.600}",
+        "$description": "Secondary text, captions, metadata. Still AA for body."
+      },
+      "ink-inverse": {
+        "$type": "color",
+        "$value": "{color.neutral.50}",
+        "$description": "Text on surface-inverse and on brand."
+      },
+      "border": {
+        "$type": "color",
+        "$value": "{color.neutral.200}",
+        "$description": "Hairlines and dividers. Decorative; not relied on for meaning."
+      },
+      "border-strong": {
+        "$type": "color",
+        "$value": "{color.neutral.500}",
+        "$description": "Input borders and any boundary that must be perceivable (3:1)."
+      },
+      "brand": {
+        "$type": "color",
+        "$value": "{color.brand.600}",
+        "$description": "Primary actions, links, the mark."
+      },
+      "brand-hover": {
+        "$type": "color",
+        "$value": "{color.brand.700}"
+      },
+      "brand-active": {
+        "$type": "color",
+        "$value": "{color.brand.800}"
+      },
+      "brand-ink": {
+        "$type": "color",
+        "$value": "{color.neutral.50}",
+        "$description": "Text and icons on brand fills."
+      },
+      "brand-subtle": {
+        "$type": "color",
+        "$value": "{color.brand.100}",
+        "$description": "Tinted background for brand-flavoured panels, the recommended column, tags. brand.100, not 50: 50 is indistinguishable from surface."
+      },
+      "brand-subtle-ink": {
+        "$type": "color",
+        "$value": "{color.brand.800}",
+        "$description": "Text on brand-subtle."
+      },
+      "accent": {
+        "$type": "color",
+        "$value": "{color.accent.500}",
+        "$description": "Ochre rules, marks and highlights. Never text on a light surface."
+      },
+      "accent-strong": {
+        "$type": "color",
+        "$value": "{color.accent.700}",
+        "$description": "Ochre where it must carry text or an icon on a light surface."
+      },
+      "focus-ring": {
+        "$type": "color",
+        "$value": "{color.neutral.900}",
+        "$description": "2px ring. Always paired with focus-ring-offset as a 2px halo so it passes against both adjacent surfaces."
+      },
+      "focus-ring-offset": {
+        "$type": "color",
+        "$value": "{color.neutral.50}"
+      },
+      "positive": {
+        "$type": "color",
+        "$value": "{color.positive.700}",
+        "$description": "Positive state text and icons on surface. The three states sit on a lightness ladder (notice .47 / positive .39 / critical .31) so they stay apart without hue; re-pointing one to a step that shares another state's lightness will fail the audit."
+      },
+      "positive-surface": {
+        "$type": "color",
+        "$value": "{color.positive.50}"
+      },
+      "positive-border": {
+        "$type": "color",
+        "$value": "{color.positive.500}"
+      },
+      "positive-ink": {
+        "$type": "color",
+        "$value": "{color.positive.900}",
+        "$description": "Text on positive-surface."
+      },
+      "notice": {
+        "$type": "color",
+        "$value": "{color.notice.600}",
+        "$description": "Notice state text and icons on surface."
+      },
+      "notice-surface": {
+        "$type": "color",
+        "$value": "{color.notice.50}"
+      },
+      "notice-border": {
+        "$type": "color",
+        "$value": "{color.notice.500}"
+      },
+      "notice-ink": {
+        "$type": "color",
+        "$value": "{color.notice.900}"
+      },
+      "critical": {
+        "$type": "color",
+        "$value": "{color.critical.800}",
+        "$description": "Critical state text and icons on surface. Never a solid fill; destructive actions are outlined. Darkest of the three states on purpose (see positive)."
+      },
+      "critical-surface": {
+        "$type": "color",
+        "$value": "{color.critical.50}"
+      },
+      "critical-border": {
+        "$type": "color",
+        "$value": "{color.critical.500}"
+      },
+      "critical-ink": {
+        "$type": "color",
+        "$value": "{color.critical.900}"
+      }
+    }
+  },
+  "typography": {
+    "$description": "Two families. Archivo (variable: wght 100-900, wdth 62-125) for display and UI; Source Serif 4 (variable: wght 200-900, opsz 8-60) for long-form body. Scale is a minor third (1.2) on a 17px base, rounded to whole pixels.",
+    "family": {
+      "sans": {
+        "$type": "fontFamily",
+        "$value": [
+          "Archivo",
+          "Archivo Fallback",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif"
+        ],
+        "$description": "Display, headings, UI, tables."
+      },
+      "serif": {
+        "$type": "fontFamily",
+        "$value": [
+          "Source Serif 4",
+          "Source Serif Fallback",
+          "Iowan Old Style",
+          "Georgia",
+          "serif"
+        ],
+        "$description": "Body copy and long-form."
+      }
+    },
+    "width": {
+      "display": {
+        "$type": "number",
+        "$value": 112,
+        "$description": "Archivo wdth axis for display and headline steps. Slightly extended to echo the strata bands."
+      },
+      "ui": {
+        "$type": "number",
+        "$value": 100,
+        "$description": "Archivo wdth axis for UI and titles."
+      }
+    },
+    "weight": {
+      "regular": {
+        "$type": "fontWeight",
+        "$value": 400
+      },
+      "medium": {
+        "$type": "fontWeight",
+        "$value": 500
+      },
+      "semibold": {
+        "$type": "fontWeight",
+        "$value": 600
+      },
+      "display": {
+        "$type": "fontWeight",
+        "$value": 660
+      }
+    },
+    "scale": {
+      "$description": "Minor third, ratio 1.2, base 17px. Each step pairs its own line-height and letter-spacing.",
+      "caption": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "0.75rem",
+          "lineHeight": 1.4,
+          "letterSpacing": "0.01em",
+          "fontWeight": 500
+        },
+        "$description": "12px. Captions, table footnotes, legal lines. Never below 12px."
+      },
+      "small": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "0.875rem",
+          "lineHeight": 1.5,
+          "letterSpacing": "0",
+          "fontWeight": 400
+        },
+        "$description": "14px. UI text, table cells, form help."
+      },
+      "body": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.serif}",
+          "fontSize": "1.0625rem",
+          "lineHeight": 1.6,
+          "letterSpacing": "0",
+          "fontWeight": 400
+        },
+        "$description": "17px. Long-form paragraphs. Source Serif 4 at opsz 17."
+      },
+      "lead": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.serif}",
+          "fontSize": "1.25rem",
+          "lineHeight": 1.55,
+          "letterSpacing": "0",
+          "fontWeight": 400
+        },
+        "$description": "20px. Article intros and pull text."
+      },
+      "title-sm": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "1.5rem",
+          "lineHeight": 1.3,
+          "letterSpacing": "-0.005em",
+          "fontWeight": 600
+        },
+        "$description": "24px. h4, card titles."
+      },
+      "title": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "1.8125rem",
+          "lineHeight": 1.25,
+          "letterSpacing": "-0.01em",
+          "fontWeight": 600
+        },
+        "$description": "29px. h3."
+      },
+      "title-lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "2.1875rem",
+          "lineHeight": 1.2,
+          "letterSpacing": "-0.012em",
+          "fontWeight": 600
+        },
+        "$description": "35px. h2."
+      },
+      "headline": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "2.625rem",
+          "lineHeight": 1.12,
+          "letterSpacing": "-0.015em",
+          "fontWeight": 640
+        },
+        "$description": "42px. h1 on content pages."
+      },
+      "display": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "3.1875rem",
+          "lineHeight": 1.06,
+          "letterSpacing": "-0.02em",
+          "fontWeight": 660
+        },
+        "$description": "51px. Home and hub page heroes."
+      },
+      "display-lg": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.sans}",
+          "fontSize": "3.8125rem",
+          "lineHeight": 1.02,
+          "letterSpacing": "-0.022em",
+          "fontWeight": 680
+        },
+        "$description": "61px. Rare. Campaign or landing heroes only."
+      }
+    },
+    "measure": {
+      "narrow": {
+        "$type": "dimension",
+        "$value": "45ch",
+        "$description": "Captions, sidebars, form help."
+      },
+      "body": {
+        "$type": "dimension",
+        "$value": "68ch",
+        "$description": "Article body. The 65-75ch working range for 1,800-word pieces."
+      },
+      "wide": {
+        "$type": "dimension",
+        "$value": "84ch",
+        "$description": "Comparison tables and code. Never running prose."
+      }
+    },
+    "numeric": {
+      "tabular": {
+        "$type": "fontFeature",
+        "$value": "tabular-nums",
+        "$description": "font-variant-numeric for every numeric column: limits, deductibles, premiums, comparison tables. Both families ship tnum."
+      },
+      "default": {
+        "$type": "fontFeature",
+        "$value": "proportional-nums"
+      }
+    }
+  },
+  "space": {
+    "0": {
+      "$type": "dimension",
+      "$value": "0px"
+    },
+    "1": {
+      "$type": "dimension",
+      "$value": "0.25rem"
+    },
+    "2": {
+      "$type": "dimension",
+      "$value": "0.5rem"
+    },
+    "3": {
+      "$type": "dimension",
+      "$value": "0.75rem"
+    },
+    "4": {
+      "$type": "dimension",
+      "$value": "1rem"
+    },
+    "5": {
+      "$type": "dimension",
+      "$value": "1.25rem"
+    },
+    "6": {
+      "$type": "dimension",
+      "$value": "1.5rem"
+    },
+    "8": {
+      "$type": "dimension",
+      "$value": "2rem"
+    },
+    "10": {
+      "$type": "dimension",
+      "$value": "2.5rem"
+    },
+    "12": {
+      "$type": "dimension",
+      "$value": "3rem"
+    },
+    "16": {
+      "$type": "dimension",
+      "$value": "4rem"
+    },
+    "20": {
+      "$type": "dimension",
+      "$value": "5rem"
+    },
+    "24": {
+      "$type": "dimension",
+      "$value": "6rem"
+    },
+    "32": {
+      "$type": "dimension",
+      "$value": "8rem"
+    },
+    "$description": "4px base. Numeric keys are multiples of 4px.",
+    "px": {
+      "$type": "dimension",
+      "$value": "1px",
+      "$description": "Hairlines only."
+    }
+  },
+  "radius": {
+    "$description": "By role, not size. Strata is a hard-edged system.",
+    "control": {
+      "$type": "dimension",
+      "$value": "2px",
+      "$description": "Buttons, inputs, tags."
+    },
+    "surface": {
+      "$type": "dimension",
+      "$value": "4px",
+      "$description": "Cards, panels, images, table containers."
+    },
+    "pill": {
+      "$type": "dimension",
+      "$value": "9999px",
+      "$description": "Status dots and counters only. Not buttons."
+    }
+  },
+  "shadow": {
+    "0": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "oklch(24% 0.008 75 / 0.06)",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        }
+      ],
+      "$description": "Resting cards, table containers."
+    },
+    "1": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "oklch(24% 0.008 75 / 0.08)",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "-1px"
+        },
+        {
+          "color": "oklch(24% 0.008 75 / 0.05)",
+          "offsetX": "0px",
+          "offsetY": "1px",
+          "blur": "2px",
+          "spread": "0px"
+        }
+      ],
+      "$description": "Hover on interactive cards, dropdown menus."
+    },
+    "2": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "oklch(24% 0.008 75 / 0.12)",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "20px",
+          "spread": "-4px"
+        },
+        {
+          "color": "oklch(24% 0.008 75 / 0.06)",
+          "offsetX": "0px",
+          "offsetY": "2px",
+          "blur": "6px",
+          "spread": "-1px"
+        }
+      ],
+      "$description": "Popovers, sticky headers."
+    },
+    "3": {
+      "$type": "shadow",
+      "$value": [
+        {
+          "color": "oklch(24% 0.008 75 / 0.18)",
+          "offsetX": "0px",
+          "offsetY": "20px",
+          "blur": "48px",
+          "spread": "-8px"
+        },
+        {
+          "color": "oklch(24% 0.008 75 / 0.08)",
+          "offsetX": "0px",
+          "offsetY": "8px",
+          "blur": "20px",
+          "spread": "-4px"
+        }
+      ],
+      "$description": "Modals and drawers."
+    },
+    "$description": "Elevation ladder. Warm-tinted; a black shadow on a caliche page looks like dirt."
+  },
+  "motion": {
+    "$description": "Durations collapse to 0ms under prefers-reduced-motion (emitted in tokens.css). Nothing on this site should move for decoration.",
+    "duration": {
+      "fast": {
+        "$type": "duration",
+        "$value": "120ms",
+        "$description": "Hover, focus, colour changes."
+      },
+      "base": {
+        "$type": "duration",
+        "$value": "200ms",
+        "$description": "Reveals, menus, accordions."
+      },
+      "slow": {
+        "$type": "duration",
+        "$value": "320ms",
+        "$description": "Drawers, modals."
+      },
+      "deliberate": {
+        "$type": "duration",
+        "$value": "480ms",
+        "$description": "Page-level transitions. Rare."
+      }
+    },
+    "easing": {
+      "standard": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.2,
+          0,
+          0,
+          1
+        ],
+        "$description": "Default for anything that moves on screen."
+      },
+      "enter": {
+        "$type": "cubicBezier",
+        "$value": [
+          0,
+          0,
+          0.2,
+          1
+        ]
+      },
+      "exit": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.4,
+          0,
+          1,
+          1
+        ]
+      }
+    }
+  }
+}

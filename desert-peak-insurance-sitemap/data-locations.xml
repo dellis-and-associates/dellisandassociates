@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<locations stateCount="4" cityCount="38">
+  <state slug="arizona" abbr="AZ" name="Arizona" cityCount="14">
+    <city slug="phoenix">Phoenix</city>
+    <city slug="tucson">Tucson</city>
+    <city slug="mesa">Mesa</city>
+    <city slug="scottsdale">Scottsdale</city>
+    <city slug="chandler">Chandler</city>
+    <city slug="gilbert">Gilbert</city>
+    <city slug="glendale">Glendale</city>
+    <city slug="tempe">Tempe</city>
+    <city slug="peoria">Peoria</city>
+    <city slug="surprise">Surprise</city>
+    <city slug="avondale">Avondale</city>
+    <city slug="goodyear">Goodyear</city>
+    <city slug="flagstaff">Flagstaff</city>
+    <city slug="yuma">Yuma</city>
+  </state>
+  <state slug="nevada" abbr="NV" name="Nevada" cityCount="8">
+    <city slug="las-vegas">Las Vegas</city>
+    <city slug="henderson">Henderson</city>
+    <city slug="reno">Reno</city>
+    <city slug="north-las-vegas">North Las Vegas</city>
+    <city slug="sparks">Sparks</city>
+    <city slug="carson-city">Carson City</city>
+    <city slug="elko">Elko</city>
+    <city slug="boulder-city">Boulder City</city>
+  </state>
+  <state slug="utah" abbr="UT" name="Utah" cityCount="8">
+    <city slug="salt-lake-city">Salt Lake City</city>
+    <city slug="west-valley-city">West Valley City</city>
+    <city slug="provo">Provo</city>
+    <city slug="west-jordan">West Jordan</city>
+    <city slug="orem">Orem</city>
+    <city slug="sandy">Sandy</city>
+    <city slug="ogden">Ogden</city>
+    <city slug="st-george">St. George</city>
+  </state>
+  <state slug="idaho" abbr="ID" name="Idaho" cityCount="8">
+    <city slug="boise">Boise</city>
+    <city slug="meridian">Meridian</city>
+    <city slug="nampa">Nampa</city>
+    <city slug="idaho-falls">Idaho Falls</city>
+    <city slug="pocatello">Pocatello</city>
+    <city slug="caldwell">Caldwell</city>
+    <city slug="coeur-d-alene">Coeur d'Alene</city>
+    <city slug="twin-falls">Twin Falls</city>
+  </state>
+</locations>

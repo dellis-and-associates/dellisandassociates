@@ -1,0 +1,24 @@
+DESERT PEAK INSURANCE - SITE MAP PAGE COUNT REPORT
+=======================================================
+
+Core Pages                                       20
+Legal & Policy                                    9
+Product Pages                                    87
+State Hub Pages                                   4
+Local Product Pages (Tier 1)                    380
+Statewide Product Pages (Tier 2)                 76
+Blog: Insurance 101 Guides                       30
+Blog: State Requirements                         12
+Blog: Comparison Articles                        52
+Blog: How-To & Checklists                        52
+Blog: Life-Event Guides                          20
+Blog: Seasonal & Timely Guides                   20
+Blog: Glossary                                  221
+Agent Profiles                                   30
+Carrier Partners                                 15
+-------------------------------------------------------
+TOTAL PAGES                                    1028
+
+Duplicate URLs detected: 0
+States: 4  |  Cities: 38  |  Products: 29 (Tier1: 10, Tier2: 19)
+Agents: 30  |  Carrier partners: 15

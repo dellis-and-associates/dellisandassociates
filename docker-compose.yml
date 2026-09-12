@@ -1,0 +1,22 @@
+# Local development database. Push mode (Drizzle db push) is allowed ONLY here;
+# src/payload.config.ts enables it when the database host is localhost.
+# Start: pnpm db:up   Stop: pnpm db:down   Reset: pnpm db:reset
+services:
+  postgres:
+    image: postgres:17-alpine
+    container_name: desert-peak-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: desert_peak
+    ports:
+      - "54329:5432"
+    volumes:
+      - desert-peak-pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d desert_peak"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+volumes:
+  desert-peak-pgdata:

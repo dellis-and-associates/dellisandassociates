@@ -1,0 +1,113 @@
+/* GENERATED from brand/design-tokens.json (v1.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* Tailwind v4. Import after tokens.css:  @import "@desert-peak/brand/tokens.css"; @import "@desert-peak/brand/theme.css"; */
+
+@theme inline {
+  /* Rule 3: tokens are the only source of colour. The default palette is removed so bg-red-500 does not exist. */
+  --color-*: initial;
+  --color-surface: var(--dp-surface);
+  --color-surface-raised: var(--dp-surface-raised);
+  --color-surface-sunken: var(--dp-surface-sunken);
+  --color-surface-inverse: var(--dp-surface-inverse);
+  --color-ink: var(--dp-ink);
+  --color-ink-muted: var(--dp-ink-muted);
+  --color-ink-inverse: var(--dp-ink-inverse);
+  --color-border: var(--dp-border);
+  --color-border-strong: var(--dp-border-strong);
+  --color-brand: var(--dp-brand);
+  --color-brand-hover: var(--dp-brand-hover);
+  --color-brand-active: var(--dp-brand-active);
+  --color-brand-ink: var(--dp-brand-ink);
+  --color-brand-subtle: var(--dp-brand-subtle);
+  --color-brand-subtle-ink: var(--dp-brand-subtle-ink);
+  --color-accent: var(--dp-accent);
+  --color-accent-strong: var(--dp-accent-strong);
+  --color-focus-ring: var(--dp-focus-ring);
+  --color-focus-ring-offset: var(--dp-focus-ring-offset);
+  --color-positive: var(--dp-positive);
+  --color-positive-surface: var(--dp-positive-surface);
+  --color-positive-border: var(--dp-positive-border);
+  --color-positive-ink: var(--dp-positive-ink);
+  --color-notice: var(--dp-notice);
+  --color-notice-surface: var(--dp-notice-surface);
+  --color-notice-border: var(--dp-notice-border);
+  --color-notice-ink: var(--dp-notice-ink);
+  --color-critical: var(--dp-critical);
+  --color-critical-surface: var(--dp-critical-surface);
+  --color-critical-border: var(--dp-critical-border);
+  --color-critical-ink: var(--dp-critical-ink);
+
+  --font-*: initial;
+  --font-sans: var(--dp-font-sans);
+  --font-serif: var(--dp-font-serif);
+
+  --text-*: initial;
+  --text-caption: var(--dp-text-caption-size);
+  --text-caption--line-height: var(--dp-text-caption-line-height);
+  --text-caption--letter-spacing: var(--dp-text-caption-letter-spacing);
+  --text-caption--font-weight: var(--dp-text-caption-weight);
+  --text-small: var(--dp-text-small-size);
+  --text-small--line-height: var(--dp-text-small-line-height);
+  --text-small--letter-spacing: var(--dp-text-small-letter-spacing);
+  --text-small--font-weight: var(--dp-text-small-weight);
+  --text-body: var(--dp-text-body-size);
+  --text-body--line-height: var(--dp-text-body-line-height);
+  --text-body--letter-spacing: var(--dp-text-body-letter-spacing);
+  --text-body--font-weight: var(--dp-text-body-weight);
+  --text-lead: var(--dp-text-lead-size);
+  --text-lead--line-height: var(--dp-text-lead-line-height);
+  --text-lead--letter-spacing: var(--dp-text-lead-letter-spacing);
+  --text-lead--font-weight: var(--dp-text-lead-weight);
+  --text-title-sm: var(--dp-text-title-sm-size);
+  --text-title-sm--line-height: var(--dp-text-title-sm-line-height);
+  --text-title-sm--letter-spacing: var(--dp-text-title-sm-letter-spacing);
+  --text-title-sm--font-weight: var(--dp-text-title-sm-weight);
+  --text-title: var(--dp-text-title-size);
+  --text-title--line-height: var(--dp-text-title-line-height);
+  --text-title--letter-spacing: var(--dp-text-title-letter-spacing);
+  --text-title--font-weight: var(--dp-text-title-weight);
+  --text-title-lg: var(--dp-text-title-lg-size);
+  --text-title-lg--line-height: var(--dp-text-title-lg-line-height);
+  --text-title-lg--letter-spacing: var(--dp-text-title-lg-letter-spacing);
+  --text-title-lg--font-weight: var(--dp-text-title-lg-weight);
+  --text-headline: var(--dp-text-headline-size);
+  --text-headline--line-height: var(--dp-text-headline-line-height);
+  --text-headline--letter-spacing: var(--dp-text-headline-letter-spacing);
+  --text-headline--font-weight: var(--dp-text-headline-weight);
+  --text-display: var(--dp-text-display-size);
+  --text-display--line-height: var(--dp-text-display-line-height);
+  --text-display--letter-spacing: var(--dp-text-display-letter-spacing);
+  --text-display--font-weight: var(--dp-text-display-weight);
+  --text-display-lg: var(--dp-text-display-lg-size);
+  --text-display-lg--line-height: var(--dp-text-display-lg-line-height);
+  --text-display-lg--letter-spacing: var(--dp-text-display-lg-letter-spacing);
+  --text-display-lg--font-weight: var(--dp-text-display-lg-weight);
+
+  --spacing: 0.25rem; /* 4px base; p-4 = 16px */
+
+  --radius-*: initial;
+  --radius-control: var(--dp-radius-control);
+  --radius-surface: var(--dp-radius-surface);
+  --radius-pill: var(--dp-radius-pill);
+
+  --shadow-*: initial;
+  --shadow-0: var(--dp-shadow-0);
+  --shadow-1: var(--dp-shadow-1);
+  --shadow-2: var(--dp-shadow-2);
+  --shadow-3: var(--dp-shadow-3);
+
+  --ease-*: initial;
+  --ease-standard: var(--dp-ease-standard);
+  --ease-enter: var(--dp-ease-enter);
+  --ease-exit: var(--dp-ease-exit);
+  --default-transition-duration: var(--dp-duration-base);
+  --default-transition-timing-function: var(--dp-ease-standard);
+
+  --container-*: initial;
+  --container-measure-narrow: var(--dp-measure-narrow);
+  --container-measure-body: var(--dp-measure-body);
+  --container-measure-wide: var(--dp-measure-wide);
+}
+
+@utility tabular { font-variant-numeric: var(--dp-numeric-tabular); }
+@utility measure { max-width: var(--dp-measure-body); }
+@utility focus-ring { outline: 2px solid var(--dp-focus-ring); outline-offset: 2px; box-shadow: 0 0 0 2px var(--dp-focus-ring-offset); }

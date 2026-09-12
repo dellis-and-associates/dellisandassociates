@@ -1,0 +1,27 @@
+{
+  "name": "@desert-peak/brand",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Desert Peak Insurance brand foundation: design tokens, logo system, brand guide. design-tokens.json is the single source of truth; dist/ and brand-sheet.html are generated.",
+  "type": "module",
+  "engines": {
+    "node": ">=22.6"
+  },
+  "scripts": {
+    "build:tokens": "node scripts/build-tokens.ts",
+    "audit:contrast": "node scripts/audit-contrast.ts",
+    "build": "pnpm build:tokens && pnpm audit:contrast",
+    "check": "pnpm build && git diff --exit-code -- brand/dist brand/brand-sheet.html brand/CONTRAST-REPORT.md"
+  },
+  "files": [
+    "brand"
+  ],
+  "exports": {
+    "./tokens": "./brand/dist/tokens.ts",
+    "./tailwind-preset": "./brand/dist/tailwind-preset.ts",
+    "./tokens.css": "./brand/dist/tokens.css",
+    "./theme.css": "./brand/dist/theme.css",
+    "./fonts.css": "./brand/dist/fonts.css",
+    "./design-tokens.json": "./brand/design-tokens.json"
+  }
+}
