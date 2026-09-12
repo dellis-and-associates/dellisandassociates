@@ -257,3 +257,68 @@ an editor's later edits are never overwritten by a re-seed.
 
 **No admin user is seeded.** Payload's first-user screen creates it; a
 password in a seed file is a secret in git.
+
+## Phase 4
+
+**The engine is a workspace package, `@desert-peak/referrals`, registered
+as a Payload plugin.** It adds eight tenant-scoped collections and a `tenant`
+relationship on the host's users. Its only host contract is: a `users`
+collection with `roles`, a `products` collection with `medicareTouching`,
+and a `leads` collection. Email is injected (`sendEmail`), so the plugin
+never imports app code and the app keeps the Resend fallback. A second
+agency is a `Tenants` row plus its programs and rules.
+
+**The reward rule table moved out of `ComplianceSettings`.** The master
+document puts it in the global; a global cannot be tenant-scoped, and
+tenancy is a hard requirement of the same section. `referral-reward-rules`
+is a collection with `tenant`, admin-write-only, one row per state × track
+(+ the Medicare rule set). The global lost two fields in migration
+`phase4a`; the plugin's tables arrived in `phase4b`. Two migrations because
+drizzle-kit asks an interactive "created or renamed enum?" question when an
+old enum disappears in the same diff as a similar new one, and CI cannot
+answer prompts.
+
+**Invariants are types and hooks first, tests second.**
+- *No reward path from bound.* `rewards.ts` accepts `QualifiedReferral`
+  (`status: "qualified"` as a literal type) and nothing else; the transition
+  table makes `bound` reachable only after `qualified`; the engine calls the
+  reward evaluator from exactly one place, the `qualified` transition. A unit
+  test greps the module for the word.
+- *Null rule row → refusal.* Any of the five rule fields null, or no row for
+  (state, track, medicare), refuses with `rule-incomplete` / `rule-missing`
+  and writes a `reward-refused` event. The seed ships all 12 rows null.
+- *Tenant kill switch and program switch* refuse before the rule is even read.
+- *Consent gate.* A referral cannot exist without the referrer's affirmation;
+  the referee gets one message (counter incremented before the send, so a
+  failed send never causes a second); `contacted` is refused until the
+  referee accepts; the lead is created only on accept.
+- *Fraud.* Self-referral (email, phone, normalized address), duplicate
+  referee across referrers within 180 days, disposable domains, per-referrer
+  and per-IP velocity, bot check: every rejection carries a reason code and
+  an event. Nothing is dropped silently.
+- *Ledger append-only, events immutable* through hooks, so even
+  `overrideAccess` cannot update or delete them. Balances are computed.
+- *Status changes only through the engine*, enforced by a hook that checks
+  `req.context.referralEngine`.
+- *Manual review gate.* A `pending-review` referrer's first reward is earned
+  into the queue; issuing requires an admin to activate the referrer.
+- *Medicare.* Interest containing a Medicare-touching product routes to the
+  Medicare rule set; cash equivalents are refused there regardless of what
+  the row says.
+- *Tax is a flag.* `annualTotals()` reports issued per referrer per year; no
+  threshold is asserted anywhere.
+
+**First-touch attribution, 90-day HttpOnly cookie, set only when absent.**
+Last-touch is documented as the alternative and not shipped. Code lookups
+are rate-limited per hashed IP in memory (one instance); a shared limiter
+is a Phase 7 concern.
+
+**Portals and the admin dashboard are Phase 5 work.** They are interface,
+they meet the full interface standard, and building them before the design
+system exists would put design values outside `desert-peak-brand/dist`.
+Phase 4 ships the routes the portals need (`/r/{code}`, opt-in response)
+and reserves `/partners/` and `/partners/portal/`.
+
+**Ledger reversals say what they reverse.** `reversesType` distinguishes
+voiding an earned reward from clawing back an issued one, so liability and
+annual totals stay correct in both directions.

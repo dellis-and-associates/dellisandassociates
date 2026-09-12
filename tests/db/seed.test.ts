@@ -7,8 +7,9 @@ import { runSeed } from "../../scripts/seed.ts";
 
 let payload: Payload;
 const wipe = async () => {
-  // ComplianceSettings.rewardRules holds foreign keys to states; clear it before the states go.
-  await payload.updateGlobal({ slug: "compliance-settings", data: { rewardRules: [] }, overrideAccess: true });
+  for (const c of ["referral-events", "reward-ledger", "referrals", "referrers", "referral-reward-rules", "message-templates", "referral-programs", "tenants"] as const) {
+    await payload.db.deleteMany({ collection: c, where: {} }); // plugin collections refuse delete through hooks; tests wipe at the adapter
+  }
   for (const c of ["leads", "location-overrides", "articles", "glossary-terms", "pages", "agents", "carriers", "cities", "redirects", "forms", "products", "states"] as const) {
     await payload.delete({ collection: c, where: { id: { exists: true } }, overrideAccess: true });
   }
@@ -30,10 +31,13 @@ describe("seed", () => {
     expect(r.products.created).toBe(36);
     expect(r.states.created).toBe(4);
     expect(r.cities.created).toBe(38);
-    expect(r.pages.created).toBe(29);
+    expect(r.pages.created).toBe(33); // 29 IA pages + 2 utility routes + 2 partner routes (src/seed-data/extra-routes.json)
     expect(r.articles.created).toBe(186);
     expect(r["glossary-terms"].created).toBe(221);
     expect(r.forms.created).toBe(3);
+    expect(r.tenants.created).toBe(1);
+    expect(r["referral-programs"].created).toBe(2);
+    expect(r["referral-reward-rules"].created).toBe(12);
     expect((await payload.count({ collection: "products", overrideAccess: true })).totalDocs).toBe(0);
   });
   it("real run creates everything as draft; second run creates nothing and reports no conflicts", async () => {

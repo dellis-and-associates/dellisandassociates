@@ -2,6 +2,7 @@ import type { CollectionConfig } from "payload";
 import { adminFieldOnly, adminsOrAssignedAgent, admins } from "../access/index.ts";
 import { isAdmin, userOf } from "../lib/roles.ts";
 import { LEAD_TYPES } from "./Forms.ts";
+import { sendEmail } from "../lib/email.ts";
 
 export const LEAD_STATUSES = ["new", "contacted", "qualified", "quoted", "bound", "closed", "rejected"] as const;
 
@@ -32,6 +33,12 @@ export const Leads: CollectionConfig = {
     beforeChange: [
       async ({ data, req, operation }) => {
         if (operation !== "create") return data;
+        // Health flag comes from the form definition, from the first field, never from the handler's discretion.
+        const formId = typeof data.form === "object" && data.form ? data.form.id : data.form;
+        if (formId) {
+          const form = await req.payload.findByID({ collection: "forms", id: formId, depth: 0, overrideAccess: true }).catch(() => null);
+          if (form?.collectsHealthInformation) data.containsHealthInformation = true;
+        }
         const settings = await req.payload.findGlobal({ slug: "compliance-settings", depth: 0, overrideAccess: true });
         const days = data.containsHealthInformation ? settings.healthLeadRetentionDays : settings.leadRetentionDays;
         const until = new Date();
@@ -39,6 +46,22 @@ export const Leads: CollectionConfig = {
         data.retainUntil = until.toISOString();
         data.reference = data.reference ?? `L-${Date.now().toString(36).toUpperCase()}`;
         return data;
+      },
+    ],
+    afterChange: [
+      async ({ doc, operation, req }) => {
+        if (operation !== "create") return doc;
+        // The notification names the form and the timestamp only. No field contents, ever.
+        const formId = typeof doc.form === "object" && doc.form ? doc.form.id : doc.form;
+        const form = formId ? await req.payload.findByID({ collection: "forms", id: formId, depth: 0, overrideAccess: true }).catch(() => null) : null;
+        const recipients = (form?.notifyEmails ?? []).map((e) => e.email).filter(Boolean);
+        await sendEmail({
+          to: recipients,
+          subject: `New submission: ${form?.name ?? doc.type}`,
+          text: `A new ${form?.name ?? doc.type} submission arrived at ${new Date(doc.createdAt).toISOString()}. Reference ${doc.reference}. Open it in the admin panel.`,
+          purpose: "lead-notification",
+        });
+        return doc;
       },
     ],
   },

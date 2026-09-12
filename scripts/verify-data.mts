@@ -89,6 +89,11 @@ console.log(`states: ${states.length}; cities: ${cities}; fixture URLs: ${fixtur
 console.log("| Route group | Routes | Source |\n|---|---:|---|");
 for (const [g, n, s] of groups) console.log(`| ${g} | ${n} | ${s} |`);
 console.log(`| **Total** | **${total}** | |\n| Buildable now | ${buildable} | |\n| Blocked on client data | ${blocked} | |`);
+const extra = JSON.parse(readFileSync(join(process.cwd(), "src", "seed-data", "extra-routes.json"), "utf8")) as { path: string; kind: string }[];
+const utility = extra.filter((r) => r.kind === "utility").length;
+const partner = extra.filter((r) => r.kind.startsWith("partner")).length;
+console.log(`\nOutside the plan — utility routes: ${utility} (noindex, not in sitemap); partner routes: ${partner} (1 public recruiting page, 1 gated portal entry)`);
+if (extra.some((r) => !/^\/(?:[a-z0-9-]+\/)+$/.test(r.path))) failures.push("extra-routes.json has a non-normalized path");
 for (const f of failures) console.error(`\nFAIL ${f}`);
 console.log(failures.length ? `\nverify:data failed (${failures.length})` : "\nverify:data passed");
 process.exit(failures.length ? 1 : 0);

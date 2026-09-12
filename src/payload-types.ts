@@ -81,6 +81,14 @@ export interface Config {
     redirects: Redirect;
     forms: Form;
     leads: Lead;
+    tenants: Tenant;
+    'referral-programs': ReferralProgram;
+    'referral-reward-rules': ReferralRewardRule;
+    referrers: Referrer;
+    referrals: Referral;
+    'reward-ledger': RewardLedger;
+    'referral-events': ReferralEvent;
+    'message-templates': MessageTemplate;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -102,6 +110,14 @@ export interface Config {
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     leads: LeadsSelect<false> | LeadsSelect<true>;
+    tenants: TenantsSelect<false> | TenantsSelect<true>;
+    'referral-programs': ReferralProgramsSelect<false> | ReferralProgramsSelect<true>;
+    'referral-reward-rules': ReferralRewardRulesSelect<false> | ReferralRewardRulesSelect<true>;
+    referrers: ReferrersSelect<false> | ReferrersSelect<true>;
+    referrals: ReferralsSelect<false> | ReferralsSelect<true>;
+    'reward-ledger': RewardLedgerSelect<false> | RewardLedgerSelect<true>;
+    'referral-events': ReferralEventsSelect<false> | ReferralEventsSelect<true>;
+    'message-templates': MessageTemplatesSelect<false> | MessageTemplatesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -611,6 +627,10 @@ export interface User {
   id: number;
   roles: ('admin' | 'editor' | 'agent' | 'partner')[];
   name?: string | null;
+  /**
+   * Empty = platform operator (every tenant).
+   */
+  tenant?: (number | null) | Tenant;
   updatedAt: string;
   createdAt: string;
   email: string;
@@ -629,6 +649,40 @@ export interface User {
     | null;
   password?: string | null;
   collection: 'users';
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tenants".
+ */
+export interface Tenant {
+  id: number;
+  name: string;
+  slug: string;
+  /**
+   * Tenant-level kill switch. False until counsel has filled every reward rule row for this tenant. The engine refuses to earn a reward while this is off.
+   */
+  referralsEnabled: boolean;
+  /**
+   * Used in referee messages ({{agencyName}}).
+   */
+  agencyDisplayName?: string | null;
+  /**
+   * Where referral operations notices go.
+   */
+  notifyEmail?: string | null;
+  /**
+   * Abuse limits. Rejections above these carry velocity-referrer / velocity-ip reason codes.
+   */
+  velocity: {
+    perReferrerPerDay: number;
+    perIpPerHour: number;
+  };
+  /**
+   * A referee already referred within this window, by anyone, is a duplicate.
+   */
+  dedupeWindowDays: number;
+  updatedAt: string;
+  createdAt: string;
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
@@ -795,6 +849,10 @@ export interface Page {
   id: number;
   title: string;
   /**
+   * Set from the template. Utility routes are noindex and excluded from the sitemap regardless of wave.
+   */
+  noindex?: boolean | null;
+  /**
    * Leading and trailing slash, e.g. /claims/how-to-file/. Home is /.
    */
   path: string;
@@ -808,7 +866,8 @@ export interface Page {
     | 'carriers-hub'
     | 'team-hub'
     | 'blog-hub'
-    | 'legal-static';
+    | 'legal-static'
+    | 'utility';
   /**
    * For /legal/licensing/{state}/.
    */
@@ -1090,6 +1149,322 @@ export interface Lead {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referral-programs".
+ */
+export interface ReferralProgram {
+  id: number;
+  tenant: number | Tenant;
+  name: string;
+  /**
+   * customer = unlicensed individuals (nominal-gift regime); partner = licensed producers and business partners. Separate rule sets, ledgers and portals. Never collapsed.
+   */
+  track: 'customer' | 'partner';
+  /**
+   * Ships false.
+   */
+  active: boolean;
+  activeFrom?: string | null;
+  activeTo?: string | null;
+  /**
+   * A qualified referral is a real, consenting, non-duplicate person who was contacted. The engine enforces opt-in and contact; a bound policy is not, and cannot be made, a condition.
+   */
+  qualification?: {
+    /**
+     * Tenant-specific wording for the portal; not a rule.
+     */
+    note?: string | null;
+  };
+  /**
+   * Requested reward. The rule row for the referee's state and this track caps it; the engine takes the lower.
+   */
+  reward?: {
+    type?: ('gift-card' | 'merchandise' | 'account-credit' | 'none') | null;
+    amount?: number | null;
+  };
+  /**
+   * Versioned. Acceptance is recorded against a version; editing a version in place is refused.
+   */
+  terms?:
+    | {
+        version: string;
+        effectiveFrom: string;
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  currentTermsVersion?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referral-reward-rules".
+ */
+export interface ReferralRewardRule {
+  id: number;
+  label?: string | null;
+  tenant: number | Tenant;
+  /**
+   * Two-letter state code (matches the referee's state).
+   */
+  stateAbbr: string;
+  track: 'customer' | 'partner';
+  /**
+   * Applies to Medicare-touching referrals (CMS: nominal, non-cash, never an enrollment incentive).
+   */
+  medicareRuleSet: boolean;
+  /**
+   * null = engine refuses
+   */
+  rewardTypeAllowed?: ('gift-card' | 'merchandise' | 'account-credit' | 'none') | null;
+  /**
+   * null = engine refuses
+   */
+  perReferralCap?: number | null;
+  /**
+   * null = engine refuses
+   */
+  perReferrerAnnualCap?: number | null;
+  /**
+   * null = engine refuses
+   */
+  cashEquivalentAllowed?: ('yes' | 'no') | null;
+  /**
+   * Statute, regulation or bulletin with URL. null = engine refuses.
+   */
+  sourceCitation?: string | null;
+  verifiedBy?: string | null;
+  verifiedAt?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrers".
+ */
+export interface Referrer {
+  id: number;
+  tenant: number | Tenant;
+  /**
+   * Short, unambiguous (no 0/O/1/I/L). Unique per tenant.
+   */
+  code?: string | null;
+  track: 'customer' | 'partner';
+  /**
+   * A new referrer's first reward waits in the manual review queue until an admin activates them.
+   */
+  status: 'pending-review' | 'active' | 'suspended';
+  /**
+   * Partner track: the portal login.
+   */
+  user?: (number | null) | User;
+  name: string;
+  email: string;
+  phone?: string | null;
+  emailNormalized?: string | null;
+  phoneNormalized?: string | null;
+  addressNormalized?: string | null;
+  termsAcceptance?: {
+    program?: (number | null) | ReferralProgram;
+    version?: string | null;
+    acceptedAt?: string | null;
+    ipHash?: string | null;
+  };
+  /**
+   * Abstracted. Never a card or account number.
+   */
+  payoutMethod?: ('gift-card-email' | 'check-by-mail' | 'account-credit' | 'none') | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrals".
+ */
+export interface Referral {
+  id: number;
+  tenant: number | Tenant;
+  program: number | ReferralProgram;
+  referrer: number | Referrer;
+  referee: {
+    firstName: string;
+    lastName?: string | null;
+    email?: string | null;
+    phone?: string | null;
+    /**
+     * Decides which reward rule row applies.
+     */
+    stateAbbr?: string | null;
+    emailNormalized?: string | null;
+    phoneNormalized?: string | null;
+  };
+  interest?: (number | Product)[] | null;
+  /**
+   * Set from interest. Routes to the Medicare rule set.
+   */
+  medicareTouching: boolean;
+  source: 'link' | 'code' | 'form' | 'portal';
+  attribution?: {
+    code?: string | null;
+    model?: 'first-touch' | null;
+    firstTouchAt?: string | null;
+    landingPage?: string | null;
+  };
+  consent: {
+    /**
+     * The referrer affirmed they have the referee's permission. Required to create a referral.
+     */
+    referrerAffirmedPermission: boolean;
+    /**
+     * Exactly one, ever.
+     */
+    optInMessagesSent: number;
+    optInSentAt?: string | null;
+    optInStatus: 'pending' | 'accepted' | 'declined' | 'expired';
+    optInRespondedAt?: string | null;
+    optInToken?: string | null;
+  };
+  status: 'submitted' | 'contacted' | 'qualified' | 'quoted' | 'bound' | 'closed' | 'rejected';
+  rejectionReason?:
+    | (
+        | 'self-referral'
+        | 'duplicate-referee'
+        | 'disposable-email'
+        | 'velocity-referrer'
+        | 'velocity-ip'
+        | 'bot-check-failed'
+        | 'consent-not-affirmed'
+        | 'referee-declined'
+        | 'referee-no-response'
+        | 'manual'
+      )
+    | null;
+  duplicateOf?: (number | null) | Referral;
+  /**
+   * Every rejection has a reason code; nothing is dropped silently.
+   */
+  fraud?: {
+    selfReferral?: boolean | null;
+    duplicateReferee?: boolean | null;
+    disposableEmail?: boolean | null;
+    velocity?: boolean | null;
+    botCheckPassed?: boolean | null;
+    /**
+     * First reward for a new referrer waits here.
+     */
+    manualReview?: boolean | null;
+  };
+  /**
+   * Created only after the referee opts in.
+   */
+  lead?: (number | null) | Lead;
+  ipHash?: string | null;
+  notes?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reward-ledger".
+ */
+export interface RewardLedger {
+  id: number;
+  tenant: number | Tenant;
+  referrer: number | Referrer;
+  referral: number | Referral;
+  type: 'earned' | 'issued' | 'reversed';
+  /**
+   * For reversed entries: voiding an earned reward, or clawing back an issued one.
+   */
+  reversesType?: ('earned' | 'issued') | null;
+  rewardType: 'gift-card' | 'merchandise' | 'account-credit' | 'none';
+  amount: number;
+  currency: string;
+  /**
+   * The rule row as it stood when this entry was written.
+   */
+  ruleSnapshot:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  termsVersion: string;
+  actor:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  reason?: string | null;
+  reverses?: (number | null) | RewardLedger;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referral-events".
+ */
+export interface ReferralEvent {
+  id: number;
+  tenant: number | Tenant;
+  referral?: (number | null) | Referral;
+  referrer?: (number | null) | Referrer;
+  /**
+   * status-change | rejected | reward-earned | reward-refused | reward-issued | reward-reversed | opt-in-sent | opt-in-response | created
+   */
+  type: string;
+  from?: string | null;
+  to?: string | null;
+  actor:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  ipHash?: string | null;
+  detail?:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "message-templates".
+ */
+export interface MessageTemplate {
+  id: number;
+  tenant: number | Tenant;
+  key: 'referee-opt-in' | 'referrer-welcome';
+  version: number;
+  active: boolean;
+  subject: string;
+  /**
+   * Placeholders: {{referrerFirstName}} {{refereeFirstName}} {{agencyName}} {{acceptUrl}} {{declineUrl}}. The opt-in message must name the referrer and let the referee decline.
+   */
+  body: string;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -1167,6 +1542,38 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'leads';
         value: number | Lead;
+      } | null)
+    | ({
+        relationTo: 'tenants';
+        value: number | Tenant;
+      } | null)
+    | ({
+        relationTo: 'referral-programs';
+        value: number | ReferralProgram;
+      } | null)
+    | ({
+        relationTo: 'referral-reward-rules';
+        value: number | ReferralRewardRule;
+      } | null)
+    | ({
+        relationTo: 'referrers';
+        value: number | Referrer;
+      } | null)
+    | ({
+        relationTo: 'referrals';
+        value: number | Referral;
+      } | null)
+    | ({
+        relationTo: 'reward-ledger';
+        value: number | RewardLedger;
+      } | null)
+    | ({
+        relationTo: 'referral-events';
+        value: number | ReferralEvent;
+      } | null)
+    | ({
+        relationTo: 'message-templates';
+        value: number | MessageTemplate;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -1434,6 +1841,7 @@ export interface GlossaryTermsSelect<T extends boolean = true> {
  */
 export interface PagesSelect<T extends boolean = true> {
   title?: T;
+  noindex?: T;
   path?: T;
   template?: T;
   legalState?: T;
@@ -1555,6 +1963,7 @@ export interface CarriersSelect<T extends boolean = true> {
 export interface UsersSelect<T extends boolean = true> {
   roles?: T;
   name?: T;
+  tenant?: T;
   updatedAt?: T;
   createdAt?: T;
   email?: T;
@@ -1725,6 +2134,220 @@ export interface LeadsSelect<T extends boolean = true> {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "tenants_select".
+ */
+export interface TenantsSelect<T extends boolean = true> {
+  name?: T;
+  slug?: T;
+  referralsEnabled?: T;
+  agencyDisplayName?: T;
+  notifyEmail?: T;
+  velocity?:
+    | T
+    | {
+        perReferrerPerDay?: T;
+        perIpPerHour?: T;
+      };
+  dedupeWindowDays?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referral-programs_select".
+ */
+export interface ReferralProgramsSelect<T extends boolean = true> {
+  tenant?: T;
+  name?: T;
+  track?: T;
+  active?: T;
+  activeFrom?: T;
+  activeTo?: T;
+  qualification?:
+    | T
+    | {
+        note?: T;
+      };
+  reward?:
+    | T
+    | {
+        type?: T;
+        amount?: T;
+      };
+  terms?:
+    | T
+    | {
+        version?: T;
+        effectiveFrom?: T;
+        text?: T;
+        id?: T;
+      };
+  currentTermsVersion?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referral-reward-rules_select".
+ */
+export interface ReferralRewardRulesSelect<T extends boolean = true> {
+  label?: T;
+  tenant?: T;
+  stateAbbr?: T;
+  track?: T;
+  medicareRuleSet?: T;
+  rewardTypeAllowed?: T;
+  perReferralCap?: T;
+  perReferrerAnnualCap?: T;
+  cashEquivalentAllowed?: T;
+  sourceCitation?: T;
+  verifiedBy?: T;
+  verifiedAt?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrers_select".
+ */
+export interface ReferrersSelect<T extends boolean = true> {
+  tenant?: T;
+  code?: T;
+  track?: T;
+  status?: T;
+  user?: T;
+  name?: T;
+  email?: T;
+  phone?: T;
+  emailNormalized?: T;
+  phoneNormalized?: T;
+  addressNormalized?: T;
+  termsAcceptance?:
+    | T
+    | {
+        program?: T;
+        version?: T;
+        acceptedAt?: T;
+        ipHash?: T;
+      };
+  payoutMethod?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referrals_select".
+ */
+export interface ReferralsSelect<T extends boolean = true> {
+  tenant?: T;
+  program?: T;
+  referrer?: T;
+  referee?:
+    | T
+    | {
+        firstName?: T;
+        lastName?: T;
+        email?: T;
+        phone?: T;
+        stateAbbr?: T;
+        emailNormalized?: T;
+        phoneNormalized?: T;
+      };
+  interest?: T;
+  medicareTouching?: T;
+  source?: T;
+  attribution?:
+    | T
+    | {
+        code?: T;
+        model?: T;
+        firstTouchAt?: T;
+        landingPage?: T;
+      };
+  consent?:
+    | T
+    | {
+        referrerAffirmedPermission?: T;
+        optInMessagesSent?: T;
+        optInSentAt?: T;
+        optInStatus?: T;
+        optInRespondedAt?: T;
+        optInToken?: T;
+      };
+  status?: T;
+  rejectionReason?: T;
+  duplicateOf?: T;
+  fraud?:
+    | T
+    | {
+        selfReferral?: T;
+        duplicateReferee?: T;
+        disposableEmail?: T;
+        velocity?: T;
+        botCheckPassed?: T;
+        manualReview?: T;
+      };
+  lead?: T;
+  ipHash?: T;
+  notes?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "reward-ledger_select".
+ */
+export interface RewardLedgerSelect<T extends boolean = true> {
+  tenant?: T;
+  referrer?: T;
+  referral?: T;
+  type?: T;
+  reversesType?: T;
+  rewardType?: T;
+  amount?: T;
+  currency?: T;
+  ruleSnapshot?: T;
+  termsVersion?: T;
+  actor?: T;
+  reason?: T;
+  reverses?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "referral-events_select".
+ */
+export interface ReferralEventsSelect<T extends boolean = true> {
+  tenant?: T;
+  referral?: T;
+  referrer?: T;
+  type?: T;
+  from?: T;
+  to?: T;
+  actor?: T;
+  ipHash?: T;
+  detail?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "message-templates_select".
+ */
+export interface MessageTemplatesSelect<T extends boolean = true> {
+  tenant?: T;
+  key?: T;
+  version?: T;
+  active?: T;
+  subject?: T;
+  body?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv_select".
  */
 export interface PayloadKvSelect<T extends boolean = true> {
@@ -1872,34 +2495,6 @@ export interface ComplianceSetting {
    * Leads with medication or health indications. 12 months by default.
    */
   healthLeadRetentionDays: number;
-  /**
-   * Stays false until every rule row below is filled by counsel with a citation.
-   */
-  referralProgramEnabled?: boolean | null;
-  /**
-   * One row per state × track (+ the Medicare rule set). Null means the engine refuses to issue a reward.
-   */
-  rewardRules?:
-    | {
-        state: number | State;
-        track: 'customer' | 'partner';
-        /**
-         * Applies to Medicare-touching referrals: non-cash, nominal, never an enrollment incentive.
-         */
-        medicareRuleSet?: boolean | null;
-        rewardTypeAllowed?: ('gift-card' | 'merchandise' | 'account-credit' | 'none') | null;
-        perReferralCap?: number | null;
-        perReferrerAnnualCap?: number | null;
-        cashEquivalentAllowed?: ('yes' | 'no') | null;
-        /**
-         * Statute or bulletin, with URL. Required before the row counts as filled.
-         */
-        sourceCitation?: string | null;
-        verifiedBy?: string | null;
-        verifiedAt?: string | null;
-        id?: string | null;
-      }[]
-    | null;
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -1984,22 +2579,6 @@ export interface ComplianceSettingsSelect<T extends boolean = true> {
       };
   leadRetentionDays?: T;
   healthLeadRetentionDays?: T;
-  referralProgramEnabled?: T;
-  rewardRules?:
-    | T
-    | {
-        state?: T;
-        track?: T;
-        medicareRuleSet?: T;
-        rewardTypeAllowed?: T;
-        perReferralCap?: T;
-        perReferrerAnnualCap?: T;
-        cashEquivalentAllowed?: T;
-        sourceCitation?: T;
-        verifiedBy?: T;
-        verifiedAt?: T;
-        id?: T;
-      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

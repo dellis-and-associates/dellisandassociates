@@ -12,13 +12,11 @@ export const BANNED_PHRASES_DEFAULT = [
   "lowest price guaranteed",
 ];
 
-export const REFERRAL_TRACKS = ["customer", "partner"] as const;
-export const REWARD_TYPES = ["gift-card", "merchandise", "account-credit", "none"] as const;
-
 /**
- * Admin-write-only. Disclosure texts, the banned-phrase list, retention
- * periods, and the referral reward rule table. Ships with every reward rule
- * row null and the program disabled; counsel fills it in (Phase 4).
+ * Admin-write-only. Disclosure texts, the banned-phrase list and retention
+ * periods. The referral reward rule table lives in the referrals plugin
+ * (`referral-reward-rules`, tenant-scoped) because a global cannot be
+ * tenant-scoped; see DECISIONS.md, Phase 4.
  */
 export const ComplianceSettings: GlobalConfig = {
   slug: "compliance-settings",
@@ -56,33 +54,6 @@ export const ComplianceSettings: GlobalConfig = {
           fields: [
             { name: "leadRetentionDays", type: "number", required: true, defaultValue: 730, min: 30, admin: { description: "Leads without health information. 24 months by default; counsel may change it." } },
             { name: "healthLeadRetentionDays", type: "number", required: true, defaultValue: 365, min: 30, admin: { description: "Leads with medication or health indications. 12 months by default." } },
-          ],
-        },
-        {
-          label: "Referral rewards",
-          fields: [
-            { name: "referralProgramEnabled", type: "checkbox", defaultValue: false, admin: { description: "Stays false until every rule row below is filled by counsel with a citation." } },
-            {
-              name: "rewardRules",
-              type: "array",
-              admin: { description: "One row per state × track (+ the Medicare rule set). Null means the engine refuses to issue a reward." },
-              fields: [
-                { type: "row", fields: [
-                  { name: "state", type: "relationship", relationTo: "states", required: true },
-                  { name: "track", type: "select", required: true, options: REFERRAL_TRACKS.map((v) => ({ label: v, value: v })) },
-                  { name: "medicareRuleSet", type: "checkbox", defaultValue: false, admin: { description: "Applies to Medicare-touching referrals: non-cash, nominal, never an enrollment incentive." } },
-                ] },
-                { type: "row", fields: [
-                  { name: "rewardTypeAllowed", type: "select", options: REWARD_TYPES.map((v) => ({ label: v, value: v })) },
-                  { name: "perReferralCap", type: "number", min: 0 },
-                  { name: "perReferrerAnnualCap", type: "number", min: 0 },
-                  { name: "cashEquivalentAllowed", type: "select", options: [{ label: "yes", value: "yes" }, { label: "no", value: "no" }] },
-                ] },
-                { name: "sourceCitation", type: "textarea", admin: { description: "Statute or bulletin, with URL. Required before the row counts as filled." } },
-                { name: "verifiedBy", type: "text" },
-                { name: "verifiedAt", type: "date" },
-              ],
-            },
           ],
         },
       ],

@@ -1,6 +1,7 @@
 import { postgresAdapter } from "@payloadcms/db-postgres";
 import { lexicalEditor } from "@payloadcms/richtext-lexical";
 import { s3Storage } from "@payloadcms/storage-s3";
+import { referralsPlugin } from "@desert-peak/referrals";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { buildConfig } from "payload";
@@ -23,6 +24,7 @@ import { Users } from "./collections/Users.ts";
 import { ComplianceSettings } from "./globals/ComplianceSettings.ts";
 import { SiteSettings } from "./globals/SiteSettings.ts";
 import { env, isLocalDatabase, requireDirectDatabaseUri } from "./env.ts";
+import { sendEmail } from "./lib/email.ts";
 
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -64,6 +66,13 @@ export default buildConfig({
     migrationDir: path.resolve(dirname, "migrations"),
   }),
   plugins: [
+    referralsPlugin({
+      defaultTenantSlug: env.DEFAULT_TENANT_ID,
+      sendEmail,
+      siteUrl: env.NEXT_PUBLIC_SITE_URL,
+      hashSalt: env.REFERRAL_HASH_SALT,
+      cookieDays: Number(env.REFERRAL_COOKIE_DAYS),
+    }),
     s3Storage({
       collections: { media: true },
       bucket: env.S3_BUCKET,

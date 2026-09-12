@@ -1,0 +1,14 @@
+{
+  "name": "@desert-peak/referrals",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Tenant-aware referral engine for Payload 3. Desert Peak is tenant #1; nothing in here names the brand.",
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./engine": "./src/engine/index.ts"
+  },
+  "peerDependencies": {
+    "payload": "3.x"
+  }
+}

@@ -5,11 +5,6 @@ equivalent in the IA. Nothing here is redirected to `/`; a decision is needed.
 
 | Legacy URL | Why unresolved | Proposed target |
 |---|---|---|
-| `/agent-training` | Agent-facing section maps to the Phase 4 partner portal; route not defined yet | `/partners/ (Phase 4)` |
-| `/agents-resource` | Agent-facing section maps to the Phase 4 partner portal; route not defined yet | `/partners/ (Phase 4)` |
-| `/medicare-insurance-prescription-drug-form-2` | Intake forms have no route in the IA; adding /forms/* changes the route count and needs a decision | `/forms/medication-intake/` |
-| `/medication-intake-form` | Intake forms have no route in the IA; adding /forms/* changes the route count and needs a decision | `/forms/medication-intake/` |
-| `/new-client-intake-form` | Intake forms have no route in the IA; adding /forms/* changes the route count and needs a decision | `/forms/new-client-intake/` |
 
 Chains to note: `next.config.ts` still carries the two WordPress `-2` redirects
 pointing at the old scaffold pages; they are removed when collection-driven

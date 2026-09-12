@@ -1,0 +1,30 @@
+[
+  {
+    "title": "New client intake form",
+    "path": "/forms/new-client-intake/",
+    "template": "utility",
+    "legalState": null,
+    "kind": "utility"
+  },
+  {
+    "title": "Client medication intake form",
+    "path": "/forms/medication-intake/",
+    "template": "utility",
+    "legalState": null,
+    "kind": "utility"
+  },
+  {
+    "title": "Partner with Desert Peak",
+    "path": "/partners/",
+    "template": "static",
+    "legalState": null,
+    "kind": "partner-public"
+  },
+  {
+    "title": "Partner portal",
+    "path": "/partners/portal/",
+    "template": "utility",
+    "legalState": null,
+    "kind": "partner-gated"
+  }
+]

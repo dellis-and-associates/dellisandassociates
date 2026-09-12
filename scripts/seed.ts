@@ -90,6 +90,8 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
     key: { field: string; value: string },
     data: Json,
     createOnly: Json = {},
+    /** When true for an existing row, the seed owns it and may overwrite (used for crawl-sourced redirects, whose map is the source of truth). */
+    ownsRow: (existing: Json) => boolean = () => false,
   ): Promise<number> => {
     const c = counts(collection);
     const existing = await lookup(collection, key.field, key.value);
@@ -100,9 +102,13 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
       cache.get(`${collection}.${key.field}`)?.set(key.value, doc as unknown as Json);
       return doc.id as number;
     }
+    const owned = ownsRow(existing);
     const { patch, conflicts } = diff(existing, data);
-    for (const f of conflicts) c.conflictList.push(`${key.value}: ${f}`);
-    c.conflicts += conflicts.length;
+    if (owned) for (const f of conflicts) patch[f.split(".")[0]!] = data[f.split(".")[0]!];
+    else {
+      for (const f of conflicts) c.conflictList.push(`${key.value}: ${f}`);
+      c.conflicts += conflicts.length;
+    }
     if (Object.keys(patch).length) {
       c.updated++;
       if (!opts.dryRun) await payload.update({ collection, id: existing.id as number, data: patch as never, overrideAccess: true, depth: 0 });
@@ -145,10 +151,13 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
   type S = { name: string; slug: string; abbr: string; cities: { name: string; slug: string }[] };
   const states = readJson<S[]>("src/seed-data/states.json");
   const cityFacts = readJson<Record<string, { county: string; sizeBand: string }>>("src/seed-data/city-facts.json");
-  // Department of Insurance links: only the two that resolved (HTTP 200) from the build machine on 2026-09-12.
+  // Department of Insurance links. NV and UT resolved from the build machine on 2026-09-12;
+  // AZ and ID were verified by the client from outside this network the same day (TODO-CLIENT-DATA.md #12, closed).
   const DOI: Record<string, { name: string; url: string }> = {
+    arizona: { name: "Arizona Department of Insurance and Financial Institutions", url: "https://difi.az.gov/" },
     nevada: { name: "Nevada Division of Insurance", url: "https://doi.nv.gov/" },
     utah: { name: "Utah Insurance Department", url: "https://insurance.utah.gov/" },
+    idaho: { name: "Idaho Department of Insurance", url: "https://doi.idaho.gov/" },
   };
   const stateId: Record<string, number> = {};
   if (want("states")) {
@@ -193,6 +202,10 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
       const ls = p.legalState ? stateId[p.legalState] : undefined;
       await upsert("pages", { field: "path", value: p.path }, { template: p.template, ...(ls !== undefined && ls !== DRY_ID ? { legalState: ls } : {}) }, { title: p.title, reviewStatus: "draft", indexWave: "1" });
     });
+    // Routes outside the 1,117 plan (src/seed-data/extra-routes.json): utility routes are noindex by template.
+    for (const r of readJson<Pg[]>("src/seed-data/extra-routes.json")) {
+      await upsert("pages", { field: "path", value: r.path }, { template: r.template }, { title: r.title, reviewStatus: "draft", indexWave: "3" });
+    }
   }
 
   // ── Article and glossary shells ───────────────────────────────────────
@@ -253,7 +266,12 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
     const map: Record<string, string> = {
       "/about-us": "/about/",
       "/contact-us": "/contact/",
-      "/work-with-us": "/careers/",
+      "/work-with-us": "/partners/",
+      "/agents-resource": "/partners/portal/",
+      "/agent-training": "/partners/portal/",
+      "/new-client-intake-form": "/forms/new-client-intake/",
+      "/medication-intake-form": "/forms/medication-intake/",
+      "/medicare-insurance-prescription-drug-form-2": "/forms/medication-intake/",
       "/resources": "/resources/", // same path on the new site: skipped below, never a redirect
       "/insurance-services": "/insurance/",
       "/life-insurance": "/insurance/life-insurance/",
@@ -281,7 +299,8 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
       const target = map[path] ?? (page.status === 308 && page.location ? map[page.location] : undefined);
       if (`${path}/` === target) continue; // same path on the new site (legacy /resources → /resources/): no redirect
       if (target) {
-        await upsert("redirects", { field: "from", value: from }, { to: target, statusCode: "301", source: "legacy-crawl" }, { note: `legacy ${page.status}` });
+        // Crawl-sourced rows follow the map; a row an editor re-sourced as "manual" is left alone.
+        await upsert("redirects", { field: "from", value: from }, { to: target, statusCode: "301", source: "legacy-crawl" }, { note: `legacy ${page.status}` }, (row) => row.source === "legacy-crawl");
         continue;
       }
       if (page.status === 200 || page.status === 308) {
@@ -327,21 +346,66 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
     });
   }
   if (want("compliance-settings")) {
-    const rows = states.flatMap((s) => {
-      const sid = stateId[s.slug];
-      if (sid === undefined || sid === DRY_ID) return [];
-      return [
-        { state: sid, track: "customer", medicareRuleSet: false },
-        { state: sid, track: "partner", medicareRuleSet: false },
-        { state: sid, track: "customer", medicareRuleSet: true },
-      ];
-    });
     await upsertGlobal("compliance-settings", {
       medicareInScope: true,
       medicareTpmoDisclaimer: todo("compliance.medicareTpmoDisclaimer"),
-      referralProgramEnabled: false,
-      ...(rows.length ? { rewardRules: rows } : {}),
     });
+  }
+
+  // ── Referral engine: tenant #1, disabled; programs inactive; every rule row null ──
+  if (want("referrals")) {
+    const tenantId = await upsert("tenants", { field: "slug", value: "desert-peak" }, { name: "Desert Peak Insurance", agencyDisplayName: "Desert Peak Insurance" }, { referralsEnabled: false });
+    if (tenantId !== DRY_ID) {
+      const tracks = ["customer", "partner"] as const;
+      for (const track of tracks) {
+        const c = counts("referral-programs");
+        const found = await payload.find({ collection: "referral-programs", where: { and: [{ tenant: { equals: tenantId } }, { track: { equals: track } }] }, limit: 1, depth: 0, overrideAccess: true });
+        if (found.totalDocs) c.skipped++;
+        else {
+          c.created++;
+          if (!opts.dryRun)
+            await payload.create({
+              collection: "referral-programs",
+              data: { tenant: tenantId, name: `${track === "customer" ? "Customer" : "Partner"} referral program`, track, active: false, terms: [{ version: "1", effectiveFrom: new Date().toISOString(), text: todo(`referrals.terms.${track}.v1`) }], currentTermsVersion: "1" },
+              overrideAccess: true,
+            });
+        }
+      }
+      for (const s of states) {
+        for (const [track, medicare] of [["customer", false], ["partner", false], ["customer", true]] as const) {
+          const c = counts("referral-reward-rules");
+          const found = await payload.find({ collection: "referral-reward-rules", where: { and: [{ tenant: { equals: tenantId } }, { stateAbbr: { equals: s.abbr } }, { track: { equals: track } }, { medicareRuleSet: { equals: medicare } }] }, limit: 1, depth: 0, overrideAccess: true });
+          if (found.totalDocs) c.skipped++;
+          else {
+            c.created++;
+            if (!opts.dryRun) await payload.create({ collection: "referral-reward-rules", data: { tenant: tenantId, stateAbbr: s.abbr, track, medicareRuleSet: medicare }, overrideAccess: true });
+          }
+        }
+      }
+      const c = counts("message-templates");
+      const found = await payload.find({ collection: "message-templates", where: { and: [{ tenant: { equals: tenantId } }, { key: { equals: "referee-opt-in" } }] }, limit: 1, depth: 0, overrideAccess: true });
+      if (found.totalDocs) c.skipped++;
+      else {
+        c.created++;
+        if (!opts.dryRun)
+          await payload.create({
+            collection: "message-templates",
+            data: {
+              tenant: tenantId,
+              key: "referee-opt-in",
+              version: 1,
+              active: true,
+              subject: "{{referrerFirstName}} suggested we reach out",
+              body: "Hi {{refereeFirstName}},\n\n{{referrerFirstName}} thought {{agencyName}} might be useful to you and asked us to get in touch. We will not call or text unless you say yes.\n\nYes, please contact me: {{acceptUrl}}\nNo thanks: {{declineUrl}}\n\nThis is the only message you will receive from us about this. {{agencyName}} is an independent insurance agency, not an insurer.",
+            },
+            overrideAccess: true,
+          });
+      }
+    } else {
+      counts("referral-programs").created += 2;
+      counts("referral-reward-rules").created += states.length * 3;
+      counts("message-templates").created += 1;
+    }
   }
 
   return report;

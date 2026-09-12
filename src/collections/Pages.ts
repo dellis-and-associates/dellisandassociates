@@ -3,7 +3,9 @@ import { adminsOrEditors, reviewedOrStaff } from "../access/index.ts";
 import { reviewFields, seoFields } from "../fields/index.ts";
 import { isNormalizedSlug } from "../lib/slug.ts";
 
-export const PAGE_TEMPLATES = ["home", "static", "quote-hub", "claims-hub", "products-hub", "locations-hub", "carriers-hub", "team-hub", "blog-hub", "legal-static"] as const;
+export const PAGE_TEMPLATES = ["home", "static", "quote-hub", "claims-hub", "products-hub", "locations-hub", "carriers-hub", "team-hub", "blog-hub", "legal-static", "utility"] as const;
+/** Utility routes (intake forms, gated portal entry) are never indexable and never in the sitemap, whatever their wave. */
+export const UTILITY_TEMPLATES: readonly string[] = ["utility"];
 
 const RichTextBlock: Block = { slug: "richText", fields: [{ name: "body", type: "richText", required: true }] };
 const FaqBlock: Block = {
@@ -50,8 +52,17 @@ export const Pages: CollectionConfig = {
   admin: { useAsTitle: "title", group: "Content", defaultColumns: ["title", "path", "template", "reviewStatus", "indexWave"] },
   access: { read: reviewedOrStaff, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   defaultSort: "path",
+  hooks: {
+    beforeChange: [
+      ({ data }) => {
+        data.noindex = UTILITY_TEMPLATES.includes(data?.template);
+        return data;
+      },
+    ],
+  },
   fields: [
     { name: "title", type: "text", required: true },
+    { name: "noindex", type: "checkbox", defaultValue: false, admin: { readOnly: true, position: "sidebar", description: "Set from the template. Utility routes are noindex and excluded from the sitemap regardless of wave." } },
     {
       name: "path",
       type: "text",

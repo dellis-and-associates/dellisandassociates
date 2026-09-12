@@ -31,6 +31,8 @@ live. Against Supabase it is off: change the config, then
 | `pnpm test` | unit suites: slug normalizer fixtures, reserved-slug guard over the data files |
 | `pnpm test:access` | role × collection × operation matrix (300 cases) plus field-level locks, on a throwaway Docker database |
 | `pnpm verify:glossary` | no reviewed glossary term is an orphan; no self-links |
+| `pnpm test:referrals` | engine invariants: no bound→reward path, null rule refusal, consent gate, one opt-in message, fraud reasons, append-only ledger |
+| `pnpm test:tenancy` | two-tenant isolation fixture |
 | `pnpm leads:purge --dry-run` | leads past their retention date (counts only) |
 | `pnpm import:package` | regenerates `src/seed-data/*.json` from the sitemap package |
 | `pnpm seed --dry-run` | reconciliation table (created / updated / skipped / conflicts per collection); `pnpm seed` applies, filling empties only |
@@ -46,6 +48,7 @@ src/access/         access rules (one per intent); src/fields/ shared field fact
 tests/unit/         pure tests; tests/access/ the matrix contract and its suite
 src/env.ts        the only reader of process.env (src/env.public.ts for the browser)
 scripts/          the checks above
+packages/referrals/ the referral engine (Payload plugin, tenant-aware); REFERRAL-COMPLIANCE.md says what counsel must supply
 desert-peak-brand/            design tokens, the only source of design values
 desert-peak-insurance-sitemap/ IA and data files; full-sitemap.xml is a test fixture
 ```
