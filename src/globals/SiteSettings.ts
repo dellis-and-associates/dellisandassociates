@@ -1,4 +1,5 @@
 import type { GlobalConfig } from "payload";
+import { globalAfterChangeRevalidate } from "../hooks/revalidate.ts";
 import { adminsOrEditors, publicRead } from "../access/index.ts";
 
 /** Editor-maintained facts about the agency. Every value starts as a TODO token; see TODO-CLIENT-DATA.md. */
@@ -6,6 +7,7 @@ export const SiteSettings: GlobalConfig = {
   slug: "site-settings",
   admin: { group: "Settings" },
   access: { read: publicRead, update: adminsOrEditors },
+  hooks: { afterChange: [globalAfterChangeRevalidate] },
   fields: [
     { type: "row", fields: [
       { name: "name", type: "text", required: true, defaultValue: "Desert Peak Insurance" },

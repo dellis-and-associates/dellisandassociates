@@ -36,12 +36,20 @@ live. Against Supabase it is off: change the config, then
 | `pnpm leads:purge --dry-run` | leads past their retention date (counts only) |
 | `pnpm import:package` | regenerates `src/seed-data/*.json` from the sitemap package |
 | `pnpm seed --dry-run` | reconciliation table (created / updated / skipped / conflicts per collection); `pnpm seed` applies, filling empties only |
+| `pnpm verify:tokens` | zero hardcoded design values in app/, src/, packages/ |
+| `pnpm verify:routes` · `verify:seo` · `verify:redirects` · `verify:compliance` · `verify:uniqueness` · `verify:parity` | the site-level gates, against the running build |
+| `pnpm fonts:subset` · `fonts:fallbacks` | regenerate `public/fonts/` from the brand package (axis-range subsets) and the metric-matched fallback faces |
+| `pnpm test:a11y` · `test:visual` · `test:nojs` · `test:quote-flow` · `lhci` | Playwright and Lighthouse CI against the running build (`pnpm build && pnpm start`) |
+| `pnpm test:revalidate` | a product edit fans out to dependent routes by tag |
+| `pnpm generate:content --collection=glossary-terms --batch=12` | writes authored drafts (`scripts/lib/drafts/`) into the shells, resumable |
+| `pnpm ux:audit --base=<url>` | throttled screenshots + axe per template into `docs/ux-audit/` |
 | `pnpm typecheck && pnpm lint && pnpm build` | the usual |
 
 ## Layout
 
 ```
-app/(frontend)/   public site (Phase 5 rebuilds this)
+app/(frontend)/   public site: templates in src/components/templates, design system in src/components/ui, gallery at /design-system
+proxy.ts          the redirect map (301/410) from the Redirects collection
 app/(payload)/    Payload admin + REST/GraphQL routes (generated, do not edit)
 src/payload.config.ts, src/collections/, src/globals/, src/migrations/
 src/access/         access rules (one per intent); src/fields/ shared field factories; src/lib/ slug + roles

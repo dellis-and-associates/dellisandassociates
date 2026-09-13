@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { adminsOrEditors, publicRead } from "../access/index.ts";
 import { hasTodo, slugField } from "../fields/index.ts";
 
@@ -38,6 +39,8 @@ export const Cities: CollectionConfig = {
   access: { read: publicRead, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   defaultSort: "name",
   hooks: {
+    afterChange: [afterChangeRevalidate],
+    afterDelete: [afterDeleteRevalidate],
     beforeChange: [
       ({ data }) => {
         const facts = (data?.cityFacts ?? {}) as Record<string, unknown>;

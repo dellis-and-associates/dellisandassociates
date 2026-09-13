@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { adminsOrEditors, reviewedOrStaff } from "../access/index.ts";
 import { reviewFields, seoFields, slugField } from "../fields/index.ts";
 
@@ -15,6 +16,7 @@ export const Products: CollectionConfig = {
   },
   access: { read: reviewedOrStaff, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   defaultSort: "name",
+  hooks: { afterChange: [afterChangeRevalidate], afterDelete: [afterDeleteRevalidate] },
   fields: [
     { name: "name", type: "text", required: true },
     slugField("name"),

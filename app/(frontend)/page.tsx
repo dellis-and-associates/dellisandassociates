@@ -1,333 +1,84 @@
 import Link from "next/link";
-import { Monogram } from "@/components/Logo";
-import {
-  CanopyIcon,
-  CrossIcon,
-  ReviewIcon,
-  StaircaseIcon,
-} from "@/components/Icons";
-import RecognitionGallery from "@/components/RecognitionGallery";
-import {
-  CarrierBar,
-  CtaBand,
-  Section,
-  SectionHead,
-} from "@/components/Sections";
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
-import { site } from "@/lib/site";
+import { getPage, getProducts, getSiteSettings, getStates } from "@/src/lib/content";
+import { productPath, statePath } from "@/src/lib/routes";
+import { isIndexable, jsonLd, orgJsonLd, pageMetadata } from "@/src/lib/seo";
+import { PageBlocks } from "@/src/components/site/page-blocks";
+import { StrataRule } from "@/src/components/ui/misc";
+import { TableWrap, td, th } from "@/src/components/ui/table";
 
-const testimonials = [
-  {
-    quote:
-      "My experience with D Ellis & Associates during a recent claim was impressive. They processed my claim swiftly, and their adjuster was friendly and helpful throughout the process. It's reassuring to know they have your back when you need them.",
-    name: "Meliza",
-  },
-  {
-    quote:
-      "One thing I love about D Ellis & Associates is their transparent policies. There are no hidden fees or surprises. They make it easy to understand what you're covered for, and that peace of mind is invaluable.",
-    name: "Jacob",
-  },
-  {
-    quote:
-      "I switched to D Ellis & Associates because of their stellar reputation in the industry. They've been around for decades and have a track record of taking care of their customers. I can see why they're so highly regarded.",
-    name: "Amelia",
-  },
-];
+export const revalidate = false;
 
-const faqs = [
-  {
-    value: "life-policy",
-    question:
-      "How can I find the right life insurance policy for my family's needs?",
-    answer: [
-      "Start from your obligations, not a product: what income would need replacing, what debts would need paying, and what future costs — like education — you want covered. Your health, age, and budget then determine whether term, whole, or indexed universal life fits best.",
-      "A licensed advisor can compare quotes across carriers so the policy is sized to your actual numbers. That comparison is exactly what our no-fee review does.",
-    ],
-  },
-  {
-    value: "health-costs",
-    question: "What factors affect my health insurance costs?",
-    answer: [
-      "Several factors influence health insurance costs, including your age, location, smoking status, the level of coverage you choose, and any pre-existing health conditions. You can often save on premiums by selecting a plan with a higher deductible or by using in-network healthcare providers.",
-      "Additionally, maintaining a healthy lifestyle can lead to lower long-term healthcare expenses and potentially lower insurance costs.",
-    ],
-  },
-];
+export async function generateMetadata() {
+  const page = await getPage("/");
+  return pageMetadata({ title: "Desert Peak Insurance — independent, AZ · NV · UT · ID", description: page?.seo?.description ?? "We compare the carriers we represent across auto, home, life, Medicare and commercial lines, and tell you what we find. The analysis costs nothing.", path: "/", indexable: page ? isIndexable(page) : false });
+}
 
-export default function Home() {
+export default async function Home() {
+  const [page, products, states, site] = await Promise.all([getPage("/"), getProducts(), getStates(), getSiteSettings()]);
+  const personal = products.filter((p) => p.category === "Personal" && !p.parent);
+  const commercial = products.filter((p) => p.category === "Commercial");
+  const org = orgJsonLd(site, states.map((s) => s.name));
   return (
     <>
-      {/* Hero */}
-      <section className="border-b border-border">
-        <div className="container-site grid min-h-[480px] grid-cols-1 min-[961px]:grid-cols-[7fr_5fr]">
-          <div className="py-16 pr-0 min-[961px]:py-21 min-[961px]:pr-12">
-            <span className="eyebrow mb-3.5">
-              Independent insurance advisory
-            </span>
-            <h1 className="heading-display mb-5 max-w-[560px]">
-              The right coverage is a{" "}
-              <span className="border-b-4 border-copper pb-0.5">finding</span>,
-              not a pitch.
-            </h1>
-            <p className="mb-7.5 max-w-[460px] text-slate">
-              Licensed advisors compare the market across life, Medicare,
-              health, and annuities — then walk you through the math. The
-              analysis costs you nothing.
-            </p>
-            <div className="mb-8.5 flex flex-wrap gap-3">
-              <Button asChild size="lg">
-                <Link href="/contact-us">Book a policy review</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <a href={site.phoneHref}>Call {site.phone}</a>
-              </Button>
-            </div>
-            <p className="max-w-[460px] border-t border-border pt-3.5 text-[13px] tracking-[0.02em] text-stone">
-              Independent&ensp;·&ensp;Licensed in UT + 12 states&ensp;·&ensp;No
-              fee for advisory
-            </p>
-          </div>
-          <div className="relative flex items-end overflow-hidden bg-evergreen p-8 max-[960px]:min-h-[220px]">
-            <Monogram
-              size={300}
-              color="#F7F5F0"
-              className="absolute -bottom-14 -right-14 opacity-[0.07]"
-            />
-            <p className="relative max-w-[300px] text-[13px] leading-relaxed text-sage-light">
-              <strong className="mb-1.5 block text-[15px] font-medium text-bone">
-                D. Ellis, principal advisor
-              </strong>
-              Never a fee for our service — schedule a time and a licensed
-              agent will provide a comprehensive analysis of your family&rsquo;s
-              needs.
-            </p>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(org)} />
+      {/* The one bold element: the strata band hero. A statement, no photograph. */}
+      <section className="bg-brand text-brand-ink">
+        <div className="mx-auto grid max-w-measure-page gap-6 px-4 py-16 md:px-8 md:py-24">
+          <StrataRule className="bg-brand-ink" />
+          <h1 className="display max-w-measure-wide text-brand-ink">{page?.lede && !page.lede.includes("{{TODO") ? page.title : "Compared across carriers. Explained with the math."}</h1>
+          <p className="lead max-w-measure-body text-brand-ink">We compare your current policies against the carriers we represent in {states.map((s) => s.name).join(", ")}. It costs nothing, and if what you have is the best option, we say so.</p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/quote/" className="inline-flex min-h-11 items-center rounded-control bg-brand-ink px-5 font-sans text-small font-semibold text-brand no-underline hover:bg-surface">Request the analysis</Link>
+            {site.phoneHref ? <a href={site.phoneHref} className="inline-flex min-h-11 items-center rounded-control border border-brand-ink px-5 font-sans text-small font-semibold text-brand-ink no-underline tabular hover:bg-brand-hover">Call {site.phone}</a> : null}
           </div>
         </div>
       </section>
-
-      <CarrierBar />
-
-      {/* Welcome */}
-      <Section>
-        <div className="grid grid-cols-1 items-start gap-9 min-[961px]:grid-cols-2 min-[961px]:gap-16">
-          <div>
-            <span className="eyebrow mb-2">Welcome</span>
-            <h2 className="heading-2">
-              Welcome to {site.legalName}.
-            </h2>
-          </div>
-          <div className="text-slate">
-            <p>
-              All of us here at Ellis &amp; Associates are here to help you
-              navigate the complicated process of providing the quality
-              financial protection you need at an affordable cost. This process
-              does not need to be done alone — and there is never a fee for our
-              service.
-            </p>
-            <p className="mt-4">
-              Please schedule a time and one of our licensed agents will be in
-              contact to provide a comprehensive analysis of yours and your
-              family&rsquo;s needs.
-            </p>
-            <div className="mt-7">
-              <Button asChild variant="outline" size="lg">
-                <Link href="/about-us">Know more</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* Coverage bento */}
-      <Section>
-        <SectionHead
-          eyebrow="Coverage"
-          title="One review, the whole market."
-        />
-        <div className="grid grid-cols-1 gap-4 min-[681px]:grid-cols-2">
-          <Card asChild className="group gap-0 p-7 min-[681px]:row-span-2">
-            <Link href="/life-insurance">
-              <CanopyIcon />
-              <h3 className="mb-1.5 mt-3.5 text-base font-medium">
-                Life insurance
-              </h3>
-              <p className="mb-3.5 text-sm leading-relaxed text-slate">
-                Protection sized to your actual obligations — mortgage, income,
-                education — not a round number.
-              </p>
-              <p className="mb-auto text-[13px] text-stone">
-                Term&ensp;·&ensp;Whole&ensp;·&ensp;Indexed universal
-              </p>
-              <span className="mt-4 text-sm font-medium text-copper group-hover:underline">
-                Compare the market →
-              </span>
-            </Link>
-          </Card>
-
-          <Card asChild className="gap-0 p-5.5">
-            <Link href="/medicare">
-              <span className="flex flex-wrap items-center justify-between gap-3">
-                <h3 className="text-[15px] font-medium">Medicare</h3>
-                <Badge variant="secondary" className="uppercase tracking-[0.08em]">
-                  Circle of Champions
-                </Badge>
-              </span>
-              <p className="mt-2 text-sm leading-relaxed text-slate">
-                Four parts, one decision. We handle enrollment windows and plan
-                spread — supplements, Part D, and Medicare Advantage.
-              </p>
-            </Link>
-          </Card>
-
-          <div className="grid grid-cols-1 gap-4 min-[521px]:grid-cols-2">
-            <Card asChild className="gap-0 p-4.5">
-              <Link href="/annuities">
-                <h3 className="mb-1 text-sm font-medium">Annuities</h3>
-                <p className="text-[13px] text-slate">
-                  Contractual income, in steps.
-                </p>
-              </Link>
-            </Card>
-            <Card asChild className="gap-0 p-4.5">
-              <Link href="/health-insurance">
-                <h3 className="mb-1 text-sm font-medium">Health</h3>
-                <p className="text-[13px] text-slate">
-                  Individual and family plans.
-                </p>
-              </Link>
-            </Card>
-          </div>
-        </div>
-        <p className="mt-6 text-sm text-stone">
-          Also:{" "}
-          <Link href="/whole-life-insurance" className="font-medium text-copper hover:underline">
-            Whole life
-          </Link>
-          ,{" "}
-          <Link href="/term-life-insurance" className="font-medium text-copper hover:underline">
-            Term life
-          </Link>
-          ,{" "}
-          <Link href="/iul" className="font-medium text-copper hover:underline">
-            Indexed universal life
-          </Link>
-          , and{" "}
-          <Link href="/dental-and-vision-insurance" className="font-medium text-copper hover:underline">
-            Dental &amp; vision
-          </Link>
-          .
-        </p>
-      </Section>
-
-      {/* Policy review */}
-      <Section>
-        <div className="grid grid-cols-1 items-start gap-9 min-[961px]:grid-cols-2 min-[961px]:gap-16">
-          <div>
-            <span className="eyebrow mb-2">The policy review</span>
-            <h2 className="heading-2">
-              Coverage should keep up with your life.
-            </h2>
-          </div>
-          <div className="text-slate">
-            <div className="mb-5 flex gap-4">
-              <ReviewIcon size={30} />
-              <StaircaseIcon size={30} />
-              <CrossIcon size={30} />
-            </div>
-            <p>
-              A policy discussion appointment is a valuable opportunity to
-              ensure that your insurance coverage aligns with your current
-              needs and circumstances. We recommend scheduling one during major
-              life changes — a new home, a new child, a new job, or
-              approaching retirement.
-            </p>
-            <div className="mt-7">
-              <Button asChild size="lg">
-                <Link href="/contact-us">Get appointment</Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* FAQ */}
-      <Section>
-        <SectionHead eyebrow="Questions" title="Asked and answered." />
-        <Accordion type="single" collapsible className="max-w-[760px]">
-          {faqs.map((faq) => (
-            <AccordionItem key={faq.value} value={faq.value}>
-              <AccordionTrigger className="py-5.5 text-lg font-medium hover:no-underline **:data-[slot=accordion-trigger-icon]:text-copper">
-                {faq.question}
-              </AccordionTrigger>
-              <AccordionContent className="max-w-[680px] pb-6 text-base text-slate">
-                {faq.answer.map((p, i) => (
-                  <p key={i} className={i > 0 ? "mt-3" : ""}>
-                    {p}
-                  </p>
+      <div className="mx-auto grid max-w-measure-page gap-16 px-4 py-16 md:px-8">
+        <section aria-labelledby="lines" className="grid gap-6">
+          <h2 id="lines">What we write</h2>
+          <TableWrap caption="Insurance lines by category">
+            <table>
+              <thead><tr><th scope="col" className={th}>Personal</th><th scope="col" className={th}>Commercial</th></tr></thead>
+              <tbody>
+                {Array.from({ length: Math.max(personal.length, commercial.length) }, (_, i) => (
+                  <tr key={i}>
+                    <td className={td}>{personal[i] ? <Link href={productPath(personal[i])} className="ui-link font-semibold text-ink">{personal[i].name}</Link> : null}{personal[i]?.summary && !personal[i].summary?.includes("{{TODO") ? <span className="block text-ink-muted">{personal[i].summary}</span> : null}</td>
+                    <td className={td}>{commercial[i] ? <Link href={productPath(commercial[i])} className="ui-link font-semibold text-ink">{commercial[i].name}</Link> : null}{commercial[i]?.summary && !commercial[i].summary?.includes("{{TODO") ? <span className="block text-ink-muted">{commercial[i].summary}</span> : null}</td>
+                  </tr>
                 ))}
-              </AccordionContent>
-            </AccordionItem>
-          ))}
-        </Accordion>
-      </Section>
-
-      {/* Testimonials */}
-      <Section>
-        <SectionHead eyebrow="Clients" title="What people tell us." />
-        <div className="grid grid-cols-1 gap-4 min-[961px]:grid-cols-3">
-          {testimonials.map((t) => (
-            <Card key={t.name} asChild className="gap-0 p-7">
-              <figure>
-                <div
-                  className="mb-3.5 text-sm tracking-[3px] text-copper"
-                  aria-label="Five stars"
-                >
-                  ★★★★★
-                </div>
-                <blockquote className="flex-1 text-[15px] leading-relaxed text-slate">
-                  {t.quote}
-                </blockquote>
-                <figcaption className="mt-4.5 text-sm font-medium">
-                  {t.name}
-                </figcaption>
-              </figure>
-            </Card>
-          ))}
-        </div>
-      </Section>
-
-      {/* Recognition */}
-      <Section>
-        <SectionHead
-          eyebrow="Recognition"
-          title="Circle of Champions, plan year 2025."
-          body="Awarded by UnitedHealthcare for excellence in serving Medicare clients."
-        />
-        <RecognitionGallery
-          items={[
-            {
-              src: "/certificates/coc-certificate-py2025.jpg",
-              alt: "Circle of Champions certificate, plan year 2025",
-              caption: "PY2025 Circle of Champions certificate",
-            },
-            {
-              src: "/certificates/coc-appreciation-letter-py2025.jpg",
-              alt: "Circle of Champions appreciation letter, plan year 2025",
-              caption: "PY2025 appreciation letter",
-            },
-          ]}
-        />
-      </Section>
-
-      <CtaBand />
+              </tbody>
+            </table>
+          </TableWrap>
+        </section>
+        <section aria-labelledby="states" className="grid gap-6">
+          <h2 id="states">Where we are licensed</h2>
+          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {states.map((s) => (
+              <li key={s.id} className="rounded-surface border border-border bg-surface-raised p-5">
+                <Link href={statePath(s)} className="ui-link font-sans text-title-sm text-ink">{s.name}</Link>
+                <p className="mt-1 font-sans text-small text-ink-muted">{s.doi?.url && !s.doi.url.includes("{{TODO") ? <a href={s.doi.url} rel="noopener">{s.doi.name}</a> : "State requirements and licensing"}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+        <section aria-labelledby="how" className="grid gap-6 md:grid-cols-3">
+          <h2 id="how" className="md:col-span-3">How the analysis works</h2>
+          <ol className="contents">
+            {[
+              ["Send what you have", "Your current declarations pages, or the answers in the quote flow. Twenty minutes at most."],
+              ["We compare", "Limits, deductibles and exclusions across the carriers we represent, line by line."],
+              ["You get the finding", "A recommendation with the math shown. If keeping what you have is right, that is the answer."],
+            ].map(([t, b], i) => (
+              <li key={t} className="grid gap-2 border-t-2 border-ink pt-4">
+                <span className="font-sans text-caption font-medium text-ink-muted tabular">Step {i + 1}</span>
+                <h3 className="font-sans text-title-sm">{t}</h3>
+                <p className="font-sans text-small text-ink-muted">{b}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+        <PageBlocks layout={page?.layout} />
+      </div>
     </>
   );
 }

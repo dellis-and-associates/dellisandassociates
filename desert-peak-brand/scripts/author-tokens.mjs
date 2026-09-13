@@ -155,10 +155,10 @@ const radius = {
 const shadowColor = "oklch(24% 0.008 75)"; // basalt
 const shadow = {
   $description: "Elevation ladder. Warm-tinted; a black shadow on a caliche page looks like dirt.",
-  0: { $type: "shadow", $value: [{ color: "oklch(24% 0.008 75 / 0.06)", offsetX: "0px", offsetY: "1px", blur: "2px", spread: "0px" }], $description: "Resting cards, table containers." },
-  1: { $type: "shadow", $value: [{ color: "oklch(24% 0.008 75 / 0.08)", offsetX: "0px", offsetY: "2px", blur: "6px", spread: "-1px" }, { color: "oklch(24% 0.008 75 / 0.05)", offsetX: "0px", offsetY: "1px", blur: "2px", spread: "0px" }], $description: "Hover on interactive cards, dropdown menus." },
-  2: { $type: "shadow", $value: [{ color: "oklch(24% 0.008 75 / 0.12)", offsetX: "0px", offsetY: "8px", blur: "20px", spread: "-4px" }, { color: "oklch(24% 0.008 75 / 0.06)", offsetX: "0px", offsetY: "2px", blur: "6px", spread: "-1px" }], $description: "Popovers, sticky headers." },
-  3: { $type: "shadow", $value: [{ color: "oklch(24% 0.008 75 / 0.18)", offsetX: "0px", offsetY: "20px", blur: "48px", spread: "-8px" }, { color: "oklch(24% 0.008 75 / 0.08)", offsetX: "0px", offsetY: "8px", blur: "20px", spread: "-4px" }], $description: "Modals and drawers." },
+  0: { $type: "shadow", $value: [{ color: "oklch(24% 0.010 75 / 0.06)", offsetX: "0px", offsetY: "1px", blur: "2px", spread: "0px" }], $description: "Resting cards, table containers." },
+  1: { $type: "shadow", $value: [{ color: "oklch(24% 0.010 75 / 0.08)", offsetX: "0px", offsetY: "2px", blur: "6px", spread: "-1px" }, { color: "oklch(24% 0.010 75 / 0.05)", offsetX: "0px", offsetY: "1px", blur: "2px", spread: "0px" }], $description: "Hover on interactive cards, dropdown menus." },
+  2: { $type: "shadow", $value: [{ color: "oklch(24% 0.010 75 / 0.12)", offsetX: "0px", offsetY: "8px", blur: "20px", spread: "-4px" }, { color: "oklch(24% 0.010 75 / 0.06)", offsetX: "0px", offsetY: "2px", blur: "6px", spread: "-1px" }], $description: "Popovers, sticky headers." },
+  3: { $type: "shadow", $value: [{ color: "oklch(24% 0.010 75 / 0.18)", offsetX: "0px", offsetY: "20px", blur: "48px", spread: "-8px" }, { color: "oklch(24% 0.010 75 / 0.08)", offsetX: "0px", offsetY: "8px", blur: "20px", spread: "-4px" }], $description: "Modals and drawers." },
 };
 
 const motion = {

@@ -132,6 +132,12 @@ when `NODE_ENV=development` and the connection string points at localhost
 (the Docker database). There is no environment variable that could leave push
 on against Supabase by mistake.
 
+**Pool size is a property of the host.** `max: 2` is right for a Vercel
+instance (one request at a time, one client held by the adapter). A
+long-running `next start` behind a crawler serves many first-request ISR
+renders at once and starved on 2 during `verify:routes` (60 s page waits),
+so non-Vercel runtimes get 10. Measured, not guessed.
+
 **Runtime and migrations use different connection strings from one config.**
 `PAYLOAD_MIGRATING=true` (set by the `migrate:*` scripts, never by hand)
 switches the adapter to `PAYLOAD_DATABASE_URI_DIRECT` with a wider pool.
@@ -322,3 +328,139 @@ and reserves `/partners/` and `/partners/portal/`.
 **Ledger reversals say what they reverse.** `reversesType` distinguishes
 voiding an earned reward from clawing back an issued one, so liability and
 annual totals stay correct in both directions.
+
+## Phase 5
+
+**The frontend is server components; client JavaScript exists on four
+surfaces only.** Forms (a `useActionState` wrapper so a validation error
+re-renders in place with the typed values; without JavaScript the same form
+posts natively and the server action re-renders the page), the quote flow
+(same pattern), the referral form, and a 1 KB vitals beacon loaded after
+idle. Content routes ship the framework runtime and nothing else. The
+runtime itself is the floor the budget can reach; the measured number is in
+`BUILD-REPORT.md`.
+
+**Navigation is `<details>`.** The product and location menus and the phone
+menu are native disclosures, so they open without JavaScript and the URL is
+the state everywhere else (tabs are links).
+
+**Indexability is structural, not editorial.** A route is indexable only
+when its document is `reviewed`, its wave is 1, it is not a utility route,
+and (for city pages) every `CityFacts` field is filled. `noindex` is written
+by `pageMetadata` from those facts; the sitemap reads the same manifest.
+Consequence: until a licensed person reviews documents, the sitemap holds
+only the four state hubs. That is the point.
+
+**Titles are absolute.** The layout template's "— Desert Peak Insurance"
+suffix pushed most titles past 60 characters; `pageMetadata` sets
+`title.absolute`, and only the home title names the brand.
+
+**Glossary `h1`s read "Term, defined".** Seven glossary terms share a name
+with a product (term life, whole life, …); the suffix keeps every `h1` and
+`<title>` unique across the route set without inventing a different word.
+
+**The redirect map is served by `proxy.ts`.** A page component cannot emit
+a 301 or a 410 with the right status, so the one piece of edge logic on the
+site reads the Redirects collection through the public REST endpoint, caches
+it per instance for ten minutes, and answers with real codes. `next.config`
+carries no redirects.
+
+**Metric-compatible font fallbacks are generated, not typed.**
+`scripts/font-fallbacks.mts` computes `size-adjust` and the ascent, descent
+and line-gap overrides from `@capsizecss/metrics` for Arial and Georgia
+against Archivo and Source Serif 4, so the swap does not shift layout. Two
+files load on a page without italics; the italic faces are declared and
+fetched only when italic text renders.
+
+**Fonts are subset to the axis ranges the site renders; the body face is
+`font-display: optional`.** The brand files are Latin subsets already, but
+each carries its full variable axes (Archivo width 62–125 %, weight 100–900;
+Source Serif 4 optical size 8–60, weight 200–900). The tokens use width
+100–112 % and weights 400–700, so `scripts/font-subset.mts` cuts
+`public/fonts/` to those ranges (Archivo 91 → 50 KB, Source Serif 4 193 →
+133 KB; deterministic, same glyph outlines, OFL 1.1 permits it). The serif's
+optical-size axis is kept whole: clamping it to body sizes changed glyph
+widths in the display specimen and at print sizes, which the visual baseline
+caught. Archivo, the face of every `h1`, is preloaded and swaps
+in. The serif is `optional`: on a first uncached visit Chrome uses it only if
+it arrives within the block period, otherwise the page keeps the
+metric-matched Georgia fallback and caches the font for the next navigation.
+Measured on the coverage template, the largest paint was waiting on the serif
+(render delay 3.8 s of a 4.2 s LCP on simulated Slow 4G, because the serif
+shared bandwidth with the framework runtime). Trade-off recorded: first-visit
+body copy may render in the fallback. Reversal is one word in `fonts.css`.
+
+**Lighthouse: accessibility and best practices at 100, SEO audit by
+audit, performance with a regression floor of 70 and the unmet timing
+budgets as warnings.** The 100/100/100/100 floor is not met for performance
+(measured 92–96, median 95, on 22 templates; LCP 2.6–3.0 s
+against the 1.8 s target) and the numbers are in
+`BUILD-REPORT.md`. The gap is
+structural: the framework runtime on a content page is ~145 KB gzipped
+against the 60 KB target, and on simulated Slow 4G with 4× CPU throttling
+first paint lands near 2 s before any font or script choice. The
+per-route-group budgets in `PERFORMANCE-BUDGET.json` are enforced through
+Lighthouse CI's assertion matrix because Lighthouse 12 removed its budget
+audits; the LCP budget row (1.8 s) fails today and is kept as the target,
+not relaxed. The SEO category is asserted by its individual audits because
+`is-crawlable` (4/13 of the score) fails on every non-production host by
+design; `verify:seo` covers indexability. Reaching 100 on performance means
+removing the runtime from content routes (a static export of the content
+tree, or partial hydration), which is a framework decision to raise with the
+client, not a tuning task.
+
+**Save-and-resume for the quote flow is server-side.** A `quote-sessions`
+row keyed by an httpOnly cookie, seven-day expiry, purged by `leads:purge`.
+A cookie of the answers themselves would hit the 4 KB limit on a two-vehicle
+household and would carry regulated data in the browser.
+
+**A missing Turnstile token does not lose a lead.** Without JavaScript there
+is no token; the lead is saved with the bot-check result recorded and a
+review note, because a lost lead costs more than a reviewed one. Referral
+submissions are fraud-sensitive and are rejected instead, with a reason.
+
+**Customer referrers sign in with a Supabase magic link (Project A); partners
+sign in with a Payload account.** Two tracks, two auth systems, on purpose:
+a client should never need a password, and a partner is a `Users` row the
+office manages with a role.
+
+**Spanish is a raised decision, not an assumption.** Strings are plain React;
+a locale layer touches components, not routes.
+
+## Phase 6
+
+**Tags, never paths.** `src/hooks/revalidate.ts` maps every collection to
+its tags; `src/lib/content.ts` caches every read under the same tags with
+`unstable_cache`. A product edit invalidates `product:{slug}` plus the
+`products` list; a state edit also invalidates `cities`; a compliance edit
+invalidates every content tag. `pnpm test:revalidate` proves the fan-out
+against the running site.
+
+**Prerender wave 1, ISR the rest.** `generateStaticParams` returns the wave-1
+insurance routes (hubs, state hubs, top-30 city pages) and the reviewed
+wave-1 articles and terms; everything else renders on first request with
+`dynamicParams` and stays cached until a tag changes. The measured build:
+see `BUILD-REPORT.md`. Portals, the quote flow and search are
+`force-dynamic`.
+
+## Phase 7
+
+**Local on Docker, preview on a Supabase branch, production migrations in
+CI before deploy.** `.github/workflows/ci.yml` runs the Definition of done
+against a Postgres 17 service with `.env.test`, then `deploy-migrations`
+applies committed migrations over the direct connection on `main` before
+Vercel builds. `nightly.yml` purges expired leads and quote sessions and
+takes a logical dump of `payload_cms`; the upload target needs a backup
+bucket secret the client has not created yet.
+
+**Secrets live in the deployment environment only.** `.env` is ignored;
+`.env.example` and `.env.test` hold nothing secret; CI references
+`secrets.*` by the same names.
+
+**Error reporting is optional and scrubbed.** `ERROR_REPORTING_DSN` is
+unset; when a provider is chosen, the scrubber in `src/lib/email.ts`'s
+sibling (to be added with the SDK) must strip lead data before the first
+event ships. Nothing in the codebase logs a lead's fields today.
+
+**PITR is a plan-tier setting on Supabase, not a repo artifact.** Recorded
+here as a go-live check alongside the Turnstile keys.

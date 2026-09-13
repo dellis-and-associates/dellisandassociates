@@ -81,6 +81,8 @@ export interface Config {
     redirects: Redirect;
     forms: Form;
     leads: Lead;
+    'quote-sessions': QuoteSession;
+    'rum-samples': RumSample;
     tenants: Tenant;
     'referral-programs': ReferralProgram;
     'referral-reward-rules': ReferralRewardRule;
@@ -110,6 +112,8 @@ export interface Config {
     redirects: RedirectsSelect<false> | RedirectsSelect<true>;
     forms: FormsSelect<false> | FormsSelect<true>;
     leads: LeadsSelect<false> | LeadsSelect<true>;
+    'quote-sessions': QuoteSessionsSelect<false> | QuoteSessionsSelect<true>;
+    'rum-samples': RumSamplesSelect<false> | RumSamplesSelect<true>;
     tenants: TenantsSelect<false> | TenantsSelect<true>;
     'referral-programs': ReferralProgramsSelect<false> | ReferralProgramsSelect<true>;
     'referral-reward-rules': ReferralRewardRulesSelect<false> | ReferralRewardRulesSelect<true>;
@@ -1149,6 +1153,43 @@ export interface Lead {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quote-sessions".
+ */
+export interface QuoteSession {
+  id: number;
+  token: string;
+  step: number;
+  data:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  expiresAt: string;
+  lead?: (number | null) | Lead;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rum-samples".
+ */
+export interface RumSample {
+  id: number;
+  metric: 'CLS' | 'INP' | 'LCP' | 'TTFB' | 'FCP';
+  value: number;
+  rating: 'good' | 'needs-improvement' | 'poor';
+  path: string;
+  navigationType?: string | null;
+  device?: ('mobile' | 'desktop') | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "referral-programs".
  */
 export interface ReferralProgram {
@@ -1542,6 +1583,14 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'leads';
         value: number | Lead;
+      } | null)
+    | ({
+        relationTo: 'quote-sessions';
+        value: number | QuoteSession;
+      } | null)
+    | ({
+        relationTo: 'rum-samples';
+        value: number | RumSample;
       } | null)
     | ({
         relationTo: 'tenants';
@@ -2129,6 +2178,33 @@ export interface LeadsSelect<T extends boolean = true> {
       };
   notes?: T;
   retainUntil?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "quote-sessions_select".
+ */
+export interface QuoteSessionsSelect<T extends boolean = true> {
+  token?: T;
+  step?: T;
+  data?: T;
+  expiresAt?: T;
+  lead?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "rum-samples_select".
+ */
+export interface RumSamplesSelect<T extends boolean = true> {
+  metric?: T;
+  value?: T;
+  rating?: T;
+  path?: T;
+  navigationType?: T;
+  device?: T;
   updatedAt?: T;
   createdAt?: T;
 }

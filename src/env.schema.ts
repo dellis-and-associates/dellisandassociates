@@ -132,9 +132,10 @@ export const schema = {
     validate: (v) => (["local", "preview", "production"].includes(v) ? null : "must be local, preview or production"),
   },
 
-  // Real-user monitoring (optional)
+  // Real-user monitoring (optional). RUM_ENDPOINT is where the beacon posts; on this site it is our own /api/rum.
   RUM_ENDPOINT: { required: false, degrade: "RUM_ENDPOINT is unset; Core Web Vitals will not be collected." },
   RUM_WRITE_KEY: { required: false },
+  NEXT_PUBLIC_RUM_ENABLED: { required: false },
 
   // Error reporting (optional)
   ERROR_REPORTING_DSN: { required: false, degrade: "ERROR_REPORTING_DSN is unset; errors stay in server logs." },

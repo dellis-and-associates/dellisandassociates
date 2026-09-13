@@ -11,7 +11,22 @@
     "build:tokens": "node scripts/build-tokens.ts",
     "audit:contrast": "node scripts/audit-contrast.ts",
     "build": "pnpm build:tokens && pnpm audit:contrast",
-    "check": "pnpm build && git diff --exit-code -- brand/dist brand/brand-sheet.html brand/CONTRAST-REPORT.md"
+    "check": "pnpm build && git diff --exit-code -- brand/dist brand/brand-sheet.html brand/CONTRAST-REPORT.md",
+    "lock:identity": "node scripts/lock-identity.ts",
+    "verify:token-lock": "node scripts/verify-token-lock.ts",
+    "import:glossary": "node scripts/import-glossary.ts",
+    "build:social": "node scripts/build-social.ts",
+    "build:signatures": "node scripts/build-signatures.ts",
+    "build:decks": "node scripts/build-decks.ts",
+    "build:web": "node scripts/build-web.ts",
+    "build:print": "node scripts/build-print.ts",
+    "build:collateral": "node scripts/build-collateral.ts",
+    "build:inventory": "node scripts/build-inventory.ts",
+    "check:banned-phrases": "node scripts/check-banned-phrases.ts",
+    "check:medicare": "node scripts/check-medicare.ts",
+    "preflight:print": "node scripts/preflight-print.ts",
+    "build:showcase": "node scripts/build-showcase.ts",
+    "collateral": "pnpm verify:token-lock && pnpm build:collateral && pnpm audit:contrast && pnpm check:banned-phrases && pnpm check:medicare && pnpm preflight:print && pnpm build:showcase && pnpm verify:token-lock"
   },
   "files": [
     "brand"
@@ -23,5 +38,15 @@
     "./theme.css": "./brand/dist/theme.css",
     "./fonts.css": "./brand/dist/fonts.css",
     "./design-tokens.json": "./brand/design-tokens.json"
+  },
+  "devDependencies": {
+    "@types/pdfkit": "^0.17.6",
+    "fontkit": "^2.0.4",
+    "jszip": "^3.10.2",
+    "pdf-lib": "^1.17.1",
+    "pdfkit": "^0.20.2",
+    "pngjs": "^7.0.0",
+    "pptxgenjs": "^4.0.1",
+    "svgo": "^4.1.0"
   }
 }

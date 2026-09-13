@@ -103,6 +103,7 @@
   --default-transition-timing-function: var(--dp-ease-standard);
 
   --container-*: initial;
+  --container-measure-page: var(--dp-measure-page);
   --container-measure-narrow: var(--dp-measure-narrow);
   --container-measure-body: var(--dp-measure-body);
   --container-measure-wide: var(--dp-measure-wide);

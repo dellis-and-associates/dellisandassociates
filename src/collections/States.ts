@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { adminFieldOnly, adminsOrEditors, publicRead } from "../access/index.ts";
 import { slugField } from "../fields/index.ts";
 
@@ -12,6 +13,7 @@ export const States: CollectionConfig = {
   admin: { useAsTitle: "name", group: "Catalogue", defaultColumns: ["name", "abbr", "slug", "licenseNumber"] },
   access: { read: publicRead, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   defaultSort: "name",
+  hooks: { afterChange: [afterChangeRevalidate], afterDelete: [afterDeleteRevalidate] },
   fields: [
     { name: "name", type: "text", required: true },
     slugField("name"),

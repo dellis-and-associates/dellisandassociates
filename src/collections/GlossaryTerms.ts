@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { adminsOrEditors, reviewedOrStaff } from "../access/index.ts";
 import { reviewFields, seoFields, slugField } from "../fields/index.ts";
 import { generationFields } from "../fields/generation.ts";
@@ -15,6 +16,8 @@ export const GlossaryTerms: CollectionConfig = {
   access: { read: reviewedOrStaff, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   defaultSort: "term",
   hooks: {
+    afterChange: [afterChangeRevalidate],
+    afterDelete: [afterDeleteRevalidate],
     beforeChange: [
       ({ data }) => {
         data.wordCount = countWords(data?.definition) + countWords(data?.inPractice) + countWords(data?.example);

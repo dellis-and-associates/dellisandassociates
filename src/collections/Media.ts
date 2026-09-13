@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 
 /**
  * Stored in Supabase Storage (bucket in S3_BUCKET) through the S3 adapter; see
@@ -8,6 +9,7 @@ import type { CollectionConfig } from "payload";
 export const Media: CollectionConfig = {
   slug: "media",
   access: { read: () => true },
+  hooks: { afterChange: [afterChangeRevalidate], afterDelete: [afterDeleteRevalidate] },
   fields: [{ name: "alt", type: "text", required: true }],
   upload: {
     mimeTypes: ["image/*", "application/pdf"],

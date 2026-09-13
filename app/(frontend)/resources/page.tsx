@@ -1,62 +1,37 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { CtaBand, PageHero, Section } from "@/components/Sections";
+import { getArticles, getPage } from "@/src/lib/content";
+import { articlePath } from "@/src/lib/routes";
+import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
+import { ARTICLE_SECTIONS } from "@/src/collections/Articles";
+import { Breadcrumb } from "@/src/components/ui/breadcrumb";
+import { EmptyState } from "@/src/components/ui/misc";
 
-export const metadata: Metadata = {
-  title: "Resources",
-  description:
-    "Client intake forms and contact information for Ellis & Associates.",
-};
+export const revalidate = false;
+export async function generateMetadata() {
+  const page = await getPage("/resources/");
+  return pageMetadata({ title: "Insurance guides and glossary", description: "Plain-language guides to auto, home, life, Medicare and commercial insurance in Arizona, Nevada, Utah and Idaho, plus a glossary of the words on your policy.", path: "/resources/", indexable: page ? isIndexable(page) : false });
+}
 
-const resources = [
-  {
-    href: "/new-client-intake-form",
-    title: "New client intake form",
-    sub: "Tell us about yourself and your coverage goals before your first appointment.",
-  },
-  {
-    href: "/medication-intake-form",
-    title: "Client medication intake form",
-    sub: "List current prescriptions so we can check drug coverage across Medicare plans.",
-  },
-  {
-    href: "/contact-us",
-    title: "Contact us",
-    sub: "Book a policy review, get a quote, or just ask a question.",
-  },
-];
-
-export default function ResourcesPage() {
+export default async function Resources() {
+  const articles = await getArticles();
   return (
-    <>
-      <PageHero
-        eyebrow="Resources"
-        title="Forms and next steps for clients."
-        lede="Everything we need before an appointment, in one place. Each form takes a few minutes."
-      />
-      <Section>
-        <ul className="max-w-[760px]">
-          {resources.map((r) => (
-            <li key={r.href} className="border-b border-border">
-              <Link
-                href={r.href}
-                className="group flex items-center justify-between gap-4.5 px-1 py-6"
-              >
-                <span>
-                  <span className="block text-lg font-medium transition-colors group-hover:text-copper">
-                    {r.title}
-                  </span>
-                  <span className="mt-1 block text-sm text-stone">{r.sub}</span>
-                </span>
-                <span aria-hidden className="shrink-0 text-xl text-copper">
-                  →
-                </span>
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Section>
-      <CtaBand />
-    </>
+    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Resources", href: "/resources/"}], SITE))} />
+      <Breadcrumb items={[{ label: "Resources", href: "/resources/" }]} />
+      <header className="grid gap-4"><h1>Guides, comparisons and the glossary</h1><p className="lead max-w-measure-body">Written to answer the question you actually typed. Where a fact depends on state law we cite the source; where we have not verified it yet, we say so.</p></header>
+      <p className="font-sans text-small"><Link href="/resources/glossary/" className="font-semibold">Glossary of insurance terms</Link></p>
+      {articles.length === 0 ? <EmptyState title="Guides are being reviewed">Every guide is checked by a licensed person before it is published. The glossary is the place to start in the meantime.</EmptyState> : null}
+      {ARTICLE_SECTIONS.map((s) => {
+        const list = articles.filter((a) => a.section === s.value);
+        if (!list.length) return null;
+        return (
+          <section key={s.value} aria-labelledby={`sec-${s.value}`} className="grid gap-3">
+            <h2 id={`sec-${s.value}`}><Link href={`/resources/${s.value}/`} className="ui-link text-ink">{s.label}</Link></h2>
+            <ul className="grid gap-2 font-sans text-small sm:grid-cols-2">{list.slice(0, 8).map((a) => <li key={a.id}><Link href={articlePath(a.section, a.slug)} className="ui-link text-ink">{a.title}</Link>{a.reviewStatus !== "reviewed" ? <span className="ml-2 text-ink-muted">(draft)</span> : null}</li>)}</ul>
+            {list.length > 8 ? <Link href={`/resources/${s.value}/`} className="ui-link font-sans text-small font-semibold">All {list.length} in {s.label.toLowerCase()}</Link> : null}
+          </section>
+        );
+      })}
+    </div>
   );
 }

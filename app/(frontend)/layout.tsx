@@ -1,33 +1,16 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import { Geist } from "next/font/google";
-import { cn } from "@/lib/utils";
-
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+import { env } from "@/src/env";
+import { Document } from "@/src/components/site/document";
 
 export const metadata: Metadata = {
-  title: {
-    default: "Ellis & Associates — Independent Insurance Advisory",
-    template: "%s — Ellis & Associates",
-  },
-  description:
-    "Licensed advisors compare the market across life, Medicare, health, and annuities — then walk you through the math. The analysis costs you nothing.",
+  metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
+  title: { default: "Desert Peak Insurance", template: "%s — Desert Peak Insurance" },
+  description: "Independent insurance agency in Arizona, Nevada, Utah and Idaho. We compare the carriers we represent and tell you what we find.",
+  icons: { icon: [{ url: "/brand/favicon.svg", type: "image/svg+xml" }, { url: "/brand/icon-32.png", sizes: "32x32" }], apple: "/brand/icon-180.png" },
 };
+export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light" };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body>
-        <Header />
-        <main>{children}</main>
-        <Footer />
-      </body>
-    </html>
-  );
+export default function FrontendLayout({ children }: { children: React.ReactNode }) {
+  return <Document>{children}</Document>;
 }

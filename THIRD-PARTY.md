@@ -20,11 +20,17 @@ against `PERFORMANCE-BUDGET.json`.
 
 | Resource | Purpose | Phase | Justification | Budget impact |
 |---|---|---|---|---|
-| Cloudflare Turnstile (`challenges.cloudflare.com`) | Bot protection on lead, quote and referral forms | 2, 4 | Required by the fraud section; the only third-party script permitted on content pages, loaded lazily on form interaction, never on pages without a form | Counted; must fit inside the 60 KB content-page budget |
-| RUM beacon to `RUM_ENDPOINT` | Real-user Core Web Vitals | 5 | First-party endpoint we own; `navigator.sendBeacon`, no library | ≈ 1 KB inline |
+| Cloudflare Turnstile (`challenges.cloudflare.com`) | Bot protection on lead, quote and referral forms | 2, 4, 5 | Present only on pages that render a form (`/contact/`, `/forms/*`, `/quote/summary/`, the refer forms); `async defer`; no content page loads it. Without JavaScript a lead is still saved and flagged | Third-party count budget is 1 on app routes and 0 on content routes (`PERFORMANCE-BUDGET.json`) |
+| `web-vitals` → `/api/rum` | Real-user Core Web Vitals | 5 | Our own endpoint (`app/(frontend)/api/rum/route.ts` → `rum-samples`); the library is imported after idle only when `NEXT_PUBLIC_RUM_ENABLED=true`; no IP, no cookie stored | ≈ 2 KB gzipped, deferred |
 | Error reporting to `ERROR_REPORTING_DSN` | Server-side only | 7 | Optional; PII scrubber wired before the first event | 0 KB client |
-| Supabase JS client | Referrer portal auth (Project A) | 4 | App routes only (180 KB budget), never on content pages | App-route budget |
+| Supabase Auth (`@supabase/ssr`) | Customer referrer magic-link sessions (Project A) | 5 | Server-side only: the client library runs in route handlers and server actions, not in the browser | 0 KB client |
+
+The Turnstile widget renders its own focusable iframe; its focus indicator
+is Cloudflare's, and `tests/e2e/a11y.spec.ts` excludes elements inside
+`.cf-turnstile` from the site's focus-ring check for that reason.
 
 Anything not in this table is a build failure. Fonts are self-hosted from
-`desert-peak-brand/brand/fonts/`; images are served from Supabase Storage through
+`desert-peak-brand/brand/fonts/`, subset at build-author time by
+`scripts/font-subset.mts` (subset-font, a HarfBuzz WebAssembly build, dev
+dependency only, never shipped); images are served from Supabase Storage through
 the media bucket, which is first-party for budget purposes.

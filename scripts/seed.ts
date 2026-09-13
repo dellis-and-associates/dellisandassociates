@@ -195,32 +195,8 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
     }
   }
 
-  // ── Pages ─────────────────────────────────────────────────────────────
-  type Pg = { title: string; path: string; template: string; legalState: string | null };
-  if (want("pages")) {
-    await parallel(readJson<Pg[]>("src/seed-data/pages.json"), CONCURRENCY, async (p) => {
-      const ls = p.legalState ? stateId[p.legalState] : undefined;
-      await upsert("pages", { field: "path", value: p.path }, { template: p.template, ...(ls !== undefined && ls !== DRY_ID ? { legalState: ls } : {}) }, { title: p.title, reviewStatus: "draft", indexWave: "1" });
-    });
-    // Routes outside the 1,117 plan (src/seed-data/extra-routes.json): utility routes are noindex by template.
-    for (const r of readJson<Pg[]>("src/seed-data/extra-routes.json")) {
-      await upsert("pages", { field: "path", value: r.path }, { template: r.template }, { title: r.title, reviewStatus: "draft", indexWave: "3" });
-    }
-  }
-
-  // ── Article and glossary shells ───────────────────────────────────────
-  if (want("articles")) {
-    await parallel(readJson<{ section: string; slug: string; placeholderTitle: string }[]>("src/seed-data/articles.json"), CONCURRENCY, async (a) => {
-      await upsert("articles", { field: "slug", value: a.slug }, { section: a.section }, { title: a.placeholderTitle, reviewStatus: "draft", indexWave: "3", generation: { status: "pending" } });
-    });
-  }
-  if (want("glossary-terms")) {
-    await parallel(readJson<{ slug: string; placeholderTerm: string }[]>("src/seed-data/glossary.json"), CONCURRENCY, async (g) => {
-      await upsert("glossary-terms", { field: "slug", value: g.slug }, {}, { term: g.placeholderTerm, reviewStatus: "draft", indexWave: "3", generation: { status: "pending" } });
-    });
-  }
-
   // ── Forms (legacy parity rows 5, 7, 8 — exact legacy fields) ──────────
+  const formId: Record<string, number> = {};
   if (want("forms")) {
     const text = (name: string, label: string, extra: Json = {}) => ({ name, label, type: "text", required: false, pii: false, ...extra });
     const contact = [
@@ -254,9 +230,41 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
       text("allergies", "Allergies", { pii: true }),
       text("notes", "Notes", { type: "textarea", pii: true }),
     ];
-    await upsert("forms", { field: "slug", value: "book-a-policy-review" }, { leadType: "contact", collectsHealthInformation: false }, { name: "Book a policy review", submitLabel: "Book a policy review", fields: contact });
-    await upsert("forms", { field: "slug", value: "new-client-intake" }, { leadType: "intake", collectsHealthInformation: false }, { name: "New client intake", submitLabel: "Submit intake form", fields: intake });
-    await upsert("forms", { field: "slug", value: "medication-intake" }, { leadType: "medication", collectsHealthInformation: true }, { name: "Client medication intake", submitLabel: "Submit medication list", fields: medication });
+    formId["book-a-policy-review"] = await upsert("forms", { field: "slug", value: "book-a-policy-review" }, { leadType: "contact", collectsHealthInformation: false }, { name: "Book a policy review", submitLabel: "Book a policy review", fields: contact });
+    formId["new-client-intake"] = await upsert("forms", { field: "slug", value: "new-client-intake" }, { leadType: "intake", collectsHealthInformation: false }, { name: "New client intake", submitLabel: "Submit intake form", fields: intake });
+    formId["medication-intake"] = await upsert("forms", { field: "slug", value: "medication-intake" }, { leadType: "medication", collectsHealthInformation: true }, { name: "Client medication intake", submitLabel: "Submit medication list", fields: medication });
+  }
+
+  // ── Pages ─────────────────────────────────────────────────────────────
+  type Pg = { title: string; path: string; template: string; legalState: string | null };
+  if (want("pages")) {
+    // Which form a page carries, by path. The layout is filled only when empty (an editor's layout is never touched).
+    const FORM_PAGES: Record<string, string> = { "/contact/": "book-a-policy-review", "/forms/new-client-intake/": "new-client-intake", "/forms/medication-intake/": "medication-intake" };
+    const layoutFor = (path: string) => {
+      const slug = FORM_PAGES[path];
+      const id = slug ? formId[slug] : undefined;
+      return id !== undefined && id !== DRY_ID ? { layout: [{ blockType: "form", form: id }] } : {};
+    };
+    await parallel(readJson<Pg[]>("src/seed-data/pages.json"), CONCURRENCY, async (p) => {
+      const ls = p.legalState ? stateId[p.legalState] : undefined;
+      await upsert("pages", { field: "path", value: p.path }, { template: p.template, ...(ls !== undefined && ls !== DRY_ID ? { legalState: ls } : {}), ...layoutFor(p.path) }, { title: p.title, reviewStatus: "draft", indexWave: "1" });
+    });
+    // Routes outside the 1,117 plan (src/seed-data/extra-routes.json): utility routes are noindex by template.
+    for (const r of readJson<Pg[]>("src/seed-data/extra-routes.json")) {
+      await upsert("pages", { field: "path", value: r.path }, { template: r.template, ...layoutFor(r.path) }, { title: r.title, reviewStatus: "draft", indexWave: "3" });
+    }
+  }
+
+  // ── Article and glossary shells ───────────────────────────────────────
+  if (want("articles")) {
+    await parallel(readJson<{ section: string; slug: string; placeholderTitle: string }[]>("src/seed-data/articles.json"), CONCURRENCY, async (a) => {
+      await upsert("articles", { field: "slug", value: a.slug }, { section: a.section }, { title: a.placeholderTitle, reviewStatus: "draft", indexWave: "3", generation: { status: "pending" } });
+    });
+  }
+  if (want("glossary-terms")) {
+    await parallel(readJson<{ slug: string; placeholderTerm: string }[]>("src/seed-data/glossary.json"), CONCURRENCY, async (g) => {
+      await upsert("glossary-terms", { field: "slug", value: g.slug }, {}, { term: g.placeholderTerm, reviewStatus: "draft", indexWave: "3", generation: { status: "pending" } });
+    });
   }
 
   // ── Redirects from the legacy crawl ───────────────────────────────────

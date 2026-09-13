@@ -1,4 +1,5 @@
 import type { GlobalConfig } from "payload";
+import { globalAfterChangeRevalidate } from "../hooks/revalidate.ts";
 import { admins, publicRead } from "../access/index.ts";
 
 export const BANNED_PHRASES_DEFAULT = [
@@ -22,6 +23,7 @@ export const ComplianceSettings: GlobalConfig = {
   slug: "compliance-settings",
   admin: { group: "Settings", description: "Admin only. Every page reads disclosures from here; nothing is duplicated on a page." },
   access: { read: publicRead, update: admins },
+  hooks: { afterChange: [globalAfterChangeRevalidate] },
   fields: [
     {
       type: "tabs",

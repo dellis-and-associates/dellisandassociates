@@ -1,4 +1,5 @@
 import type { Block, CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { adminsOrEditors, reviewedOrStaff } from "../access/index.ts";
 import { reviewFields, seoFields } from "../fields/index.ts";
 import { isNormalizedSlug } from "../lib/slug.ts";
@@ -53,6 +54,8 @@ export const Pages: CollectionConfig = {
   access: { read: reviewedOrStaff, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   defaultSort: "path",
   hooks: {
+    afterChange: [afterChangeRevalidate],
+    afterDelete: [afterDeleteRevalidate],
     beforeChange: [
       ({ data }) => {
         data.noindex = UTILITY_TEMPLATES.includes(data?.template);

@@ -1,0 +1,27 @@
+/* Payload admin themed from the brand tokens. Only semantic roles, no hex (verify:tokens scans this file). */
+@import "@desert-peak/brand/tokens.css";
+
+:root, [data-theme="light"] {
+  --theme-bg: var(--dp-surface);
+  --theme-input-bg: var(--dp-surface-raised);
+  --theme-text: var(--dp-ink);
+  --theme-elevation-0: var(--dp-surface);
+  --theme-elevation-50: var(--dp-surface-sunken);
+  --theme-elevation-100: var(--dp-border);
+  --theme-elevation-150: var(--dp-border);
+  --theme-elevation-200: var(--dp-border-strong);
+  --theme-elevation-400: var(--dp-ink-muted);
+  --theme-elevation-800: var(--dp-ink);
+  --theme-elevation-1000: var(--dp-ink);
+  --theme-success-500: var(--dp-positive);
+  --theme-warning-500: var(--dp-notice);
+  --theme-error-500: var(--dp-critical);
+  --font-body: var(--dp-font-sans);
+  --style-radius-s: var(--dp-radius-control);
+  --style-radius-m: var(--dp-radius-surface);
+  --style-radius-l: var(--dp-radius-surface);
+}
+.btn--style-primary { background: var(--dp-brand); color: var(--dp-brand-ink); border-radius: var(--dp-radius-control); }
+.btn--style-primary:hover { background: var(--dp-brand-hover); }
+a { color: var(--dp-brand); }
+:focus-visible { outline: 2px solid var(--dp-focus-ring); outline-offset: 2px; box-shadow: 0 0 0 2px var(--dp-focus-ring-offset); }

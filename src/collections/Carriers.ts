@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { admins, publicRead } from "../access/index.ts";
 import { slugField } from "../fields/index.ts";
 
@@ -7,6 +8,7 @@ export const Carriers: CollectionConfig = {
   slug: "carriers",
   admin: { useAsTitle: "name", group: "People", defaultColumns: ["name", "appointmentConfirmedAt", "active"] },
   access: { read: publicRead, create: admins, update: admins, delete: admins },
+  hooks: { afterChange: [afterChangeRevalidate], afterDelete: [afterDeleteRevalidate] },
   fields: [
     { name: "name", type: "text", required: true },
     slugField("name"),

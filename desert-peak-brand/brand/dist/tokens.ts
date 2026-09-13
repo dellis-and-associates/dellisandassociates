@@ -537,6 +537,7 @@ export const tokens = {
       "display": 660
     },
     "measure": {
+      "page": "72rem",
       "narrow": "45ch",
       "body": "68ch",
       "wide": "84ch"
@@ -651,10 +652,10 @@ export const tokens = {
     "pill": "9999px"
   },
   "shadow": {
-    "0": "0px 1px 2px 0px rgb(34 31 27 / 0.06)",
-    "1": "0px 2px 6px -1px rgb(34 31 27 / 0.08), 0px 1px 2px 0px rgb(34 31 27 / 0.05)",
-    "2": "0px 8px 20px -4px rgb(34 31 27 / 0.12), 0px 2px 6px -1px rgb(34 31 27 / 0.06)",
-    "3": "0px 20px 48px -8px rgb(34 31 27 / 0.18), 0px 8px 20px -4px rgb(34 31 27 / 0.08)"
+    "0": "0px 1px 2px 0px rgb(34 31 26 / 0.06)",
+    "1": "0px 2px 6px -1px rgb(34 31 26 / 0.08), 0px 1px 2px 0px rgb(34 31 26 / 0.05)",
+    "2": "0px 8px 20px -4px rgb(34 31 26 / 0.12), 0px 2px 6px -1px rgb(34 31 26 / 0.06)",
+    "3": "0px 20px 48px -8px rgb(34 31 26 / 0.18), 0px 8px 20px -4px rgb(34 31 26 / 0.08)"
   },
   "motion": {
     "duration": {

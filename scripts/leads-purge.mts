@@ -16,4 +16,7 @@ if (!dryRun && expired.totalDocs > 0) {
   const r = await payload.delete({ collection: "leads", where: { retainUntil: { less_than: now } }, overrideAccess: true });
   console.log(`deleted ${r.docs.length}, errors ${r.errors.length}`);
 }
+const sessions = await payload.find({ collection: "quote-sessions", where: { expiresAt: { less_than: now } }, limit: 0, depth: 0, overrideAccess: true });
+console.log(`${sessions.totalDocs} expired quote session(s)`);
+if (!dryRun && sessions.totalDocs > 0) await payload.delete({ collection: "quote-sessions", where: { expiresAt: { less_than: now } }, overrideAccess: true });
 await payload.db.destroy?.();

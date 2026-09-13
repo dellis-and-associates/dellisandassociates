@@ -1,0 +1,221 @@
+[
+  {
+    "path": "/insurance/*",
+    "resourceSizes": [
+      {
+        "resourceType": "script",
+        "budget": 190
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 30
+      },
+      {
+        "resourceType": "font",
+        "budget": 300
+      },
+      {
+        "resourceType": "image",
+        "budget": 200
+      },
+      {
+        "resourceType": "total",
+        "budget": 600
+      }
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "third-party",
+        "budget": 0
+      },
+      {
+        "resourceType": "font",
+        "budget": 3
+      }
+    ],
+    "timings": [
+      {
+        "metric": "largest-contentful-paint",
+        "budget": 1800
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 0.05
+      },
+      {
+        "metric": "total-blocking-time",
+        "budget": 100
+      },
+      {
+        "metric": "interactive",
+        "budget": 3000
+      }
+    ]
+  },
+  {
+    "path": "/resources/*",
+    "resourceSizes": [
+      {
+        "resourceType": "script",
+        "budget": 190
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 30
+      },
+      {
+        "resourceType": "font",
+        "budget": 450
+      },
+      {
+        "resourceType": "image",
+        "budget": 200
+      },
+      {
+        "resourceType": "total",
+        "budget": 700
+      }
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "third-party",
+        "budget": 0
+      }
+    ],
+    "timings": [
+      {
+        "metric": "largest-contentful-paint",
+        "budget": 1800
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 0.05
+      },
+      {
+        "metric": "total-blocking-time",
+        "budget": 100
+      }
+    ]
+  },
+  {
+    "path": "/",
+    "resourceSizes": [
+      {
+        "resourceType": "script",
+        "budget": 190
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 30
+      },
+      {
+        "resourceType": "font",
+        "budget": 300
+      },
+      {
+        "resourceType": "image",
+        "budget": 250
+      },
+      {
+        "resourceType": "total",
+        "budget": 650
+      }
+    ],
+    "timings": [
+      {
+        "metric": "largest-contentful-paint",
+        "budget": 1800
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 0.05
+      },
+      {
+        "metric": "total-blocking-time",
+        "budget": 100
+      }
+    ]
+  },
+  {
+    "path": "/quote/*",
+    "resourceSizes": [
+      {
+        "resourceType": "script",
+        "budget": 180
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 30
+      },
+      {
+        "resourceType": "font",
+        "budget": 300
+      },
+      {
+        "resourceType": "total",
+        "budget": 800
+      }
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "third-party",
+        "budget": 1
+      }
+    ],
+    "timings": [
+      {
+        "metric": "largest-contentful-paint",
+        "budget": 1800
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 0.05
+      },
+      {
+        "metric": "total-blocking-time",
+        "budget": 100
+      }
+    ]
+  },
+  {
+    "path": "/partners/*",
+    "resourceSizes": [
+      {
+        "resourceType": "script",
+        "budget": 180
+      },
+      {
+        "resourceType": "stylesheet",
+        "budget": 30
+      },
+      {
+        "resourceType": "font",
+        "budget": 300
+      },
+      {
+        "resourceType": "total",
+        "budget": 800
+      }
+    ],
+    "resourceCounts": [
+      {
+        "resourceType": "third-party",
+        "budget": 1
+      }
+    ],
+    "timings": [
+      {
+        "metric": "largest-contentful-paint",
+        "budget": 1800
+      },
+      {
+        "metric": "cumulative-layout-shift",
+        "budget": 0.05
+      },
+      {
+        "metric": "total-blocking-time",
+        "budget": 100
+      }
+    ]
+  }
+]

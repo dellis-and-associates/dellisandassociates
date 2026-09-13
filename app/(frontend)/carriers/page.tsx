@@ -1,0 +1,24 @@
+import { getCarriers, getPage } from "@/src/lib/content";
+import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
+import { Breadcrumb } from "@/src/components/ui/breadcrumb";
+import { EmptyState } from "@/src/components/ui/misc";
+import { TableWrap, td, th } from "@/src/components/ui/table";
+
+export const revalidate = false;
+export async function generateMetadata() {
+  const page = await getPage("/carriers/");
+  return pageMetadata({ title: "Carrier partners", description: "The insurance carriers Desert Peak Insurance is appointed with, by line and by state.", path: "/carriers/", indexable: page ? isIndexable(page) : false });
+}
+export default async function Carriers() {
+  const carriers = await getCarriers();
+  return (
+    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Carrier partners", href: "/carriers/"}], SITE))} />
+      <Breadcrumb items={[{ label: "Carrier partners", href: "/carriers/" }]} />
+      <header className="grid gap-4"><h1>Carrier partners</h1><p className="lead max-w-measure-body">An independent agency is appointed with several carriers and compares them for you. Each carrier below is listed only with a confirmed appointment date.</p></header>
+      {carriers.length === 0 ? <EmptyState title="Appointments are being confirmed" action={{ label: "Request the analysis", href: "/quote/" }}>We name a carrier only once the appointment under Desert Peak Insurance is confirmed in writing.</EmptyState> : (
+        <TableWrap caption="Carriers by line and state"><table><thead><tr><th scope="col" className={th}>Carrier</th><th scope="col" className={th}>Lines</th><th scope="col" className={th}>States</th></tr></thead><tbody>{carriers.map((c) => <tr key={c.id}><th scope="row" className={`${td} text-left font-medium`}>{c.website ? <a href={c.website} rel="noopener">{c.name}</a> : c.name}</th><td className={td}>{(c.lines ?? []).map((l) => (typeof l === "object" ? l.name : "")).join(", ")}</td><td className={td}>{(c.states ?? []).map((s) => (typeof s === "object" ? s.abbr : "")).join(", ")}</td></tr>)}</tbody></table></TableWrap>
+      )}
+    </div>
+  );
+}

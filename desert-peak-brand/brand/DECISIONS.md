@@ -82,3 +82,48 @@ Rejected: Newsreader + Public Sans (Ledger's pairing; Public Sans's variable bui
 - No wordmark variant without the INSURANCE line. The name without the descriptor is not the brand; use the mark alone below the lockup minimum.
 - No email-safe HTML palette or Office theme. Derive from `tokens.ts` when needed.
 - No tagline. None exists; one must not be invented.
+
+---
+
+# Stage 5 — collateral (2026-09-13)
+
+The identity did not change. Everything below is about applying it.
+
+## Generation
+
+**One shared library, one renderer.** `scripts/collateral/lib.ts` is the only way a generator gets a colour (`sem()`, which throws on an unknown role), a mark (`markBlock()`/`lockupBlock()`, byte-identical copies of `brand/logos/`), a measured line of text (fontkit over the static font instances, so wrapping is exact), a render, or a compliance guard. A generator that wants to do something the library does not offer is a generator about to break a rule.
+
+**Rendering is driven over the DevTools protocol, not `--screenshot`.** Chrome 152's new headless `--screenshot` flag raced both the window size and the device scale factor: renders came out truncated by ~50 px or half-scale in the top-left corner, at random, and a hung Chrome could stall a build. `renderAll()` now launches one Chrome with `--remote-debugging-port=0`, sets `Emulation.setDeviceMetricsOverride` before navigation, awaits `document.fonts.ready` and two animation frames, captures with an explicit clip, and asserts the PNG dimensions. The 2× logo PNGs that LibreOffice appeared to "crop" in the decks were in fact half-scale renders; the fix was the renderer, not LibreOffice. Node's built-in WebSocket keeps this dependency-free.
+
+**Every asset is reproducible.** SVG masters are deterministic by construction; PPTX zip-entry dates and core.xml dates are fixed to the build date; PDFs seed `Math.random` (pdfkit's subset tags), fix Info dates, write a fixed trailer ID and drop Ghostscript's XMP packet (random DocumentID). Two builds of the same inputs are byte-identical; `pnpm check`-style diffs can therefore gate CI.
+
+**The identity lock is a hash, not a review.** `brand/logos/MANIFEST.sha256` plus `verify-token-lock.ts` (colour literals, `rgb()`, named colours, PPTX `srgbClr`/`sysClr`, typefaces, SVG geometry outside a `data-logo` group, PPTX media hashes) is the definition of "without changing the colours".
+
+## Inputs
+
+**Facts live in JSON with their source and date.** `content/state-facts.json` records statute, URL, verification date and how it was verified (the NV, UT and ID legislature sites refused automated fetches; Justia mirrors were used and counsel is told so). Utah's 2025 change (30/65/25) was caught by verifying rather than remembering. The glossary is a snapshot of the site's authored drafts, so a post and a page never disagree.
+
+**TODO tokens render.** Phone, last name, licence numbers, client names, TPMO plan counts. A visibly unfinished asset is the intended state until the client supplies the data; a plausible placeholder would be an invented fact.
+
+**Platform specs were read on the day and dated.** LinkedIn Page cover is 1512×256 per LinkedIn's own help page (the widely quoted 1128×191 is superseded); personal banner 1584×396; Facebook and X could not be fetched from the platforms themselves and are recorded with the secondary sources used.
+
+## Per-surface
+
+**Social.** Posts have a fixed Medicare band sized from the wrapped disclaimer, never a corner note; the headline yields size before the body drops below 26 px; banners shrink the text block until it fits the platform's safe zone and stack vertically when the safe zone is narrow (Facebook). The referral family is withheld behind the config flag until counsel enables the programme. Real carrier avatars were used for a private comparison only.
+
+**Email.** Font stack `"Helvetica Neue", Arial, sans-serif` (closest widely available grotesque to Archivo; the signature is all sans so no serif fallback). One hosted image, the lockup on a padded surface panel with a hairline border so Outlook and Apple Mail dark modes do not invert it into mud. Outlook desktop renders with Word's engine and needs a manual check; the three likeliest breaks are the 2 px rule (minimum row height), 2× image scaling under Windows display scaling, and dark-mode inversion of text, links and the rule. Links are `tel:`/`mailto:` only when the value is real; a TODO token is printed as text so no broken link ships. Files stay under 10 KB (2.8 KB today).
+
+**Decks.** Fonts are not embedded (pptxgenjs cannot; PowerPoint's `.fntdata` format is undocumented and a corrupt file is worse than a substitution); the OFL font files ship in `decks/fonts/` with Arial/Georgia as declared fallbacks, and the reflow check (LibreOffice with and without the brand fonts) showed no overflow. Archivo's deck copies default to tabular figures because PowerPoint cannot switch number spacing. The Office theme is rewritten to tokens after generation and the build fails on any residue. Carriers are A/B/C and figures illustrative until appointments are confirmed.
+
+**Web.** `favicon.ico` is written by hand (PNG-encoded 16/32/48 entries); app icons are the reversed three-band mark on a brand tile, the maskable variant inside the 80 % safe circle; the manifest's theme and background colours are tokens. Optimised logo SVGs keep geometry byte-identical (SVGO with path conversion off) and the lock accepts them as whole-file copies. OG images size the Medicare band from the wrapped text and shrink the headline until it clears the domain line. `ui-elements.html` is documentation generated from the same tokens, not a second implementation.
+
+**Print.** Back is the mark alone reversed on a brand field (the name is on the front; a lockup would repeat it at 4 pt). No QR: the numbers do not fit inside the mark's clear space and the domain is already on the front. Front has no background fill; a warm-white uncoated stock is the surface. CMYK by Ghostscript with values read back into PRINT-COLORS.md; a printed proof is mandatory; crop marks are K only; type floor 7 pt asserted in code. No statute requiring a producer licence number on cards was found in AZ, ID, NV or UT; the line is reserved and counsel confirms.
+
+**Showcase.** Every image is a repository render embedded as a data URI; the homepage render is deliberately absent because the site build could not run in this environment (a stale `.next` and a dev server that needs the live database), rather than substituting a hand-made mock. The page passes the token lock and the banned-phrase check.
+
+## Not done, on purpose
+
+- Homepage render in the showcase (see above); add it from the site repo's build when available.
+- Real Outlook renders; the committed renders are Chrome, and the notes say what to check by hand.
+- Embedded fonts in PPTX.
+- Any asset for the referral programme, testimonials, awards or carriers until the client and counsel supply the data.

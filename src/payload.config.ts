@@ -18,6 +18,8 @@ import { LocationOverrides } from "./collections/LocationOverrides.ts";
 import { Media } from "./collections/Media.ts";
 import { Pages } from "./collections/Pages.ts";
 import { Products } from "./collections/Products.ts";
+import { QuoteSessions } from "./collections/QuoteSessions.ts";
+import { RumSamples } from "./collections/RumSamples.ts";
 import { Redirects } from "./collections/Redirects.ts";
 import { States } from "./collections/States.ts";
 import { Users } from "./collections/Users.ts";
@@ -50,7 +52,7 @@ export default buildConfig({
     user: Users.slug,
     importMap: { baseDir: path.resolve(dirname, "..") },
   },
-  collections: [Products, States, Cities, LocationOverrides, Articles, GlossaryTerms, Pages, Agents, Carriers, Users, Media, Redirects, Forms, Leads],
+  collections: [Products, States, Cities, LocationOverrides, Articles, GlossaryTerms, Pages, Agents, Carriers, Users, Media, Redirects, Forms, Leads, QuoteSessions, RumSamples],
   globals: [SiteSettings, ComplianceSettings],
   editor: lexicalEditor(),
   secret: env.PAYLOAD_SECRET,
@@ -59,7 +61,9 @@ export default buildConfig({
   db: postgresAdapter({
     pool: {
       connectionString,
-      max: migrating || isLocalDatabase(connectionString) ? 5 : 2,
+      // Serverless (Vercel) instances hold one request at a time: 2 (one is kept by the adapter). A long-running
+      // `next start` serves a crawl's worth of first-request renders concurrently and needs a real pool.
+      max: migrating || isLocalDatabase(connectionString) ? 5 : env.VERCEL_ENV ? 2 : 10,
     },
     schemaName: "payload_cms",
     push: env.NODE_ENV === "development" && isLocalDatabase(env.PAYLOAD_DATABASE_URI),

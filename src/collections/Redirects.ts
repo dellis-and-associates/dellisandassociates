@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { adminsOrEditors, publicRead } from "../access/index.ts";
 
 /**
@@ -10,6 +11,8 @@ export const Redirects: CollectionConfig = {
   admin: { useAsTitle: "from", group: "Operations", defaultColumns: ["from", "to", "statusCode", "source"] },
   access: { read: publicRead, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   hooks: {
+    afterChange: [afterChangeRevalidate],
+    afterDelete: [afterDeleteRevalidate],
     beforeValidate: [
       async ({ data, req }) => {
         if (!data?.from) return data;

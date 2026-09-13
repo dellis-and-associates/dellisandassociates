@@ -9,3 +9,9 @@ next-env.d.ts
 # Committed template (the .env* rule above would otherwise hide it)
 !.env.example
 !.env.test
+
+# Lighthouse CI reports (numbers are recorded in BUILD-REPORT.md)
+tests/lhci/
+.lighthouseci/
+test-results/
+tests/e2e/report/

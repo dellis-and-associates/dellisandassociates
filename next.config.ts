@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 const dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
+  // The IA uses trailing slashes everywhere (sitemap package, redirect map, canonical URLs).
+  trailingSlash: true,
   images: {
     localPatterns: [{ pathname: "/api/media/file/**" }],
   },
@@ -19,13 +21,6 @@ const nextConfig: NextConfig = {
       ".mjs": [".mts", ".mjs"],
     };
     return webpackConfig;
-  },
-  async redirects() {
-    // Legacy WordPress-era slugs. Phase 3 moves the full map into the Redirects collection.
-    return [
-      { source: "/medicare-insurance-prescription-drug-form-2", destination: "/medication-intake-form", permanent: true },
-      { source: "/dental-and-vision-insurance-2", destination: "/dental-and-vision-insurance", permanent: true },
-    ];
   },
 };
 

@@ -1,4 +1,5 @@
 import type { CollectionConfig } from "payload";
+import { afterChangeRevalidate, afterDeleteRevalidate } from "../hooks/revalidate.ts";
 import { adminsOrEditors, publicRead } from "../access/index.ts";
 
 /**
@@ -10,6 +11,8 @@ export const LocationOverrides: CollectionConfig = {
   admin: { group: "Catalogue", defaultColumns: ["product", "city", "updatedAt"], useAsTitle: "label" },
   access: { read: publicRead, create: adminsOrEditors, update: adminsOrEditors, delete: adminsOrEditors },
   hooks: {
+    afterChange: [afterChangeRevalidate],
+    afterDelete: [afterDeleteRevalidate],
     beforeValidate: [
       async ({ data, req, originalDoc }) => {
         if (!data?.product || !data?.city) return data;

@@ -820,6 +820,11 @@
       }
     },
     "measure": {
+      "page": {
+        "$type": "dimension",
+        "$value": "72rem",
+        "$description": "Page shell width (1152 px at 16 px root). Added by the site build 2026-09-12: the layout needed a role, not a one-off value."
+      },
       "narrow": {
         "$type": "dimension",
         "$value": "45ch",
@@ -935,7 +940,7 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "oklch(24% 0.008 75 / 0.06)",
+          "color": "oklch(24% 0.010 75 / 0.06)",
           "offsetX": "0px",
           "offsetY": "1px",
           "blur": "2px",
@@ -948,14 +953,14 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "oklch(24% 0.008 75 / 0.08)",
+          "color": "oklch(24% 0.010 75 / 0.08)",
           "offsetX": "0px",
           "offsetY": "2px",
           "blur": "6px",
           "spread": "-1px"
         },
         {
-          "color": "oklch(24% 0.008 75 / 0.05)",
+          "color": "oklch(24% 0.010 75 / 0.05)",
           "offsetX": "0px",
           "offsetY": "1px",
           "blur": "2px",
@@ -968,14 +973,14 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "oklch(24% 0.008 75 / 0.12)",
+          "color": "oklch(24% 0.010 75 / 0.12)",
           "offsetX": "0px",
           "offsetY": "8px",
           "blur": "20px",
           "spread": "-4px"
         },
         {
-          "color": "oklch(24% 0.008 75 / 0.06)",
+          "color": "oklch(24% 0.010 75 / 0.06)",
           "offsetX": "0px",
           "offsetY": "2px",
           "blur": "6px",
@@ -988,14 +993,14 @@
       "$type": "shadow",
       "$value": [
         {
-          "color": "oklch(24% 0.008 75 / 0.18)",
+          "color": "oklch(24% 0.010 75 / 0.18)",
           "offsetX": "0px",
           "offsetY": "20px",
           "blur": "48px",
           "spread": "-8px"
         },
         {
-          "color": "oklch(24% 0.008 75 / 0.08)",
+          "color": "oklch(24% 0.010 75 / 0.08)",
           "offsetX": "0px",
           "offsetY": "8px",
           "blur": "20px",

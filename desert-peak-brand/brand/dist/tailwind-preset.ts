@@ -195,6 +195,7 @@ const desertPeak = {
     },
     "extend": {
       "maxWidth": {
+        "measure-page": "var(--dp-measure-page)",
         "measure-narrow": "var(--dp-measure-narrow)",
         "measure-body": "var(--dp-measure-body)",
         "measure-wide": "var(--dp-measure-wide)"

@@ -1,0 +1,590 @@
+{
+  "base": "https://www.dellisandassociates.com",
+  "at": "2026-09-13T06:16:22.353Z",
+  "results": [
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 10328,
+        "file": "home-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 20,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 9884,
+        "file": "home-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 22,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 2
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 9956,
+        "file": "home-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 27,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 9888,
+        "file": "home-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 27,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 6358,
+        "file": "life-insurance-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 17,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 6604,
+        "file": "life-insurance-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 18,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 6625,
+        "file": "life-insurance-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 6812,
+        "file": "life-insurance-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/life-insurance"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 6470,
+        "file": "medicare-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 17,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 6923,
+        "file": "medicare-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 18,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 6414,
+        "file": "medicare-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 6563,
+        "file": "medicare-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/medicare"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 6863,
+        "file": "contact-us-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 17,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 6468,
+        "file": "contact-us-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 19,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 6620,
+        "file": "contact-us-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 24,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 6869,
+        "file": "contact-us-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 24,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/contact-us"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 6471,
+        "file": "resources-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 17,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 6468,
+        "file": "resources-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 18,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 6280,
+        "file": "resources-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 6547,
+        "file": "resources-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/resources"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 6835,
+        "file": "new-client-intake-form-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 25,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 6801,
+        "file": "new-client-intake-form-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 27,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 6616,
+        "file": "new-client-intake-form-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 32,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 6623,
+        "file": "new-client-intake-form-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 32,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/new-client-intake-form"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 6664,
+        "file": "work-with-us-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 17,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 6913,
+        "file": "work-with-us-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 18,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 6701,
+        "file": "work-with-us-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 6687,
+        "file": "work-with-us-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 5
+          },
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/work-with-us"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 6697,
+        "file": "agent-training-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 20,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 6752,
+        "file": "agent-training-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 21,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 6391,
+        "file": "agent-training-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 26,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 6643,
+        "file": "agent-training-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 26,
+        "axeViolations": [
+          {
+            "id": "heading-order",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/agent-training"
+    }
+  ]
+}

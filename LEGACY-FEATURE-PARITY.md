@@ -12,32 +12,32 @@ Definition-of-done artifact and `pnpm verify:parity` fails on any `missing` row.
 
 | # | Feature | Where on legacy | Status in new build | Owning phase | Notes |
 |---|---|---|---|---|---|
-| 1 | Global header: logo, Services menu (8 lines), About, Work with us, Resources, phone, primary CTA | Every page, `components/Header.tsx` | planned | 5 | Nav from `SiteSettings`, cache tag `global:nav`. Service list becomes the 29 products (or the reconciled set). |
-| 2 | Mobile navigation sheet with the same links and CTAs | Every page, < 1024 px | planned | 5 | Must work without JS (details/summary or server-rendered fallback). |
-| 3 | Click-to-call `tel:8013009980` in header and footer on every page | Every page | planned | 5 | Phone from `SiteSettings`; `tel:` link, 24 px target, present on mobile header. Number for the new entity to be confirmed. |
-| 4 | `mailto:` office email in footer | Every page | planned | 5 | From `SiteSettings`. Address for the new entity to be confirmed. |
-| 5 | "Book a policy review" contact form: Name*, Phone*, Email, Interest (select: full policy review / each service / working as an agent), Message | `/contact-us` | planned | 2 | Legacy submits by composing a `mailto:` draft; no server handler. New build: `Leads` collection + Resend notification + Turnstile; Resend-missing fallback keeps the lead. Function reproduced, not styling. |
-| 6 | Confirmation state after submit ("Your email draft has been opened…") | `/contact-us`, both intake forms | planned | 5 | Becomes a real success state with the lead reference. |
-| 7 | New client intake form: Name*, DOB, Phone*, Email, Address, 8 "Interested:" checkboxes, Household size, Current coverage, Notes | `/new-client-intake-form` | planned | 5 | Route decided: `/forms/new-client-intake/` (utility, noindex, outside the sitemap). Form definition seeded with the exact legacy fields; `Leads` PII rules apply. |
-| 8 | Client medication intake form: Name*, DOB, Phone*, Pharmacy, 5 × (medication, dosage, frequency), Allergies, Notes | `/medication-intake-form` | planned | 5 | Route decided: `/forms/medication-intake/` (utility, noindex). Medicare stays in scope. Form seeded with `collectsHealthInformation`, so every lead from it is health-flagged from the first field (12-month retention, admin-only raw data); notifications carry form name and timestamp only. |
-| 9 | Legacy redirect `/medicare-insurance-prescription-drug-form-2` → `/medication-intake-form` | 308 | planned | 3 | Imported into `Redirects` from the crawl. |
-| 10 | Legacy redirect `/dental-and-vision-insurance-2` → `/dental-and-vision-insurance` | 308 | planned | 3 | Imported into `Redirects`; target itself depends on row 12. |
-| 11 | Services hub page with one entry per line | `/insurance-services` | planned | 2, 5 | Maps to `/insurance/` (`products-hub` template). Redirect the old path. |
-| 12 | Coverage detail page per line, each with "Get a quote" CTA: life, whole life, term life, IUL, annuities, Medicare, health, dental & vision | `/life-insurance` … `/dental-and-vision-insurance` | planned | 2 | Resolved by `RECONCILIATION.md` decision B (2026-09-12): 7 products added to `data-products.xml` (Tier 2, Personal) with slugs matching the legacy URLs; `/iul` 301s to `/insurance/indexed-universal-life-insurance/`; term/whole/IUL carry `parent="life-insurance"`. Each legacy coverage URL 301s to its product hub. |
-| 13 | Carrier bar (Mutual of Omaha, UnitedHealthcare, Aetna, Humana, Cigna) on coverage pages | Coverage pages, `components/Sections.tsx` | planned | 2 | `Carriers` is seeded empty; these five names are facts from the legacy site but appointments under the new entity need confirmed dates before they render. |
-| 14 | FAQ accordion (2 instances) | `/` | planned | 5 | Accordion component in the design system; `/faq/` page in the IA; product FAQs from `Products.faqs`. Must expand without JS. |
-| 15 | Client testimonials ("What people tell us") | `/` | planned — pending client consent | 2, 5 | Reuse gated on written consent per testimonial (hard rule 2; `TODO-CLIENT-DATA.md` #6). `/reviews/` in the IA. Ships empty until consent is on file. |
-| 16 | Circle of Champions PY2025 certificate and appreciation letter gallery (2 JPGs with alt text) | `/`, `public/certificates/` | planned — pending client consent | 5 | Belongs to the old entity and plan year. TODO token until written confirmation (`TODO-CLIENT-DATA.md` #5); otherwise `deliberately dropped`. |
-| 17 | "Work with us" recruiting page with CTAs to contact and to agent training | `/work-with-us` | planned | 5 | Decided 2026-09-12: `/partners/` (public recruiting page) replaces it; redirect seeded; page shell seeded as draft. |
-| 18 | "Agents resource" gated area | `/agents-resource` | planned | 5 | `/partners/portal/` (gated) replaces it; redirect seeded. The partner track, `partner` role and portal data model exist since Phase 4; the portal UI is Phase 5. |
-| 19 | "Agent training" gated area | `/agent-training` | planned | 5 | Same as row 18; program materials section of `/partners/portal/`. |
-| 20 | Agent login form: username/email, password, "keep me signed in" | Rows 18–19 | planned | 5 | No backend on legacy. Partner track: Payload `Users` with the `partner` role linked to `referrers.user` (Phase 4). Customer referrers: magic link via Supabase Auth, Phase 5. |
-| 21 | Client resources page linking to the two intake forms | `/resources` | planned | 2, 5 | IA's `/resources/` is the blog hub. Intake forms need a home (`/forms/` or under `/contact/`); decide in Phase 2 route map. Redirect old path. |
-| 22 | Social links: Facebook, Instagram | Footer, every page | planned | 5 | From `SiteSettings`; new entity's handles to be supplied. |
-| 23 | Medicare compliance disclaimer in footer on every page | Footer, every page | planned | 2 | `ComplianceSettings`, admin-write-only, cache tag `global:compliance`. Mandatory text if Medicare stays in scope; removed only by the Phase 0.B decision. |
-| 24 | Custom 404 page | `app/not-found.tsx` | planned | 5 | Template in the design system; renders without JS. |
-| 25 | Per-page `<title>` and meta description | Every page | planned | 2 | SEO defaults on every collection; `NEXT_PUBLIC_SITE_URL` drives canonical/OG. |
-| 26 | Favicon / app icon | `app/icon.svg` | planned | 5 | From `desert-peak-brand/brand/logos/` (`favicon.svg`, PNG 32/180/192/512). |
+| 1 | Global header: logo, Services menu (8 lines), About, Work with us, Resources, phone, primary CTA | Every page, `components/Header.tsx` | exists | 5 | `src/components/site/header.tsx`: products and locations menus as native `<details>`, Resources, Claims, search, phone, primary action. Works without JavaScript. |
+| 2 | Mobile navigation sheet with the same links and CTAs | Every page, < 1024 px | exists | 5 | Same header: a `<details>` menu below 768 px with every top-level link. |
+| 3 | Click-to-call `tel:8013009980` in header and footer on every page | Every page | exists | 5 | `tel:` link in the header (icon + number) and footer on every page, 44 px target; number from `SiteSettings` (legacy value, confirmation still owed). |
+| 4 | `mailto:` office email in footer | Every page | exists | 5 | Footer `mailto:` from `SiteSettings`. |
+| 5 | "Book a policy review" contact form: Name*, Phone*, Email, Interest (select: full policy review / each service / working as an agent), Message | `/contact-us` | exists | 5 | `/contact/` renders the seeded `book-a-policy-review` form (exact legacy fields) through a server action; Lead saved, Resend notification with form name and timestamp only, Turnstile with a no-JS fallback. |
+| 6 | Confirmation state after submit ("Your email draft has been opened…") | `/contact-us`, both intake forms | exists | 5 | `/contact/thanks/` shows the reference; the quote flow has `/quote/done/`. |
+| 7 | New client intake form: Name*, DOB, Phone*, Email, Address, 8 "Interested:" checkboxes, Household size, Current coverage, Notes | `/new-client-intake-form` | exists | 5 | `/forms/new-client-intake/` (utility, noindex) with the exact legacy fields; PII rules on the Lead. |
+| 8 | Client medication intake form: Name*, DOB, Phone*, Pharmacy, 5 × (medication, dosage, frequency), Allergies, Notes | `/medication-intake-form` | exists | 5 | `/forms/medication-intake/` (utility, noindex); every lead from it is health-flagged from the form definition, 12-month retention, admin-only raw data. |
+| 9 | Legacy redirect `/medicare-insurance-prescription-drug-form-2` → `/medication-intake-form` | 308 | exists | 5 | Seeded in Redirects; served with a 301 by `proxy.ts`. |
+| 10 | Legacy redirect `/dental-and-vision-insurance-2` → `/dental-and-vision-insurance` | 308 | exists | 5 | Seeded in Redirects → `/insurance/dental-and-vision-insurance/` (final target, no chain). |
+| 11 | Services hub page with one entry per line | `/insurance-services` | exists | 5 | `/insurance/` lists every line by category; `/insurance-services/` 301s to it. |
+| 12 | Coverage detail page per line, each with "Get a quote" CTA: life, whole life, term life, IUL, annuities, Medicare, health, dental & vision | `/life-insurance` … `/dental-and-vision-insurance` | exists | 5 | All eight lines are products with hub, coverage and third subpages and four state pages each; each legacy URL 301s to its hub (e.g. `/iul/` → `/insurance/indexed-universal-life-insurance/`). |
+| 13 | Carrier bar (Mutual of Omaha, UnitedHealthcare, Aetna, Humana, Cigna) on coverage pages | Coverage pages, `components/Sections.tsx` | exists | 5 | `/carriers/` renders from the `Carriers` collection; empty-but-honest until appointments under the new entity are confirmed. No name is shown without a confirmed appointment date. |
+| 14 | FAQ accordion (2 instances) | `/` | exists | 5 | `Accordion` (native `<details>`) on product FAQ subpages and Pages `faq` blocks; `/faq/` page shell seeded. |
+| 15 | Client testimonials ("What people tell us") | `/` | planned — pending client consent | 5 | `LocationOverrides.testimonial` renders only with `consentOnFile`; `/reviews/` page shell seeded; nothing renders until consent exists (verify:compliance asserts it). |
+| 16 | Circle of Champions PY2025 certificate and appreciation letter gallery (2 JPGs with alt text) | `/`, `public/certificates/` | planned — pending client consent | 5 | No gallery renders; the two JPGs remain in `public/certificates/` for the client's decision. |
+| 17 | "Work with us" recruiting page with CTAs to contact and to agent training | `/work-with-us` | exists | 5 | `/partners/` (public recruiting page); `/work-with-us/` 301s to it. |
+| 18 | "Agents resource" gated area | `/agents-resource` | exists | 5 | `/partners/portal/` gated by the `partner` role: code, share, referrals, rewards, refer form. `/agents-resource/` 301s to it. |
+| 19 | "Agent training" gated area | `/agent-training` | exists | 5 | Same portal; program materials arrive with the first program terms. `/agent-training/` 301s to it. |
+| 20 | Agent login form: username/email, password, "keep me signed in" | Rows 18–19 | exists | 5 | `/partners/login/` posts to Payload auth and sets the session cookie; works without JavaScript. Customer referrers use a Supabase magic link at `/referrals/login/`. |
+| 21 | Client resources page linking to the two intake forms | `/resources` | exists | 5 | `/resources/` is the guides hub; the intake forms live at `/forms/*` and are linked from `/contact/` and the footer. |
+| 22 | Social links: Facebook, Instagram | Footer, every page | exists | 5 | Footer social links from `SiteSettings` (legacy handles, confirmation owed). |
+| 23 | Medicare compliance disclaimer in footer on every page | Footer, every page | exists | 5 | TPMO disclaimer from `ComplianceSettings` renders on every Medicare-touching page (`data-disclosure="medicareTpmo"`), asserted by verify:compliance; the text itself is a TODO token until the client supplies plan-year wording. |
+| 24 | Custom 404 page | `app/not-found.tsx` | exists | 5 | `app/(frontend)/not-found.tsx`: search, the ten lines, a link home; 404 status. |
+| 25 | Per-page `<title>` and meta description | Every page | exists | 5 | `pageMetadata` on every route: unique title ≤ 60, description ≤ 155, canonical, OG, structural noindex; verify:seo. |
+| 26 | Favicon / app icon | `app/icon.svg` | exists | 5 | `/brand/favicon.svg` and the PNG icon set from the brand package. |
 
 ## Invisible on legacy
 
@@ -53,14 +53,13 @@ must be justified there.
 - WordPress remnants (`/wp-admin` 403, `/wp-login.php` 403, `/feed` 404) are not
   features. Phase 3 adds 410s for the `wp-*` paths so crawlers stop probing.
 
-## Counts (updated 2026-09-12 after RECONCILIATION.md)
+## Counts (updated 2026-09-13 after Phase 5)
 
 | Status | Rows |
 |---|---|
-| planned | 24 |
+| exists | 24 |
 | planned — pending client consent | 2 (rows 15, 16) |
 | missing | 0 |
-| exists | 0 |
 | deliberately dropped | 0 |
 
 `pnpm verify:parity` (Phase 5) fails on any `missing` row and on any "pending

@@ -1,0 +1,425 @@
+{
+  "base": "http://localhost:3000",
+  "at": "2026-09-13T06:43:36.240Z",
+  "results": [
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 509,
+        "file": "home-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 43,
+        "axeViolations": []
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 440,
+        "file": "home-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 59,
+        "axeViolations": []
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 411,
+        "file": "home-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 64,
+        "axeViolations": []
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 460,
+        "file": "home-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 64,
+        "axeViolations": []
+      },
+      "path": "/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 290,
+        "file": "insurance_auto-insurance_-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 34,
+        "axeViolations": [
+          {
+            "id": "link-in-text-block",
+            "impact": "serious",
+            "nodes": 4
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 414,
+        "file": "insurance_auto-insurance_-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 29,
+        "axeViolations": [
+          {
+            "id": "link-in-text-block",
+            "impact": "serious",
+            "nodes": 4
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 291,
+        "file": "insurance_auto-insurance_-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 34,
+        "axeViolations": [
+          {
+            "id": "link-in-text-block",
+            "impact": "serious",
+            "nodes": 4
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 317,
+        "file": "insurance_auto-insurance_-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 34,
+        "axeViolations": [
+          {
+            "id": "link-in-text-block",
+            "impact": "serious",
+            "nodes": 4
+          }
+        ]
+      },
+      "path": "/insurance/auto-insurance/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 342,
+        "file": "insurance_auto-insurance_arizona_chandler_-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 40,
+        "axeViolations": []
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 358,
+        "file": "insurance_auto-insurance_arizona_chandler_-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 35,
+        "axeViolations": []
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 386,
+        "file": "insurance_auto-insurance_arizona_chandler_-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 40,
+        "axeViolations": []
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 370,
+        "file": "insurance_auto-insurance_arizona_chandler_-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 40,
+        "axeViolations": []
+      },
+      "path": "/insurance/auto-insurance/arizona/chandler/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 345,
+        "file": "insurance_arizona_-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 80,
+        "axeViolations": []
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 450,
+        "file": "insurance_arizona_-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 67,
+        "axeViolations": []
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 393,
+        "file": "insurance_arizona_-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 80,
+        "axeViolations": []
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 426,
+        "file": "insurance_arizona_-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 80,
+        "axeViolations": []
+      },
+      "path": "/insurance/arizona/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 544,
+        "file": "resources_glossary_deductible_-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 36,
+        "axeViolations": []
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 350,
+        "file": "resources_glossary_deductible_-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 32,
+        "axeViolations": []
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 342,
+        "file": "resources_glossary_deductible_-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 37,
+        "axeViolations": []
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 562,
+        "file": "resources_glossary_deductible_-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 37,
+        "axeViolations": []
+      },
+      "path": "/resources/glossary/deductible/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 336,
+        "file": "resources_guides_auto-insurance-explained-a-beginner-s-guide_-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 41,
+        "axeViolations": []
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 324,
+        "file": "resources_guides_auto-insurance-explained-a-beginner-s-guide_-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 39,
+        "axeViolations": []
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 395,
+        "file": "resources_guides_auto-insurance-explained-a-beginner-s-guide_-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 44,
+        "axeViolations": []
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 316,
+        "file": "resources_guides_auto-insurance-explained-a-beginner-s-guide_-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 44,
+        "axeViolations": []
+      },
+      "path": "/resources/guides/auto-insurance-explained-a-beginner-s-guide/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 375,
+        "file": "quote_1_-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 28,
+        "axeViolations": []
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 477,
+        "file": "quote_1_-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 23,
+        "axeViolations": []
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 444,
+        "file": "quote_1_-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 28,
+        "axeViolations": []
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 402,
+        "file": "quote_1_-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 28,
+        "axeViolations": []
+      },
+      "path": "/quote/1/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 777,
+        "file": "contact_-320.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 29,
+        "axeViolations": []
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 724,
+        "file": "contact_-768.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 24,
+        "axeViolations": []
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 1399,
+        "file": "contact_-1280.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 29,
+        "axeViolations": []
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 589,
+        "file": "contact_-1920.png",
+        "horizontalScroll": false,
+        "h1": 1,
+        "smallTargets": 29,
+        "axeViolations": []
+      },
+      "path": "/contact/"
+    },
+    {
+      "320": {
+        "status": 200,
+        "loadMs": 615,
+        "file": "design-system_-320.png",
+        "horizontalScroll": false,
+        "h1": 2,
+        "smallTargets": 49,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          },
+          {
+            "id": "landmark-unique",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "768": {
+        "status": 200,
+        "loadMs": 914,
+        "file": "design-system_-768.png",
+        "horizontalScroll": false,
+        "h1": 2,
+        "smallTargets": 45,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          },
+          {
+            "id": "landmark-unique",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1280": {
+        "status": 200,
+        "loadMs": 1151,
+        "file": "design-system_-1280.png",
+        "horizontalScroll": false,
+        "h1": 2,
+        "smallTargets": 50,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          },
+          {
+            "id": "landmark-unique",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "1920": {
+        "status": 200,
+        "loadMs": 634,
+        "file": "design-system_-1920.png",
+        "horizontalScroll": false,
+        "h1": 2,
+        "smallTargets": 50,
+        "axeViolations": [
+          {
+            "id": "color-contrast",
+            "impact": "serious",
+            "nodes": 1
+          },
+          {
+            "id": "landmark-unique",
+            "impact": "moderate",
+            "nodes": 1
+          }
+        ]
+      },
+      "path": "/design-system/"
+    }
+  ]
+}
