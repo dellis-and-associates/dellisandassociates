@@ -13,7 +13,9 @@ import { scanSource } from "./lib/token-rules.mts";
 const root = process.cwd();
 const SCAN = ["app", "src", "packages"];
 const SKIP_DIRS = new Set(["node_modules", ".next", "migrations", "dist"]);
-const SKIP_FILES = new Set(["src/payload-types.ts", "app/(payload)/admin/importMap.js", "app/(frontend)/fonts.fallback.css"]);
+// src/lib/og.tsx draws the brand's own OG template (desert-peak-brand/scripts/build-web.ts) in 1200×630 image pixels: those
+// lengths are the template's geometry, not CSS design values; its colours come from the typed token export.
+const SKIP_FILES = new Set(["src/payload-types.ts", "app/(payload)/admin/importMap.js", "app/(frontend)/fonts.fallback.css", "src/lib/og.tsx"]);
 function* walk(dir: string): Generator<string> {
   for (const name of readdirSync(dir)) {
     if (SKIP_DIRS.has(name)) continue;

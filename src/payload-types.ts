@@ -2486,6 +2486,48 @@ export interface SiteSetting {
     zip?: string | null;
   };
   officeHours?: string | null;
+  /**
+   * The advisor panel in the homepage hero. The photo is optional; the panel holds without one.
+   */
+  advisor?: {
+    name?: string | null;
+    title?: string | null;
+    /**
+     * One sentence, in the advisor's voice.
+     */
+    statement?: string | null;
+    photo?: (number | null) | Media;
+  };
+  /**
+   * The carrier strip under the hero. Names are text until the client supplies licensed logo files (TODO-CLIENT-DATA.md).
+   */
+  carriers?: {
+    /**
+     * e.g. "Appointed with 40+ carriers"
+     */
+    headline?: string | null;
+    names?:
+      | {
+          name: string;
+          id?: string | null;
+        }[]
+      | null;
+  };
+  /**
+   * Written consent from every quoted client is on file. Until this is checked, the testimonial section does not render anywhere, whatever is entered below.
+   */
+  testimonialConsentConfirmed?: boolean | null;
+  /**
+   * Real, named, consented. The date is the date of the written consent.
+   */
+  testimonials?:
+    | {
+        quote: string;
+        name: string;
+        consentDate: string;
+        id?: string | null;
+      }[]
+    | null;
   social?: {
     facebook?: string | null;
     instagram?: string | null;
@@ -2593,6 +2635,34 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         zip?: T;
       };
   officeHours?: T;
+  advisor?:
+    | T
+    | {
+        name?: T;
+        title?: T;
+        statement?: T;
+        photo?: T;
+      };
+  carriers?:
+    | T
+    | {
+        headline?: T;
+        names?:
+          | T
+          | {
+              name?: T;
+              id?: T;
+            };
+      };
+  testimonialConsentConfirmed?: T;
+  testimonials?:
+    | T
+    | {
+        quote?: T;
+        name?: T;
+        consentDate?: T;
+        id?: T;
+      };
   social?:
     | T
     | {

@@ -1,5 +1,5 @@
 /** pnpm verify:seo — unique titles/descriptions/h1, canonical, noindex iff not indexable, structured data per template. */
-import { attr, fetchPage, jsonLdBlocks, loadManifest, pmap, report, withPayload } from "./lib/site.mts";
+import { BASE, attr, fetchPage, jsonLdBlocks, loadManifest, pmap, report, withPayload } from "./lib/site.mts";
 
 const failures: string[] = [];
 const notes: string[] = [];
@@ -7,6 +7,7 @@ const manifest = await withPayload(loadManifest);
 const titles = new Map<string, string>(), descs = new Map<string, string>(), h1s = new Map<string, string>();
 const pages = await pmap(manifest, 8, async (r) => ({ r, ...(await fetchPage(r.path)) }));
 let checked = 0;
+const ogSeen = new Set<string>(), ogChecks: { path: string; url: string }[] = [];
 for (const { r, status, html } of pages) {
   if (status !== 200) continue;
   checked++;
@@ -28,6 +29,9 @@ for (const { r, status, html } of pages) {
   if (r.indexable && noindex) failures.push(`${r.path}: indexable but noindex`);
   if (!r.indexable && !noindex) failures.push(`${r.path}: not indexable but no noindex`);
   if (!attr(html, /<meta property="og:title" content="([^"]*)"/)) failures.push(`${r.path}: no og:title`);
+  const og = attr(html, /<meta property="og:image" content="([^"]*)"/);
+  if (!og) failures.push(`${r.path}: no og:image`);
+  else if (!ogSeen.has(r.group)) { ogSeen.add(r.group); ogChecks.push({ path: r.path, url: og }); }
   const ld = jsonLdBlocks(html);
   if (ld.some((b) => b === null)) failures.push(`${r.path}: invalid JSON-LD`);
   const types = new Set(ld.flatMap((b) => (b ? [b["@type"]].flat() : [])));
@@ -38,5 +42,15 @@ for (const { r, status, html } of pages) {
   if (r.group === "glossary" && !types.has("DefinedTerm") && r.indexable) failures.push(`${r.path}: no DefinedTerm`);
   if (types.has("Person")) failures.push(`${r.path}: Person schema before agents exist`);
 }
+// One generated OG image per route group is fetched and must be a real 1200×630 PNG (the tag alone proves nothing).
+for (const c of ogChecks) {
+  const res = await fetch(c.url.replace(/^https?:\/\/[^/]+/, BASE)).catch(() => null);
+  const buf = res && res.ok ? new Uint8Array(await res.arrayBuffer()) : null;
+  const png = buf && buf.length > 8 && buf[0] === 0x89 && buf[1] === 0x50;
+  const w = buf && png ? (buf[16]! << 24) | (buf[17]! << 16) | (buf[18]! << 8) | buf[19]! : 0;
+  const h = buf && png ? (buf[20]! << 24) | (buf[21]! << 16) | (buf[22]! << 8) | buf[23]! : 0;
+  if (!png || w !== 1200 || h !== 630) failures.push(`${c.path}: og:image ${c.url} → ${res?.status ?? "no response"} ${png ? `${w}×${h}` : "not a PNG"}`);
+}
+notes.push(`og:image fetched for ${ogChecks.length} route groups`);
 notes.push(`checked ${checked} routes: ${titles.size} unique titles, ${descs.size} unique descriptions, ${h1s.size} unique h1`);
 report("verify:seo", failures, notes);

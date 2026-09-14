@@ -61,3 +61,31 @@ Twelve templates; the new IA has roughly twelve as well, mapped in
 `docs/ux-audit/www.dellisandassociates.com/<page>-<width>.png`, full page,
 one file per template per breakpoint (32 files). The after-state screenshots
 are produced by `pnpm test:visual` into `tests/visual/__screenshots__/`.
+
+
+## Shell and homepage — the before state of the first build (2026-09-13)
+
+Audited against this repo's own first build (`pnpm build && pnpm start`,
+commit `16de582`) before the header, footer and homepage were redesigned.
+Screenshots of the header, the hero and the footer at 320, 768, 1280 and
+1920, plus the full page, are in `docs/ux-audit/shell/before/` (`pnpm
+shell:shots --label=before`). Looked at, not just measured.
+
+| Surface | Finding | Severity |
+|---|---|---|
+| Hero | A solid brand-brown slab, 520 px tall at 1280, with the text in the left 55 % and nothing in the right half. At 1920 the empty half is 900 px wide. The block is padding, not a hero. | high |
+| Home | A 36-row, two-column product table ("What we write") is the second section. It is the sitemap rendered as content; on a 320 px phone it is 2,400 px of table. | high |
+| Footer | The Medicare TPMO disclaimer is absent on every page except product pages flagged Medicare. Medicare is in scope, the legacy footer carried it on every page: a parity and compliance failure. | high |
+| Footer | The contact email is the legacy entity's (`daniel@dellisandassociates.com`) and wraps mid-word at 1280 (`co` / `m`) because the column is a quarter of the grid and the link is `break-all`. | high |
+| Header, footer | The lockup is rebuilt in React (the mark as a path, the wordmark re-typeset in Archivo) instead of the shipped `logo-horizontal.svg`; the footer shows the mark alone. BRAND-GUIDE §6 forbids retyping the wordmark. | high |
+| Header | A permanent search text box in the nav at ≥ 1024 px; no search at all under 1024 px. | medium |
+| Header | No "For partners" entry; the Insurance menu lists lines in two undifferentiated columns and truncates commercial to eight. | medium |
+| Home | Nothing from the legacy homepage survived: no trust line, advisor panel, carriers, life-events section, FAQ, testimonials, recognition or closing band. The legacy structure was the client's own and was good. | medium |
+| Home | Section heading "What we write" is trade jargon; the legacy "One review, the whole market." says the same thing to a customer. | medium |
+| Footer | Resources and legal links share one column under a "Resources" heading; "Where we are licensed" is a tracked uppercase kicker used as a heading. | low |
+| Header, 320 | Only the mark, a phone icon and a menu button; the primary CTA is hidden under 640 px. | low |
+
+What was already right and is kept: the skip link first in the DOM, native
+`<details>` menus that work without JavaScript, click-to-call in the header,
+44 px targets, the independent-agency disclosure and licensed-states line in
+the footer, one `h1`, no third-party scripts.

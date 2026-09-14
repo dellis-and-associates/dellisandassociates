@@ -6,6 +6,8 @@ export { breadcrumbJsonLd } from "../components/ui/breadcrumb.tsx";
 
 export const SITE = env.NEXT_PUBLIC_SITE_URL;
 export const abs = (path: string) => `${SITE}${path}`;
+/** /og/{path}.png — one image per route, generated from the brand's OG template. */
+export const ogImagePath = (path: string) => abs(`/og${path === "/" ? "/" : path}image.png`);
 
 const trim = (s: string, n: number) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, "")}…`);
 
@@ -24,8 +26,9 @@ export function pageMetadata(opts: { title: string; description: string; path: s
     description,
     alternates: { canonical: abs(opts.path) },
     robots: opts.indexable ? { index: true, follow: true } : { index: false, follow: true },
-    openGraph: { title, description, url: abs(opts.path), siteName: "Desert Peak Insurance", type: opts.type ?? "website", ...(opts.image ? { images: [{ url: opts.image }] } : {}) },
-    twitter: { card: "summary", title, description },
+    // Every page ships an OG image: the brand template rendered for this path by app/(frontend)/og (verify:seo checks it).
+    openGraph: { title, description, url: abs(opts.path), siteName: "Desert Peak Insurance", type: opts.type ?? "website", images: [{ url: opts.image ?? ogImagePath(opts.path), width: 1200, height: 630, alt: title }] },
+    twitter: { card: "summary_large_image", title, description, images: [opts.image ?? ogImagePath(opts.path)] },
   };
 }
 

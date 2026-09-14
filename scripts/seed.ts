@@ -18,6 +18,9 @@ import { pathToFileURL } from "node:url";
 import type { CollectionSlug, GlobalSlug, Payload } from "payload";
 import { validateEnv } from "../src/env.schema.ts";
 import { TODO_TOKEN } from "../src/fields/index.ts";
+import { doc, paragraph } from "./lib/lexical.mts";
+
+const paragraphs = (ps: string[]) => doc(ps.map((t) => paragraph(t)));
 
 type Json = Record<string, unknown>;
 type Counts = { created: number; updated: number; skipped: number; conflicts: number; conflictList: string[] };
@@ -138,6 +141,16 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
     await parallel(products, CONCURRENCY, async (p) => {
       productId[p.slug] = await upsert("products", { field: "slug", value: p.slug }, { name: p.name, tier: p.tier, category: p.category, thirdSubpage: p.thirdSubpage, medicareTouching: p.medicareTouching }, { reviewStatus: "draft", indexWave: "1" });
     });
+    // The two FAQs the legacy homepage carried, moved into the product FAQ fields they belong to (fills empties only).
+    const legacyFaqs: Record<string, { question: string; answer: string[] }[]> = {
+      "life-insurance": [{ question: "How can I find the right life insurance policy for my family's needs?", answer: ["Start from your obligations, not a product: what income would need replacing, what debts would need paying, and what future costs, like education, you want covered. Your health, age and budget then determine whether term, whole or indexed universal life fits best.", "A licensed advisor can compare quotes across carriers so the policy is sized to your actual numbers. That comparison is what the analysis does."] }],
+      "health-insurance": [{ question: "What factors affect my health insurance costs?", answer: ["Your age, where you live, whether you use tobacco, the level of coverage you choose and the plan's network all move the premium. A higher deductible lowers the premium; staying in network lowers what you pay when you use the plan.", "Pre-existing conditions do not change the premium on an individual marketplace plan; they can on some short-term plans, which is one reason to compare them carefully."] }],
+    };
+    for (const [slug, faqs] of Object.entries(legacyFaqs)) {
+      if (productId[slug] === undefined || productId[slug] === DRY_ID) continue;
+      await upsert("products", { field: "slug", value: slug }, { faqs: faqs.map((f) => ({ question: f.question, answer: paragraphs(f.answer) })) });
+      counts("products").skipped--;
+    }
     for (const p of products.filter((x) => x.parent)) {
       const parent = productId[p.parent!];
       if (parent === undefined || parent === DRY_ID || productId[p.slug] === DRY_ID) continue;
@@ -343,20 +356,32 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
   // ── Globals ───────────────────────────────────────────────────────────
   if (want("site-settings")) {
     // Facts from the legacy crawl (the legacy site wins on facts about the business); TODO-CLIENT-DATA.md #7 keeps them open for the new entity.
+    // Legacy identity that must not leak (client brief, 2026-09-13): the old-domain email is replaced wherever it
+    // is found. This is the one place the seed overwrites a non-empty value, and it only ever replaces this exact string.
+    const existingSite = (await payload.findGlobal({ slug: "site-settings", depth: 0, overrideAccess: true })) as { email?: string | null };
+    if (existingSite.email === "daniel@dellisandassociates.com") {
+      counts("global:site-settings").updated++;
+      if (!opts.dryRun) await payload.updateGlobal({ slug: "site-settings", data: { email: "daniel@desertpeakinsurance.com" }, overrideAccess: true, depth: 0 });
+    }
     await upsertGlobal("site-settings", {
       name: "Desert Peak Insurance",
       legalName: todo("site.legalName"),
       phone: "801-300-9980",
       phoneHref: "tel:8013009980",
-      email: "daniel@dellisandassociates.com",
+      email: "daniel@desertpeakinsurance.com",
       social: { facebook: "https://www.facebook.com/people/DEllis-and-Associates/100063451816513/", instagram: "https://www.instagram.com/dellisandassociates/" },
       defaultSeo: { titleSuffix: " — Desert Peak Insurance" },
+      // Homepage shell (client brief, 2026-09-13). The advisor photo and carrier logos stay TODO until supplied.
+      advisor: { name: "Daniel Ellis", title: "Principal advisor", statement: "There is never a fee for the analysis. Send what you have, and a licensed advisor will compare it line by line and tell you what we find." },
+      carriers: { headline: "Appointed with 40+ carriers", names: ["Mutual of Omaha", "UnitedHealthcare", "Aetna", "Humana", "Cigna"].map((name) => ({ name })) },
     });
   }
   if (want("compliance-settings")) {
+    // The legacy footer's Medicare disclaimer, verbatim (inputs/legacy-crawl.json → the legacy footer component), until
+    // the client supplies the current plan-year wording (TODO-CLIENT-DATA.md #11). It renders on every page.
     await upsertGlobal("compliance-settings", {
       medicareInScope: true,
-      medicareTpmoDisclaimer: todo("compliance.medicareTpmoDisclaimer"),
+      medicareTpmoDisclaimer: "Plans are insured or covered by a Medicare Advantage (HMO, PPO and PFFS) organization with a Medicare-approved Part D sponsor. Enrollment in the plan depends on the plan's contract renewal with Medicare. We do not offer every plan in your area. Please contact Medicare.gov or 1-800-Medicare to get information on all your options.",
     });
   }
 

@@ -43,6 +43,8 @@ live. Against Supabase it is off: change the config, then
 | `pnpm test:revalidate` | a product edit fans out to dependent routes by tag |
 | `pnpm generate:content --collection=glossary-terms --batch=12` | writes authored drafts (`scripts/lib/drafts/`) into the shells, resumable |
 | `pnpm ux:audit --base=<url>` | throttled screenshots + axe per template into `docs/ux-audit/` |
+| `pnpm shell:shots --label=before\|after` | header, hero and footer screenshots at four widths into `docs/ux-audit/shell/` |
+| `pnpm certificates` | re-encode the recognition images to AVIF/WebP with a dimensions manifest |
 | `pnpm typecheck && pnpm lint && pnpm build` | the usual |
 
 ## Layout

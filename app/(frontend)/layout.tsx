@@ -7,7 +7,9 @@ export const metadata: Metadata = {
   metadataBase: new URL(env.NEXT_PUBLIC_SITE_URL),
   title: { default: "Desert Peak Insurance", template: "%s — Desert Peak Insurance" },
   description: "Independent insurance agency in Arizona, Nevada, Utah and Idaho. We compare the carriers we represent and tell you what we find.",
-  icons: { icon: [{ url: "/brand/favicon.svg", type: "image/svg+xml" }, { url: "/brand/icon-32.png", sizes: "32x32" }], apple: "/brand/icon-180.png" },
+  // Favicon and app icons are the brand package's own files (desert-peak-brand/web/favicons → public/, byte-identical).
+  icons: { icon: [{ url: "/favicon.ico", sizes: "any" }, { url: "/favicon.svg", type: "image/svg+xml" }], apple: "/apple-touch-icon.png" },
+  manifest: "/manifest.webmanifest",
 };
 export const viewport: Viewport = { width: "device-width", initialScale: 1, colorScheme: "light" };
 

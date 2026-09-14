@@ -427,6 +427,104 @@ office manages with a role.
 **Spanish is a raised decision, not an assumption.** Strings are plain React;
 a locale layer touches components, not routes.
 
+### Shell and homepage redesign (client brief, 2026-09-13)
+
+**The hero is brand-brown with a cream advisor panel on the right.** The
+guide reserves large brand fills for the home hero and the footer band, and
+the brief keeps the hero and the closing band as the page's only two
+full-bleed brand blocks. The right column carries the advisor panel over a
+faint strata device, so no breakpoint leaves dead area: on phones the panel
+stacks under the CTAs at full width.
+
+**The watermark is drawn from the mark's geometry, not from the logo file.**
+BRAND-GUIDE §6 forbids using the mark as a background; the brief asks for the
+legacy monogram device rebuilt from the Strata geometry. `StrataWatermark`
+draws bands cut by one fault with the right block up-thrown, at 15 %
+opacity, `aria-hidden`; it is a diagram in the illustration style (§8), and
+the logo files stay untouched.
+
+**Logos are the shipped files.** Header and footer render
+`/brand/logo-horizontal.svg` and `/brand/logo-reversed.svg` as `<img>`
+(byte-identical copies of `desert-peak-brand/brand/logos`), 40 px tall on
+desktop, 32 on phones, the mark alone under 360 px, one band period of clear
+space. The React lockup that re-typeset the wordmark is gone. Favicon and
+app icons are the brand package's own `web/favicons` files at the site root.
+
+**No middle dots, no uppercase eyebrow.** The brief's trust line and eyebrow
+are written with middle dots; the interface standard lists dotted meta
+strings and tracked eyebrows as tells. The three facts render as a list with
+spacing between items, and the eyebrow is a sentence in small sans
+("Independent insurance agency in Arizona, Nevada, Utah and Idaho"). Same
+facts, no tell.
+
+**The carrier strip states the legacy claim, on the client's instruction.**
+"Appointed with 40+ carriers" and the five names come from the legacy site
+and render from `SiteSettings.carriers`, as the brief directs. The brand
+guide's rule against unconfirmed carrier appointments still governs the
+`Carriers` collection and `/carriers/`, which list only confirmed
+appointments; the strip is the office's statement and the office can edit
+it. Logos wait for licensed files (TODO-CLIENT-DATA.md #16).
+
+**The Medicare disclaimer is on every page, verbatim from the legacy
+footer.** Medicare is in scope, so the TPMO text belongs to the shell, not
+to Medicare pages alone. The seed fills `medicareTpmoDisclaimer` with the
+legacy wording until the client supplies the plan-year text
+(TODO-CLIENT-DATA.md #11); `verify:compliance` checks the block and the
+exact text on every route. Product pages keep their inline copy as well.
+
+**Recognition transfers, credited precisely and dated.** The client
+confirmed the Circle of Champions PY2025 transfer, which closes the brand
+guide's caution (§7) for this one item. The section names the producer, the
+awarding carrier and the plan year, and the images are re-encoded
+(`pnpm certificates`) to AVIF and WebP with explicit dimensions and alt text.
+
+**Testimonials are gated by one checkbox.** `SiteSettings.testimonialConsentConfirmed`
+is false; the section and its component exist and render nothing until it
+is true and every row carries a consent date. No legacy quote is seeded,
+because `site-settings` is publicly readable and unconsented words must not
+be in the database either.
+
+**The homepage FAQ reads the product FAQ fields.** Two questions exist (the
+legacy homepage's, moved to life and health insurance); the brief asks for
+four to six. The section renders what exists and grows as product FAQs are
+drafted and reviewed (TODO-CLIENT-DATA.md #17). Nothing was written to make
+the count.
+
+**The phone number shows from 1280 px, not 1024.** The brief asks for the
+number at ≥ 1024 px. At 1024 the bar holds the 40 px lockup, five nav
+entries, the phone, search and the CTA in 960 px only by wrapping labels,
+which the first after-screenshots showed. The number appears at 1280 and
+the icon (with a screen-reader label) below that; the nav collapses into the
+drawer under 1024 px so tablets get the drawer rather than a cramped bar.
+
+**Payload's client-hint header is scoped to the admin.** `withPayload` sets
+`Accept-CH` and `Critical-CH: Sec-CH-Prefers-Color-Scheme` on every route so
+the admin can follow the OS colour scheme. Chrome answers a Critical-CH it
+did not send by restarting the navigation, which Lighthouse recorded as a
+307 to the same URL on all 22 templates, about 600 ms on Slow 4G, on every
+cold visit. `next.config.ts` rewrites that header entry's source to
+`/admin/:path*`; the public site never sends it.
+
+**Search is a link that becomes a dialog.** Without JavaScript the icon goes
+to `/search/`; with it, the native `<dialog>` opens (⌘K / Ctrl-K), which
+gives focus trapping, Escape and the backdrop for free. The drawer is a
+`<details>` for the same reason; JavaScript adds scroll lock, a focus trap
+and close-on-route-change.
+
+**One OG image per route, resolved from the path.** `/og/{path}image.png`
+looks the route up (product, state, city, article, term, page) and renders
+the brand's OG template with `next/og` from the document's own title, so
+the request carries no text and nobody can put words on the brand template.
+Medicare routes get the TPMO band, as the brand's template does.
+`verify:seo` requires the tag on every route and fetches one image per
+route group.
+
+**The production origin is exact.** `NEXT_PUBLIC_SITE_URL` must be
+`https://www.desertpeakinsurance.com` when `APP_ENV` is production;
+canonical, OG `url`, JSON-LD and the sitemap all derive from it. The email
+`daniel@desertpeakinsurance.com` replaces the legacy address; that is the
+one non-empty value the seed overwrites, and only that exact string.
+
 ## Phase 6
 
 **Tags, never paths.** `src/hooks/revalidate.ts` maps every collection to

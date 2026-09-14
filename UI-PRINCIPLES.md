@@ -57,7 +57,7 @@ scrollable above it.
 
 | Template | Bold once | Quiet everywhere else |
 |---|---|---|
-| Home | The strata-band hero: a single statement, the product list as a table of lines with what they cover, no photograph | No feature rows, no testimonials, no logos until appointments exist |
+| Home | The split hero: the statement on the brand surface at left, the advisor panel over a faint strata device at right; the closing band is the only other brand block (revised 2026-09-13: the product table is gone, coverage is four group cards) | No feature rows, no photograph in the hero, testimonials only with written consent, carrier names as text until logos are licensed |
 | Product hub | The covered / not-covered two-column list, set like a policy declarations page | No icons per bullet |
 | Coverage | The comparison table with tabular limits | — |
 | State hub | The statutory minimums table, every row cited to the DOI | No map graphic |

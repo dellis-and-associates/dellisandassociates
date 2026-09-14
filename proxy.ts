@@ -64,5 +64,5 @@ export async function proxy(request: NextRequest) {
 
 export const config = {
   // Everything except static assets, the admin, and the API itself.
-  matcher: ["/((?!_next/|admin|api/|fonts/|brand/|favicon|robots\\.txt|sitemap\\.xml).*)"],
+  matcher: ["/((?!_next/|admin|api/|og/|fonts/|brand/|certificates/|favicon|apple-touch-icon|icon-|manifest\\.webmanifest|robots\\.txt|sitemap\\.xml).*)"],
 };

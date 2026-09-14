@@ -1,29 +1,24 @@
 /**
- * Brand marks, inlined so they inherit nothing they should not and keep
- * their <title>. Geometry is copied verbatim from desert-peak-brand/brand/logos;
- * the hex literals are the brand's own (BRAND-GUIDE §6: logos carry hex).
+ * The logo files exactly as the brand package ships them
+ * (desert-peak-brand/brand/logos → public/brand, byte-identical). Nothing is
+ * re-drawn or re-typeset here; the <img> keeps each file's own <title>.
+ * BRAND-GUIDE §6: lockup 40 px tall on desktop and 32 on mobile, the mark
+ * alone under 360 px viewports, clear space of one band period (0.237 × height).
  */
-// tokens-ok: logo files carry brand hex by design (BRAND-GUIDE.md §6, DECISIONS.md "Logos carry hex literals")
-const MARK = "M0 7h35.91l-1.57 10H0zM0 21h33.72l-1.56 10H0zM0 35h31.53l-1.56 10H0zM0 49h29.34l-1.56 10H0zM41 0h23v10H39.44zM38.81 14H64v10H37.25zM36.62 28H64v10H35.06zM34.43 42H64v10H32.87z";
+const LOCKUP = { w: 334.12, h: 59 }; // viewBox of logo-horizontal.svg / logo-reversed.svg
+const MARK = { w: 64, h: 59 };
+const at = (box: { w: number; h: number }, h: number) => ({ width: Math.round((box.w / box.h) * h), height: h });
 
-export function Mark({ className, title = "Desert Peak Insurance" }: { className?: string; title?: string }) {
-  return (
-    <svg viewBox="0 0 64 59" className={className} role="img" aria-label={title}>
-      <title>{title}</title>
-      <path d={MARK} fill="currentColor" />
-    </svg>
-  );
+/** Horizontal lockup; `reversed` for surface-inverse and brand fills. */
+const H: Record<number, string> = { 24: "h-6", 32: "h-8", 40: "h-10", 48: "h-12" };
+export function Lockup({ reversed = false, height = 40, className = "", lazy = false }: { reversed?: boolean; height?: 32 | 40 | 48; className?: string; lazy?: boolean }) {
+  const d = at(LOCKUP, height);
+  // The height class is explicit: the base stylesheet sets img { height: auto }, and an SVG file's intrinsic size is its viewBox aspect only.
+  return <img src={reversed ? "/brand/logo-reversed.svg" : "/brand/logo-horizontal.svg"} alt="Desert Peak Insurance" width={d.width} height={d.height} className={`${H[height]} w-auto ${className}`} decoding="async" loading={lazy ? "lazy" : undefined} />;
 }
 
-/** Horizontal lockup: mark + wordmark set in Archivo. 40 px tall on desktop, 32 on mobile; mark alone under 360 px (handled by the header). */
-export function Lockup({ className }: { className?: string }) {
-  return (
-    <span className={`inline-flex items-center gap-3 ${className ?? ""}`}>
-      <Mark className="h-8 w-auto text-brand md:h-10" />
-      <span className="flex flex-col leading-none font-sans">
-        <span className="text-title-sm font-semibold tracking-tight text-ink">Desert Peak</span>
-        <span className="text-caption tracking-widest uppercase text-ink-muted">Insurance</span>
-      </span>
-    </span>
-  );
+/** The mark alone, 24 px and above, where the name appears elsewhere. */
+export function Mark({ height = 32, className = "", alt = "Desert Peak Insurance" }: { height?: 24 | 32 | 40 | 48; className?: string; alt?: string }) {
+  const d = at(MARK, height);
+  return <img src="/brand/mark.svg" alt={alt} width={d.width} height={d.height} className={`${H[height]} w-auto ${className}`} decoding="async" />;
 }

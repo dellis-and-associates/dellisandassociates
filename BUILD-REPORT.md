@@ -162,6 +162,40 @@ performance score has a regression floor of 70. The 100 floor and the 1.8 s
 LCP stay in the files as the target; the reasoning is in `DECISIONS.md`,
 Phase 5 (performance).
 
+## Shell and homepage redesign (client brief of 2026-09-13; runs on 2026-09-14)
+
+What changed: the header (shipped lockup, Insurance mega-menu in four
+groups, Locations, Resources, Claims, For partners, phone, ⌘K search dialog,
+one CTA, a phone drawer under 1024 px), the footer (reversed lockup, five
+columns, the compliance strip with the Medicare TPMO disclaimer on every
+page, `daniel@desertpeakinsurance.com`), and the homepage (split hero with
+the advisor panel, carrier strip, coverage in four group cards, the
+policy-review moments, the FAQ from product fields, the consent-gated
+testimonial section, the plan-year recognition, the closing band). No table
+on the homepage. Favicons and app icons from the brand package; an OG image
+for every route from the brand template. Before and after screenshots:
+`docs/ux-audit/shell/`.
+
+| Gate | Result |
+|---|---|
+| `verify:tokens` | pass (151 files, 0 hits, 4 documented opt-outs) |
+| `verify:parity` | 26 rows: 25 exists, 1 pending consent (testimonials), 0 missing; rows 13, 16, 23 updated |
+| `verify:seo` | pass: 1,081 routes, og:image on every one, one generated image per route group fetched as a real 1200×630 PNG (11 groups) |
+| `verify:compliance` | pass: TPMO disclaimer block and verbatim text on all 1,081 routes; testimonial consent false and nothing rendered |
+| `verify:routes` · `verify:redirects` · `verify:uniqueness` | pass |
+| `test:a11y` | 108/108, zero axe violations, every template × 4 widths |
+| `test:nojs` | 54/54 (menus, drawer and search work as links and `<details>`) |
+| `test:quote-flow` | 2/2 |
+| `test:visual` | 111/111 after the baselines were recaptured for the new shell on every template (the header and footer changed on all of them); the print glossary baseline had been captured with the fallback serif and was retaken with the brand face |
+| `lhci` (homepage, mobile) | **not 100/100/100/100.** Accessibility 100, best practices 100, SEO 69 (only `is-crawlable`, noindex by design), performance 64–92 across today's runs of the same build. Three consecutive runs on the homepage alone, on a machine carrying a load average of 8–10 from other work: 87 / 78 / 73, TBT 181–588 ms, LCP 3.4–3.7 s, FCP 1.7 s, CLS 0. The redirect audit passes now that the `Critical-CH` restart is gone. The lhci gate itself (performance floor 70) failed on the chain run under that load (home 64, TBT 1.3 s) and passed in the earlier, quieter run (home 92, TBT 73 ms); the number to trust is a run on an idle machine or CI, which is owed. |
+| `lhci` (22 templates) | accessibility 100 and best practices 100 on all 22; performance 64–89 (median 81) in the loaded run, 90–95 in the last quiet run of the previous build; LCP 2.5–4.0 s; CLS 0 everywhere; the redirect audit passes on all 22 |
+| Seed | 5 updated (2 products with the legacy FAQs, site and compliance globals), 556 skipped, 0 conflicts |
+
+Found on the way: every cold navigation was answering with a 307 to itself
+because `withPayload` sets `Critical-CH` on every route; scoped to `/admin`
+(DECISIONS.md), which removed the redirect audit failure on all 22
+templates.
+
 ## What is owed
 
 | Item | Owner | Blocks |

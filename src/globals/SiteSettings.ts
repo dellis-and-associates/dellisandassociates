@@ -32,6 +32,42 @@ export const SiteSettings: GlobalConfig = {
     },
     { name: "officeHours", type: "text" },
     {
+      name: "advisor",
+      type: "group",
+      admin: { description: "The advisor panel in the homepage hero. The photo is optional; the panel holds without one." },
+      fields: [
+        { name: "name", type: "text" },
+        { name: "title", type: "text" },
+        { name: "statement", type: "textarea", maxLength: 240, admin: { description: "One sentence, in the advisor's voice." } },
+        { name: "photo", type: "upload", relationTo: "media" },
+      ],
+    },
+    {
+      name: "carriers",
+      type: "group",
+      admin: { description: "The carrier strip under the hero. Names are text until the client supplies licensed logo files (TODO-CLIENT-DATA.md)." },
+      fields: [
+        { name: "headline", type: "text", admin: { description: 'e.g. "Appointed with 40+ carriers"' } },
+        { name: "names", type: "array", fields: [{ name: "name", type: "text", required: true }] },
+      ],
+    },
+    {
+      name: "testimonialConsentConfirmed",
+      type: "checkbox",
+      defaultValue: false,
+      admin: { description: "Written consent from every quoted client is on file. Until this is checked, the testimonial section does not render anywhere, whatever is entered below." },
+    },
+    {
+      name: "testimonials",
+      type: "array",
+      admin: { description: "Real, named, consented. The date is the date of the written consent." },
+      fields: [
+        { name: "quote", type: "textarea", required: true },
+        { name: "name", type: "text", required: true },
+        { name: "consentDate", type: "date", required: true },
+      ],
+    },
+    {
       name: "social",
       type: "group",
       fields: [

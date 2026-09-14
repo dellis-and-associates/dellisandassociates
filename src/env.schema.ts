@@ -13,6 +13,9 @@ type Spec = {
 };
 
 /** True for the Docker database in docker-compose.yml. Push mode is allowed only there. */
+/** The one public origin. Canonical URLs, OG `url`, JSON-LD and the sitemap derive from it. */
+export const PRODUCTION_SITE_URL = "https://www.desertpeakinsurance.com";
+
 export const isLocalDatabase = (uri: string | undefined): boolean => {
   if (!uri) return false;
   try {
@@ -96,7 +99,7 @@ export const schema = {
   OWNER_EMAIL: { required: false, degrade: "OWNER_EMAIL is unset; no notification inbox." },
   EMAIL_FROM: { required: false, degrade: "EMAIL_FROM is unset; no verified sender." },
 
-  // Site
+  // Site (production: exactly PRODUCTION_SITE_URL; previews and local hosts are free)
   NEXT_PUBLIC_SITE_URL: {
     required: true,
     validate: (v) => httpsUrl(v) ?? (v.endsWith("/") ? "must not end with a slash" : null),
@@ -197,6 +200,8 @@ export function validateEnv(source: Record<string, string | undefined>): { env: 
       problems.push("TURNSTILE_SECRET_KEY is a Cloudflare test key; production refuses to boot");
     if (out.NEXT_PUBLIC_SITE_URL?.startsWith("http://"))
       problems.push("NEXT_PUBLIC_SITE_URL must be https in production");
+    if (out.NEXT_PUBLIC_SITE_URL && out.NEXT_PUBLIC_SITE_URL !== PRODUCTION_SITE_URL)
+      problems.push(`NEXT_PUBLIC_SITE_URL must be ${PRODUCTION_SITE_URL} in production (canonical, OG url and JSON-LD all derive from it)`);
     if (isLocalDatabase(out.PAYLOAD_DATABASE_URI))
       problems.push("PAYLOAD_DATABASE_URI points at a local database; production refuses to boot");
   }

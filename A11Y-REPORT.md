@@ -22,6 +22,34 @@ criteria that tools miss. Results are filled in from the run recorded in
 | Colour never the only carrier | every status carries an icon and a leading word (Callout); tables label the recommended column | by construction, checked in the gallery |
 | Zoom to 400% / text spacing | no fixed heights on text containers; `overflow-wrap: anywhere` on body | verified by hand at 400% on Chromium, home and city page: no loss of content |
 
+## Shell and homepage redesign (2026-09-13)
+
+Re-run after the header, footer and homepage were rebuilt: `test:a11y`
+108/108 (27 templates × 4 widths), zero axe violations, focus visible and
+never obscured by the 64/56 px sticky bar, targets ≥ 24 px, skip link first;
+`test:nojs` 54/54. Specific to the new shell, checked by hand in Chromium:
+
+- Search dialog: the trigger is a real link to `/search/`; with JavaScript
+  it opens the native `<dialog>` with `showModal()`, so focus is trapped by
+  the platform, Escape closes it, and focus returns to the trigger. ⌘K and
+  Ctrl-K open it; the input is focused on open.
+- Phone drawer: a `<details>`; JavaScript moves focus into it, wraps Tab and
+  Shift-Tab inside it, locks page scroll, closes on Escape (focus back on
+  the button) and on route change. Without JavaScript it still opens and
+  closes and every link works.
+- Menus: `aria-haspopup` on the summaries; Escape and an outside click
+  close them; only one is open at a time.
+- The trust line is a list, not a dotted string, so a screen reader hears
+  three items. The advisor panel is an `aside` labelled "Your advisor".
+- Recognition images carry alt text that says what the document is, who
+  issued it and for which plan year; the credit line is visible text, not
+  alt text only.
+- The testimonial section is absent from the DOM, not hidden, while
+  consent is unconfirmed.
+
+Screen-reader passes remain owed (below); the new dialog and drawer are on
+that list.
+
 ## Keyboard-only walkthroughs
 
 - **Quote flow**, 320 px and 1280 px: `tests/e2e/quote-flow.spec.ts` drives the whole flow with Tab, Shift+Tab, Enter, Space and typing only. Focus order follows visual order; the error summary receives focus and its links focus the field; every input carries `autocomplete`, and tel/ZIP fields carry `inputmode`. The Playwright trace of the run (`tests/e2e/report/`) is the recording.

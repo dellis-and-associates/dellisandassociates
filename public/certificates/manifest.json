@@ -1,0 +1,32 @@
+{
+  "coc-appreciation-letter-py2025": {
+    "width": 791,
+    "height": 1024,
+    "sources": [
+      {
+        "type": "image/avif",
+        "srcset": "/certificates/coc-appreciation-letter-py2025-791.avif 791w"
+      },
+      {
+        "type": "image/webp",
+        "srcset": "/certificates/coc-appreciation-letter-py2025-791.webp 791w"
+      }
+    ],
+    "fallback": "/certificates/coc-appreciation-letter-py2025.jpg"
+  },
+  "coc-certificate-py2025": {
+    "width": 1024,
+    "height": 791,
+    "sources": [
+      {
+        "type": "image/avif",
+        "srcset": "/certificates/coc-certificate-py2025-800.avif 800w, /certificates/coc-certificate-py2025-1024.avif 1024w"
+      },
+      {
+        "type": "image/webp",
+        "srcset": "/certificates/coc-certificate-py2025-800.webp 800w, /certificates/coc-certificate-py2025-1024.webp 1024w"
+      }
+    ],
+    "fallback": "/certificates/coc-certificate-py2025.jpg"
+  }
+}

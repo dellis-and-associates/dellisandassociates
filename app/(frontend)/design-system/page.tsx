@@ -8,7 +8,9 @@ import { Card, CardGrid } from "@/src/components/ui/card";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
 import { Accordion, CtaBand, Dialog, EmptyState, LinkTabs, Pagination, Progress, RelatedLinks, Skeleton, Stepper, StrataRule, Tag, Toast, Tooltip } from "@/src/components/ui/misc";
 import { Lockup, Mark } from "@/src/components/ui/logo";
-import { IconCheckCircle, IconCrossCircle, IconInfo, IconPhone, IconPrint, IconSearch, IconTriangle } from "@/src/components/ui/icons";
+import { getProducts, getSiteSettings } from "@/src/lib/content";
+import { CarrierStrip, ClosingBand, CoverageGroups, LifeEvents, Recognition } from "@/src/components/site/home";
+import { IconCheckCircle, IconCrossCircle, IconFacebook, IconInfo, IconInstagram, IconPhone, IconPrint, IconSearch, IconTriangle } from "@/src/components/ui/icons";
 
 export const metadata = pageMetadata({ title: "Design system", description: "Every component, every state, from real content. The review artifact and the visual baseline.", path: "/design-system/", indexable: false });
 
@@ -23,8 +25,9 @@ const Row = ({ label, children }: { label: string; children: React.ReactNode }) 
 );
 
 /** noindex gallery. Every state is rendered from real Desert Peak content; nothing here is lorem. */
-export default function DesignSystem() {
-  const ids = ["type", "colour", "buttons", "fields", "choice", "callout", "table", "card", "nav", "disclosure", "states", "brand", "icons"];
+export default async function DesignSystem() {
+  const [site, products] = await Promise.all([getSiteSettings(), getProducts()]);
+  const ids = ["type", "colour", "buttons", "fields", "choice", "callout", "table", "card", "nav", "disclosure", "states", "brand", "icons", "shell", "home"];
   return (
     <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
       <Breadcrumb items={[{ label: "Design system", href: "/design-system/" }]} />
@@ -126,14 +129,28 @@ export default function DesignSystem() {
       </Section>
 
       <Section id="brand" title="Brand marks and the strata rule" note="Mark alone under 200 px; lockup in the header; the strata rule is the only ornament.">
-        <Row label="Lockup"><Lockup /></Row>
-        <Row label="Mark"><Mark className="h-6 w-auto text-brand" /><Mark className="h-10 w-auto text-brand" /><div className="rounded-surface bg-surface-inverse p-3"><Mark className="h-10 w-auto text-ink-inverse" /></div></Row>
+        <Row label="Lockup"><Lockup height={40} /><Lockup height={32} /></Row>
+        <Row label="Reversed"><div className="rounded-surface bg-surface-inverse p-3"><Lockup reversed height={40} /></div><div className="rounded-surface bg-brand p-3"><Lockup reversed height={32} /></div></Row>
+        <Row label="Mark"><Mark height={24} /><Mark height={40} /></Row>
         <Row label="Rule"><StrataRule /></Row>
       </Section>
 
       <Section id="icons" title="Icons" note="One set: 24-unit grid, 2 px stroke, round caps, currentColor. Never emoji.">
         <Row label="Status"><IconCheckCircle label="Good" className="text-positive" /><IconTriangle label="Notice" className="text-notice" /><IconCrossCircle label="Gap" className="text-critical" /><IconInfo label="Note" className="text-ink-muted" /></Row>
         <Row label="Action"><IconPhone label="Call" /><IconSearch label="Search" /><IconPrint label="Print" /></Row>
+        <Row label="Social"><IconFacebook label="Facebook" /><IconInstagram label="Instagram" /></Row>
+      </Section>
+
+      <Section id="shell" title="Shell" note="The header and footer on this page are the components: sticky bar that compresses on scroll, Insurance and Locations as native menus, the phone, the search link that becomes a ⌘K dialog, the drawer under 768 px; the footer's five columns and the compliance strip in its fixed order.">
+        <p className="max-w-measure-body font-sans text-small">Scroll to see the bar compress; press <kbd className="rounded-control border border-border-strong px-1 font-sans text-caption">Ctrl</kbd> <kbd className="rounded-control border border-border-strong px-1 font-sans text-caption">K</kbd> for search; narrow the window under 768 px for the drawer.</p>
+      </Section>
+
+      <Section id="home" title="Homepage pieces" note="Carrier strip, coverage in four groups, the policy-review moments, the plan-year recognition, the closing band. The testimonial card has no specimen: it renders only from a quote with written consent on file, and none exists yet.">
+        <CarrierStrip site={site} />
+        <CoverageGroups products={products} />
+        <LifeEvents />
+        <Recognition />
+        <ClosingBand site={site} />
       </Section>
       <p className="font-sans text-small"><Link href="/">Home</Link></p>
     </div>
