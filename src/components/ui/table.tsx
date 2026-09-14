@@ -2,8 +2,9 @@ import type { ReactNode } from "react";
 
 /** Tables wider than the measure scroll inside their own container; the page never scrolls sideways. */
 export function TableWrap({ children, caption, className = "" }: { children: ReactNode; caption?: string; className?: string }) {
+  // scroll-mt: a focused scroll container taller than the viewport must land below the sticky header (WCAG 2.2 focus not obscured).
   return (
-    <div className={`overflow-x-auto rounded-surface border border-border ${className}`} tabIndex={0} aria-label={caption}>
+    <div className={`scroll-mt-24 overflow-x-auto rounded-surface border border-border ${className}`} tabIndex={0} aria-label={caption}>
       {children}
     </div>
   );

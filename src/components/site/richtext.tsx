@@ -1,12 +1,17 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { TODO_DISPLAY } from "../../lib/text.ts";
+
+const TODO_SPLIT = /(\{\{TODO:[^}]*\}\})/g;
+/** Text with a TODO token renders the token as a marked gap (the document itself stays noindex until the gap is filled). */
+const withGaps = (t: string): ReactNode => (TODO_SPLIT.test(t) ? t.split(TODO_SPLIT).map((part, i) => (/^\{\{TODO:/.test(part) ? <span key={i} className="text-ink-muted" data-todo>{TODO_DISPLAY}</span> : part)) : t);
 
 type Node = { type: string; text?: string; format?: number | string; tag?: string; listType?: string; children?: Node[]; fields?: { url?: string; newTab?: boolean; linkType?: string }; url?: string; value?: unknown };
 const BOLD = 1, ITALIC = 2, UNDERLINE = 8, CODE = 16;
 
 function inline(n: Node, key: number): ReactNode {
   if (n.type === "text") {
-    let el: ReactNode = n.text ?? "";
+    let el: ReactNode = withGaps(n.text ?? "");
     const f = typeof n.format === "number" ? n.format : 0;
     if (f & CODE) el = <code key={key}>{el}</code>;
     if (f & BOLD) el = <strong key={key}>{el}</strong>;

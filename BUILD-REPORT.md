@@ -27,18 +27,25 @@ says so rather than guessing.
 The production build prerenders **473 pages** (wave 1 plus the static
 pages). `verify:data` reproduces the table above from the XML data files.
 
-## Content status
+## Content status (2026-09-15)
 
-| Collection | Shells | Drafted (authored, in the database) | Pending | Reviewed |
+| Collection | Documents | Written and in the database | Pending | Reviewed |
 |---|---:|---:|---:|---:|
-| Glossary terms | 221 | 8 drafted + 16 authored in `scripts/lib/drafts/glossary/` awaiting the next `generate:content` run | 197 without a draft | 0 |
-| Articles | 186 | 4 | 182 | 0 |
+| Products | 36 | 36 (summary, intro, coverage blocks, covered/not covered, discounts, 4–6 FAQs each) | 0 | 0 |
+| Pages | 33 | 29 (ledes and blocks; legal pages drafted for counsel; licensing pages with the state-licensing disclosure) + 3 form pages + home | 0 | 0 |
+| Cities | 38 | 38 (hazards, housing, driving, 3–5 real neighborhoods, local rules); the nearest-office field stays a client gap, so city pages stay `noindex` | 0 | 0 |
+| States | 4 | auto liability minimums with official sources (Arizona verified from the statute; NV/UT/ID confirmation owed) and regulatory notes | — | — |
+| Glossary terms | 221 | 221 | 0 | 0 |
+| Articles | 186 | 57 (all 30 guides, all 20 life-events, 7 how-to) | 129 (45 how-to, 52 compare, 20 seasonal, 12 state-requirements) without a draft yet | 0 |
 
-Every generated document is `draft` and `noindex`. Only a licensed person
-sets `reviewed`; the sitemap and the `robots` meta follow that flag.
-Continue with `pnpm generate:content --collection=glossary-terms --batch=24`
-after authoring drafts under `scripts/lib/drafts/`; the run is resumable and
-never redrafts a drafted slug.
+Every document is `draft` and `noindex` until a licensed person marks it
+reviewed; the sitemap and the `robots` meta follow that flag. Content lives
+as data in `scripts/lib/drafts/` (one file per slug), is validated by
+`pnpm content:check` (no database), and is applied by `pnpm fill:content`
+(products, pages, cities; empty fields only) and `pnpm generate:content`
+(glossary, articles). Nothing in it states a fact about the agency the
+client has not supplied; every such fact is a `{{TODO}}` token rendered as
+"[to be confirmed]".
 
 ## Open TODO tokens (from `pnpm todo:report`)
 

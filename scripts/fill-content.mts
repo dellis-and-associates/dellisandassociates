@@ -1,5 +1,5 @@
 /**
- * pnpm fill:content --collection=products|pages|cities [--dry-run] [--slug=x]
+ * pnpm fill:content --collection=products|pages|cities [--dry-run] [--slug=x] [--force]
  *
  * Writes authored drafts (scripts/lib/drafts/{products,pages,cities}) into the
  * documents the seed created. Non-destructive: a field is written only when
@@ -41,7 +41,7 @@ const patchFor = (current: Json, draft: Json): Json => {
 };
 const fail = (v: Violation[]) => v.map((x) => `[${x.rule}] ${x.message}`).join("; ");
 
-export async function fillContent(payload: Payload, opts: { collection: FillCollection; dryRun: boolean; slug?: string }) {
+export async function fillContent(payload: Payload, opts: { collection: FillCollection; dryRun: boolean; slug?: string; force?: boolean }) {
   const dir = fileURLToPath(new URL(`./lib/drafts/${opts.collection}/`, import.meta.url));
   const slugs = readdirSync(dir).filter((f) => f.endsWith(".ts")).map((f) => f.slice(0, -3)).filter((s) => !opts.slug || s === opts.slug).sort();
   const log = (m: string) => payload.logger.info(`[fill:content] ${m}`);
@@ -79,7 +79,8 @@ export async function fillContent(payload: Payload, opts: { collection: FillColl
       const trim = (t: string | undefined, n: number) => (t && t.length > n ? `${t.slice(0, n - 1).replace(/\s+\S*$/, "")}…` : t);
       fields.seo = { ...seo, ...(seo.title ? { title: trim(seo.title, 60) } : {}), ...(seo.description ? { description: trim(seo.description, 155) } : {}) };
     }
-    const patch = patchFor(doc, fields);
+    // --force writes every drafted field (used to push a corrected draft over a previous fill; editors' later changes would be lost, so it is per-slug by default).
+    const patch = opts.force ? { ...fields } : patchFor(doc, fields);
     // Page titles: the seed wrote a placeholder from the path; a drafted title replaces it when the page has no lede yet (i.e. never edited).
     if (opts.collection === "pages" && fields.title && isEmpty(doc.lede) && !patch.title) patch.title = fields.title;
     if (!Object.keys(patch).length) { counts.unchanged++; continue; }
@@ -106,7 +107,9 @@ if (isMain) {
   const { getPayload } = await import("payload");
   const config = (await import("../src/payload.config.ts")).default;
   const payload = await getPayload({ config });
-  const counts = await fillContent(payload, { collection, dryRun: args.includes("--dry-run"), slug: arg("slug") });
+  const force = args.includes("--force");
+  if (force && !arg("slug")) { console.error("--force requires --slug=<one draft>"); process.exit(2); }
+  const counts = await fillContent(payload, { collection, dryRun: args.includes("--dry-run"), slug: arg("slug"), force });
   console.log(`fill:content ${collection}${args.includes("--dry-run") ? " (dry run)" : ""}: ${counts.filled} document(s) filled (${counts.fields} fields), ${counts.unchanged} unchanged, ${counts.invalid} invalid, ${counts.missing} without a document`);
   process.exit(counts.invalid ? 1 : 0);
 }

@@ -21,3 +21,7 @@ export function countWords(value: unknown): number {
   const t = richTextToPlain(value);
   return t ? t.split(/\s+/).filter(Boolean).length : 0;
 }
+
+/** A `{{TODO:…}}` token as a reader should see it: a marked gap, never raw braces. The source keeps the token (it drives noindex). */
+export const TODO_DISPLAY = "[to be confirmed]";
+export const displayText = (s: string | null | undefined): string => (s ?? "").replace(/\{\{TODO:[^}]*\}\}/g, TODO_DISPLAY);

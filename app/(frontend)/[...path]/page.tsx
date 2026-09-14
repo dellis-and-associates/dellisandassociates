@@ -1,3 +1,4 @@
+import { displayText } from "@/src/lib/text";
 import { notFound } from "next/navigation";
 import { getPage, getPages, getStates } from "@/src/lib/content";
 import { isIndexable, pageMetadata, breadcrumbJsonLd, jsonLd, SITE } from "@/src/lib/seo";
@@ -41,7 +42,7 @@ export default async function CmsPage({ params }: { params: Promise<{ path: stri
     <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       <Breadcrumb items={crumbs} />
-      <header className="grid gap-4"><h1>{page.title}</h1>{page.lede ? <p className="lead max-w-measure-body">{page.lede}</p> : null}<StrataRule /></header>
+      <header className="grid gap-4"><h1>{page.title}</h1>{page.lede ? <p className="lead max-w-measure-body">{displayText(page.lede)}</p> : null}<StrataRule /></header>
       <div className="grid gap-10">
         <PageBlocks layout={page.layout} stateLicense={legalState ? { state: legalState.name, licenseNumber: legalState.licenseNumber } : undefined} />
         {legalState ? <p data-license className="rounded-surface border border-border bg-surface-sunken p-4 font-sans text-small">License, {legalState.name}: <span className="tabular">{legalState.licenseNumber && !legalState.licenseNumber.includes("{{TODO") ? legalState.licenseNumber : "number on file with the state; being added here"}</span>{legalState.doi?.url && !legalState.doi.url.includes("{{TODO") ? <> · <a href={legalState.doi.url} rel="noopener">{legalState.doi.name}</a></> : null}</p> : null}

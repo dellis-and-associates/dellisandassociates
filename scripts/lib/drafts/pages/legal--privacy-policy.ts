@@ -52,7 +52,7 @@ export const draft: PageDraft = {
         {
           heading: "How long we keep it",
           paragraphs: [
-            "A request that does not become a policy is kept for {{TODO:legal.leadRetentionPeriod}}. A request that includes medication or health information is kept for {{TODO:legal.healthLeadRetentionPeriod}}. Client files are kept for the period state insurance record-keeping rules require after a policy ends, then deleted or anonymized. Server logs are rotated on a short schedule.",
+            "A request that does not become a policy is kept for twenty-four months unless the office is told to delete it sooner. A request that includes medication or health information is kept for twelve months. Client files are kept for the period state insurance record-keeping rules require after a policy ends, then deleted or anonymized. Server logs are rotated on a short schedule.",
           ],
         },
         {
