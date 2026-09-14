@@ -37,7 +37,7 @@ Definition-of-done artifact and `pnpm verify:parity` fails on any `missing` row.
 | 23 | Medicare compliance disclaimer in footer on every page | Footer, every page | exists | 5 | TPMO disclaimer from `ComplianceSettings` in the footer of every page (`data-disclosure="medicareTpmo"`), verbatim from the legacy footer until the client supplies plan-year wording; verify:compliance checks the block and the text on every route. |
 | 24 | Custom 404 page | `app/not-found.tsx` | exists | 5 | `app/(frontend)/not-found.tsx`: search, the ten lines, a link home; 404 status. |
 | 25 | Per-page `<title>` and meta description | Every page | exists | 5 | `pageMetadata` on every route: unique title ≤ 60, description ≤ 155, canonical, OG, structural noindex; verify:seo. |
-| 26 | Favicon / app icon | `app/icon.svg` | exists | 5 | `/favicon.ico`, `/favicon.svg`, `/apple-touch-icon.png`, the 192/512 icons and `manifest.webmanifest`, byte-identical copies from `desert-peak-brand/web/favicons/`. |
+| 26 | Favicon / app icon | `app/icon.svg` | exists | 5 | `/favicon.svg` is the brand's reversed profile mark (`desert-peak-brand/social/profile/profile-reversed-1200.svg`, byte-identical, chosen by the client 2026-09-14); `/favicon.ico`, `/apple-touch-icon.png` and the 192/512 icons are resizes of the brand's PNG render of the same file; `manifest.webmanifest` from `desert-peak-brand/web/favicons/`. |
 
 ## Invisible on legacy
 

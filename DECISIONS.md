@@ -447,8 +447,11 @@ the logo files stay untouched.
 `/brand/logo-horizontal.svg` and `/brand/logo-reversed.svg` as `<img>`
 (byte-identical copies of `desert-peak-brand/brand/logos`), 40 px tall on
 desktop, 32 on phones, the mark alone under 360 px, one band period of clear
-space. The React lockup that re-typeset the wordmark is gone. Favicon and
-app icons are the brand package's own `web/favicons` files at the site root.
+space. The React lockup that re-typeset the wordmark is gone. The favicon is
+the brand's reversed profile mark (`social/profile/profile-reversed-1200.svg`,
+the mark in cream on the brand fill; client choice 2026-09-14), copied as
+shipped; the ICO and PNG icons are resizes of the brand's PNG render of it,
+and the manifest is the brand package's.
 
 **No middle dots, no uppercase eyebrow.** The brief's trust line and eyebrow
 are written with middle dots; the interface standard lists dotted meta
