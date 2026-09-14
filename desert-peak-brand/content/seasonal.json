@@ -1,0 +1,51 @@
+{
+  "$description": "Regional, never alarmist. One reminder per card. Dates are windows the client can schedule around; nothing here is a claim about weather this year.",
+  "items": [
+    {
+      "id": "monsoon",
+      "window": "June to September",
+      "headline": "Monsoon season",
+      "text": "Wind, dust and flash flooding are the summer claims in the desert basins. Flood damage is not part of a standard home policy; it is a separate policy. Worth knowing before the first storm.",
+      "states": [
+        "AZ",
+        "NV"
+      ]
+    },
+    {
+      "id": "wildfire",
+      "window": "May to October",
+      "headline": "Wildfire season",
+      "text": "If you live near the wildland edge, check the dwelling limit on your home policy against what it would cost to rebuild today, not what you paid.",
+      "states": [
+        "AZ",
+        "ID",
+        "NV",
+        "UT"
+      ]
+    },
+    {
+      "id": "freeze",
+      "window": "November to February",
+      "headline": "Freeze warnings",
+      "text": "Burst pipes are a winter claim in the mountain towns. Most home policies cover sudden pipe failure but not the damage that comes from leaving heat off in a vacant house.",
+      "states": [
+        "ID",
+        "UT",
+        "AZ"
+      ]
+    },
+    {
+      "id": "open-enrollment",
+      "window": "October 15 to December 7",
+      "headline": "Medicare open enrollment",
+      "text": "The window to change a Medicare Advantage or Part D plan runs October 15 to December 7. Reviewing the plan you have is a fair outcome. Changing it is not the goal.",
+      "states": [
+        "AZ",
+        "ID",
+        "NV",
+        "UT"
+      ],
+      "medicare": true
+    }
+  ]
+}

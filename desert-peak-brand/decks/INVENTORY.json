@@ -1,0 +1,181 @@
+{
+  "generated": "2026-09-13",
+  "rows": [
+    {
+      "asset": "decks/client-pitch.pptx",
+      "dimensions": "16:9, 13.333×7.5 in, 10 slides",
+      "source": "scripts/build-decks.ts",
+      "spec": "ECMA-376 PresentationML via pptxgenjs 4; theme rewritten to tokens",
+      "notes": "mentions Medicare: TPMO on disclosure slide; media: 12 logo PNG(s) from web/logos"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-01.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 1"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-02.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 2"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-03.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 3"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-04.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 4"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-05.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 5"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-06.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 6"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-07.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 7"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-08.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 8"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-09.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 9"
+    },
+    {
+      "asset": "decks/renders/client-pitch/slide-10.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 10"
+    },
+    {
+      "asset": "decks/partner-meeting.pptx",
+      "dimensions": "16:9, 13.333×7.5 in, 10 slides",
+      "source": "scripts/build-decks.ts",
+      "spec": "ECMA-376 PresentationML via pptxgenjs 4; theme rewritten to tokens",
+      "notes": "no Medicare content; media: 12 logo PNG(s) from web/logos"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-01.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 1"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-02.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 2"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-03.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 3"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-04.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 4"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-05.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 5"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-06.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 6"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-07.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 7"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-08.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 8"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-09.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 9"
+    },
+    {
+      "asset": "decks/renders/partner-meeting/slide-10.png",
+      "dimensions": "1280×720",
+      "source": "scripts/build-decks.ts (LibreOffice + pdftoppm, brand fonts)",
+      "notes": "slide 10"
+    },
+    {
+      "asset": "decks/fonts/Archivo-Bold.ttf",
+      "dimensions": "—",
+      "source": "scripts/collateral/deck-fonts.py (fontTools)",
+      "notes": "ship with the deck; install before presenting"
+    },
+    {
+      "asset": "decks/fonts/Archivo-Regular.ttf",
+      "dimensions": "—",
+      "source": "scripts/collateral/deck-fonts.py (fontTools)",
+      "notes": "ship with the deck; install before presenting"
+    },
+    {
+      "asset": "decks/fonts/OFL.txt",
+      "dimensions": "—",
+      "source": "scripts/collateral/deck-fonts.py (fontTools)",
+      "notes": "license / notes"
+    },
+    {
+      "asset": "decks/fonts/README.md",
+      "dimensions": "—",
+      "source": "scripts/collateral/deck-fonts.py (fontTools)",
+      "notes": "license / notes"
+    },
+    {
+      "asset": "decks/fonts/SourceSerif4-Bold.ttf",
+      "dimensions": "—",
+      "source": "scripts/collateral/deck-fonts.py (fontTools)",
+      "notes": "ship with the deck; install before presenting"
+    },
+    {
+      "asset": "decks/fonts/SourceSerif4-Italic.ttf",
+      "dimensions": "—",
+      "source": "scripts/collateral/deck-fonts.py (fontTools)",
+      "notes": "ship with the deck; install before presenting"
+    },
+    {
+      "asset": "decks/fonts/SourceSerif4-Regular.ttf",
+      "dimensions": "—",
+      "source": "scripts/collateral/deck-fonts.py (fontTools)",
+      "notes": "ship with the deck; install before presenting"
+    }
+  ]
+}

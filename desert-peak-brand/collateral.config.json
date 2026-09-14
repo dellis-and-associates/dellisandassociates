@@ -1,0 +1,58 @@
+{
+  "$description": "Company-level inputs for Stage 5 collateral. Identity values (colour, type, marks) are NOT here; they come from brand/design-tokens.json and brand/logos and are locked.",
+  "company": "Desert Peak Insurance",
+  "shortName": "Desert Peak",
+  "domain": "desertpeakinsurance.com",
+  "siteUrl": "https://www.desertpeakinsurance.com",
+  "domainConfirmed": false,
+  "positioningLine": "We do the math. If what you have is right, we say so.",
+  "states": [
+    "AZ",
+    "ID",
+    "NV",
+    "UT"
+  ],
+  "stateNames": {
+    "AZ": "Arizona",
+    "ID": "Idaho",
+    "NV": "Nevada",
+    "UT": "Utah"
+  },
+  "contactPath": "/contact/",
+  "mediaBaseUrl": "https://www.desertpeakinsurance.com/brand",
+  "mediaBaseUrlNote": "Absolute https base for the single hosted email-signature logo. The site repo must serve web/email/ assets from this path (public/brand/). Unconfirmed until the domain is confirmed.",
+  "independentAgencyLine": "Desert Peak Insurance is an independent agency, not an insurer. No coverage is bound by email.",
+  "independentAgencyLineWeb": "Desert Peak Insurance is an independent agency, not an insurer. No coverage is bound by this website.",
+  "licensedLine": "Licensed in AZ, ID, NV, UT",
+  "medicare": {
+    "inScope": true,
+    "tpmo": {
+      "citation": "42 CFR \u00a7 422.2267(e)(41), as amended 90 FR 15911 (Apr. 15, 2025); verified at law.cornell.edu 2026-09-13",
+      "text": "We do not offer every plan available in your area. Currently we represent {{TODO:compliance.tpmo.orgCount}} organizations which offer {{TODO:compliance.tpmo.planCount}} products in your area. Please contact Medicare.gov or 1-800-MEDICARE to get information on all of your options.",
+      "note": "Plan-year counts are client data (site TODO-CLIENT-DATA #11). Until supplied, every Medicare asset renders the TODO tokens visibly; that is intended."
+    },
+    "keywords": [
+      "medicare",
+      "medigap",
+      "medicare advantage",
+      "part d",
+      "medicare supplement"
+    ]
+  },
+  "referralProgramEnabled": false,
+  "referralDisclaimerSlot": "{{TODO:compliance.referral.ruleTableDisclaimer}}",
+  "social": {
+    "handlesNote": "Social handles are client data (site TODO-CLIENT-DATA #7); none are printed on any asset until supplied."
+  },
+  "fallbackFonts": {
+    "email": [
+      "Helvetica Neue",
+      "Arial"
+    ],
+    "deck": [
+      "Arial",
+      "Georgia"
+    ],
+    "note": "Email cannot load web fonts; Helvetica Neue/Arial is the grotesque closest to Archivo on Mac/Windows. Decks ship the OFL font files alongside; Arial/Georgia are the fallbacks when they are not installed (DECISIONS.md)."
+  }
+}

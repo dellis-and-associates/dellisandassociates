@@ -1,0 +1,11 @@
+{
+  "$description": "Every text layer in social, decks, OG images and signatures is scanned for these (case-insensitive, whole-phrase). Source: the site's ComplianceSettings.BANNED_PHRASES_DEFAULT and scripts/verify-compliance.mts extras (copied 2026-09-13), plus the superlatives this stage bans outright. Keep in sync with the site list; the site is the master.",
+  "sources": {
+    "site": ["guaranteed lowest rate", "cheapest", "we'll save you", "we will save you", "always covered", "instant approval", "guaranteed savings", "lowest price guaranteed", "we'll save you", "save up to", "% off", "lowest price"],
+    "superlatives": ["the best", "best in", "best rates", "best coverage", "#1", "number one", "top-rated", "top rated", "lowest", "unbeatable", "leading", "premier", "guaranteed", "risk-free", "no-risk", "free money", "act now", "don't wait", "limited time"]
+  },
+  "phrases": [
+    "guaranteed lowest rate", "cheapest", "we'll save you", "we will save you", "always covered", "instant approval", "guaranteed savings", "lowest price guaranteed", "save up to", "% off", "lowest price",
+    "the best", "best in", "best rates", "best coverage", "#1", "number one", "top-rated", "top rated", "lowest", "unbeatable", "leading", "premier", "guaranteed", "risk-free", "no-risk", "free money", "act now", "don't wait", "limited time"
+  ]
+}

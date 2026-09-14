@@ -1,0 +1,361 @@
+{
+  "generated": "2026-09-13",
+  "rows": [
+    {
+      "asset": "web/logos/mark@1x.png",
+      "dimensions": "69×64",
+      "source": "scripts/build-web.ts",
+      "notes": "1× on transparent"
+    },
+    {
+      "asset": "web/logos/mark@2x.png",
+      "dimensions": "139×128",
+      "source": "scripts/build-web.ts",
+      "notes": "2× on transparent"
+    },
+    {
+      "asset": "web/logos/favicon@1x.png",
+      "dimensions": "64×64",
+      "source": "scripts/build-web.ts",
+      "notes": "1× on transparent"
+    },
+    {
+      "asset": "web/logos/favicon@2x.png",
+      "dimensions": "128×128",
+      "source": "scripts/build-web.ts",
+      "notes": "2× on transparent"
+    },
+    {
+      "asset": "web/logos/logo-horizontal@1x.png",
+      "dimensions": "362×64",
+      "source": "scripts/build-web.ts",
+      "notes": "1× on transparent"
+    },
+    {
+      "asset": "web/logos/logo-horizontal@2x.png",
+      "dimensions": "725×128",
+      "source": "scripts/build-web.ts",
+      "notes": "2× on transparent"
+    },
+    {
+      "asset": "web/logos/logo-stacked@1x.png",
+      "dimensions": "265×128",
+      "source": "scripts/build-web.ts",
+      "notes": "1× on transparent"
+    },
+    {
+      "asset": "web/logos/logo-stacked@2x.png",
+      "dimensions": "529×256",
+      "source": "scripts/build-web.ts",
+      "notes": "2× on transparent"
+    },
+    {
+      "asset": "web/logos/logo-reversed@1x.png",
+      "dimensions": "362×64",
+      "source": "scripts/build-web.ts",
+      "notes": "1× on transparent"
+    },
+    {
+      "asset": "web/logos/logo-reversed@2x.png",
+      "dimensions": "725×128",
+      "source": "scripts/build-web.ts",
+      "notes": "2× on transparent"
+    },
+    {
+      "asset": "web/logos/logo-mono@1x.png",
+      "dimensions": "362×64",
+      "source": "scripts/build-web.ts",
+      "notes": "1× on transparent, currentColor rendered as ink"
+    },
+    {
+      "asset": "web/logos/logo-mono@2x.png",
+      "dimensions": "725×128",
+      "source": "scripts/build-web.ts",
+      "notes": "2× on transparent, currentColor rendered as ink"
+    },
+    {
+      "asset": "web/logos/wordmark@1x.png",
+      "dimensions": "261×48",
+      "source": "scripts/build-web.ts",
+      "notes": "1× on transparent"
+    },
+    {
+      "asset": "web/logos/wordmark@2x.png",
+      "dimensions": "522×96",
+      "source": "scripts/build-web.ts",
+      "notes": "2× on transparent"
+    },
+    {
+      "asset": "web/logos/mark.svg",
+      "dimensions": "viewBox 64×59",
+      "source": "scripts/build-web.ts",
+      "notes": "SVGO 4.1.0, geometry asserted identical to brand/logos/mark.svg; 643 bytes"
+    },
+    {
+      "asset": "web/logos/react/Mark.tsx",
+      "dimensions": "inline <svg>",
+      "source": "scripts/build-web.ts",
+      "notes": "React function component; spreads props"
+    },
+    {
+      "asset": "web/logos/favicon.svg",
+      "dimensions": "viewBox 64×64",
+      "source": "scripts/build-web.ts",
+      "notes": "SVGO 4.1.0, geometry asserted identical to brand/logos/favicon.svg; 511 bytes"
+    },
+    {
+      "asset": "web/logos/react/Favicon.tsx",
+      "dimensions": "inline <svg>",
+      "source": "scripts/build-web.ts",
+      "notes": "React function component; spreads props"
+    },
+    {
+      "asset": "web/logos/logo-horizontal.svg",
+      "dimensions": "viewBox 334.12×59",
+      "source": "scripts/build-web.ts",
+      "notes": "SVGO 4.1.0, geometry asserted identical to brand/logos/logo-horizontal.svg; 10958 bytes"
+    },
+    {
+      "asset": "web/logos/react/LogoHorizontal.tsx",
+      "dimensions": "inline <svg>",
+      "source": "scripts/build-web.ts",
+      "notes": "React function component; spreads props"
+    },
+    {
+      "asset": "web/logos/logo-stacked.svg",
+      "dimensions": "viewBox 250.12×121",
+      "source": "scripts/build-web.ts",
+      "notes": "SVGO 4.1.0, geometry asserted identical to brand/logos/logo-stacked.svg; 11038 bytes"
+    },
+    {
+      "asset": "web/logos/react/LogoStacked.tsx",
+      "dimensions": "inline <svg>",
+      "source": "scripts/build-web.ts",
+      "notes": "React function component; spreads props"
+    },
+    {
+      "asset": "web/logos/logo-reversed.svg",
+      "dimensions": "viewBox 334.12×59",
+      "source": "scripts/build-web.ts",
+      "notes": "SVGO 4.1.0, geometry asserted identical to brand/logos/logo-reversed.svg; 10958 bytes"
+    },
+    {
+      "asset": "web/logos/react/LogoReversed.tsx",
+      "dimensions": "inline <svg>",
+      "source": "scripts/build-web.ts",
+      "notes": "React function component; spreads props"
+    },
+    {
+      "asset": "web/logos/logo-mono.svg",
+      "dimensions": "viewBox 334.12×59",
+      "source": "scripts/build-web.ts",
+      "notes": "SVGO 4.1.0, geometry asserted identical to brand/logos/logo-mono.svg; 11008 bytes"
+    },
+    {
+      "asset": "web/logos/react/LogoMono.tsx",
+      "dimensions": "inline <svg>",
+      "source": "scripts/build-web.ts",
+      "notes": "React function component; spreads props"
+    },
+    {
+      "asset": "web/logos/wordmark.svg",
+      "dimensions": "viewBox 250.12×46",
+      "source": "scripts/build-web.ts",
+      "notes": "SVGO 4.1.0, geometry asserted identical to brand/logos/wordmark.svg; 10404 bytes"
+    },
+    {
+      "asset": "web/logos/react/Wordmark.tsx",
+      "dimensions": "inline <svg>",
+      "source": "scripts/build-web.ts",
+      "notes": "React function component; spreads props"
+    },
+    {
+      "asset": "web/favicons/favicon.svg",
+      "dimensions": "viewBox 64×64",
+      "source": "scripts/build-web.ts",
+      "notes": "byte-identical copy of brand/logos/favicon.svg",
+      "spec": "SVG favicon via <link rel=icon type=image/svg+xml>"
+    },
+    {
+      "asset": "web/favicons/favicon.ico",
+      "dimensions": "16, 32, 48 px (PNG-encoded ICO entries, 32 bpp)",
+      "source": "scripts/build-web.ts",
+      "notes": "1443 bytes; header and directory verified by the build",
+      "spec": "ICO container; PNG entries supported by every current browser"
+    },
+    {
+      "asset": "web/favicons/apple-touch-icon.png",
+      "dimensions": "180×180",
+      "source": "scripts/build-web.ts",
+      "notes": "reversed three-band mark at 60% width on solid brand tile, square corners (the OS masks)",
+      "spec": "apple-touch-icon 180×180 (Apple HIG app icons; page returned no content to automated fetch on the day, size taken from the HIG as published)",
+      "specUrl": "https://developer.apple.com/design/human-interface-guidelines/app-icons",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/favicons/icon-192.png",
+      "dimensions": "192×192",
+      "source": "scripts/build-web.ts",
+      "notes": "reversed three-band mark at 60% width on solid brand tile, square corners (the OS masks)",
+      "spec": "W3C Web App Manifest icons, purpose any",
+      "specUrl": "https://web.dev/articles/maskable-icon",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/favicons/icon-512.png",
+      "dimensions": "512×512",
+      "source": "scripts/build-web.ts",
+      "notes": "reversed three-band mark at 60% width on solid brand tile, square corners (the OS masks)",
+      "spec": "W3C Web App Manifest icons, purpose any",
+      "specUrl": "https://web.dev/articles/maskable-icon",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/favicons/icon-512-maskable.png",
+      "dimensions": "512×512",
+      "source": "scripts/build-web.ts",
+      "notes": "reversed three-band mark at 48% width on solid brand tile, square corners (the OS masks); mark within the 40%-radius safe circle",
+      "spec": "W3C Web App Manifest: maskable safe zone = circle of radius 40% of icon size",
+      "specUrl": "https://www.w3.org/TR/appmanifest/",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/favicons/manifest.webmanifest",
+      "dimensions": "—",
+      "source": "scripts/build-web.ts",
+      "notes": "theme_color = brand, background_color = surface, icons any + maskable",
+      "spec": "W3C Web App Manifest",
+      "specUrl": "https://www.w3.org/TR/appmanifest/",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/favicons/tests/tab-bars.png",
+      "dimensions": "420×84",
+      "source": "scripts/build-web.ts",
+      "notes": "16 px favicon on light and dark tab strips; looked at during the build"
+    },
+    {
+      "asset": "web/og/product.svg",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "SVG master, product template; sample title \"Umbrella insurance\"",
+      "spec": "Open Graph image 1200×630 (1.91:1)",
+      "specUrl": "https://developers.facebook.com/docs/sharing/webmasters/images/",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/og/samples/product.png",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "rendered sample"
+    },
+    {
+      "asset": "web/og/product-city.svg",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "SVG master, product-city template; sample title \"Auto insurance in Phoenix, Arizona\"",
+      "spec": "Open Graph image 1200×630 (1.91:1)",
+      "specUrl": "https://developers.facebook.com/docs/sharing/webmasters/images/",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/og/samples/product-city.png",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "rendered sample"
+    },
+    {
+      "asset": "web/og/article.svg",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "SVG master, article template; sample title \"What an umbrella policy actually covers\"",
+      "spec": "Open Graph image 1200×630 (1.91:1)",
+      "specUrl": "https://developers.facebook.com/docs/sharing/webmasters/images/",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/og/samples/article.png",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "rendered sample"
+    },
+    {
+      "asset": "web/og/glossary.svg",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "SVG master, glossary template; sample title \"Deductible\"",
+      "spec": "Open Graph image 1200×630 (1.91:1)",
+      "specUrl": "https://developers.facebook.com/docs/sharing/webmasters/images/",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/og/samples/glossary.png",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "rendered sample"
+    },
+    {
+      "asset": "web/og/state.svg",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "SVG master, state template; sample title \"Insurance in Nevada\"",
+      "spec": "Open Graph image 1200×630 (1.91:1)",
+      "specUrl": "https://developers.facebook.com/docs/sharing/webmasters/images/",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "web/og/samples/state.png",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "rendered sample"
+    },
+    {
+      "asset": "web/og/product-medicare.svg",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "Medicare variant: TPMO footer band added automatically (title mentions Medicare)"
+    },
+    {
+      "asset": "web/og/samples/product-medicare.png",
+      "dimensions": "1200×630",
+      "source": "scripts/build-web.ts",
+      "notes": "rendered Medicare sample with TPMO band"
+    },
+    {
+      "asset": "web/og/samples/product-city-400.png",
+      "dimensions": "400×210",
+      "source": "scripts/build-web.ts",
+      "notes": "chat-preview legibility check; looked at during the build"
+    },
+    {
+      "asset": "web/email-header/email-header.svg",
+      "dimensions": "600×100",
+      "source": "scripts/build-web.ts",
+      "notes": "master"
+    },
+    {
+      "asset": "web/email-header/email-header@1x.png",
+      "dimensions": "600×100",
+      "source": "scripts/build-web.ts",
+      "notes": "6995 bytes (≤ 30 KB asserted); use as the Resend template header at width 600"
+    },
+    {
+      "asset": "web/email-header/email-header@2x.png",
+      "dimensions": "1200×200",
+      "source": "scripts/build-web.ts",
+      "notes": "13786 bytes; retina, display at 600×100"
+    },
+    {
+      "asset": "web/ui-elements.html",
+      "dimensions": "responsive; self-contained (fonts embedded)",
+      "source": "scripts/build-web.ts",
+      "notes": "761483 bytes; documentation, not a second implementation"
+    },
+    {
+      "asset": "web/ui-elements.png",
+      "dimensions": "1200×2000",
+      "source": "scripts/build-web.ts",
+      "notes": "render for the showcase"
+    }
+  ]
+}

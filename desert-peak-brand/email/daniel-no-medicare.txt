@@ -1,0 +1,8 @@
+Daniel {{TODO:people.daniel.lastName}}
+Principal, Desert Peak Insurance
+{{TODO:client.phone}}
+daniel@desertpeakinsurance.com
+https://www.desertpeakinsurance.com
+
+Licensed in AZ, ID, NV, UT · License # AZ {{TODO:people.daniel.license.AZ}} · ID {{TODO:people.daniel.license.ID}} · NV {{TODO:people.daniel.license.NV}} · UT {{TODO:people.daniel.license.UT}}
+Desert Peak Insurance is an independent agency, not an insurer. No coverage is bound by email.

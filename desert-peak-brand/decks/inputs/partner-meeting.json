@@ -1,0 +1,12 @@
+{
+  "$description": "Inputs for decks/partner-meeting.pptx (internal and partner meetings). No Medicare content: the disclosure omits the TPMO text; add Medicare anywhere and the build adds it or fails.",
+  "file": "partner-meeting.pptx",
+  "deckTitle": "Partner meeting",
+  "subtitle": "How Desert Peak works with referring partners",
+  "clientName": "{{TODO:partner.name}}",
+  "date": "{{TODO:meeting.date}}",
+  "presenter": "daniel",
+  "agenda": ["Who we are and where we are licensed", "How a referral is handled", "What a coverage review looks like", "What we send back to you", "Next steps"],
+  "sectionLine": "How a review works",
+  "includeMedicareNote": false
+}

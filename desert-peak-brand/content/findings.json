@@ -1,0 +1,30 @@
+{
+  "$description": "Quote-cards for 'The finding' family. Brand voice, no client names, no testimonials, no figures that could read as a rate or a savings claim.",
+  "items": [
+    {
+      "id": "keep-what-you-have",
+      "text": "If keeping what you have is the right answer, that is the answer you get."
+    },
+    {
+      "id": "finding-not-pitch",
+      "text": "Coverage is a finding, not a pitch."
+    },
+    {
+      "id": "analysis-costs-nothing",
+      "text": "The analysis costs nothing. The answer is sometimes: change nothing."
+    },
+    {
+      "id": "layers",
+      "text": "An umbrella policy pays after your auto or home limit is used up. Not instead of it."
+    },
+    {
+      "id": "show-the-math",
+      "text": "We show the math. You decide."
+    },
+    {
+      "id": "review-not-change",
+      "text": "Reviewing the Medicare plan you have is a fair outcome. Changing it is not the goal.",
+      "medicare": true
+    }
+  ]
+}

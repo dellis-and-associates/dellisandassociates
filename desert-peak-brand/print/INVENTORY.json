@@ -1,0 +1,49 @@
+{
+  "generated": "2026-09-13",
+  "rows": [
+    {
+      "asset": "print/renders/business-card-daniel-front.png",
+      "dimensions": "563×338 (150 dpi incl. bleed)",
+      "source": "scripts/build-print.ts (pdftoppm)",
+      "notes": "front"
+    },
+    {
+      "asset": "print/renders/business-card-daniel-back.png",
+      "dimensions": "563×338 (150 dpi incl. bleed)",
+      "source": "scripts/build-print.ts (pdftoppm)",
+      "notes": "back"
+    },
+    {
+      "asset": "print/business-card-daniel.pdf",
+      "dimensions": "3.5×2 in trim + 0.125 in bleed (270×162 pt), 2 pages",
+      "source": "scripts/build-print.ts",
+      "spec": "US standard business card 3.5×2 in; 0.125 in bleed/safe",
+      "notes": "CMYK via Ghostscript; fonts subset-embedded; min type 7 pt"
+    },
+    {
+      "asset": "print/renders/business-card-company-front.png",
+      "dimensions": "563×338 (150 dpi incl. bleed)",
+      "source": "scripts/build-print.ts (pdftoppm)",
+      "notes": "front"
+    },
+    {
+      "asset": "print/renders/business-card-company-back.png",
+      "dimensions": "563×338 (150 dpi incl. bleed)",
+      "source": "scripts/build-print.ts (pdftoppm)",
+      "notes": "back"
+    },
+    {
+      "asset": "print/business-card-company.pdf",
+      "dimensions": "3.5×2 in trim + 0.125 in bleed (270×162 pt), 2 pages",
+      "source": "scripts/build-print.ts",
+      "spec": "US standard business card 3.5×2 in; 0.125 in bleed/safe",
+      "notes": "CMYK via Ghostscript; fonts subset-embedded; min type 7 pt"
+    },
+    {
+      "asset": "PRINT-COLORS.md",
+      "dimensions": "—",
+      "source": "scripts/build-print.ts",
+      "notes": "CMYK table read back from a separated swatch file"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "$description": "Statutory facts for the State-fact post family and the deck's State-requirements master. Each fact carries its statute, the source actually consulted, and the date. No figure here is typed from memory; each was checked on the date shown. The DOI consumer pages for ID, NV and UT refused automated connections on 2026-09-13, so the statute text was verified through the legislature site (AZ) or the Justia statute mirror (NV, UT, ID); counsel should re-confirm against the official statute before print.",
+  "verified": "2026-09-13",
+  "doi": {
+    "AZ": { "name": "Arizona Department of Insurance and Financial Institutions", "url": "https://difi.az.gov/" },
+    "ID": { "name": "Idaho Department of Insurance", "url": "https://doi.idaho.gov/" },
+    "NV": { "name": "Nevada Division of Insurance", "url": "https://doi.nv.gov/" },
+    "UT": { "name": "Utah Insurance Department", "url": "https://insurance.utah.gov/" }
+  },
+  "facts": [
+    {
+      "id": "az-auto-minimums",
+      "state": "AZ",
+      "headline": "Arizona minimum auto liability",
+      "fact": "Arizona requires at least $25,000 per person and $50,000 per accident for bodily injury, and $15,000 for property damage, on policies issued or renewed since July 1, 2020.",
+      "figures": { "bodilyInjuryPerPerson": 25000, "bodilyInjuryPerAccident": 50000, "propertyDamage": 15000 },
+      "statute": "A.R.S. § 28-4009",
+      "sourceLine": "Source: A.R.S. § 28-4009 (azleg.gov), verified 2026-09-13",
+      "sourceUrl": "https://www.azleg.gov/ars/28/04009.htm",
+      "sourceNote": "Statute text fetched from azleg.gov on 2026-09-13; quoted amounts: $25,000 / $50,000 / $15,000 for policies issued or renewed beginning July 1, 2020."
+    },
+    {
+      "id": "nv-auto-minimums",
+      "state": "NV",
+      "headline": "Nevada minimum auto liability",
+      "fact": "Nevada requires at least $25,000 per person and $50,000 per accident for bodily injury, and $20,000 for property damage.",
+      "figures": { "bodilyInjuryPerPerson": 25000, "bodilyInjuryPerAccident": 50000, "propertyDamage": 20000 },
+      "statute": "NRS 485.185",
+      "sourceLine": "Source: NRS 485.185 (leg.state.nv.us), verified 2026-09-13",
+      "sourceUrl": "https://www.leg.state.nv.us/nrs/nrs-485.html",
+      "sourceNote": "leg.state.nv.us refused the connection on 2026-09-13; amounts verified on the Justia mirror of the 2025 NRS (law.justia.com/codes/nevada/chapter-485/statute-485-185/). In force since July 1, 2018."
+    },
+    {
+      "id": "ut-auto-minimums",
+      "state": "UT",
+      "headline": "Utah minimum auto liability",
+      "fact": "Utah requires at least $30,000 per person and $65,000 per accident for bodily injury, and $25,000 for property damage, on policies issued or renewed on or after January 1, 2025.",
+      "figures": { "bodilyInjuryPerPerson": 30000, "bodilyInjuryPerAccident": 65000, "propertyDamage": 25000, "singleLimitAlternative": 90000 },
+      "statute": "Utah Code § 31A-22-304",
+      "sourceLine": "Source: Utah Code § 31A-22-304 (le.utah.gov), verified 2026-09-13",
+      "sourceUrl": "https://le.utah.gov/xcode/Title31A/Chapter22/31A-22-S304.html",
+      "sourceNote": "le.utah.gov refused the connection on 2026-09-13; amounts verified on the Justia mirror (law.justia.com/codes/utah/title-31a/chapter-22/part-3/section-304). The pre-2025 limits were 25/65/15; the 2025 change is why this fact must not be copied from older material."
+    },
+    {
+      "id": "id-auto-minimums",
+      "state": "ID",
+      "headline": "Idaho minimum auto liability",
+      "fact": "Idaho requires at least $25,000 per person and $50,000 per accident for bodily injury, and $15,000 for property damage.",
+      "figures": { "bodilyInjuryPerPerson": 25000, "bodilyInjuryPerAccident": 50000, "propertyDamage": 15000 },
+      "statute": "Idaho Code § 49-117",
+      "sourceLine": "Source: Idaho Code § 49-117 (legislature.idaho.gov), verified 2026-09-13",
+      "sourceUrl": "https://legislature.idaho.gov/statutesrules/idstat/Title49/T49CH1/SECT49-117/",
+      "sourceNote": "legislature.idaho.gov refused the connection on 2026-09-13; the definition of 'proof of financial responsibility' was verified on the Justia mirror of the 2025 Idaho Code. The Idaho DOI consumer page (doi.idaho.gov/consumers/auto-insurance/required-auto-coverage/) states the same 25/50/15."
+    }
+  ]
+}

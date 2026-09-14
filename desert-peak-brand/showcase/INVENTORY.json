@@ -1,0 +1,149 @@
+{
+  "generated": "2026-09-13",
+  "rows": [
+    {
+      "asset": "showcase/assets/web__ui-elements.png",
+      "dimensions": "1200×2000",
+      "source": "copy of web/ui-elements.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/web__favicons__tests__tab-bars.png",
+      "dimensions": "420×84",
+      "source": "copy of web/favicons/tests/tab-bars.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/web__og__samples__product-city.png",
+      "dimensions": "1200×630",
+      "source": "copy of web/og/samples/product-city.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/web__og__samples__product-medicare.png",
+      "dimensions": "1200×630",
+      "source": "copy of web/og/samples/product-medicare.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__profile__profile-400.png",
+      "dimensions": "400×400",
+      "source": "copy of social/profile/profile-400.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__profile__profile-reversed-400.png",
+      "dimensions": "400×400",
+      "source": "copy of social/profile/profile-reversed-400.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__posts__term__1080x1080__deductible.png",
+      "dimensions": "1080×1080",
+      "source": "copy of social/posts/term/1080x1080/deductible.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__posts__state-fact__1080x1080__az-auto-minimums.png",
+      "dimensions": "1080×1080",
+      "source": "copy of social/posts/state-fact/1080x1080/az-auto-minimums.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__posts__finding__1080x1080__keep-what-you-have.png",
+      "dimensions": "1080×1080",
+      "source": "copy of social/posts/finding/1080x1080/keep-what-you-have.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__posts__seasonal__1080x1080__monsoon.png",
+      "dimensions": "1080×1080",
+      "source": "copy of social/posts/seasonal/1080x1080/monsoon.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__posts__seasonal__1080x1920__open-enrollment-medicare.png",
+      "dimensions": "1080×1920",
+      "source": "copy of social/posts/seasonal/1080x1920/open-enrollment-medicare.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__posts__term__1080x1350__actual-cash-value.png",
+      "dimensions": "1080×1350",
+      "source": "copy of social/posts/term/1080x1350/actual-cash-value.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__banners__linkedin-personal-1584x396.png",
+      "dimensions": "1584×396",
+      "source": "copy of social/banners/linkedin-personal-1584x396.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__banners__x-1500x500.png",
+      "dimensions": "1500×500",
+      "source": "copy of social/banners/x-1500x500.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__banners__linkedin-company-1512x256.png",
+      "dimensions": "1512×256",
+      "source": "copy of social/banners/linkedin-company-1512x256.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/social__banners__safe-zone__facebook-820x312-safe-zone.png",
+      "dimensions": "820×312",
+      "source": "copy of social/banners/safe-zone/facebook-820x312-safe-zone.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/email__renders__daniel-600.png",
+      "dimensions": "600×460",
+      "source": "copy of email/renders/daniel-600.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/decks__renders__client-pitch__slide-01.png",
+      "dimensions": "1281×720",
+      "source": "copy of decks/renders/client-pitch/slide-01.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/decks__renders__client-pitch__slide-04.png",
+      "dimensions": "1281×720",
+      "source": "copy of decks/renders/client-pitch/slide-04.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/decks__renders__client-pitch__slide-06.png",
+      "dimensions": "1281×720",
+      "source": "copy of decks/renders/client-pitch/slide-06.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/decks__renders__client-pitch__slide-09.png",
+      "dimensions": "1281×720",
+      "source": "copy of decks/renders/client-pitch/slide-09.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/print__renders__business-card-daniel-front.png",
+      "dimensions": "563×338",
+      "source": "copy of print/renders/business-card-daniel-front.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/assets/print__renders__business-card-daniel-back.png",
+      "dimensions": "563×338",
+      "source": "copy of print/renders/business-card-daniel-back.png",
+      "notes": "embedded as data URI in index.html"
+    },
+    {
+      "asset": "showcase/index.html",
+      "dimensions": "2.6 MB, self-contained",
+      "source": "scripts/build-showcase.ts",
+      "notes": "every image is a repository render"
+    }
+  ]
+}

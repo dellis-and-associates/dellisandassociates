@@ -1,0 +1,12 @@
+{
+  "$description": "Inputs for decks/client-pitch.pptx. Edit and re-run `pnpm build:decks`. {{TODO:...}} values render visibly unfinished; they are not placeholders to leave in.",
+  "file": "client-pitch.pptx",
+  "deckTitle": "Coverage review",
+  "subtitle": "What you have, what the state requires, and what we recommend",
+  "clientName": "{{TODO:client.name}}",
+  "date": "{{TODO:meeting.date}}",
+  "presenter": "daniel",
+  "agenda": ["Where your coverage stands today", "What Arizona, Nevada, Utah and Idaho require", "Three options, side by side", "Our recommendation and the math", "Next steps"],
+  "sectionLine": "The comparison",
+  "includeMedicareNote": true
+}

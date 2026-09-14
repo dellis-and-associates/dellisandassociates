@@ -1,0 +1,83 @@
+{
+  "generated": "2026-09-13",
+  "rows": [
+    {
+      "asset": "email/email-logo.svg",
+      "dimensions": "200×50",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Master. Lockup on surface panel, 8px padding, 1px border."
+    },
+    {
+      "asset": "email/email-logo@1x.png",
+      "dimensions": "200×50",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Fallback; the signature references the 2× file."
+    },
+    {
+      "asset": "email/email-logo@2x.png",
+      "dimensions": "400×100",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Hosted at https://www.desertpeakinsurance.com/brand/email-logo@2x.png (unconfirmed until the domain is)."
+    },
+    {
+      "asset": "email/daniel.html",
+      "dimensions": "2793 bytes (max 10240)",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Medicare track: carries the TPMO disclaimer."
+    },
+    {
+      "asset": "email/daniel.txt",
+      "dimensions": "736 bytes",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Plain-text fallback."
+    },
+    {
+      "asset": "email/daniel-no-medicare.html",
+      "dimensions": "2383 bytes (max 10240)",
+      "source": "scripts/build-signatures.ts",
+      "notes": "No Medicare disclaimer."
+    },
+    {
+      "asset": "email/daniel-no-medicare.txt",
+      "dimensions": "454 bytes",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Plain-text fallback."
+    },
+    {
+      "asset": "email/renders/daniel-600.png",
+      "dimensions": "600×460",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Headless Chrome render; Outlook needs a manual check."
+    },
+    {
+      "asset": "email/renders/daniel-320.png",
+      "dimensions": "320×520",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Headless Chrome render; Outlook needs a manual check."
+    },
+    {
+      "asset": "email/renders/daniel-dark.png",
+      "dimensions": "600×460",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Dark-mode simulation: Chrome forced dark (auto-inverts text and backgrounds, leaves images alone, as Gmail and Outlook do); the padded logo panel must survive."
+    },
+    {
+      "asset": "email/renders/daniel-no-medicare-600.png",
+      "dimensions": "600×460",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Headless Chrome render; Outlook needs a manual check."
+    },
+    {
+      "asset": "email/renders/daniel-no-medicare-320.png",
+      "dimensions": "320×520",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Headless Chrome render; Outlook needs a manual check."
+    },
+    {
+      "asset": "email/renders/daniel-no-medicare-dark.png",
+      "dimensions": "600×460",
+      "source": "scripts/build-signatures.ts",
+      "notes": "Dark-mode simulation: Chrome forced dark (auto-inverts text and backgrounds, leaves images alone, as Gmail and Outlook do); the padded logo panel must survive."
+    }
+  ]
+}

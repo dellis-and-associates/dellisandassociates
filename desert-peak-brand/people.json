@@ -1,0 +1,22 @@
+{
+  "$description": "One entry per person. Every personalized asset (email signature, business card, deck contact slide) reads from this file; no name is ever typed into a template. {{TODO:...}} values render as visibly unfinished. Add a person, re-run `pnpm build:collateral`.",
+  "people": [
+    {
+      "slug": "daniel",
+      "name": "Daniel",
+      "lastName": "{{TODO:people.daniel.lastName}}",
+      "title": "Principal",
+      "phone": "{{TODO:client.phone}}",
+      "email": "daniel@desertpeakinsurance.com",
+      "licenses": {
+        "AZ": "{{TODO:people.daniel.license.AZ}}",
+        "ID": "{{TODO:people.daniel.license.ID}}",
+        "NV": "{{TODO:people.daniel.license.NV}}",
+        "UT": "{{TODO:people.daniel.license.UT}}"
+      },
+      "medicareTrack": true,
+      "photo": null,
+      "linkedin": null
+    }
+  ]
+}

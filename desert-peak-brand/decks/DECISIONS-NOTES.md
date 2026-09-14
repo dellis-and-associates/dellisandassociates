@@ -1,0 +1,15 @@
+# Deck decisions (merged into DECISIONS.md)
+
+**Fonts are not embedded in the .pptx.** pptxgenjs cannot embed fonts, and PowerPoint's embedded-font container (`ppt/fonts/*.fntdata`) is an undocumented, obfuscated format; hand-writing it risks a file that PowerPoint refuses to open, which is a worse failure than a font substitution. The OFL permits shipping the font files, so `decks/fonts/` ships them with install instructions and the theme declares Arial and Georgia as fallbacks. Verified by rendering every slide twice with LibreOffice, once with the brand fonts and once with system fonts only: nothing overflows or wraps differently on the comparison, state, finding or disclosure slides; the substitute sans is wider but the boxes have room. The trade-off is accepted and recorded.
+
+**Archivo's deck copies default to tabular figures.** PowerPoint and Keynote cannot switch OpenType number spacing, and Archivo's default digits are proportional (Regular 521–574 units; SemiBold 575–577), so the comparison table would not align. `scripts/collateral/deck-fonts.py` copies the `tnum` target glyphs over `zero`–`nine` in static instances and keeps the family name (Archivo declares no Reserved Font Name; the version string records `tabular-default`). Source Serif 4's digits are tabular by default (515 units) and its files are unmodified. The deck fonts are a four-style family (Regular/Bold) so the Bold toggle picks the 600 face; the tabular instances with typographic names live in `brand/fonts/static/tabular/`.
+
+**Theme rewritten after generation.** pptxgenjs writes an Office theme (Calibri, Office colours, system `windowText`/`window` colours, a black shadow in the effect styles). `postProcess()` rewrites `theme1.xml` so every scheme colour is a token, the major/minor fonts are Archivo and Source Serif 4, system colours become token hexes, and the effect-style black becomes `ink`; then it fails the build if any non-token colour or non-allowed typeface remains anywhere in the package. The token lock re-checks the committed file.
+
+**Images are hashed copies of `web/logos/*.png`.** The lock verifies every `ppt/media` file by SHA-256 against the generated logo PNGs, so a pasted picture fails the build. Mark and lockups are inserted at 2×.
+
+**No real carriers, no real figures.** Appointments are unconfirmed (site TODO-CLIENT-DATA #4), so the comparison uses "Carrier A/B/C" and figures labelled illustrative. State figures are the only real numbers and they come from `content/state-facts.json` with their source lines.
+
+**Reproducible files.** Creation and modification dates in `docProps/core.xml` and every zip entry date are fixed to the build date, so two builds of the same inputs are byte-identical (verified).
+
+**Rendering.** LibreOffice via a private `FONTCONFIG_FILE` that adds `decks/fonts/` (no fonts are installed on the machine), then pdftoppm at 96 dpi. LibreOffice is a proxy for PowerPoint; table borders and text metrics can differ slightly in PowerPoint itself, so the first real presentation should be previewed in PowerPoint with the fonts installed.

@@ -1,0 +1,128 @@
+{
+  "$description": "Snapshot of authored glossary drafts from the site repo (scripts/lib/drafts/glossary), imported 2026-09-13. The site is the master; edit there and re-run pnpm import:glossary.",
+  "source": "site:scripts/lib/drafts/glossary/*.ts",
+  "imported": "2026-09-13",
+  "count": 24,
+  "terms": [
+    {
+      "slug": "actual-cash-value",
+      "term": "Actual cash value",
+      "definition": "A way of valuing a loss at the cost to replace the damaged property today minus depreciation for its age and condition. It is what the property was worth the moment before the loss, not what a new one costs."
+    },
+    {
+      "slug": "actuary",
+      "term": "Actuary",
+      "definition": "A professional who uses mathematics and past loss data to estimate how likely future claims are and what they will cost. Insurers, pension plans and regulators employ them to set rates, reserves and the assumptions behind long-term contracts."
+    },
+    {
+      "slug": "binder",
+      "term": "Binder",
+      "definition": "A temporary written confirmation that coverage is in force while the full policy is being issued. It names the insured, the property or vehicle, the coverages and limits, and the effective date, and it is replaced by the policy documents when they arrive."
+    },
+    {
+      "slug": "claim",
+      "term": "Claim",
+      "definition": "A formal request to the insurer to pay for a loss the policy covers. It starts when you report the event, continues while an adjuster confirms what happened and what the policy owes, and ends with a payment, a partial payment with reasons, or a denial with reasons."
+    },
+    {
+      "slug": "collision-coverage",
+      "term": "Collision coverage",
+      "definition": "The part of an auto policy that pays to repair or replace your own vehicle after it hits, or is hit by, another vehicle or an object, whoever was at fault. It is optional unless a lender requires it, and it carries a deductible."
+    },
+    {
+      "slug": "comprehensive-coverage",
+      "term": "Comprehensive coverage",
+      "definition": "The part of an auto policy that pays for damage to your own vehicle from causes other than a crash: theft, vandalism, fire, hail, flood, falling objects, glass breakage and striking an animal. It is the companion to collision coverage, which handles crashes."
+    },
+    {
+      "slug": "declarations-page",
+      "term": "Declarations page",
+      "definition": "The summary sheet at the front of a policy that lists who is insured, what is insured, each coverage with its limit and deductible, the endorsements, the policy period and the premium. The rest of the policy is the contract that defines the words; this page records the choices."
+    },
+    {
+      "slug": "deductible",
+      "term": "Deductible",
+      "definition": "The amount you pay out of your own pocket on a covered claim before the insurer pays the rest. It is chosen when the policy is written and printed on the declarations page, usually as a flat dollar amount for auto and home policies and sometimes as a share of the dwelling limit for wind or hail losses."
+    },
+    {
+      "slug": "endorsement",
+      "term": "Endorsement",
+      "definition": "A written change attached to a policy that adds, removes or alters coverage without rewriting the whole contract. It is signed off by the insurer, carries its own form number, and overrides the base policy wording wherever the two conflict."
+    },
+    {
+      "slug": "exclusion",
+      "term": "Exclusion",
+      "definition": "A clause that names a cause of loss, a type of property or a situation the policy will not pay for. It is how an insurer carves out risks it does not intend to price, such as flood and earthquake on a standard home policy, or intentional damage on almost any policy."
+    },
+    {
+      "slug": "gap-insurance",
+      "term": "Gap insurance",
+      "definition": "Coverage that pays the difference between what an auto policy settles for after a total loss, the car's market value, and what is still owed on the loan or lease. It exists because a new car loses value faster than a loan is paid down."
+    },
+    {
+      "slug": "grace-period",
+      "term": "Grace period",
+      "definition": "A short window after a premium due date during which the policy stays in force even though the payment is late. It exists so a missed date does not become a gap in coverage, and its length is set by the policy or by state rule."
+    },
+    {
+      "slug": "liability-coverage",
+      "term": "Liability coverage",
+      "definition": "The part of a policy that pays what you legally owe other people for injury or property damage you cause. It also pays the cost of defending you when someone sues over a covered accident, which can be as expensive as the damages themselves."
+    },
+    {
+      "slug": "named-insured",
+      "term": "Named insured",
+      "definition": "The person or business the policy contract is issued to, listed by name on the declarations page. That person can change the policy, cancel it and receive claim payments; other people covered by the policy, such as household members or listed drivers, generally cannot."
+    },
+    {
+      "slug": "peril",
+      "term": "Peril",
+      "definition": "A specific cause of loss, such as fire, wind, hail, theft or a burst pipe. Policies are written around causes: some list the ones they pay for, others pay for any cause except the ones they list."
+    },
+    {
+      "slug": "policy-lapse",
+      "term": "Policy lapse",
+      "definition": "A gap in protection that opens when one contract ends, through non-payment or cancellation, before the next one begins. During the gap no policy responds to a loss, and the gap itself becomes part of your record."
+    },
+    {
+      "slug": "premium",
+      "term": "Premium",
+      "definition": "The price you pay to keep a policy in force, billed monthly, every six months or once a year. The insurer sets it from the risk it is taking on: what is covered, the limits and deductible chosen, where the property or vehicle is, and the record of the people insured."
+    },
+    {
+      "slug": "replacement-cost",
+      "term": "Replacement cost",
+      "definition": "A way of valuing a loss at today's price for repairing or replacing the damaged property with new materials of like kind and quality, without subtracting for age or wear. The alternative, actual cash value, subtracts depreciation."
+    },
+    {
+      "slug": "rider",
+      "term": "Rider",
+      "definition": "An add-on to a life, health or disability contract that changes its benefits, usually for an extra charge. It is the life-insurance counterpart of an endorsement on a property policy: the base contract stays the same and the attachment modifies it."
+    },
+    {
+      "slug": "sr-22",
+      "term": "SR-22",
+      "definition": "A certificate a carrier files with the state to prove that a driver carries the required liability coverage. It is not a policy or a type of coverage; it is a filing attached to an ordinary auto policy, usually after a licence suspension or a conviction."
+    },
+    {
+      "slug": "subrogation",
+      "term": "Subrogation",
+      "definition": "The insurer's right, after it pays your claim, to step into your shoes and recover that money from whoever caused the loss. The right is written into the policy: by accepting payment you hand the insurer your right to pursue the responsible party."
+    },
+    {
+      "slug": "umbrella-policy",
+      "term": "Umbrella policy",
+      "definition": "A separate liability contract that pays after the liability limit on an auto, home, boat or similar contract is used up. It adds a large additional limit, and it also covers some claims the underlying policies do not, such as certain personal injury claims."
+    },
+    {
+      "slug": "underwriting",
+      "term": "Underwriting",
+      "definition": "The process an insurer uses to decide whether to accept a risk, and at what price and on what conditions. It weighs the application, outside records such as prior claims and, for life and health policies, medical history, against the insurer's own rules and rates."
+    },
+    {
+      "slug": "uninsured-motorist-coverage",
+      "term": "Uninsured motorist coverage",
+      "definition": "Protection on your own auto policy that pays for your injuries, and in some states your vehicle damage, when the driver who hit you has no insurance or cannot be identified, as in a hit-and-run. It steps into the place the other driver's liability coverage should have taken."
+    }
+  ]
+}

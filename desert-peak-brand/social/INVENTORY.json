@@ -1,0 +1,1233 @@
+{
+  "generated": "2026-09-13",
+  "rows": [
+    {
+      "asset": "social/profile/profile-400.png",
+      "dimensions": "400×400",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "mark on surface; mark = 60% of diameter"
+    },
+    {
+      "asset": "social/profile/profile-400.svg",
+      "dimensions": "400×400 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "mark on surface; mark = 60% of diameter"
+    },
+    {
+      "asset": "social/profile/profile-reversed-400.png",
+      "dimensions": "400×400",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "reversed: mark in brand-ink on brand"
+    },
+    {
+      "asset": "social/profile/profile-reversed-400.svg",
+      "dimensions": "400×400 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "reversed: mark in brand-ink on brand"
+    },
+    {
+      "asset": "social/profile/profile-800.png",
+      "dimensions": "800×800",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "mark on surface; mark = 60% of diameter"
+    },
+    {
+      "asset": "social/profile/profile-800.svg",
+      "dimensions": "800×800 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "mark on surface; mark = 60% of diameter"
+    },
+    {
+      "asset": "social/profile/profile-reversed-800.png",
+      "dimensions": "800×800",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "reversed: mark in brand-ink on brand"
+    },
+    {
+      "asset": "social/profile/profile-reversed-800.svg",
+      "dimensions": "800×800 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "reversed: mark in brand-ink on brand"
+    },
+    {
+      "asset": "social/profile/profile-1200.png",
+      "dimensions": "1200×1200",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "mark on surface; mark = 60% of diameter"
+    },
+    {
+      "asset": "social/profile/profile-1200.svg",
+      "dimensions": "1200×1200 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "mark on surface; mark = 60% of diameter"
+    },
+    {
+      "asset": "social/profile/profile-reversed-1200.png",
+      "dimensions": "1200×1200",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "reversed: mark in brand-ink on brand"
+    },
+    {
+      "asset": "social/profile/profile-reversed-1200.svg",
+      "dimensions": "1200×1200 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Profile picture 400×400 minimum (LinkedIn Page logo 400×400; X 400×400)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "reversed: mark in brand-ink on brand"
+    },
+    {
+      "asset": "social/banners/linkedin-company-1512x256.png",
+      "dimensions": "1512×256",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn Page cover 1512×256 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/linkedin-company-1512x256.svg",
+      "dimensions": "1512×256 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn Page cover 1512×256 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/linkedin-company-1512x256@2x.png",
+      "dimensions": "3024×512",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn Page cover 1512×256 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "2× export of the same master"
+    },
+    {
+      "asset": "social/banners/safe-zone/linkedin-company-1512x256-safe-zone.png",
+      "dimensions": "1512×256",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn Page cover 1512×256 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/banners/safe-zone/linkedin-company-1512x256-safe-zone.svg",
+      "dimensions": "1512×256 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn Page cover 1512×256 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a563309",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/banners/linkedin-personal-1584x396.png",
+      "dimensions": "1584×396",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn profile background 1584×396 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a568217",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/linkedin-personal-1584x396.svg",
+      "dimensions": "1584×396 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn profile background 1584×396 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a568217",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/linkedin-personal-1584x396@2x.png",
+      "dimensions": "3168×792",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn profile background 1584×396 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a568217",
+      "checked": "2026-09-13",
+      "notes": "2× export of the same master"
+    },
+    {
+      "asset": "social/banners/safe-zone/linkedin-personal-1584x396-safe-zone.png",
+      "dimensions": "1584×396",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn profile background 1584×396 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a568217",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/banners/safe-zone/linkedin-personal-1584x396-safe-zone.svg",
+      "dimensions": "1584×396 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "LinkedIn profile background 1584×396 (recommended)",
+      "specUrl": "https://www.linkedin.com/help/linkedin/answer/a568217",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/banners/facebook-820x312.png",
+      "dimensions": "820×312",
+      "source": "scripts/build-social.ts",
+      "spec": "Facebook Page cover 820×312 desktop, 640×360 mobile crop (official page did not return content to automated fetch; socialsizes.io + snappa.com confirm)",
+      "specUrl": "https://www.facebook.com/help/125379114252045",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/facebook-820x312.svg",
+      "dimensions": "820×312 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Facebook Page cover 820×312 desktop, 640×360 mobile crop (official page did not return content to automated fetch; socialsizes.io + snappa.com confirm)",
+      "specUrl": "https://www.facebook.com/help/125379114252045",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/facebook-820x312@2x.png",
+      "dimensions": "1640×624",
+      "source": "scripts/build-social.ts",
+      "spec": "Facebook Page cover 820×312 desktop, 640×360 mobile crop (official page did not return content to automated fetch; socialsizes.io + snappa.com confirm)",
+      "specUrl": "https://www.facebook.com/help/125379114252045",
+      "checked": "2026-09-13",
+      "notes": "2× export of the same master"
+    },
+    {
+      "asset": "social/banners/safe-zone/facebook-820x312-safe-zone.png",
+      "dimensions": "820×312",
+      "source": "scripts/build-social.ts",
+      "spec": "Facebook Page cover 820×312 desktop, 640×360 mobile crop (official page did not return content to automated fetch; socialsizes.io + snappa.com confirm)",
+      "specUrl": "https://www.facebook.com/help/125379114252045",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/banners/safe-zone/facebook-820x312-safe-zone.svg",
+      "dimensions": "820×312 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Facebook Page cover 820×312 desktop, 640×360 mobile crop (official page did not return content to automated fetch; socialsizes.io + snappa.com confirm)",
+      "specUrl": "https://www.facebook.com/help/125379114252045",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/banners/x-1500x500.png",
+      "dimensions": "1500×500",
+      "source": "scripts/build-social.ts",
+      "spec": "X header 1500×500 (help.x.com returned 403 to automated fetch; snappa.com + influencermarketinghub.com confirm 1500×500, ~60px top/bottom crop, avatar overlap bottom-left)",
+      "specUrl": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/x-1500x500.svg",
+      "dimensions": "1500×500 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "X header 1500×500 (help.x.com returned 403 to automated fetch; snappa.com + influencermarketinghub.com confirm 1500×500, ~60px top/bottom crop, avatar overlap bottom-left)",
+      "specUrl": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+      "checked": "2026-09-13"
+    },
+    {
+      "asset": "social/banners/x-1500x500@2x.png",
+      "dimensions": "3000×1000",
+      "source": "scripts/build-social.ts",
+      "spec": "X header 1500×500 (help.x.com returned 403 to automated fetch; snappa.com + influencermarketinghub.com confirm 1500×500, ~60px top/bottom crop, avatar overlap bottom-left)",
+      "specUrl": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+      "checked": "2026-09-13",
+      "notes": "2× export of the same master"
+    },
+    {
+      "asset": "social/banners/safe-zone/x-1500x500-safe-zone.png",
+      "dimensions": "1500×500",
+      "source": "scripts/build-social.ts",
+      "spec": "X header 1500×500 (help.x.com returned 403 to automated fetch; snappa.com + influencermarketinghub.com confirm 1500×500, ~60px top/bottom crop, avatar overlap bottom-left)",
+      "specUrl": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/banners/safe-zone/x-1500x500-safe-zone.svg",
+      "dimensions": "1500×500 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "X header 1500×500 (help.x.com returned 403 to automated fetch; snappa.com + influencermarketinghub.com confirm 1500×500, ~60px top/bottom crop, avatar overlap bottom-left)",
+      "specUrl": "https://help.x.com/en/managing-your-account/common-issues-when-uploading-profile-photo",
+      "checked": "2026-09-13",
+      "notes": "overlay shows crop and overlap regions; not for posting"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/actual-cash-value.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/actual-cash-value.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/open-enrollment-medicare-medicare.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/open-enrollment-medicare-medicare.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/az-auto-minimums.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/az-auto-minimums.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/open-enrollment-medicare-medicare.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/open-enrollment-medicare-medicare.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/finding/1080x1080/keep-what-you-have.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding"
+    },
+    {
+      "asset": "social/posts/finding/1080x1080/keep-what-you-have.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding"
+    },
+    {
+      "asset": "social/posts/finding/1080x1080/review-not-change-medicare.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/finding/1080x1080/review-not-change-medicare.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1080/monsoon.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1080/monsoon.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1080/open-enrollment-medicare.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1080/open-enrollment-medicare.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/term/1080x1350/actual-cash-value.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1350/actual-cash-value.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1350/open-enrollment-medicare-medicare.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/term/1080x1350/open-enrollment-medicare-medicare.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1350/az-auto-minimums.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1350/az-auto-minimums.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1350/open-enrollment-medicare-medicare.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1350/open-enrollment-medicare-medicare.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/finding/1080x1350/keep-what-you-have.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding"
+    },
+    {
+      "asset": "social/posts/finding/1080x1350/keep-what-you-have.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding"
+    },
+    {
+      "asset": "social/posts/finding/1080x1350/review-not-change-medicare.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/finding/1080x1350/review-not-change-medicare.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1350/monsoon.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1350/monsoon.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1350/open-enrollment-medicare.png",
+      "dimensions": "1080×1350",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1350/open-enrollment-medicare.svg",
+      "dimensions": "1080×1350 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/term/1080x1920/actual-cash-value.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1920/actual-cash-value.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1920/open-enrollment-medicare-medicare.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/term/1080x1920/open-enrollment-medicare-medicare.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1920/az-auto-minimums.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1920/az-auto-minimums.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1920/open-enrollment-medicare-medicare.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1920/open-enrollment-medicare-medicare.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/finding/1080x1920/keep-what-you-have.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding"
+    },
+    {
+      "asset": "social/posts/finding/1080x1920/keep-what-you-have.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding"
+    },
+    {
+      "asset": "social/posts/finding/1080x1920/review-not-change-medicare.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/finding/1080x1920/review-not-change-medicare.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "finding · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1920/monsoon.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1920/monsoon.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1920/open-enrollment-medicare.png",
+      "dimensions": "1080×1920",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/seasonal/1080x1920/open-enrollment-medicare.svg",
+      "dimensions": "1080×1920 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "seasonal · Medicare variant (TPMO band)"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/actual-cash-value.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/actual-cash-value.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/actuary.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/actuary.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/binder.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/binder.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/claim.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/claim.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/collision-coverage.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/collision-coverage.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/comprehensive-coverage.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/comprehensive-coverage.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/declarations-page.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/declarations-page.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/deductible.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/deductible.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/endorsement.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/endorsement.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/exclusion.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/exclusion.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/gap-insurance.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/gap-insurance.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/grace-period.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/grace-period.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/liability-coverage.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/liability-coverage.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/named-insured.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/named-insured.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/peril.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/peril.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/policy-lapse.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/policy-lapse.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/premium.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/premium.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/replacement-cost.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/replacement-cost.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/rider.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/rider.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/sr-22.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/sr-22.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/subrogation.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/subrogation.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/umbrella-policy.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/umbrella-policy.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/underwriting.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/underwriting.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/uninsured-motorist-coverage.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/term/1080x1080/uninsured-motorist-coverage.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "term"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/az-auto-minimums.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/az-auto-minimums.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/nv-auto-minimums.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/nv-auto-minimums.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/ut-auto-minimums.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/ut-auto-minimums.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/id-auto-minimums.png",
+      "dimensions": "1080×1080",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/posts/state-fact/1080x1080/id-auto-minimums.svg",
+      "dimensions": "1080×1080 (SVG master)",
+      "source": "scripts/build-social.ts",
+      "spec": "Feed 1080×1080 (1:1), portrait 1080×1350 (4:5), story 1080×1920 (9:16); story UI-safe area = middle 1080×1420 (250px top and bottom reserved)",
+      "specUrl": "https://help.instagram.com/1631821640426723",
+      "checked": "2026-09-13",
+      "notes": "state-fact"
+    },
+    {
+      "asset": "social/tests/avatar-row.png",
+      "dimensions": "632×340",
+      "source": "scripts/build-social.ts",
+      "notes": "profile at 40px and 32px beside neutral stand-ins; real-avatar comparison documented in USAGE.md"
+    },
+    {
+      "asset": "social/tests/thumbnail-200.png",
+      "dimensions": "200×200",
+      "source": "scripts/build-social.ts",
+      "notes": "the square term post as a feed thumbnail"
+    }
+  ]
+}

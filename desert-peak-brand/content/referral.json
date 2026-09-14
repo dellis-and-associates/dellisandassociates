@@ -1,0 +1,6 @@
+{
+  "$description": "Referral program explainer. Renders ONLY when collateral.config.json referralProgramEnabled is true (counsel decision). Carries the rule-table disclaimer slot, which is a TODO token until counsel supplies the text.",
+  "items": [
+    { "id": "referral-explainer", "headline": "Know someone who should have their coverage checked?", "text": "Send them our way. The analysis costs them nothing and the answer might be to change nothing." }
+  ]
+}
