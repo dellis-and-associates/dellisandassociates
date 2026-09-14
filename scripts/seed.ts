@@ -182,6 +182,29 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
       );
     }
   }
+  // Statutory auto minimums with their official sources (src/seed-data/state-minimums.json): a row is added only where
+  // the state has no row yet for that product and coverage; existing rows are never touched.
+  if (want("states")) {
+    type MinRow = { coverage: string; requirement: string; sourceUrl: string; note?: string };
+    const mins = readJson<Record<string, { product: string; verifiedAt: string | null; rows: MinRow[]; notableRegulatory: string }>>("src/seed-data/state-minimums.json");
+    for (const s of states) {
+      const spec = mins[s.slug];
+      if (!spec) continue;
+      const sid = stateId[s.slug];
+      const pid = productId[spec.product];
+      if (sid === undefined || sid === DRY_ID || pid === undefined || pid === DRY_ID) continue;
+      const current = (await payload.findByID({ collection: "states", id: sid, depth: 0, overrideAccess: true })) as unknown as { statutoryMinimums?: { product: number; coverage: string }[]; notableRegulatory?: string | null };
+      const have = new Set((current.statutoryMinimums ?? []).map((r) => `${r.product}|${r.coverage}`));
+      const add = spec.rows.filter((r) => !have.has(`${pid}|${r.coverage}`)).map((r) => ({ product: pid, coverage: r.coverage, requirement: r.requirement, sourceUrl: r.sourceUrl, note: r.note ?? null, verifiedAt: spec.verifiedAt }));
+      const patch: Record<string, unknown> = {};
+      if (add.length) patch.statutoryMinimums = [...(current.statutoryMinimums ?? []), ...add];
+      if (isEmpty(current.notableRegulatory) && spec.notableRegulatory) patch.notableRegulatory = spec.notableRegulatory;
+      const c = counts("states:minimums");
+      if (!Object.keys(patch).length) { c.skipped++; continue; }
+      c.updated++;
+      if (!opts.dryRun) await payload.update({ collection: "states", id: sid, data: patch as never, overrideAccess: true, depth: 0 });
+    }
+  }
   if (want("cities")) {
     for (const s of states) {
       const sid = stateId[s.slug] ?? ((await lookup("states", "slug", s.slug))?.id as number | undefined);

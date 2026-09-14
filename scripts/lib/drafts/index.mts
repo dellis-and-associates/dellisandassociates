@@ -8,15 +8,20 @@ import { existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import type { ArticleInput, GlossaryInput } from "../content-rules.mts";
 import { doc, heading, list, paragraph, type BlockNode, type InlineInput, type LexicalDoc } from "../lexical.mts";
-import type { ArticleDraft, GlossaryDraft } from "./types.mts";
+import type { ArticleDraft, CityDraft, GlossaryDraft, PageDraft, ProductDraft } from "./types.mts";
 
 export type DraftCollection = "glossary-terms" | "articles";
-const DIR: Record<DraftCollection, string> = { "glossary-terms": "glossary", articles: "articles" };
+/** Collections filled by fill-content.mts (no generation status; fills empty fields only). */
+export type FillCollection = "products" | "pages" | "cities";
+const DIR: Record<DraftCollection | FillCollection, string> = { "glossary-terms": "glossary", articles: "articles", products: "products", pages: "pages", cities: "cities" };
 
-const fileFor = (collection: DraftCollection, slug: string): URL => new URL(`./${DIR[collection]}/${slug}.ts`, import.meta.url);
+const fileFor = (collection: DraftCollection | FillCollection, slug: string): URL => new URL(`./${DIR[collection]}/${slug}.ts`, import.meta.url);
 
-export const hasDraft = (collection: DraftCollection, slug: string): boolean =>
-  /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) && existsSync(fileURLToPath(fileFor(collection, slug)));
+/** Pages are keyed by path; the file name is the path with slashes turned into "--" (home is "home"). */
+export const pageFileSlug = (path: string): string => (path === "/" ? "home" : path.replace(/^\/|\/$/g, "").replace(/\//g, "--"));
+
+export const hasDraft = (collection: DraftCollection | FillCollection, slug: string): boolean =>
+  /^[a-z0-9]+(?:-+[a-z0-9]+)*$/.test(slug) && existsSync(fileURLToPath(fileFor(collection, slug)));
 
 export async function loadGlossaryDraft(slug: string): Promise<GlossaryDraft> {
   if (!hasDraft("glossary-terms", slug)) throw new Error(`no authored draft for glossary term "${slug}" (scripts/lib/drafts/glossary/${slug}.ts)`);
@@ -31,6 +36,16 @@ export async function loadArticleDraft(slug: string): Promise<ArticleDraft> {
   if (!mod.draft) throw new Error(`article draft "${slug}" does not export \`draft\``);
   return mod.draft;
 }
+
+async function loadDraft<T>(collection: FillCollection, slug: string): Promise<T> {
+  if (!hasDraft(collection, slug)) throw new Error(`no authored draft for ${collection} "${slug}" (scripts/lib/drafts/${DIR[collection]}/${slug}.ts)`);
+  const mod = (await import(fileFor(collection, slug).href)) as { draft?: T };
+  if (!mod.draft) throw new Error(`${collection} draft "${slug}" does not export \`draft\``);
+  return mod.draft;
+}
+export const loadProductDraft = (slug: string) => loadDraft<ProductDraft>("products", slug);
+export const loadPageDraft = (fileSlug: string) => loadDraft<PageDraft>("pages", fileSlug);
+export const loadCityDraft = (slug: string) => loadDraft<CityDraft>("cities", slug);
 
 /** Plain text of an inline run (link labels included), for validation and similarity. */
 export const inlineText = (input: InlineInput): string => {
@@ -87,3 +102,83 @@ export const articleToInput = (slug: string, d: ArticleDraft): ArticleInput => (
 });
 
 export const articleText = (d: ArticleDraft): string => d.sections.flatMap((s) => [s.heading, ...s.paragraphs.map(inlineText), ...(s.bullets ?? []).map(inlineText)]).join(" ");
+
+// ── Products ──────────────────────────────────────────────────────────────
+
+export const productToFields = (d: ProductDraft) => ({
+  summary: d.summary,
+  intro: doc(d.intro.map((p) => paragraph(p))),
+  coverageBlocks: d.coverageBlocks.map((b) => ({ heading: b.heading, body: doc(b.paragraphs.map((p) => paragraph(p))) })),
+  covered: d.covered.map((item) => ({ item })),
+  notCovered: d.notCovered.map((item) => ({ item })),
+  discounts: (d.discounts ?? []).map((x) => ({ name: x.name, description: x.description })),
+  faqs: d.faqs.map((f) => ({ question: f.question, answer: doc(f.answer.map((p) => paragraph(p))) })),
+  ...(d.seo ? { seo: d.seo } : {}),
+});
+
+export const productProse = (d: ProductDraft): { where: string; text: string }[] => [
+  { where: "summary", text: d.summary },
+  ...d.intro.map((p, i) => ({ where: `intro[${i}]`, text: inlineText(p) })),
+  ...d.coverageBlocks.flatMap((b, i) => [{ where: `coverageBlocks[${i}].heading`, text: b.heading }, ...b.paragraphs.map((p, j) => ({ where: `coverageBlocks[${i}].body[${j}]`, text: inlineText(p) }))]),
+  ...d.covered.map((t, i) => ({ where: `covered[${i}]`, text: t })),
+  ...d.notCovered.map((t, i) => ({ where: `notCovered[${i}]`, text: t })),
+  ...(d.discounts ?? []).flatMap((x, i) => [{ where: `discounts[${i}].name`, text: x.name }, { where: `discounts[${i}].description`, text: x.description }]),
+  ...d.faqs.flatMap((f, i) => [{ where: `faqs[${i}].question`, text: f.question }, ...f.answer.map((p, j) => ({ where: `faqs[${i}].answer[${j}]`, text: inlineText(p) }))]),
+];
+export const productText = (d: ProductDraft): string => productProse(d).map((p) => p.text).join(" ");
+
+// ── Pages ─────────────────────────────────────────────────────────────────
+
+export const pageToFields = (d: PageDraft) => ({
+  ...(d.title ? { title: d.title } : {}),
+  lede: d.lede,
+  layout: d.blocks.map((b) => {
+    if (b.type === "richText") {
+      const nodes: BlockNode[] = [];
+      for (const s of b.sections) {
+        if (s.heading.trim()) nodes.push(heading("h2", s.heading));
+        for (const p of s.paragraphs) nodes.push(paragraph(p));
+        if (s.bullets?.length) nodes.push(list(s.bullets));
+      }
+      return { blockType: "richText", body: doc(nodes) };
+    }
+    if (b.type === "faq") return { blockType: "faq", heading: b.heading ?? null, items: b.items.map((it) => ({ question: it.question, answer: doc(it.answer.map((p) => paragraph(p))) })) };
+    if (b.type === "cta") return { blockType: "cta", heading: b.heading, body: b.body ?? null, label: b.label, href: b.href };
+    return { blockType: "disclosure", key: b.key };
+  }),
+  ...(d.seo ? { seo: d.seo } : {}),
+});
+
+export const pageProse = (d: PageDraft): { where: string; text: string; heading?: boolean }[] => [
+  ...(d.title ? [{ where: "title", text: d.title }] : []),
+  { where: "lede", text: d.lede },
+  ...d.blocks.flatMap((b, i) => {
+    if (b.type === "richText") return b.sections.flatMap((s, j) => [...(s.heading ? [{ where: `blocks[${i}].sections[${j}].heading`, text: s.heading, heading: true }] : []), ...s.paragraphs.map((p, k) => ({ where: `blocks[${i}].sections[${j}].paragraphs[${k}]`, text: inlineText(p) })), ...(s.bullets ?? []).map((p, k) => ({ where: `blocks[${i}].sections[${j}].bullets[${k}]`, text: inlineText(p) }))]);
+    if (b.type === "faq") return [...(b.heading ? [{ where: `blocks[${i}].heading`, text: b.heading, heading: true }] : []), ...b.items.flatMap((it, j) => [{ where: `blocks[${i}].items[${j}].question`, text: it.question }, ...it.answer.map((p, k) => ({ where: `blocks[${i}].items[${j}].answer[${k}]`, text: inlineText(p) }))])];
+    if (b.type === "cta") return [{ where: `blocks[${i}].heading`, text: b.heading }, ...(b.body ? [{ where: `blocks[${i}].body`, text: b.body }] : []), { where: `blocks[${i}].label`, text: b.label }];
+    return [];
+  }),
+];
+export const pageText = (d: PageDraft): string => pageProse(d).map((p) => p.text).join(" ");
+
+// ── Cities ────────────────────────────────────────────────────────────────
+
+export const cityToFields = (d: CityDraft) => ({
+  cityFacts: {
+    localHazards: d.localHazards,
+    housingStock: d.housingStock,
+    drivingContext: d.drivingContext,
+    neighborhoods: d.neighborhoods.map((name) => ({ name })),
+    notableRegulatory: d.notableRegulatory,
+  },
+  ...(d.intro?.length ? { intro: doc(d.intro.map((p) => paragraph(p))) } : {}),
+});
+
+export const cityProse = (d: CityDraft): { where: string; text: string }[] => [
+  { where: "housingStock", text: d.housingStock },
+  { where: "drivingContext", text: d.drivingContext },
+  { where: "notableRegulatory", text: d.notableRegulatory },
+  ...d.neighborhoods.map((n, i) => ({ where: `neighborhoods[${i}]`, text: n })),
+  ...(d.intro ?? []).map((p, i) => ({ where: `intro[${i}]`, text: inlineText(p) })),
+];
+export const cityText = (d: CityDraft): string => cityProse(d).map((p) => p.text).join(" ");

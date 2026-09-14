@@ -75,7 +75,8 @@ export function checkProse(text: string, where: string): Violation[] {
     const re = /^[a-z]/.test(p) && /[a-z]$/.test(p) ? new RegExp(`\\b${p.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\b`, "i") : null;
     if (re ? re.test(scan) : scan.includes(p)) v.push({ rule: "banned-phrase", message: `${where}: contains "${phrase}"` });
   }
-  for (const c of COMPETITORS) if (new RegExp(`\\b${c}\\b`, "i").test(plain)) v.push({ rule: "competitor", message: `${where}: names a competitor ("${c}")` });
+  // Case-sensitive: "progressive lenses" and "a nationwide network" are ordinary words; the brands are capitalised.
+  for (const c of COMPETITORS) if (new RegExp(`\\b${c}\\b`).test(plain)) v.push({ rule: "competitor", message: `${where}: names a competitor ("${c}")` });
   for (const m of text.matchAll(/\{\{TODO[^}]*\}\}|\{\{[^}]*TODO[^}]*\}\}/g)) {
     if (!TODO_TOKEN.test(m[0])) v.push({ rule: "todo-format", message: `${where}: malformed token ${m[0]}` });
     const key = m[0].slice(7, -2);
@@ -163,5 +164,52 @@ export function validateArticle(a: ArticleInput): Violation[] {
   v.push(...checkProse(a.title, `${a.slug}.title`), ...checkProse(a.excerpt, `${a.slug}.excerpt`));
   a.headings.forEach((h, i) => v.push(...checkHeading(h, `${a.slug}.heading[${i}]`), ...checkProse(h, `${a.slug}.heading[${i}]`)));
   a.paragraphs.forEach((p, i) => v.push(...checkProse(p, `${a.slug}.body[${i}]`)));
+  return v;
+}
+
+// ── Products, pages, cities ───────────────────────────────────────────────
+
+export type ProseBit = { where: string; text: string; heading?: boolean };
+export const WORD_RANGE_FILL = { products: [500, 1800], pages: [80, 1800], cities: [60, 400] } as const;
+
+export function validateProduct(slug: string, d: { summary: string; introCount: number; blocks: number; covered: number; notCovered: number; discounts: number | null; faqs: number; relatedProducts: string[] }, prose: ProseBit[]): Violation[] {
+  const v: Violation[] = [];
+  const words = prose.reduce((n, p) => n + countWords(p.text), 0);
+  const [min, max] = WORD_RANGE_FILL.products;
+  if (words < min || words > max) v.push({ rule: "words", message: `${slug}: ${words} words; expected ${min}–${max}` });
+  if (!d.summary.trim() || d.summary.length > 300) v.push({ rule: "summary", message: `${slug}: summary must be 1–300 characters (${d.summary.length})` });
+  if (d.introCount < 2 || d.introCount > 4) v.push({ rule: "intro", message: `${slug}: ${d.introCount} intro paragraphs; expected 2–4` });
+  if (d.blocks < 3 || d.blocks > 6) v.push({ rule: "coverage", message: `${slug}: ${d.blocks} coverage blocks; expected 3–6` });
+  if (d.covered < 4 || d.covered > 8) v.push({ rule: "covered", message: `${slug}: ${d.covered} covered items; expected 4–8` });
+  if (d.notCovered < 3 || d.notCovered > 8) v.push({ rule: "covered", message: `${slug}: ${d.notCovered} not-covered items; expected 3–8` });
+  if (d.discounts !== null && (d.discounts < 3 || d.discounts > 6)) v.push({ rule: "discounts", message: `${slug}: ${d.discounts} discounts; expected 3–6 (or none for plans-enrollment lines)` });
+  if (d.faqs < 4 || d.faqs > 6) v.push({ rule: "faqs", message: `${slug}: ${d.faqs} FAQs; expected 4–6` });
+  if (d.relatedProducts.length < 2 || d.relatedProducts.length > 5) v.push({ rule: "links", message: `${slug}: ${d.relatedProducts.length} related products; expected 2–5` });
+  if (d.relatedProducts.includes(slug)) v.push({ rule: "links", message: `${slug}: relates to itself` });
+  if (new Set(d.relatedProducts).size !== d.relatedProducts.length) v.push({ rule: "links", message: `${slug}: duplicate related products` });
+  for (const p of prose) v.push(...checkProse(p.text, `${slug}.${p.where}`), ...(p.heading || /heading$/.test(p.where) ? checkHeading(p.text, `${slug}.${p.where}`) : []));
+  return v;
+}
+
+export function validatePage(slug: string, d: { lede: string; blocks: number }, prose: ProseBit[]): Violation[] {
+  const v: Violation[] = [];
+  const words = prose.reduce((n, p) => n + countWords(p.text), 0);
+  const [min, max] = WORD_RANGE_FILL.pages;
+  if (words < min || words > max) v.push({ rule: "words", message: `${slug}: ${words} words; expected ${min}–${max}` });
+  if (!d.lede.trim() || d.lede.length > 300) v.push({ rule: "lede", message: `${slug}: lede must be 1–300 characters (${d.lede.length})` });
+  if (d.blocks < 1) v.push({ rule: "blocks", message: `${slug}: no blocks` });
+  for (const p of prose) v.push(...checkProse(p.text, `${slug}.${p.where}`), ...(p.heading ? checkHeading(p.text, `${slug}.${p.where}`) : []));
+  return v;
+}
+
+export function validateCity(slug: string, d: { localHazards: string[]; neighborhoods: string[] }, prose: ProseBit[], hazardOptions: readonly string[]): Violation[] {
+  const v: Violation[] = [];
+  const words = prose.reduce((n, p) => n + countWords(p.text), 0);
+  const [min, max] = WORD_RANGE_FILL.cities;
+  if (words < min || words > max) v.push({ rule: "words", message: `${slug}: ${words} words; expected ${min}–${max}` });
+  if (d.localHazards.length < 1 || d.localHazards.length > 6) v.push({ rule: "hazards", message: `${slug}: ${d.localHazards.length} hazards; expected 1–6` });
+  for (const h of d.localHazards) if (!hazardOptions.includes(h)) v.push({ rule: "hazards", message: `${slug}: unknown hazard "${h}" (see LOCAL_HAZARDS in src/collections/Cities.ts)` });
+  if (d.neighborhoods.length < 3 || d.neighborhoods.length > 5) v.push({ rule: "neighborhoods", message: `${slug}: ${d.neighborhoods.length} neighborhoods; expected 3–5 real ones` });
+  for (const p of prose) v.push(...checkProse(p.text, `${slug}.${p.where}`));
   return v;
 }

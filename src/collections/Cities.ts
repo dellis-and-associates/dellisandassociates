@@ -6,7 +6,7 @@ import { hasTodo, slugField } from "../fields/index.ts";
 /** The seven CityFacts fields the uniqueness requirement depends on (page-generation Phase 2). */
 export const CITY_FACT_KEYS = ["county", "nearestOfficeOrAgent", "localHazards", "housingStock", "drivingContext", "neighborhoods", "notableRegulatory"] as const;
 
-const LOCAL_HAZARDS = [
+export const LOCAL_HAZARDS = [
   "monsoon-dust",
   "extreme-heat",
   "wildfire-wui",

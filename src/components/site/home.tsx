@@ -145,8 +145,15 @@ export function LifeEvents() {
 }
 
 export type HomeFaq = { id: string; question: string; answer: NonNullable<Product["faqs"]>[number]["answer"]; product: Product };
-export const homeFaqs = (products: Product[], max = 6): HomeFaq[] =>
-  products.flatMap((p) => (p.faqs ?? []).map((f, i) => ({ id: `faq-${p.slug}-${i}`, question: f.question, answer: f.answer, product: p }))).filter((f) => !hasTodo(f.question) && !hasTodo(richTextToPlain(f.answer))).slice(0, max);
+/** One question from each of the lines people ask about most, in this order, then the rest until `max`. */
+const FAQ_LINES = ["auto-insurance", "home-insurance", "life-insurance", "medicare", "umbrella-insurance", "renters-insurance"];
+export const homeFaqs = (products: Product[], max = 6): HomeFaq[] => {
+  const all = products.flatMap((p) => (p.faqs ?? []).map((f, i) => ({ id: `faq-${p.slug}-${i}`, question: f.question, answer: f.answer, product: p }))).filter((f) => !hasTodo(f.question) && !hasTodo(richTextToPlain(f.answer)));
+  const picked: HomeFaq[] = [];
+  for (const slug of FAQ_LINES) { const f = all.find((x) => x.product.slug === slug && !picked.includes(x)); if (f) picked.push(f); }
+  for (const f of all) if (picked.length < max && !picked.includes(f)) picked.push(f);
+  return picked.slice(0, max);
+};
 
 export function Faq({ items }: { items: HomeFaq[] }) {
   if (!items.length) return null;

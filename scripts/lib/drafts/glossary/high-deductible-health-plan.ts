@@ -1,0 +1,9 @@
+import type { GlossaryDraft } from "../types.mts";
+export const draft: GlossaryDraft = {
+  term: "High-deductible health plan",
+  definition: ["A medical policy with a larger cost-sharing threshold than a traditional one and a lower premium, structured to meet the tax code's conditions for pairing with a tax-advantaged medical savings fund. Until the threshold is met, the member pays the full negotiated cost of most care except preventive services."],
+  inPractice: ["The trade is a lower fixed cost every month against a larger bill in a year when care is needed, and it works when the premium savings plus any employer contribution go into the savings account rather than being spent. Family versions often use an aggregate deductible, meaning one member's expenses alone must reach the whole family threshold before the plan pays for that member, which is worse than the embedded design used by many traditional plans. Prescription costs count toward the deductible, which can be a shock to someone on an expensive medication. The out-of-pocket maximum is the figure to compare, not the deductible alone. It suits people who can fund the deductible from savings; it suits badly anyone who will skip needed care to avoid the bill."],
+  example: ["Suppose a traditional plan costs $500 a month with a $1,000 deductible and the high-deductible option costs $320 a month with a $3,500 deductible, and the employer adds $1,000 to the savings account. The premium difference is $2,160 a year; with the employer money the member is $3,160 ahead in a healthy year and roughly $660 ahead even in a year that hits the full deductible. Hypothetical figures."],
+  relatedTerms: ["health-savings-account", "deductible", "out-of-pocket-maximum", "flexible-spending-account"],
+  relatedProducts: ["health-insurance"],
+};

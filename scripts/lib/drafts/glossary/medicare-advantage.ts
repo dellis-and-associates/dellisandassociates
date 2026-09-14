@@ -1,0 +1,9 @@
+import type { GlossaryDraft } from "../types.mts";
+export const draft: GlossaryDraft = {
+  term: "Medicare Advantage",
+  definition: ["A private health plan, approved and paid by the federal program, that delivers the hospital and medical benefits in place of the traditional program and usually bundles drug coverage and extras such as dental or vision. The enrollee keeps paying the Part B premium and follows the plan's network and rules instead of the program's."],
+  inPractice: ["The trade is structure for price: premiums are often low or zero, and there is an annual out-of-pocket maximum that Original Medicare lacks, but care runs through a network with referrals and prior authorisation, and out-of-area coverage is limited to emergencies under most plans. Plans change benefits, networks and formularies every year, so re-checking during the annual election window is part of owning one. A supplement policy cannot be used alongside it. Moving back to Original Medicare later is allowed during set windows, but buying a supplement at that point may require underwriting outside a trial right, so the first choice has long consequences. Plan availability, star ratings and benefits vary by county; nothing here promises that any plan is offered in a given area."],
+  example: ["Suppose a plan has a $0 premium and a $5,000 in-network out-of-pocket maximum. A member who has a heart procedure with $40,000 of billed costs pays copays and coinsurance up to $5,000 and no more that year. Suppose she had chosen an out-of-network hospital for the surgery; under an HMO-style plan the plan could decline to pay. Hypothetical figures."],
+  relatedTerms: ["medicare-part-b", "medicare-supplement-insurance", "out-of-pocket-maximum", "in-network-vs-out-of-network"],
+  relatedProducts: ["medicare"],
+};
