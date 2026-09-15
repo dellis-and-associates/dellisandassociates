@@ -7,7 +7,7 @@ import { ComparisonTable, TableWrap, td, th, trTotal } from "@/src/components/ui
 import { Card, CardGrid } from "@/src/components/ui/card";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
 import { Accordion, CtaBand, Dialog, EmptyState, LinkTabs, Pagination, Progress, RelatedLinks, Skeleton, Stepper, StrataRule, Tag, Toast, Tooltip } from "@/src/components/ui/misc";
-import { Lockup, Mark } from "@/src/components/ui/logo";
+import { Lockup, Mark, Stacked } from "@/src/components/ui/logo";
 import { getProducts, getSiteSettings } from "@/src/lib/content";
 import { CarrierStrip, ClosingBand, CoverageGroups, LifeEvents, Recognition } from "@/src/components/site/home";
 import { IconCheckCircle, IconCrossCircle, IconFacebook, IconInfo, IconInstagram, IconPhone, IconPrint, IconSearch, IconTriangle } from "@/src/components/ui/icons";
@@ -128,10 +128,12 @@ export default async function DesignSystem() {
         <CtaBand heading="Request the analysis for auto insurance in Chandler" body="Or call the office. A licensed agent, not a call centre." action={{ label: "Request the analysis", href: "/quote/" }} secondary={{ label: "Talk to a person", href: "/contact/" }} />
       </Section>
 
-      <Section id="brand" title="Brand marks and the strata rule" note="Mark alone under 200 px; lockup in the header; the strata rule is the only ornament.">
+      <Section id="brand" title="Brand marks and the strata rule" note="Daniel's badge with the brand wordmark. Lockup in the header (40 px, 32 on phones); the badge alone under 360 px and at 24 px and above where the name appears elsewhere; stacked where the width is under about 200 px; the strata rule is the only ornament.">
         <Row label="Lockup"><Lockup height={40} /><Lockup height={32} /></Row>
         <Row label="Reversed"><div className="rounded-surface bg-surface-inverse p-3"><Lockup reversed height={40} /></div><div className="rounded-surface bg-brand p-3"><Lockup reversed height={32} /></div></Row>
         <Row label="Mark"><Mark height={24} /><Mark height={40} /></Row>
+        <Row label="Stacked"><Stacked height={120} /><div className="rounded-surface bg-logo-ground-inverse p-3"><Stacked reversed height={120} /></div></Row>
+        <Row label="Mono"><span className="text-logo-cactus"><Lockup mono height={32} /></span></Row>
         <Row label="Rule"><StrataRule /></Row>
       </Section>
 

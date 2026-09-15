@@ -10,8 +10,10 @@ const CTA = "Request the analysis";
 const TOP = [["Resources", "/resources/"], ["Claims", "/claims/"], ["For partners", "/partners/"]] as const;
 
 /**
- * Sticky, 64 px, 56 px once the page has scrolled (header-client.tsx). Skip
- * link first in the DOM; the shipped lockup at left (mark alone under 360 px).
+ * Sticky, 64 px on phones and 80 px from 768 px, 56 / 64 once the page has
+ * scrolled (header-client.tsx). Skip link first in the DOM; the shipped lockup
+ * at left, 40 px on phones and 48 px from 768 px (the logo tokens), the badge
+ * alone under 360 px.
  * Insurance and Locations are <details> menus, so the nav works with no
  * JavaScript; under 1024 px the whole nav is a <details> drawer. The phone
  * number is visible from 1280 px (a 1024 px bar cannot hold the 40 px lockup,
@@ -28,13 +30,13 @@ export async function Header() {
   const panel = "absolute left-0 top-full z-30 mt-1 hidden rounded-surface border border-border bg-surface-raised p-6 shadow-2 group-open:block";
   const quick = [...products.filter((p) => p.tier === "1").slice(0, 4).map((p) => ({ label: p.name, href: productPath(p) })), ...states.map((s) => ({ label: s.name, href: statePath(s) })), { label: "Glossary", href: "/resources/glossary/" }];
   return (
-    <header data-shell-header data-compact="false" className="sticky top-0 z-40 border-b border-border bg-surface shadow-0">
+    <header data-shell-header data-compact="false" className="sticky top-0 z-40 border-b border-border bg-logo-ground shadow-0">
       <HeaderBehaviour />
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-control focus:bg-surface-raised focus:px-4 focus:py-2 focus:font-sans focus:text-small">Skip to content</a>
       <div className="shell-bar mx-auto flex max-w-measure-page items-center justify-between gap-4 px-4 md:px-8">
         <Link href="/" className="ui-link shrink-0 py-2" aria-label="Desert Peak Insurance, home">
-          <span className="lockup-full"><span className="block md:hidden"><Lockup height={32} /></span><span className="hidden md:block"><Lockup height={40} /></span></span>
-          <span className="lockup-mark"><Mark height={32} /></span>
+          <span className="lockup-full"><Lockup height="header" /></span>
+          <span className="lockup-mark"><Mark height={40} /></span>
         </Link>
         <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex items-center gap-0 xl:gap-2">

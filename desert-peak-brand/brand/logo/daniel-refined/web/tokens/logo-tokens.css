@@ -1,0 +1,16 @@
+/* GENERATED 2026-09-15 by scripts/build-daniel-banners.ts from logo-tokens.json. Import after brand/dist/tokens.css. */
+:root {
+  --dp-logo-ring: var(--dp-ink);
+  --dp-logo-peak: var(--dp-ink);
+  --dp-logo-peak-far: var(--dp-ink-muted);
+  --dp-logo-snow: var(--dp-surface-raised);
+  --dp-logo-cactus: var(--dp-color-positive-500);
+  --dp-logo-wordmark: var(--dp-ink);
+  --dp-logo-wordmark-accent: var(--dp-brand);
+  --dp-logo-ground: var(--dp-surface);
+  --dp-logo-ground-inverse: var(--dp-surface-inverse);
+  --dp-logo-font: var(--dp-font-sans);
+  --dp-logo-width: var(--dp-width-display);
+  --dp-logo-header-desktop: 48px;
+  --dp-logo-header-mobile: 40px;
+}

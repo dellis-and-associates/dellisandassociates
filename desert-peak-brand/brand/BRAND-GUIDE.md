@@ -1,5 +1,7 @@
 # Desert Peak Insurance — Brand Guide
 
+> **Palette v2 (2026-09-15).** The colours are now taken from Daniel's badge: navy neutrals, navy `brand`, sage `positive`, cream surfaces (`DECISIONS.md`, "Palette v2"). Where this guide says hematite, agave or warm black, read navy, sage and navy; the token file wins.
+
 For the developer building the site. You will not need to talk to the person who made this; if something here is ambiguous, the token file wins over this document, and `DECISIONS.md` explains why things are the way they are.
 
 The brand is **Strata**: an insurance program is layers stacked in the right order, and the ground in Arizona, Nevada, Utah and Idaho is made the same way. The mark is a cross-section of fault-block strata with the right-hand block lifted. The voice is measured, precise and adult. The visual system should feel like a well-set report, not a landing page.

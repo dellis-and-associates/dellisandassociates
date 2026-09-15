@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticles } from "@/src/lib/content";
-import { articlePath } from "@/src/lib/routes";
+import { articlePath, isWritten } from "@/src/lib/routes";
 import { breadcrumbJsonLd, jsonLd, pageMetadata, SITE } from "@/src/lib/seo";
 import { ARTICLE_SECTIONS } from "@/src/collections/Articles";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
@@ -20,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ section: 
 export default async function Section({ params }: { params: Promise<{ section: string }> }) {
   const s = section((await params).section);
   if (!s) notFound();
-  const list = (await getArticles()).filter((a) => a.section === s.value);
+  const list = ((await getArticles()).filter(isWritten)).filter((a) => a.section === s.value);
   return (
     <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{ label: "Resources", href: "/resources/" }, { label: s.label, href: `/resources/${s.value}/` }], SITE))} />

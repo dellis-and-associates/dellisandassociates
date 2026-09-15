@@ -1,32 +1,32 @@
-/* GENERATED from brand/design-tokens.json (v1.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
 
 :root {
   color-scheme: light;
 
   /* Primitive ramps. Authored in OKLCH; emitted as sRGB hex. Components never reference these. */
-  --dp-color-brand-50: #FEF2EF; /* oklch(97% 0.014 35) */
-  --dp-color-brand-100: #FCE6E0; /* oklch(94% 0.026 35) */
-  --dp-color-brand-200: #F5CDC3; /* oklch(88% 0.048 35) */
-  --dp-color-brand-300: #E6AA9B; /* oklch(79% 0.074 35) */
-  --dp-color-brand-400: #CF816D; /* oklch(68% 0.102 35) */
-  --dp-color-brand-500: #B25A44; /* oklch(57% 0.120 35) */
-  --dp-color-brand-600: #923D28; /* oklch(47% 0.120 35) */
-  --dp-color-brand-700: #742A18; /* oklch(39% 0.108 35) */
-  --dp-color-brand-800: #551A0C; /* oklch(31% 0.090 35) */
-  --dp-color-brand-900: #3A0F05; /* oklch(24% 0.072 35) */
-  --dp-color-brand-950: #220501; /* oklch(17% 0.054 35) */
-  --dp-color-neutral-0: #FEFBF8; /* oklch(99% 0.005 80) */
-  --dp-color-neutral-50: #FAF4EC; /* oklch(97% 0.013 75) */
-  --dp-color-neutral-100: #F1EAE1; /* oklch(94% 0.014 75) */
-  --dp-color-neutral-200: #DDD6CE; /* oklch(88% 0.014 75) */
-  --dp-color-neutral-300: #C0B9B1; /* oklch(79% 0.014 75) */
-  --dp-color-neutral-400: #9D978F; /* oklch(68% 0.014 75) */
-  --dp-color-neutral-500: #7C766E; /* oklch(57% 0.014 75) */
-  --dp-color-neutral-600: #605A52; /* oklch(47% 0.014 75) */
-  --dp-color-neutral-700: #49443D; /* oklch(39% 0.013 75) */
-  --dp-color-neutral-800: #34302A; /* oklch(31% 0.011 75) */
-  --dp-color-neutral-900: #221F1A; /* oklch(24% 0.010 75) */
-  --dp-color-neutral-950: #110F0C; /* oklch(17% 0.008 75) */
+  --dp-color-brand-50: #F2F5FB; /* oklch(97% 0.008 260) */
+  --dp-color-brand-100: #E5ECF6; /* oklch(94% 0.016 260) */
+  --dp-color-brand-200: #CDD8EA; /* oklch(88% 0.028 260) */
+  --dp-color-brand-300: #AABCD8; /* oklch(79% 0.045 260) */
+  --dp-color-brand-400: #8399BE; /* oklch(68% 0.060 260) */
+  --dp-color-brand-500: #4C648B; /* oklch(50% 0.070 260) */
+  --dp-color-brand-600: #243858; /* oklch(34% 0.062 260) */
+  --dp-color-brand-700: #182944; /* oklch(28% 0.055 260) */
+  --dp-color-brand-800: #0F1D33; /* oklch(23% 0.048 260) */
+  --dp-color-brand-900: #091426; /* oklch(19% 0.040 260) */
+  --dp-color-brand-950: #030915; /* oklch(14% 0.030 260) */
+  --dp-color-neutral-0: #FEFBF9; /* oklch(99% 0.004 60) */
+  --dp-color-neutral-50: #FBF6F2; /* oklch(97.5% 0.007 55) */
+  --dp-color-neutral-100: #F1EAE5; /* oklch(94% 0.010 55) */
+  --dp-color-neutral-200: #DED6D0; /* oklch(88% 0.012 55) */
+  --dp-color-neutral-300: #B2BCC4; /* oklch(79% 0.016 240) */
+  --dp-color-neutral-400: #8C9AA9; /* oklch(68% 0.028 250) */
+  --dp-color-neutral-500: #68798C; /* oklch(57% 0.036 250) */
+  --dp-color-neutral-600: #44576C; /* oklch(45% 0.041 250) */
+  --dp-color-neutral-700: #344458; /* oklch(38% 0.040 255) */
+  --dp-color-neutral-800: #273346; /* oklch(32% 0.038 258) */
+  --dp-color-neutral-900: #1E293B; /* oklch(28% 0.037 260) */
+  --dp-color-neutral-950: #0C1421; /* oklch(19% 0.030 262) */
   --dp-color-accent-50: #FCF4EA; /* oklch(97% 0.016 76) */
   --dp-color-accent-100: #F7E9D6; /* oklch(94% 0.030 76) */
   --dp-color-accent-200: #ECD3B0; /* oklch(88% 0.054 76) */
@@ -38,17 +38,17 @@
   --dp-color-accent-800: #432B00; /* oklch(31% 0.066 76) */
   --dp-color-accent-900: #2D1B00; /* oklch(24% 0.053 76) */
   --dp-color-accent-950: #190C00; /* oklch(17% 0.041 76) */
-  --dp-color-positive-50: #EFF7F5; /* oklch(97% 0.010 175) */
-  --dp-color-positive-100: #DFF0EA; /* oklch(94% 0.019 175) */
-  --dp-color-positive-200: #C1DFD6; /* oklch(88% 0.034 175) */
-  --dp-color-positive-300: #97C6B9; /* oklch(79% 0.053 175) */
-  --dp-color-positive-400: #66A796; /* oklch(68% 0.072 175) */
-  --dp-color-positive-500: #368874; /* oklch(57% 0.085 175) */
-  --dp-color-positive-600: #0D6A58; /* oklch(47% 0.085 175) */
-  --dp-color-positive-700: #005243; /* oklch(39% 0.074 175) */
-  --dp-color-positive-800: #003A2F; /* oklch(31% 0.059 175) */
-  --dp-color-positive-900: #00261E; /* oklch(24% 0.046 175) */
-  --dp-color-positive-950: #00140E; /* oklch(17% 0.035 175) */
+  --dp-color-positive-50: #F1F7F1; /* oklch(97% 0.010 148) */
+  --dp-color-positive-100: #E3EFE4; /* oklch(94% 0.020 148) */
+  --dp-color-positive-200: #C8DECA; /* oklch(88% 0.036 148) */
+  --dp-color-positive-300: #A5C4A8; /* oklch(79% 0.052 148) */
+  --dp-color-positive-400: #82A686; /* oklch(69% 0.062 148) */
+  --dp-color-positive-500: #698E6E; /* oklch(61% 0.064 148) */
+  --dp-color-positive-600: #476E54; /* oklch(50% 0.060 155) */
+  --dp-color-positive-700: #2C5041; /* oklch(40% 0.050 165) */
+  --dp-color-positive-800: #1A3A2D; /* oklch(32% 0.045 165) */
+  --dp-color-positive-900: #0C281D; /* oklch(25% 0.040 165) */
+  --dp-color-positive-950: #02130C; /* oklch(17% 0.030 165) */
   --dp-color-notice-50: #FAF5E9; /* oklch(97% 0.016 88) */
   --dp-color-notice-100: #F3EBD6; /* oklch(94% 0.029 88) */
   --dp-color-notice-200: #E6D6B1; /* oklch(88% 0.052 88) */

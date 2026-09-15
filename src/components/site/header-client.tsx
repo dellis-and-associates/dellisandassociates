@@ -8,7 +8,7 @@ import { IconClose, IconSearch } from "../ui/icons.tsx";
 /**
  * Progressive enhancement for the shell. Without JavaScript the header is
  * complete: <details> menus, a <details> drawer and a search link. With it:
- *  - the header compresses from 64 to 56 px after the page scrolls;
+ *  - the header compresses (64 → 56 px on phones, 80 → 64 px from 768 px) after the page scrolls;
  *  - only one desktop menu is open at a time, Escape and an outside click close it;
  *  - the phone drawer locks body scroll, traps focus, closes on Escape and on
  *    route change;

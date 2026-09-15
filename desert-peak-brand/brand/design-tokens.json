@@ -1,10 +1,10 @@
 {
   "$schema": "https://tr.designtokens.org/format/",
-  "$description": "Desert Peak Insurance design tokens. Single source of truth. Direction 1 (Strata). Everything in dist/ and brand-sheet.html is generated from this file by scripts/build-tokens.ts; do not edit generated files.",
+  "$description": "Desert Peak Insurance design tokens. Single source of truth. Palette from Daniel's badge (navy and sage on cream; 2026-09-15) on the Strata token system. Everything in dist/ and brand-sheet.html is generated from this file by scripts/build-tokens.ts; do not edit generated files.",
   "$extensions": {
     "com.desertpeak": {
-      "version": "1.0.0",
-      "direction": "strata",
+      "version": "2.0.0",
+      "direction": "daniel-badge",
       "theme": {
         "light": "populated",
         "dark": "wired, not populated in v1"
@@ -15,87 +15,87 @@
     "brand": {
       "50": {
         "$type": "color",
-        "$value": "oklch(97% 0.014 35)",
+        "$value": "oklch(97% 0.008 260)",
         "$extensions": {
           "com.desertpeak.hex": "#FEF2EF"
         }
       },
       "100": {
         "$type": "color",
-        "$value": "oklch(94% 0.026 35)",
+        "$value": "oklch(94% 0.016 260)",
         "$extensions": {
           "com.desertpeak.hex": "#FCE6E0"
         }
       },
       "200": {
         "$type": "color",
-        "$value": "oklch(88% 0.048 35)",
+        "$value": "oklch(88% 0.028 260)",
         "$extensions": {
           "com.desertpeak.hex": "#F5CDC3"
         }
       },
       "300": {
         "$type": "color",
-        "$value": "oklch(79% 0.074 35)",
+        "$value": "oklch(79% 0.045 260)",
         "$extensions": {
           "com.desertpeak.hex": "#E6AA9B"
         }
       },
       "400": {
         "$type": "color",
-        "$value": "oklch(68% 0.102 35)",
+        "$value": "oklch(68% 0.060 260)",
         "$extensions": {
           "com.desertpeak.hex": "#CF816D"
         }
       },
       "500": {
         "$type": "color",
-        "$value": "oklch(57% 0.120 35)",
+        "$value": "oklch(50% 0.070 260)",
         "$extensions": {
           "com.desertpeak.hex": "#B25A44"
         }
       },
       "600": {
         "$type": "color",
-        "$value": "oklch(47% 0.120 35)",
+        "$value": "oklch(34% 0.062 260)",
         "$extensions": {
           "com.desertpeak.hex": "#923D28"
         }
       },
       "700": {
         "$type": "color",
-        "$value": "oklch(39% 0.108 35)",
+        "$value": "oklch(28% 0.055 260)",
         "$extensions": {
           "com.desertpeak.hex": "#742A18"
         }
       },
       "800": {
         "$type": "color",
-        "$value": "oklch(31% 0.090 35)",
+        "$value": "oklch(23% 0.048 260)",
         "$extensions": {
           "com.desertpeak.hex": "#551A0C"
         }
       },
       "900": {
         "$type": "color",
-        "$value": "oklch(24% 0.072 35)",
+        "$value": "oklch(19% 0.040 260)",
         "$extensions": {
           "com.desertpeak.hex": "#3A0F05"
         }
       },
       "950": {
         "$type": "color",
-        "$value": "oklch(17% 0.054 35)",
+        "$value": "oklch(14% 0.030 260)",
         "$extensions": {
           "com.desertpeak.hex": "#220501"
         }
       },
-      "$description": "Hematite. Iron-oxide red-brown of exposed strata; the brand colour."
+      "$description": "Navy. The ring, peak and wordmark of Daniel's badge; the action colour (buttons, links). A touch more chroma than the neutral ramp so brand-subtle reads blue-grey rather than cream, and 600 sits a step lighter than ink so a button is not the text colour."
     },
     "neutral": {
       "0": {
         "$type": "color",
-        "$value": "oklch(99% 0.005 80)",
+        "$value": "oklch(99% 0.004 60)",
         "$extensions": {
           "com.desertpeak.hex": "#FEFBF8"
         },
@@ -103,82 +103,82 @@
       },
       "50": {
         "$type": "color",
-        "$value": "oklch(97% 0.013 75)",
+        "$value": "oklch(97.5% 0.007 55)",
         "$extensions": {
           "com.desertpeak.hex": "#FAF4EC"
         }
       },
       "100": {
         "$type": "color",
-        "$value": "oklch(94% 0.014 75)",
+        "$value": "oklch(94% 0.010 55)",
         "$extensions": {
           "com.desertpeak.hex": "#F1EAE1"
         }
       },
       "200": {
         "$type": "color",
-        "$value": "oklch(88% 0.014 75)",
+        "$value": "oklch(88% 0.012 55)",
         "$extensions": {
           "com.desertpeak.hex": "#DDD6CE"
         }
       },
       "300": {
         "$type": "color",
-        "$value": "oklch(79% 0.014 75)",
+        "$value": "oklch(79% 0.016 240)",
         "$extensions": {
           "com.desertpeak.hex": "#C0B9B1"
         }
       },
       "400": {
         "$type": "color",
-        "$value": "oklch(68% 0.014 75)",
+        "$value": "oklch(68% 0.028 250)",
         "$extensions": {
           "com.desertpeak.hex": "#9D978F"
         }
       },
       "500": {
         "$type": "color",
-        "$value": "oklch(57% 0.014 75)",
+        "$value": "oklch(57% 0.036 250)",
         "$extensions": {
           "com.desertpeak.hex": "#7C766E"
         }
       },
       "600": {
         "$type": "color",
-        "$value": "oklch(47% 0.014 75)",
+        "$value": "oklch(45% 0.041 250)",
         "$extensions": {
           "com.desertpeak.hex": "#605A52"
         }
       },
       "700": {
         "$type": "color",
-        "$value": "oklch(39% 0.013 75)",
+        "$value": "oklch(38% 0.040 255)",
         "$extensions": {
           "com.desertpeak.hex": "#49443D"
         }
       },
       "800": {
         "$type": "color",
-        "$value": "oklch(31% 0.011 75)",
+        "$value": "oklch(32% 0.038 258)",
         "$extensions": {
           "com.desertpeak.hex": "#34302A"
         }
       },
       "900": {
         "$type": "color",
-        "$value": "oklch(24% 0.010 75)",
+        "$value": "oklch(28% 0.037 260)",
         "$extensions": {
           "com.desertpeak.hex": "#221F1A"
         }
       },
       "950": {
         "$type": "color",
-        "$value": "oklch(17% 0.008 75)",
+        "$value": "oklch(19% 0.030 262)",
         "$extensions": {
           "com.desertpeak.hex": "#110F0C"
         }
       },
-      "$description": "Caliche to basalt. Warm-tinted neutral; never a pure gray."
+      "$description": "Paper to navy. Warm cream at the light end (the ground of Daniel's badge), Daniel's navy from 400 down to basalt; never a pure gray."
     },
     "accent": {
       "50": {
@@ -263,82 +263,82 @@
     "positive": {
       "50": {
         "$type": "color",
-        "$value": "oklch(97% 0.010 175)",
+        "$value": "oklch(97% 0.010 148)",
         "$extensions": {
           "com.desertpeak.hex": "#EFF7F5"
         }
       },
       "100": {
         "$type": "color",
-        "$value": "oklch(94% 0.019 175)",
+        "$value": "oklch(94% 0.020 148)",
         "$extensions": {
           "com.desertpeak.hex": "#DFF0EA"
         }
       },
       "200": {
         "$type": "color",
-        "$value": "oklch(88% 0.034 175)",
+        "$value": "oklch(88% 0.036 148)",
         "$extensions": {
           "com.desertpeak.hex": "#C1DFD6"
         }
       },
       "300": {
         "$type": "color",
-        "$value": "oklch(79% 0.053 175)",
+        "$value": "oklch(79% 0.052 148)",
         "$extensions": {
           "com.desertpeak.hex": "#97C6B9"
         }
       },
       "400": {
         "$type": "color",
-        "$value": "oklch(68% 0.072 175)",
+        "$value": "oklch(69% 0.062 148)",
         "$extensions": {
           "com.desertpeak.hex": "#66A796"
         }
       },
       "500": {
         "$type": "color",
-        "$value": "oklch(57% 0.085 175)",
+        "$value": "oklch(61% 0.064 148)",
         "$extensions": {
           "com.desertpeak.hex": "#368874"
         }
       },
       "600": {
         "$type": "color",
-        "$value": "oklch(47% 0.085 175)",
+        "$value": "oklch(50% 0.060 155)",
         "$extensions": {
           "com.desertpeak.hex": "#0D6A58"
         }
       },
       "700": {
         "$type": "color",
-        "$value": "oklch(39% 0.074 175)",
+        "$value": "oklch(40% 0.050 165)",
         "$extensions": {
           "com.desertpeak.hex": "#005243"
         }
       },
       "800": {
         "$type": "color",
-        "$value": "oklch(31% 0.059 175)",
+        "$value": "oklch(32% 0.045 165)",
         "$extensions": {
           "com.desertpeak.hex": "#003A2F"
         }
       },
       "900": {
         "$type": "color",
-        "$value": "oklch(24% 0.046 175)",
+        "$value": "oklch(25% 0.040 165)",
         "$extensions": {
           "com.desertpeak.hex": "#00261E"
         }
       },
       "950": {
         "$type": "color",
-        "$value": "oklch(17% 0.035 175)",
+        "$value": "oklch(17% 0.030 165)",
         "$extensions": {
           "com.desertpeak.hex": "#00140E"
         }
       },
-      "$description": "Agave. Positive / success state. Deliberately blue-leaning: under red-green colour-vision deficiency a yellow-green collapses into amber, a teal-green does not."
+      "$description": "Sage. The saguaro of Daniel's badge at 400-500; the dark steps cool toward fir (hue 165) so the positive state separates from notice and critical under colour-vision deficiency by lightness and blue, not by green alone."
     },
     "notice": {
       "50": {
@@ -552,7 +552,7 @@
       "brand": {
         "$type": "color",
         "$value": "{color.brand.600}",
-        "$description": "Primary actions, links, the mark."
+        "$description": "Primary actions, links, the INSURANCE line of the badge."
       },
       "brand-hover": {
         "$type": "color",

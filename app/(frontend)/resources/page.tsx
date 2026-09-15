@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { getArticles, getPage } from "@/src/lib/content";
-import { articlePath } from "@/src/lib/routes";
+import { articlePath, isWritten } from "@/src/lib/routes";
 import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
 import { ARTICLE_SECTIONS } from "@/src/collections/Articles";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
@@ -13,7 +13,7 @@ export async function generateMetadata() {
 }
 
 export default async function Resources() {
-  const articles = await getArticles();
+  const articles = (await getArticles()).filter(isWritten);
   return (
     <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Resources", href: "/resources/"}], SITE))} />

@@ -23,10 +23,10 @@ export async function Footer() {
   const address = site.address && [site.address.street, site.address.city, site.address.zip].some((v) => v && !hasTodo(v)) ? site.address : null;
   const year = new Date().getFullYear();
   return (
-    <footer className="mt-16 bg-surface-inverse text-ink-inverse [overflow-wrap:anywhere] print:hidden">
+    <footer className="mt-16 bg-logo-ground-inverse text-ink-inverse [overflow-wrap:anywhere] print:hidden">
       <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-12 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] md:px-8">
         <div className="grid content-start gap-4 md:col-span-3 lg:col-span-1">
-          <Link href="/" className="ui-link w-fit py-2" aria-label="Desert Peak Insurance, home"><Lockup reversed height={40} lazy /></Link>
+          <Link href="/" className="ui-link w-fit py-2" aria-label="Desert Peak Insurance, home"><Lockup reversed height={56} lazy /></Link>
           <div className="grid gap-1 font-sans text-small">
             {site.phoneHref ? <a href={site.phoneHref} className={`${link} tabular`} data-contact>{site.phone}</a> : null}
             {site.email ? <a href={`mailto:${site.email}`} className={link}>{site.email}</a> : null}

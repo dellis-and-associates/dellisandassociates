@@ -565,3 +565,22 @@ event ships. Nothing in the codebase logs a lead's fields today.
 
 **PITR is a plan-tier setting on Supabase, not a repo artifact.** Recorded
 here as a go-live check alongside the Turnstile keys.
+
+## Brand: Daniel's badge (2026-09-15)
+
+**The logo is Daniel's badge with the brand wordmark.** `public/brand` now
+holds byte-identical copies of `desert-peak-brand/brand/logo/daniel-refined/web`:
+`logo-horizontal.svg` (342.51 × 69), `logo-reversed.svg`, `logo-mono.svg`,
+`logo-stacked.svg` and `logo-stacked-reversed.svg` (250.12 × 270). The badge
+alone (`mark.svg`, `mark-reversed.svg`, 400 × 400) is the lockup's own badge
+group lifted out unchanged, ring stroke 8, so the header under 360 px and the
+OG template show the same drawing as the lockup. `wordmark.svg` is unchanged:
+the new lockup sets the same outlined Archivo paths. The Strata lockups are
+gone from `public/brand`.
+
+**The site's colours are the badge's.** Wiring in `logo-tokens.css` alone changed nothing, because the brand had recoloured Daniel's badge onto its old Strata palette and the logo tokens were aliases of those old colours. `desert-peak-brand/brand/design-tokens.json` is now v2: neutrals run from warm paper into the badge's navy (`ink` #1E293B, `ink-muted` #44576C, `surface` #FBF6F2, `surface-inverse` #0C1421), `brand` is the badge's navy (#243858, links and buttons, a step lighter than ink; the concept's rust INSURANCE line is not in the web lockup, so rust is not on the site), `positive` is sage (mid sage #698E6E for the saguaro and icons, fir-leaning #2C5041 for state text so the colour-vision gate passes). The semantic aliases did not move, so no component changed; `tokens.css`, `theme.css`, `tokens.ts`, the OG images and the badge lockups all pick the palette up from the one file. `@desert-peak/brand/logo-tokens.css` is imported after `theme.css`; the Tailwind names `logo-ring`, `logo-peak`, `logo-peak-far`, `logo-snow`, `logo-cactus`, `logo-wordmark`, `logo-wordmark-accent`, `logo-ground` and `logo-ground-inverse` exist for the places a page echoes the logo: the header sits on `bg-logo-ground`, the footer on `bg-logo-ground-inverse`. The header lockup is one `<img>` whose height comes from `--dp-logo-header-mobile` and `--dp-logo-header-desktop` (40 px, 48 px from 768 px; the bar grew to 80 px on desktop, 64 once scrolled, so the lockup keeps 16 px of air), the badge alone at 40 px under 360 px, and the footer's reversed lockup is 56 px (client asked for larger logos top and bottom, 2026-09-15). `logo-cactus` is the mid sage, a 3:1 graphic: icons and one accent per view, never text, never a button fill.
+
+**The favicon is the badge itself, redrawn for the size.** Daniel's badge does not survive 16 px as drawn (the ring is under a pixel, the saguaro a smudge), so `public/favicon.svg` and the 16 and 32 px ICO entries are the same five elements on a coarser grid: ring 28 wide, peak inside the ring, three snow teeth, saguaro 36 wide, all in the badge's own tokens. From 48 px (ICO 48, apple icon, 192, 512, maskable at 68 %) it is the lockup's badge with the ring at 12 on a paper tile. The manifest's theme and background colours are `ink` and `surface`.
+
+**Open Graph images are the stacked logo split across the card.** `src/lib/og.tsx` sets the outlined wordmark top-left of a 760 px text column (kicker, title, rule, domain) and the badge at 280 px on the right, vertically centred, on `surface`; the Medicare TPMO band stays below. Every route that calls `pageMetadata()` renders its own image at `/og/{path}image.png`; the root layout now declares `/og/image.png` as the default so no page ships without one.
+

@@ -3,8 +3,8 @@
   "short_name": "Desert Peak",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#923D28",
-  "background_color": "#FAF4EC",
+  "theme_color": "#1E293B",
+  "background_color": "#FBF6F2",
   "icons": [
     {
       "src": "/icon-192.png",

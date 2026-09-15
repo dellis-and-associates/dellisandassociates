@@ -37,7 +37,9 @@
     "./tokens.css": "./brand/dist/tokens.css",
     "./theme.css": "./brand/dist/theme.css",
     "./fonts.css": "./brand/dist/fonts.css",
-    "./design-tokens.json": "./brand/design-tokens.json"
+    "./design-tokens.json": "./brand/design-tokens.json",
+    "./logo-tokens.css": "./brand/logo/daniel-refined/web/tokens/logo-tokens.css",
+    "./logo-tokens.json": "./brand/logo/daniel-refined/web/tokens/logo-tokens.json"
   },
   "devDependencies": {
     "@types/pdfkit": "^0.17.6",

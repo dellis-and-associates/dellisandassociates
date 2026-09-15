@@ -2,6 +2,21 @@
 @import "./fonts.css";
 @import "@desert-peak/brand/tokens.css";
 @import "@desert-peak/brand/theme.css";
+@import "@desert-peak/brand/logo-tokens.css";
+
+/* Roles the site takes from the logo (brand/logo/daniel-refined/web/tokens). Every value aliases a semantic token, so
+   text-logo-cactus, bg-logo-ground and bg-logo-ground-inverse are names for where a page element echoes the logo, not new colours. */
+@theme inline {
+  --color-logo-ring: var(--dp-logo-ring);
+  --color-logo-peak: var(--dp-logo-peak);
+  --color-logo-peak-far: var(--dp-logo-peak-far);
+  --color-logo-snow: var(--dp-logo-snow);
+  --color-logo-cactus: var(--dp-logo-cactus);
+  --color-logo-wordmark: var(--dp-logo-wordmark);
+  --color-logo-wordmark-accent: var(--dp-logo-wordmark-accent);
+  --color-logo-ground: var(--dp-logo-ground);
+  --color-logo-ground-inverse: var(--dp-logo-ground-inverse);
+}
 
 /* Every value below is a token. verify:tokens fails on anything else. */
 @layer base {
@@ -57,9 +72,10 @@
   .cf-turnstile iframe { display: block; }
   /* tokens-ok: the kicker's 0.08em tracking is specified in BRAND-GUIDE.md §3 ("uppercase with 0.08em tracking") and has no token of its own */
   .kicker { font-family: var(--dp-font-sans); font-size: var(--dp-text-caption-size); line-height: var(--dp-text-caption-line-height); font-weight: var(--dp-text-caption-weight); letter-spacing: 0.08em; text-transform: uppercase; color: var(--dp-ink-muted); }
-  /* Header bar: 64 px, 56 px once the page has scrolled (data-compact is set by header-client.tsx). */
+  /* Header bar: 64 px on phones (56 once the page has scrolled), 80 px from 768 px (64 scrolled) so the 48 px lockup has room; data-compact is set by header-client.tsx. */
   .shell-bar { height: var(--dp-space-16); transition: height var(--dp-duration-fast) var(--dp-ease-standard); }
   [data-compact="true"] .shell-bar { height: calc(var(--spacing) * 14); }
+  @media (min-width: 768px) { .shell-bar { height: var(--dp-space-20); } [data-compact="true"] .shell-bar { height: var(--dp-space-16); } }
   .mega { width: min(56rem, calc(100vw - var(--dp-space-8))); }
   .search-dialog { width: calc(100% - var(--dp-space-8)); }
   /* Phone drawer (header): while it is open the page behind does not scroll; the panel sits under the 64 px bar. */
@@ -69,6 +85,9 @@
   .lockup-full { display: none; }
   .lockup-mark { display: block; }
   @media (min-width: 360px) { .lockup-full { display: block; } .lockup-mark { display: none; } }
+  /* Header lockup height from the logo tokens: 40 px on phones, 48 px from the md breakpoint (768 px, no breakpoint token exists). */
+  .lockup-header { height: var(--dp-logo-header-mobile); }
+  @media (min-width: 768px) { .lockup-header { height: var(--dp-logo-header-desktop); } }
   /* UI links (nav, lists, cards): 24 px minimum target (WCAG 2.2), underline on hover only. Links inside prose are not ui-links. */
   .ui-link { text-decoration: none; display: inline-flex; align-items: center; min-height: var(--dp-space-6); }
   .ui-link:hover { text-decoration: underline; }

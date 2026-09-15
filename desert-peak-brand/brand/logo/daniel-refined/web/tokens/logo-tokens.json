@@ -1,0 +1,82 @@
+{
+  "$description": "Colours and type the website takes from Daniel's logo (brand/logo/daniel-refined/web). Extracted 2026-09-15. Every value aliases brand/design-tokens.json; the logo introduces no colour outside the palette, so the site keeps one source of truth. Use these roles where the site echoes the logo (header, footer, hero); use the ordinary semantic roles everywhere else.",
+  "logo": {
+    "ring": {
+      "$type": "color",
+      "$value": "{semantic.color.ink}",
+      "$description": "The ring and the main peak. Also the site's heading and nav colour."
+    },
+    "peak": {
+      "$type": "color",
+      "$value": "{semantic.color.ink}"
+    },
+    "peak-far": {
+      "$type": "color",
+      "$value": "{semantic.color.ink-muted}",
+      "$description": "The secondary peak. Also secondary text."
+    },
+    "snow": {
+      "$type": "color",
+      "$value": "{semantic.color.surface-raised}",
+      "$description": "The snow cap. Also cards and raised surfaces."
+    },
+    "cactus": {
+      "$type": "color",
+      "$value": "{color.positive.500}",
+      "$description": "The saguaro (mid sage, 3:1 on the page). The one colour the logo adds to a page: use it for icons and a single accent (the active nav marker), never for text and never as a button fill; positive state text is the semantic positive role."
+    },
+    "wordmark": {
+      "$type": "color",
+      "$value": "{semantic.color.ink}",
+      "$description": "Desert Peak / INSURANCE in the web lockup."
+    },
+    "wordmark-accent": {
+      "$type": "color",
+      "$value": "{semantic.color.brand}",
+      "$description": "INSURANCE in the stacked print version (v1). On the site the action colour is the badge's navy: buttons, links."
+    },
+    "ground": {
+      "$type": "color",
+      "$value": "{semantic.color.surface}",
+      "$description": "The paper the logo sits on. The page background."
+    },
+    "ground-inverse": {
+      "$type": "color",
+      "$value": "{semantic.color.surface-inverse}",
+      "$description": "Where the reversed lockup goes: footer, dark panels."
+    }
+  },
+  "type": {
+    "wordmark": {
+      "$type": "fontFamily",
+      "$value": "{typography.family.sans}",
+      "$description": "Archivo, the wordmark's face. Headings and UI."
+    },
+    "body": {
+      "$type": "fontFamily",
+      "$value": "{typography.family.serif}",
+      "$description": "Source Serif 4 for long-form; the print card's serif is the same family."
+    },
+    "wordmark-width": {
+      "$type": "number",
+      "$value": "{typography.width.display}",
+      "$description": "The wordmark is set at Archivo width 112; use the same for display headings so the site and the logo share one voice."
+    }
+  },
+  "sizing": {
+    "header-desktop": {
+      "$type": "dimension",
+      "$value": "48px",
+      "$description": "logo-horizontal.svg height in the site header (bar 80 px)."
+    },
+    "header-mobile": {
+      "$type": "dimension",
+      "$value": "40px",
+      "$description": "Bar 64 px."
+    },
+    "favicon-note": {
+      "$type": "string",
+      "$value": "The badge does not survive 16 px; use ../v2/logo-mark-small.svg or brand/logos/favicon.svg."
+    }
+  }
+}

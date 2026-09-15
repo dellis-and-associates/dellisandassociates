@@ -53,6 +53,9 @@ export const tag = {
 
 type ReviewLike = { reviewStatus?: string | null; indexWave?: string | null };
 const reviewed = (d: ReviewLike) => d.reviewStatus === "reviewed";
+export type ArticleLike = { section: string; slug: string; reviewStatus?: string | null; indexWave?: string | null; wordCount?: number | null; generation?: { status?: string | null } | null };
+/** Written = generated from an authored draft (or given a body in the admin). Seeded shells are not public. */
+export const isWritten = (a: Pick<ArticleLike, "wordCount" | "generation">): boolean => a.generation?.status === "drafted" || (a.wordCount ?? 0) > 0;
 const wave = (d: ReviewLike, fallback: 1 | 2 | 3): 1 | 2 | 3 => (d.indexWave === "1" ? 1 : d.indexWave === "2" ? 2 : d.indexWave === "3" ? 3 : fallback);
 
 /** Wave rules from the page-generation prompt: 1 = core, legal, product hubs, state hubs, top-30 city pages; 2 = remaining city and state-product pages; 3 = resources. */
@@ -60,7 +63,7 @@ export function buildManifest(input: {
   products: Pick<Product, "slug" | "tier" | "thirdSubpage" | "reviewStatus" | "indexWave">[];
   states: (Pick<State, "slug"> & { cities: Pick<City, "slug">[] })[];
   pages: Pick<Page, "path" | "template" | "reviewStatus" | "indexWave" | "noindex">[];
-  articles: { section: string; slug: string; reviewStatus?: string | null; indexWave?: string | null }[];
+  articles: ArticleLike[];
   glossary: { slug: string; reviewStatus?: string | null; indexWave?: string | null }[];
 }): RouteEntry[] {
   const out: RouteEntry[] = [];
@@ -85,7 +88,8 @@ export function buildManifest(input: {
   const hasGlossaryPage = input.pages.some((pg) => pg.path === "/resources/glossary/");
   if (!hasGlossaryPage) push({ path: "/resources/glossary/", group: "core", tags: ["glossary"], wave: 1, reviewed: true, priority: 0.6, changefreq: "monthly" });
   for (const section of ["guides", "state-requirements", "compare", "how-to", "life-events", "seasonal"]) push({ path: `/resources/${section}/`, group: "core", tags: ["articles"], wave: 3, reviewed: false, priority: 0.5, changefreq: "weekly" });
-  for (const a of input.articles) push({ path: articlePath(a.section, a.slug), group: "article", tags: [tag.article(a.slug)], wave: wave(a, 3), reviewed: reviewed(a), priority: 0.5, changefreq: "monthly" });
+  // An article shell with no body is not a public page: it is listed nowhere, is not in the manifest (so the proxy answers 404) and appears the day it is drafted.
+  for (const a of input.articles.filter(isWritten)) push({ path: articlePath(a.section, a.slug), group: "article", tags: [tag.article(a.slug)], wave: wave(a, 3), reviewed: reviewed(a), priority: 0.5, changefreq: "monthly" });
   for (const g of input.glossary) push({ path: glossaryPath(g.slug), group: "glossary", tags: [tag.glossary(g.slug)], wave: wave(g, 3), reviewed: reviewed(g), priority: 0.4, changefreq: "yearly" });
   return out;
 }

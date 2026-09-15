@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getArticle, getArticles } from "@/src/lib/content";
-import { articlePath, glossaryPath, productPath } from "@/src/lib/routes";
+import { articlePath, glossaryPath, productPath, isWritten } from "@/src/lib/routes";
 import { articleJsonLd, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata, SITE } from "@/src/lib/seo";
 import { ARTICLE_SECTIONS } from "@/src/collections/Articles";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
@@ -24,7 +24,7 @@ export async function generateMetadata({ params }: { params: Promise<{ section: 
 export default async function ArticlePage({ params }: { params: Promise<{ section: string; slug: string }> }) {
   const { section, slug } = await params;
   const a = await getArticle(section, slug);
-  if (!a) notFound();
+  if (!a || !isWritten(a)) notFound();
   const sec = ARTICLE_SECTIONS.find((s) => s.value === section);
   const path = articlePath(section, slug);
   const crumbs = [{ label: "Resources", href: "/resources/" }, { label: sec?.label ?? section, href: `/resources/${section}/` }, { label: a.title, href: path }];

@@ -1,24 +1,42 @@
 /**
  * The logo files exactly as the brand package ships them
- * (desert-peak-brand/brand/logos → public/brand, byte-identical). Nothing is
- * re-drawn or re-typeset here; the <img> keeps each file's own <title>.
- * BRAND-GUIDE §6: lockup 40 px tall on desktop and 32 on mobile, the mark
- * alone under 360 px viewports, clear space of one band period (0.237 × height).
+ * (desert-peak-brand/brand/logo/daniel-refined/web → public/brand, byte-identical:
+ * Daniel's badge with the brand wordmark). Nothing is re-drawn or re-typeset
+ * here; the <img> keeps each file's own <title>. The badge alone (mark.svg,
+ * mark-reversed.svg) is the lockup's own badge group at 400 × 400.
+ * Sizes from the logo tokens: 48 px in the header on desktop, 40 on mobile
+ * (`.lockup-header`), the badge alone under 360 px; 56 px in the footer. The badge reads fully at
+ * 40 px and above and as ring-and-peak at 24–32 px (web/CHANGES.md).
  */
-const LOCKUP = { w: 334.12, h: 59 }; // viewBox of logo-horizontal.svg / logo-reversed.svg
-const MARK = { w: 64, h: 59 };
+const LOCKUP = { w: 342.51, h: 69 }; // viewBox of logo-horizontal.svg / logo-reversed.svg / logo-mono.svg
+const STACKED = { w: 250.12, h: 270 }; // viewBox of logo-stacked.svg / logo-stacked-reversed.svg
+const MARK = { w: 400, h: 400 }; // viewBox of mark.svg / mark-reversed.svg
 const at = (box: { w: number; h: number }, h: number) => ({ width: Math.round((box.w / box.h) * h), height: h });
+const ALT = "Desert Peak Insurance";
 
-/** Horizontal lockup; `reversed` for surface-inverse and brand fills. */
-const H: Record<number, string> = { 24: "h-6", 32: "h-8", 40: "h-10", 48: "h-12" };
-export function Lockup({ reversed = false, height = 40, className = "", lazy = false }: { reversed?: boolean; height?: 32 | 40 | 48; className?: string; lazy?: boolean }) {
-  const d = at(LOCKUP, height);
-  // The height class is explicit: the base stylesheet sets img { height: auto }, and an SVG file's intrinsic size is its viewBox aspect only.
-  return <img src={reversed ? "/brand/logo-reversed.svg" : "/brand/logo-horizontal.svg"} alt="Desert Peak Insurance" width={d.width} height={d.height} className={`${H[height]} w-auto ${className}`} decoding="async" loading={lazy ? "lazy" : undefined} />;
+// The height class is explicit: the base stylesheet sets img { height: auto }, and an SVG file's intrinsic size is its viewBox aspect only.
+const H: Record<number, string> = { 24: "h-6", 32: "h-8", 40: "h-10", 48: "h-12", 56: "h-14", 120: "h-30", 160: "h-40" };
+
+/**
+ * Horizontal lockup. `reversed` for surface-inverse and brand fills; `mono`
+ * inherits the text colour (currentColor). `height="header"` takes the
+ * header sizes from the logo tokens (40 px, 48 px from 768 px).
+ */
+export function Lockup({ reversed = false, mono = false, height = 40, className = "", lazy = false }: { reversed?: boolean; mono?: boolean; height?: 32 | 40 | 48 | 56 | "header"; className?: string; lazy?: boolean }) {
+  const d = at(LOCKUP, height === "header" ? 48 : height);
+  const src = mono ? "/brand/logo-mono.svg" : reversed ? "/brand/logo-reversed.svg" : "/brand/logo-horizontal.svg";
+  const size = height === "header" ? "lockup-header" : H[height];
+  return <img src={src} alt={ALT} width={d.width} height={d.height} className={`${size} w-auto ${className}`} decoding="async" loading={lazy ? "lazy" : undefined} />;
 }
 
-/** The mark alone, 24 px and above, where the name appears elsewhere. */
-export function Mark({ height = 32, className = "", alt = "Desert Peak Insurance" }: { height?: 24 | 32 | 40 | 48; className?: string; alt?: string }) {
+/** Stacked lockup for cards and anywhere square, or where the width is under about 200 px. */
+export function Stacked({ reversed = false, height = 120, className = "", lazy = false }: { reversed?: boolean; height?: 120 | 160; className?: string; lazy?: boolean }) {
+  const d = at(STACKED, height);
+  return <img src={reversed ? "/brand/logo-stacked-reversed.svg" : "/brand/logo-stacked.svg"} alt={ALT} width={d.width} height={d.height} className={`${H[height]} w-auto ${className}`} decoding="async" loading={lazy ? "lazy" : undefined} />;
+}
+
+/** The badge alone, 24 px and above, where the name appears elsewhere. */
+export function Mark({ reversed = false, height = 32, className = "", alt = ALT }: { reversed?: boolean; height?: 24 | 32 | 40 | 48; className?: string; alt?: string }) {
   const d = at(MARK, height);
-  return <img src="/brand/mark.svg" alt={alt} width={d.width} height={d.height} className={`${H[height]} w-auto ${className}`} decoding="async" />;
+  return <img src={reversed ? "/brand/mark-reversed.svg" : "/brand/mark.svg"} alt={alt} width={d.width} height={d.height} className={`${H[height]} w-auto ${className}`} decoding="async" />;
 }

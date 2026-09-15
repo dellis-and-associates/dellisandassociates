@@ -1,102 +1,102 @@
-/* GENERATED from brand/design-tokens.json (v1.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /** Typed token export. Prefer `semantic.*.css` in components; `hex` exists for places CSS variables cannot reach (email, canvas, PDF, CMS admin previews). */
 export const tokens = {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "primitives": {
     "brand": {
       "50": {
-        "hex": "#FEF2EF",
-        "oklch": "oklch(97% 0.014 35)"
+        "hex": "#F2F5FB",
+        "oklch": "oklch(97% 0.008 260)"
       },
       "100": {
-        "hex": "#FCE6E0",
-        "oklch": "oklch(94% 0.026 35)"
+        "hex": "#E5ECF6",
+        "oklch": "oklch(94% 0.016 260)"
       },
       "200": {
-        "hex": "#F5CDC3",
-        "oklch": "oklch(88% 0.048 35)"
+        "hex": "#CDD8EA",
+        "oklch": "oklch(88% 0.028 260)"
       },
       "300": {
-        "hex": "#E6AA9B",
-        "oklch": "oklch(79% 0.074 35)"
+        "hex": "#AABCD8",
+        "oklch": "oklch(79% 0.045 260)"
       },
       "400": {
-        "hex": "#CF816D",
-        "oklch": "oklch(68% 0.102 35)"
+        "hex": "#8399BE",
+        "oklch": "oklch(68% 0.060 260)"
       },
       "500": {
-        "hex": "#B25A44",
-        "oklch": "oklch(57% 0.120 35)"
+        "hex": "#4C648B",
+        "oklch": "oklch(50% 0.070 260)"
       },
       "600": {
-        "hex": "#923D28",
-        "oklch": "oklch(47% 0.120 35)"
+        "hex": "#243858",
+        "oklch": "oklch(34% 0.062 260)"
       },
       "700": {
-        "hex": "#742A18",
-        "oklch": "oklch(39% 0.108 35)"
+        "hex": "#182944",
+        "oklch": "oklch(28% 0.055 260)"
       },
       "800": {
-        "hex": "#551A0C",
-        "oklch": "oklch(31% 0.090 35)"
+        "hex": "#0F1D33",
+        "oklch": "oklch(23% 0.048 260)"
       },
       "900": {
-        "hex": "#3A0F05",
-        "oklch": "oklch(24% 0.072 35)"
+        "hex": "#091426",
+        "oklch": "oklch(19% 0.040 260)"
       },
       "950": {
-        "hex": "#220501",
-        "oklch": "oklch(17% 0.054 35)"
+        "hex": "#030915",
+        "oklch": "oklch(14% 0.030 260)"
       }
     },
     "neutral": {
       "0": {
-        "hex": "#FEFBF8",
-        "oklch": "oklch(99% 0.005 80)"
+        "hex": "#FEFBF9",
+        "oklch": "oklch(99% 0.004 60)"
       },
       "50": {
-        "hex": "#FAF4EC",
-        "oklch": "oklch(97% 0.013 75)"
+        "hex": "#FBF6F2",
+        "oklch": "oklch(97.5% 0.007 55)"
       },
       "100": {
-        "hex": "#F1EAE1",
-        "oklch": "oklch(94% 0.014 75)"
+        "hex": "#F1EAE5",
+        "oklch": "oklch(94% 0.010 55)"
       },
       "200": {
-        "hex": "#DDD6CE",
-        "oklch": "oklch(88% 0.014 75)"
+        "hex": "#DED6D0",
+        "oklch": "oklch(88% 0.012 55)"
       },
       "300": {
-        "hex": "#C0B9B1",
-        "oklch": "oklch(79% 0.014 75)"
+        "hex": "#B2BCC4",
+        "oklch": "oklch(79% 0.016 240)"
       },
       "400": {
-        "hex": "#9D978F",
-        "oklch": "oklch(68% 0.014 75)"
+        "hex": "#8C9AA9",
+        "oklch": "oklch(68% 0.028 250)"
       },
       "500": {
-        "hex": "#7C766E",
-        "oklch": "oklch(57% 0.014 75)"
+        "hex": "#68798C",
+        "oklch": "oklch(57% 0.036 250)"
       },
       "600": {
-        "hex": "#605A52",
-        "oklch": "oklch(47% 0.014 75)"
+        "hex": "#44576C",
+        "oklch": "oklch(45% 0.041 250)"
       },
       "700": {
-        "hex": "#49443D",
-        "oklch": "oklch(39% 0.013 75)"
+        "hex": "#344458",
+        "oklch": "oklch(38% 0.040 255)"
       },
       "800": {
-        "hex": "#34302A",
-        "oklch": "oklch(31% 0.011 75)"
+        "hex": "#273346",
+        "oklch": "oklch(32% 0.038 258)"
       },
       "900": {
-        "hex": "#221F1A",
-        "oklch": "oklch(24% 0.010 75)"
+        "hex": "#1E293B",
+        "oklch": "oklch(28% 0.037 260)"
       },
       "950": {
-        "hex": "#110F0C",
-        "oklch": "oklch(17% 0.008 75)"
+        "hex": "#0C1421",
+        "oklch": "oklch(19% 0.030 262)"
       }
     },
     "accent": {
@@ -147,48 +147,48 @@ export const tokens = {
     },
     "positive": {
       "50": {
-        "hex": "#EFF7F5",
-        "oklch": "oklch(97% 0.010 175)"
+        "hex": "#F1F7F1",
+        "oklch": "oklch(97% 0.010 148)"
       },
       "100": {
-        "hex": "#DFF0EA",
-        "oklch": "oklch(94% 0.019 175)"
+        "hex": "#E3EFE4",
+        "oklch": "oklch(94% 0.020 148)"
       },
       "200": {
-        "hex": "#C1DFD6",
-        "oklch": "oklch(88% 0.034 175)"
+        "hex": "#C8DECA",
+        "oklch": "oklch(88% 0.036 148)"
       },
       "300": {
-        "hex": "#97C6B9",
-        "oklch": "oklch(79% 0.053 175)"
+        "hex": "#A5C4A8",
+        "oklch": "oklch(79% 0.052 148)"
       },
       "400": {
-        "hex": "#66A796",
-        "oklch": "oklch(68% 0.072 175)"
+        "hex": "#82A686",
+        "oklch": "oklch(69% 0.062 148)"
       },
       "500": {
-        "hex": "#368874",
-        "oklch": "oklch(57% 0.085 175)"
+        "hex": "#698E6E",
+        "oklch": "oklch(61% 0.064 148)"
       },
       "600": {
-        "hex": "#0D6A58",
-        "oklch": "oklch(47% 0.085 175)"
+        "hex": "#476E54",
+        "oklch": "oklch(50% 0.060 155)"
       },
       "700": {
-        "hex": "#005243",
-        "oklch": "oklch(39% 0.074 175)"
+        "hex": "#2C5041",
+        "oklch": "oklch(40% 0.050 165)"
       },
       "800": {
-        "hex": "#003A2F",
-        "oklch": "oklch(31% 0.059 175)"
+        "hex": "#1A3A2D",
+        "oklch": "oklch(32% 0.045 165)"
       },
       "900": {
-        "hex": "#00261E",
-        "oklch": "oklch(24% 0.046 175)"
+        "hex": "#0C281D",
+        "oklch": "oklch(25% 0.040 165)"
       },
       "950": {
-        "hex": "#00140E",
-        "oklch": "oklch(17% 0.035 175)"
+        "hex": "#02130C",
+        "oklch": "oklch(17% 0.030 165)"
       }
     },
     "notice": {
@@ -288,105 +288,105 @@ export const tokens = {
     "surface": {
       "var": "--dp-surface",
       "css": "var(--dp-surface)",
-      "hex": "#FAF4EC",
+      "hex": "#FBF6F2",
       "ref": "neutral.50",
       "description": "Page background."
     },
     "surface-raised": {
       "var": "--dp-surface-raised",
       "css": "var(--dp-surface-raised)",
-      "hex": "#FEFBF8",
+      "hex": "#FEFBF9",
       "ref": "neutral.0",
       "description": "Cards, popovers, anything lifted off the page."
     },
     "surface-sunken": {
       "var": "--dp-surface-sunken",
       "css": "var(--dp-surface-sunken)",
-      "hex": "#F1EAE1",
+      "hex": "#F1EAE5",
       "ref": "neutral.100",
       "description": "Wells, table headers, inset areas."
     },
     "surface-inverse": {
       "var": "--dp-surface-inverse",
       "css": "var(--dp-surface-inverse)",
-      "hex": "#110F0C",
+      "hex": "#0C1421",
       "ref": "neutral.950",
       "description": "Dark panels and footers. Pair with ink-inverse."
     },
     "ink": {
       "var": "--dp-ink",
       "css": "var(--dp-ink)",
-      "hex": "#221F1A",
+      "hex": "#1E293B",
       "ref": "neutral.900",
       "description": "Body and heading text."
     },
     "ink-muted": {
       "var": "--dp-ink-muted",
       "css": "var(--dp-ink-muted)",
-      "hex": "#605A52",
+      "hex": "#44576C",
       "ref": "neutral.600",
       "description": "Secondary text, captions, metadata. Still AA for body."
     },
     "ink-inverse": {
       "var": "--dp-ink-inverse",
       "css": "var(--dp-ink-inverse)",
-      "hex": "#FAF4EC",
+      "hex": "#FBF6F2",
       "ref": "neutral.50",
       "description": "Text on surface-inverse and on brand."
     },
     "border": {
       "var": "--dp-border",
       "css": "var(--dp-border)",
-      "hex": "#DDD6CE",
+      "hex": "#DED6D0",
       "ref": "neutral.200",
       "description": "Hairlines and dividers. Decorative; not relied on for meaning."
     },
     "border-strong": {
       "var": "--dp-border-strong",
       "css": "var(--dp-border-strong)",
-      "hex": "#7C766E",
+      "hex": "#68798C",
       "ref": "neutral.500",
       "description": "Input borders and any boundary that must be perceivable (3:1)."
     },
     "brand": {
       "var": "--dp-brand",
       "css": "var(--dp-brand)",
-      "hex": "#923D28",
+      "hex": "#243858",
       "ref": "brand.600",
-      "description": "Primary actions, links, the mark."
+      "description": "Primary actions, links, the INSURANCE line of the badge."
     },
     "brand-hover": {
       "var": "--dp-brand-hover",
       "css": "var(--dp-brand-hover)",
-      "hex": "#742A18",
+      "hex": "#182944",
       "ref": "brand.700",
       "description": ""
     },
     "brand-active": {
       "var": "--dp-brand-active",
       "css": "var(--dp-brand-active)",
-      "hex": "#551A0C",
+      "hex": "#0F1D33",
       "ref": "brand.800",
       "description": ""
     },
     "brand-ink": {
       "var": "--dp-brand-ink",
       "css": "var(--dp-brand-ink)",
-      "hex": "#FAF4EC",
+      "hex": "#FBF6F2",
       "ref": "neutral.50",
       "description": "Text and icons on brand fills."
     },
     "brand-subtle": {
       "var": "--dp-brand-subtle",
       "css": "var(--dp-brand-subtle)",
-      "hex": "#FCE6E0",
+      "hex": "#E5ECF6",
       "ref": "brand.100",
       "description": "Tinted background for brand-flavoured panels, the recommended column, tags. brand.100, not 50: 50 is indistinguishable from surface."
     },
     "brand-subtle-ink": {
       "var": "--dp-brand-subtle-ink",
       "css": "var(--dp-brand-subtle-ink)",
-      "hex": "#551A0C",
+      "hex": "#0F1D33",
       "ref": "brand.800",
       "description": "Text on brand-subtle."
     },
@@ -407,42 +407,42 @@ export const tokens = {
     "focus-ring": {
       "var": "--dp-focus-ring",
       "css": "var(--dp-focus-ring)",
-      "hex": "#221F1A",
+      "hex": "#1E293B",
       "ref": "neutral.900",
       "description": "2px ring. Always paired with focus-ring-offset as a 2px halo so it passes against both adjacent surfaces."
     },
     "focus-ring-offset": {
       "var": "--dp-focus-ring-offset",
       "css": "var(--dp-focus-ring-offset)",
-      "hex": "#FAF4EC",
+      "hex": "#FBF6F2",
       "ref": "neutral.50",
       "description": ""
     },
     "positive": {
       "var": "--dp-positive",
       "css": "var(--dp-positive)",
-      "hex": "#005243",
+      "hex": "#2C5041",
       "ref": "positive.700",
       "description": "Positive state text and icons on surface. The three states sit on a lightness ladder (notice .47 / positive .39 / critical .31) so they stay apart without hue; re-pointing one to a step that shares another state's lightness will fail the audit."
     },
     "positive-surface": {
       "var": "--dp-positive-surface",
       "css": "var(--dp-positive-surface)",
-      "hex": "#EFF7F5",
+      "hex": "#F1F7F1",
       "ref": "positive.50",
       "description": ""
     },
     "positive-border": {
       "var": "--dp-positive-border",
       "css": "var(--dp-positive-border)",
-      "hex": "#368874",
+      "hex": "#698E6E",
       "ref": "positive.500",
       "description": ""
     },
     "positive-ink": {
       "var": "--dp-positive-ink",
       "css": "var(--dp-positive-ink)",
-      "hex": "#00261E",
+      "hex": "#0C281D",
       "ref": "positive.900",
       "description": "Text on positive-surface."
     },
