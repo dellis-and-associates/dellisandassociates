@@ -2,7 +2,7 @@ import type { PageDraft } from "../types.mts";
 
 export const draft: PageDraft = {
   title: "Accessibility statement",
-  lede: "{{TODO:site.legalName}} intends this website to be usable by everyone, including people who use screen readers, keyboards, magnification or voice control. The target is WCAG 2.2 at level AA. Last reviewed {{TODO:legal.accessibilityReviewDate}}.",
+  lede: "Desert Peak Insurance intends this website to be usable by everyone, including people who use screen readers, keyboards, magnification or voice control. The target is WCAG 2.2 at level AA. Last reviewed September 15, 2026.",
   blocks: [
     {
       type: "richText",

@@ -53,7 +53,7 @@ export const draft: ArticleDraft = {
       heading: "The decision rule, and the switching rule",
       paragraphs: [
         "Where both forms are genuinely offered, prefer the one whose first-party breach response is broadest and whose exclusions for ransomware, social engineering and regulatory fines are fewest; in practice that is the claims-made stand-alone form. Then manage it: never let it lapse, match the retroactive date on every renewal or replacement, and buy the tail if coverage ends for any reason other than replacement. When you switch carriers, the sequence is the same as for any policy, new coverage bound before old coverage ends, with one addition: the new declarations page must show a retroactive date no later than the old one.",
-        "State breach notification laws in Arizona, Nevada, Utah and Idaho set deadlines and content requirements for telling affected people and, in some cases, the attorney general; a cyber policy's breach coach handles that under the first-party coverage, but only for an incident the policy is triggered for. The deadline itself is {{TODO:statute.arizona.breachNotificationDeadline}} in Arizona and varies in the other three states.",
+        "State breach notification laws in Arizona, Nevada, Utah and Idaho set deadlines and content requirements for telling affected people and, in some cases, the attorney general; a cyber policy's breach coach handles that under the first-party coverage, but only for an incident the policy is triggered for. The deadline itself differs from state to state, and breach counsel confirms the one that applies.",
       ],
     },
     {

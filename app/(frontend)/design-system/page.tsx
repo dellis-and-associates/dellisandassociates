@@ -123,8 +123,8 @@ export default async function DesignSystem() {
         <Stepper step={2} total={4} label="About you" steps={["What to compare", "About you", "Details", "Check and send"]} />
         <Progress value={48} label="Cities with complete local facts" />
         <Skeleton lines={4} className="max-w-measure-narrow" />
-        <EmptyState as="h3" title="Profiles are being confirmed" action={{ label: "Talk to a person", href: "/contact/" }}>We list agents only with their real names, license numbers and a photo release on file.</EmptyState>
-        <Row label="Tags"><Tag>Every city</Tag><Tag>Statewide</Tag><Tag>Draft</Tag></Row>
+        <EmptyState as="h3" title="Talk to a licensed advisor" action={{ label: "Contact the office", href: "/contact/" }}>Call or send a message and a licensed advisor will answer.</EmptyState>
+        <Row label="Tags"><Tag>Every city</Tag><Tag>Statewide</Tag><Tag>Commercial</Tag></Row>
         <CtaBand heading="Request the analysis for auto insurance in Chandler" body="Or call the office. A licensed agent, not a call centre." action={{ label: "Request the analysis", href: "/quote/" }} secondary={{ label: "Talk to a person", href: "/contact/" }} />
       </Section>
 

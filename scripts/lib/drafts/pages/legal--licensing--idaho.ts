@@ -2,7 +2,7 @@ import type { PageDraft } from "../types.mts";
 
 export const draft: PageDraft = {
   title: "Licensing disclosures (Idaho)",
-  lede: "{{TODO:site.legalName}} is a licensed insurance producer in Idaho. The license is disclosed below, along with the Idaho Department of Insurance, which issued it.",
+  lede: "Desert Peak Insurance is a licensed insurance producer in Idaho. The license is disclosed below, along with the Idaho Department of Insurance, which issued it.",
   blocks: [
     {
       type: "richText",

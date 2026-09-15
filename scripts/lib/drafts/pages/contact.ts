@@ -10,7 +10,7 @@ export const draft: PageDraft = {
         {
           heading: "",
           paragraphs: [
-            "Use the form for anything that is not urgent: a question about a policy, a change of address or vehicle, a certificate of insurance, or a request for the analysis. Attach a declarations page if you have one; it is the single document that makes the first reply useful. Messages sent through the form reach the office by email and are answered during office hours: {{TODO:site.officeHours}}",
+            "Use the form for anything that is not urgent: a question about a policy, a change of address or vehicle, a certificate of insurance, or a request for the analysis. Attach a declarations page if you have one; it is the single document that makes the first reply useful. Messages sent through the form reach the office by email and are answered by a licensed advisor.",
             "If you have an open claim, contact the carrier's claims department first with your claim number, then let the office know so an advisor can follow it. Do not send card numbers, Social Security numbers or medical records through the form; the office will tell you how to send those if a carrier needs them.",
           ],
         },

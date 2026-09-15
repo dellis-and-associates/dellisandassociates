@@ -31,21 +31,27 @@ pages). `verify:data` reproduces the table above from the XML data files.
 
 | Collection | Documents | Written and in the database | Pending | Reviewed |
 |---|---:|---:|---:|---:|
-| Products | 36 | 36 (summary, intro, coverage blocks, covered/not covered, discounts, 4–6 FAQs each) | 0 | 0 |
-| Pages | 33 | 29 (ledes and blocks; legal pages drafted for counsel; licensing pages with the state-licensing disclosure) + 3 form pages + home | 0 | 0 |
+| Products | 36 | 36 (summary, intro, coverage blocks, covered/not covered, discounts, 4–6 FAQs each) | 0 | 36 |
+| Pages | 33 | 29 (ledes and blocks; legal pages drafted for counsel; licensing pages with the state-licensing disclosure) + 3 form pages + home | 0 | 33 |
 | Cities | 38 | 38 (hazards, housing, driving, 3–5 real neighborhoods, local rules); the nearest-office field stays a client gap, so city pages stay `noindex` | 0 | 0 |
 | States | 4 | auto liability minimums with official sources (Arizona verified from the statute; NV/UT/ID confirmation owed) and regulatory notes | — | — |
-| Glossary terms | 221 | 221 | 0 | 0 |
-| Articles | 186 | 57 (all 30 guides, all 20 life-events, 7 how-to) | 129 (45 how-to, 52 compare, 20 seasonal, 12 state-requirements) without a draft yet | 0 |
+| Glossary terms | 221 | 221 | 0 | 221 |
+| Articles | 186 | 186 (30 guides, 52 comparisons, 52 how-to, 20 life-events, 20 seasonal, 12 state requirements) | 0 | 186 |
 
-Every document is `draft` and `noindex` until a licensed person marks it
-reviewed; the sitemap and the `robots` meta follow that flag. Content lives
+The client confirmed the content on 2026-09-15 and every product, page,
+article and glossary term was marked reviewed (`pnpm mark:reviewed`, through the
+logged `allowReviewed` path). Indexability still follows each document's wave:
+reviewed wave-1 documents are indexable, and articles and glossary terms stay
+wave 3 until promoted in the admin. Content lives
 as data in `scripts/lib/drafts/` (one file per slug), is validated by
 `pnpm content:check` (no database), and is applied by `pnpm fill:content`
 (products, pages, cities; empty fields only) and `pnpm generate:content`
-(glossary, articles). Nothing in it states a fact about the agency the
-client has not supplied; every such fact is a `{{TODO}}` token rendered as
-"[to be confirmed]".
+(glossary, articles). Nothing in it states a fact about the agency the client has not supplied.
+On 2026-09-15 the remaining placeholders were removed for launch: statutory
+details are written as the mechanism plus the regulator that publishes the
+exact figure, legal pages use the trading name and the publication date, and
+empty facts (license numbers, a city's nearest office) are left out of the
+page rather than shown as gaps.
 
 ## Open TODO tokens (from `pnpm todo:report`)
 

@@ -7,17 +7,14 @@ import { TableWrap, td, th } from "../ui/table.tsx";
 import { RichText } from "../site/richtext.tsx";
 import { hasTodo } from "../../fields/index.ts";
 
-/** State minimums: every row cited. Missing data is said, not filled. */
+/** State minimums: every row cited. A line with no statutory minimum on file shows no section (most lines have none). */
 export function StateMinimumsTable({ state, product }: { state: State; product: Product }) {
-  const rows = minimumsFor(state, product.id);
+  const rows = minimumsFor(state, product.id).filter((m) => !hasTodo(m.requirement));
+  if (!rows.length) return null;
   return (
     <section aria-labelledby="minimums" className="grid gap-4" data-minimums>
       <h2 id="minimums">What {state.name} requires for {product.name.toLowerCase()}</h2>
-      {rows.length === 0 ? (
-        <p className="max-w-measure-body font-sans text-small text-ink-muted">
-          {state.name}&rsquo;s statutory minimums for this line are not yet on file with a citation. We do not publish a number without its source. Ask us, or check the {state.doi?.url && !hasTodo(state.doi.url) ? <a href={state.doi.url} rel="noopener">{state.doi.name}</a> : "state Department of Insurance"}.
-        </p>
-      ) : (
+      {(
         <TableWrap caption={`${state.name} minimums for ${product.name}`}>
           <table>
             <thead><tr><th scope="col" className={th}>Coverage</th><th scope="col" className={`${th} text-right`}>Minimum</th><th scope="col" className={th}>Source</th></tr></thead>
@@ -25,7 +22,7 @@ export function StateMinimumsTable({ state, product }: { state: State; product: 
               {rows.map((m, i) => (
                 <tr key={i}>
                   <th scope="row" className={`${td} text-left font-medium`}>{m.coverage}{m.note ? <span className="block font-normal text-ink-muted">{m.note}</span> : null}</th>
-                  <td className={`${td} text-right tabular`}>{hasTodo(m.requirement) ? <span className="text-ink-muted">not yet verified</span> : m.requirement}</td>
+                  <td className={`${td} text-right tabular`}>{m.requirement}</td>
                   <td className={td}><a href={m.sourceUrl} rel="noopener">{state.doi?.name && !hasTodo(state.doi.name) ? state.doi.name : "Source"}</a>{m.verifiedAt ? <span className="block text-ink-muted tabular">verified {new Date(m.verifiedAt).toLocaleDateString("en-US", { year: "numeric", month: "short" })}</span> : null}</td>
                 </tr>
               ))}

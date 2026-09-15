@@ -20,7 +20,7 @@ export default async function Resources() {
       <Breadcrumb items={[{ label: "Resources", href: "/resources/" }]} />
       <header className="grid gap-4"><h1>Guides, comparisons and the glossary</h1><p className="lead max-w-measure-body">Written to answer the question you actually typed. Where a fact depends on state law we cite the source; where we have not verified it yet, we say so.</p></header>
       <p className="font-sans text-small"><Link href="/resources/glossary/" className="font-semibold">Glossary of insurance terms</Link></p>
-      {articles.length === 0 ? <EmptyState title="Guides are being reviewed">Every guide is checked by a licensed person before it is published. The glossary is the place to start in the meantime.</EmptyState> : null}
+      {articles.length === 0 ? <EmptyState title="Start with the glossary">Plain-language definitions of the terms on your policy, with worked examples.</EmptyState> : null}
       {ARTICLE_SECTIONS.map((s) => {
         const list = articles.filter((a) => a.section === s.value);
         if (!list.length) return null;

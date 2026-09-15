@@ -90,7 +90,10 @@ describe("factual restraint", () => {
     expect(rules(checkProse("Unlike Progressive, we do not.", "t"))).toContain("competitor");
     expect(rules(checkProse("Farmers in Idaho need crop coverage.", "t"))).toContain("competitor");
     expect(rules(checkProse("Travel insurance covers trips.", "t"))).not.toContain("competitor");
-    expect(rules(checkProse("A progressive increase in limits.", "t"))).toContain("competitor"); // by design: the word is refused outright
+    // Case-sensitive since 2026-09-15: the brands are capitalised; "progressive lenses" and "a nationwide network" are ordinary words.
+    expect(rules(checkProse("A progressive increase in limits.", "t"))).not.toContain("competitor");
+    expect(rules(checkProse("Plans with a nationwide network of dentists.", "t"))).not.toContain("competitor");
+    expect(rules(checkProse("Compare it with a quote from Nationwide.", "t"))).toContain("competitor");
   });
   it("refuses dollar figures and percentages that are not TODO, sourced or hypothetical", () => {
     expect(rules(checkProse("The average premium is $1,400 a year.", "t"))).toEqual(expect.arrayContaining(["figure", "statistic"]));

@@ -19,7 +19,7 @@ export async function withPayload<T>(fn: (payload: import("payload").Payload) =>
 export async function loadManifest(payload: import("payload").Payload): Promise<RouteEntry[]> {
   const all = async (collection: string) => (await payload.find({ collection: collection as never, limit: 0, pagination: false, depth: 0, overrideAccess: true })).docs as Record<string, unknown>[];
   const [products, states, cities, pages, articles, glossary] = await Promise.all(["products", "states", "cities", "pages", "articles", "glossary-terms"].map(all));
-  const stateMap = states.map((s) => ({ slug: String(s.slug), cities: cities.filter((c) => (typeof c.state === "object" && c.state ? (c.state as { id: unknown }).id : c.state) === s.id).map((c) => ({ slug: String(c.slug) })) }));
+  const stateMap = states.map((s) => ({ slug: String(s.slug), cities: cities.filter((c) => (typeof c.state === "object" && c.state ? (c.state as { id: unknown }).id : c.state) === s.id).map((c) => ({ slug: String(c.slug), factsComplete: typeof c.factsComplete === "number" ? c.factsComplete : null })) }));
   return buildManifest({ products: products as never, states: stateMap as never, pages: pages as never, articles: articles as never, glossary: glossary as never });
 }
 

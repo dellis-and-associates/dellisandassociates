@@ -6,7 +6,6 @@ import { breadcrumbJsonLd, jsonLd, localBusinessJsonLd, SITE } from "../../lib/s
 import { hasTodo } from "../../fields/index.ts";
 import { getSiteSettings } from "../../lib/content.ts";
 import { Breadcrumb } from "../ui/breadcrumb.tsx";
-import { Callout } from "../ui/callout.tsx";
 import { CtaBand, RelatedLinks, StrataRule } from "../ui/misc.tsx";
 import { RichText } from "../site/richtext.tsx";
 import { CoverageBlocks, CoveredLists, Discounts, Faq, MedicareDisclaimer, StateMinimumsTable } from "./shared.tsx";
@@ -35,18 +34,17 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
         <h2 id="local">{product.name} in {city.name}: what is different here</h2>
         <div className="grid gap-4 rounded-surface border border-border bg-surface-raised p-6 md:grid-cols-2">
           <dl className="grid gap-3 font-sans text-small">
-            <div><dt className="kicker">County</dt><dd>{f.county && !hasTodo(f.county) ? f.county : <span className="text-ink-muted">not yet confirmed</span>}</dd></div>
-            <div><dt className="kicker">Local hazards</dt><dd>{f.localHazards?.length ? <ul className="mt-1 grid gap-1">{f.localHazards.map((h) => <li key={h} className="border-l-2 border-accent pl-3">{hazardLabel(h)}</li>)}</ul> : <span className="text-ink-muted">not yet recorded</span>}</dd></div>
-            <div><dt className="kicker">Nearest office or agent</dt><dd>{f.nearestOfficeOrAgent && !hasTodo(f.nearestOfficeOrAgent) ? f.nearestOfficeOrAgent : <span className="text-ink-muted">to be confirmed</span>}</dd></div>
+            {f.county && !hasTodo(f.county) ? <div><dt className="kicker">County</dt><dd>{f.county}</dd></div> : null}
+            {f.localHazards?.length ? <div><dt className="kicker">Local hazards</dt><dd><ul className="mt-1 grid gap-1">{f.localHazards.map((h) => <li key={h} className="border-l-2 border-accent pl-3">{hazardLabel(h)}</li>)}</ul></dd></div> : null}
+            {f.nearestOfficeOrAgent && !hasTodo(f.nearestOfficeOrAgent) ? <div><dt className="kicker">Nearest office or agent</dt><dd>{f.nearestOfficeOrAgent}</dd></div> : null}
           </dl>
           <dl className="grid gap-3 font-sans text-small">
-            <div><dt className="kicker">Housing</dt><dd>{f.housingStock && !hasTodo(f.housingStock) ? f.housingStock : <span className="text-ink-muted">not yet recorded</span>}</dd></div>
-            <div><dt className="kicker">Driving</dt><dd>{f.drivingContext && !hasTodo(f.drivingContext) ? f.drivingContext : <span className="text-ink-muted">not yet recorded</span>}</dd></div>
-            <div><dt className="kicker">Neighborhoods</dt><dd>{f.neighborhoods?.length ? f.neighborhoods.map((n) => n.name).join(", ") : <span className="text-ink-muted">not yet recorded</span>}</dd></div>
+            {f.housingStock && !hasTodo(f.housingStock) ? <div><dt className="kicker">Housing</dt><dd>{f.housingStock}</dd></div> : null}
+            {f.drivingContext && !hasTodo(f.drivingContext) ? <div><dt className="kicker">Driving</dt><dd>{f.drivingContext}</dd></div> : null}
+            {f.neighborhoods?.length ? <div><dt className="kicker">Neighborhoods</dt><dd>{f.neighborhoods.map((n) => n.name).join(", ")}</dd></div> : null}
           </dl>
         </div>
         {f.notableRegulatory && !hasTodo(f.notableRegulatory) ? <p className="max-w-measure-body">{f.notableRegulatory}</p> : null}
-        {!local.complete ? <Callout kind="info" lead="Local details in progress.">This page will carry {city.name}-specific detail once our local review is complete. Everything above that is blank is blank on purpose: we do not fill a gap with a guess.</Callout> : null}
         <p className="sr-only">{local.parts.map((p) => p.text).join(" ")}</p>
       </section>
     ),

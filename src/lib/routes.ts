@@ -6,6 +6,8 @@
  * from this one place.
  */
 import type { City, Page, Product, State } from "../payload-types.ts";
+/** Number of CityFacts fields (src/collections/Cities.ts CITY_FACT_KEYS); a city with fewer filled is not indexable. */
+export const CITY_FACT_COUNT = 7;
 
 export type RouteGroup =
   | "core" | "legal" | "product-hub" | "product-coverage" | "product-third" | "state-hub"
@@ -61,7 +63,7 @@ const wave = (d: ReviewLike, fallback: 1 | 2 | 3): 1 | 2 | 3 => (d.indexWave ===
 /** Wave rules from the page-generation prompt: 1 = core, legal, product hubs, state hubs, top-30 city pages; 2 = remaining city and state-product pages; 3 = resources. */
 export function buildManifest(input: {
   products: Pick<Product, "slug" | "tier" | "thirdSubpage" | "reviewStatus" | "indexWave">[];
-  states: (Pick<State, "slug"> & { cities: Pick<City, "slug">[] })[];
+  states: (Pick<State, "slug"> & { cities: (Pick<City, "slug"> & { factsComplete?: number | null })[] })[];
   pages: Pick<Page, "path" | "template" | "reviewStatus" | "indexWave" | "noindex">[];
   articles: ArticleLike[];
   glossary: { slug: string; reviewStatus?: string | null; indexWave?: string | null }[];
@@ -80,7 +82,8 @@ export function buildManifest(input: {
     push({ path: productSubPath(p, "third"), group: "product-third", tags: [tag.product(p.slug)], wave: wave(p, 1), reviewed: r, priority: 0.6, changefreq: "monthly" });
     for (const s of input.states) {
       push({ path: productStatePath(p, s), group: "product-state", tags: [tag.product(p.slug), tag.state(s.slug)], wave: p.tier === "1" ? 1 : 2, reviewed: r, priority: 0.7, changefreq: "monthly" });
-      if (p.tier === "1") for (const c of s.cities) push({ path: productCityPath(p, s, c), group: "product-city", tags: [tag.product(p.slug), tag.state(s.slug), tag.city(s.slug, c.slug)], wave: TOP_CITY_SLUGS.has(c.slug) ? 1 : 2, reviewed: r, priority: 0.6, changefreq: "monthly" });
+      // A city page is indexable only with every CityFacts field filled; the page itself writes noindex from the same fact (compose.localText).
+      if (p.tier === "1") for (const c of s.cities) push({ path: productCityPath(p, s, c), group: "product-city", tags: [tag.product(p.slug), tag.state(s.slug), tag.city(s.slug, c.slug)], wave: TOP_CITY_SLUGS.has(c.slug) ? 1 : 2, reviewed: r && (c.factsComplete === undefined || c.factsComplete === CITY_FACT_COUNT), priority: 0.6, changefreq: "monthly" });
     }
   }
   for (const s of input.states) push({ path: statePath(s), group: "state-hub", tags: [tag.state(s.slug)], wave: 1, reviewed: true, priority: 0.7, changefreq: "monthly" });

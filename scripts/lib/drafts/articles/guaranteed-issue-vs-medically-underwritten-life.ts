@@ -53,7 +53,7 @@ export const draft: ArticleDraft = {
       heading: "The decision rule",
       paragraphs: [
         "Apply from the top down. Start with a fully underwritten policy, or an accelerated underwriting programme if eligible; if that is declined or rated to an unaffordable class, try simplified issue; only if the simplified health questions exclude you, buy guaranteed issue. Never buy guaranteed issue as a first step, and never let anyone tell you it is the only option before an underwritten application has been tried. Two further checks apply to any of the three: name a beneficiary correctly, and ask whether an existing policy, a group policy from a former employer or a small paid-up policy from decades ago already covers the need, in which case the new policy may not be necessary at all.",
-        "Every policy issued in Arizona, Nevada, Utah and Idaho carries a free look period after delivery during which it can be returned for a full refund, and a guaranteed issue policy bought in haste can be cancelled inside that window if a better option is found. The length of that window is set by each state; {{TODO:statute.arizona.freeLookPeriod}} applies in Arizona.",
+        "Every policy issued in Arizona, Nevada, Utah and Idaho carries a free look period after delivery during which it can be returned for a full refund, and a guaranteed issue policy bought in haste can be cancelled inside that window if a better option is found. The length of that window is set by each state and stated in the policy itself, usually on the cover page; in Arizona, the Department of Insurance and Financial Institutions can confirm it.",
       ],
     },
     {

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getCompliance, getProducts, getSiteSettings, getStates } from "../../lib/content.ts";
 import { GROUPS, groupProducts, orderStates } from "../../lib/groups.ts";
 import { hasTodo } from "../../fields/index.ts";
-import { productPath, statePath } from "../../lib/routes.ts";
+import { statePath } from "../../lib/routes.ts";
 import { IconFacebook, IconInstagram } from "../ui/icons.tsx";
 import { Lockup } from "../ui/logo.tsx";
 

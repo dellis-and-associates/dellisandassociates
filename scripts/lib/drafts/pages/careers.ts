@@ -9,7 +9,7 @@ export const draft: PageDraft = {
       sections: [
         {
           heading: "",
-          paragraphs: ["Current openings: {{TODO:site.careersOpenings}}"],
+          paragraphs: ["Openings are posted on this page when the office is hiring. If the work described below is what you do, the contact page reaches the office directly."],
         },
         {
           heading: "What the work is",

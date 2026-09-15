@@ -2,7 +2,7 @@ import type { PageDraft } from "../types.mts";
 
 export const draft: PageDraft = {
   title: "Privacy policy",
-  lede: "How {{TODO:site.legalName}} collects, uses, shares and keeps personal information through this website and in the course of placing and servicing insurance. Effective {{TODO:legal.effectiveDate}}.",
+  lede: "How Desert Peak Insurance collects, uses, shares and keeps personal information through this website and in the course of placing and servicing insurance. Effective September 15, 2026.",
   blocks: [
     {
       type: "richText",
@@ -10,7 +10,7 @@ export const draft: PageDraft = {
         {
           heading: "",
           paragraphs: [
-            "This policy covers this website and the personal information {{TODO:site.legalName}} (the agency, we, us) collects when you request a quote or analysis, submit a form, contact the office, or become a client. It applies to visitors from every state; the section on state privacy rights describes additional rights that depend on where you live.",
+            "This policy covers this website and the personal information Desert Peak Insurance (the agency, we, us) collects when you request a quote or analysis, submit a form, contact the office, or become a client. It applies to visitors from every state; the section on state privacy rights describes additional rights that depend on where you live.",
             "The agency is a licensed insurance producer. Information collected in connection with an insurance product is nonpublic personal information under the federal Gramm-Leach-Bliley Act and the insurance privacy regulations of the states in which the agency is licensed. Those rules apply alongside this policy, and where they are stricter, they control.",
           ],
         },

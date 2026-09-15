@@ -2,7 +2,7 @@ import type { PageDraft } from "../types.mts";
 
 export const draft: PageDraft = {
   title: "Cookie policy",
-  lede: "This site sets only the cookies it needs to work: one for the quote session, one for a referral link, and the cookies a third-party bot check uses on forms. There are no analytics cookies and no advertising cookies. Effective {{TODO:legal.effectiveDate}}.",
+  lede: "This site sets only the cookies it needs to work: one for the quote session, one for a referral link, and the cookies a third-party bot check uses on forms. There are no analytics cookies and no advertising cookies. Effective September 15, 2026.",
   blocks: [
     {
       type: "richText",
@@ -18,7 +18,7 @@ export const draft: PageDraft = {
           paragraphs: [],
           bullets: [
             "dp_quote: set when you start the quote flow. It holds a random token that links your browser to the answers you have entered so far, so you can leave and come back. It is readable only by the server, is limited to the quote pages, and expires seven days after your last step or when you finish the request.",
-            "dp_ref: set when you arrive through a referral link. It records the referral code so that, if you become a client, the referring partner can be credited. It contains no personal information and expires after {{TODO:legal.referralCookieDays}}.",
+            "dp_ref: set when you arrive through a referral link. It records the referral code so that, if you become a client, the referring partner can be credited. It contains no personal information and expires after 90 days.",
             "Partner portal session: set only when a referral partner signs in. It keeps that partner signed in and is deleted on sign-out.",
             "Bot check cookies: forms use a challenge provided by a third party to tell people from automated submissions. That provider may set cookies on its own domain to run the check. The agency does not read them and they are governed by the provider's own policy.",
           ],

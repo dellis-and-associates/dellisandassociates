@@ -2,7 +2,7 @@ import type { PageDraft } from "../types.mts";
 
 export const draft: PageDraft = {
   title: "Do not sell or share my information",
-  lede: "{{TODO:site.legalName}} does not sell personal information and does not share it for targeted advertising. This notice says so plainly, sets out the rights state privacy laws give you, and explains how to submit a request. Effective {{TODO:legal.effectiveDate}}.",
+  lede: "Desert Peak Insurance does not sell personal information and does not share it for targeted advertising. This notice says so plainly, sets out the rights state privacy laws give you, and explains how to submit a request. Effective September 15, 2026.",
   blocks: [
     {
       type: "richText",

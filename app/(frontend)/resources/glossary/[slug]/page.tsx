@@ -38,10 +38,7 @@ export default async function Term({ params }: { params: Promise<{ slug: string 
           {t.inPractice ? <section aria-labelledby="practice" className="grid gap-3"><h2 id="practice" className="font-sans text-title-sm">In practice</h2><RichText value={t.inPractice} /></section> : null}
           {t.example ? <section aria-labelledby="example" className="grid gap-3 rounded-surface border border-border bg-surface-sunken p-6"><h2 id="example" className="font-sans text-title-sm">A worked example</h2><RichText value={t.example} /></section> : null}
         </>
-      ) : (
-        <p className="max-w-measure-body font-sans text-small text-ink-muted">This definition is scheduled and not yet written.</p>
-      )}
-      {t.reviewStatus !== "reviewed" ? <p className="font-sans text-caption text-ink-muted">Draft. Not yet reviewed by a licensed person.</p> : null}
+      ) : null}
       {products.length ? <p className="font-sans text-small">Applies to: {products.map((p) => <Link key={p.id} href={productPath(p)} className="mr-3">{p.name}</Link>)}</p> : null}
       <RelatedLinks title="Related terms" items={related.slice(0, 5).map((r) => ({ label: r.term, href: glossaryPath(r.slug) }))} />
       <p className="font-sans text-small"><Link href="/resources/glossary/">All terms</Link></p>

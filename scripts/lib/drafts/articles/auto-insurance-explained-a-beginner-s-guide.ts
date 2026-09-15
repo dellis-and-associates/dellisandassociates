@@ -38,13 +38,13 @@ export const draft: ArticleDraft = {
       heading: "Uninsured and underinsured motorist",
       paragraphs: [
         "Uninsured motorist coverage pays for your injuries when the driver who hit you has no insurance. Underinsured motorist coverage pays when they have some, but not enough to cover what happened to you. Both step in where liability coverage on the other side should have paid and did not.",
-        "Whether a state requires a carrier to offer these coverages, and whether you can reject them in writing, is set by state rule: {{TODO:statute.arizona.um-uim-offer-rule}}. Many people decline them to save a few dollars and regret it, because the alternative after a serious crash with an uninsured driver is your own health insurance and your own savings. The sensible default is to match these limits to your liability limits.",
+        "Whether a carrier has to offer these coverages, and whether you can reject them in writing, is set by each state's insurance rules; in Arizona, the Department of Insurance and Financial Institutions can confirm how the offer and a written rejection work. Many people decline them to save a few dollars and regret it, because the alternative after a serious crash with an uninsured driver is your own health insurance and your own savings. The sensible default is to match these limits to your liability limits.",
       ],
     },
     {
       heading: "Medical payments and personal injury protection",
       paragraphs: [
-        "Medical payments coverage pays medical bills for you and your passengers after an accident, regardless of fault, up to a modest limit. Personal injury protection is the broader version used in no-fault states; it can also pay lost wages and other costs. Which one appears on your policy, and whether it is required, depends on the state: {{TODO:statute.utah.pip-requirement}}.",
+        "Medical payments coverage pays medical bills for you and your passengers after an accident, regardless of fault, up to a modest limit. Personal injury protection is the broader version used in no-fault states; it can also pay lost wages and other costs. Which one appears on your policy, and whether it is required, depends on the state; of the four states this office serves, Utah is the one that requires PIP, and the Utah Insurance Department can confirm what it has to include.",
         "If you have good health insurance, medical payments coverage mostly covers deductibles and copays and passengers who are not on your health plan. If you do not, it is the coverage that keeps an accident from becoming a medical debt.",
       ],
     },

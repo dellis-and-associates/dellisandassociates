@@ -2,7 +2,7 @@ import type { PageDraft } from "../types.mts";
 
 export const draft: PageDraft = {
   title: "Terms of use",
-  lede: "The terms on which {{TODO:site.legalName}} makes this website available. Using the site means accepting them. Effective {{TODO:legal.effectiveDate}}.",
+  lede: "The terms on which Desert Peak Insurance makes this website available. Using the site means accepting them. Effective September 15, 2026.",
   blocks: [
     {
       type: "richText",
@@ -10,7 +10,7 @@ export const draft: PageDraft = {
         {
           heading: "",
           paragraphs: [
-            "These terms govern your use of this website, its forms, the quote flow and the partner portal (together, the site), operated by {{TODO:site.legalName}} (the agency). If you do not agree with them, do not use the site. The privacy policy and cookie policy form part of these terms.",
+            "These terms govern your use of this website, its forms, the quote flow and the partner portal (together, the site), operated by Desert Peak Insurance (the agency). If you do not agree with them, do not use the site. The privacy policy and cookie policy form part of these terms.",
           ],
         },
         {
@@ -75,7 +75,7 @@ export const draft: PageDraft = {
         {
           heading: "Governing law and disputes",
           paragraphs: [
-            "These terms are governed by the laws of {{TODO:legal.governingLawState}} without regard to its conflict-of-law rules, and disputes about the site are brought in the courts of that state. Nothing here limits your right to complain to a state Department of Insurance about the agency's conduct as a licensed producer.",
+            "These terms are governed by the laws of the state in which the agency's principal office is located, without regard to its conflict-of-law rules, and disputes about the site are brought in the courts of that state. Nothing here limits your right to complain to a state Department of Insurance about the agency's conduct as a licensed producer.",
           ],
         },
         {

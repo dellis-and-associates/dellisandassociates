@@ -45,7 +45,7 @@ export default async function CmsPage({ params }: { params: Promise<{ path: stri
       <header className="grid gap-4"><h1>{page.title}</h1>{page.lede ? <p className="lead max-w-measure-body">{displayText(page.lede)}</p> : null}<StrataRule /></header>
       <div className="grid gap-10">
         <PageBlocks layout={page.layout} stateLicense={legalState ? { state: legalState.name, licenseNumber: legalState.licenseNumber } : undefined} />
-        {legalState ? <p data-license className="rounded-surface border border-border bg-surface-sunken p-4 font-sans text-small">License, {legalState.name}: <span className="tabular">{legalState.licenseNumber && !legalState.licenseNumber.includes("{{TODO") ? legalState.licenseNumber : "number on file with the state; being added here"}</span>{legalState.doi?.url && !legalState.doi.url.includes("{{TODO") ? <> · <a href={legalState.doi.url} rel="noopener">{legalState.doi.name}</a></> : null}</p> : null}
+        {legalState ? <p data-license className="rounded-surface border border-border bg-surface-sunken p-4 font-sans text-small">{legalState.licenseNumber && !legalState.licenseNumber.includes("{{TODO") ? <>License, {legalState.name}: <span className="tabular">{legalState.licenseNumber}</span></> : <>Licensed in {legalState.name}. Verify the license</>}{legalState.doi?.url && !legalState.doi.url.includes("{{TODO") ? <> with the <a href={legalState.doi.url} rel="noopener">{legalState.doi.name}</a></> : null}.</p> : null}
         {path === "/sitemap/" ? <SiteMapList /> : !page.layout?.length ? <p className="max-w-measure-body font-sans text-small text-ink-muted">This page is being written.</p> : null}
       </div>
     </div>

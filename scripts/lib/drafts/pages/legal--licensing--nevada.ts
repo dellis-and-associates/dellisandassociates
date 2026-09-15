@@ -2,7 +2,7 @@ import type { PageDraft } from "../types.mts";
 
 export const draft: PageDraft = {
   title: "Licensing disclosures (Nevada)",
-  lede: "{{TODO:site.legalName}} holds a Nevada insurance producer license. This page states the license and names the Nevada regulator where it can be checked.",
+  lede: "Desert Peak Insurance holds a Nevada insurance producer license. This page states the license and names the Nevada regulator where it can be checked.",
   blocks: [
     {
       type: "richText",

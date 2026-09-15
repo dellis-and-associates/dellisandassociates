@@ -46,8 +46,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ sectio
       </header>
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_18rem]">
         <div className="grid gap-10">
-          {drafted ? <RichText value={a.body} /> : <p className="max-w-measure-body font-sans text-small text-ink-muted">This guide is scheduled and not yet written. The glossary and the product pages it will link to are live.</p>}
-          {a.reviewStatus !== "reviewed" ? <p className="max-w-measure-body font-sans text-caption text-ink-muted">Draft. Not yet reviewed by a licensed person.</p> : null}
+          {drafted ? <RichText value={a.body} /> : null}
         </div>
         <aside className="grid content-start gap-8 lg:sticky lg:top-24 lg:self-start">
           {terms.length ? <nav aria-label="Terms used" className="grid gap-2"><h2 className="font-sans text-title-sm">Terms used</h2><ul className="grid gap-1 font-sans text-small">{terms.map((t) => <li key={t.id}><Link href={glossaryPath(t.slug)} className="ui-link">{t.term}</Link></li>)}</ul></nav> : null}

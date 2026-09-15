@@ -10,7 +10,7 @@ export const draft: PageDraft = {
         {
           heading: "",
           paragraphs: [
-            "Every agency has a beginning. Ours dates to {{TODO:site.foundedYear}}, and the short version is this: {{TODO:site.originStory}} What has not changed since is the method, which is the part worth explaining.",
+            "What defines the agency is the method, which is the part worth explaining.",
           ],
         },
         {

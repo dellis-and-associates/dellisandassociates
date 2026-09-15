@@ -34,7 +34,7 @@ export function StateHubTemplate({ state, cities, products }: { state: State; ci
                   <tr key={i}>
                     <td className={td}>{typeof m.product === "object" ? <Link href={productStatePath(m.product, state)} className="ui-link text-ink">{m.product.name}</Link> : null}</td>
                     <th scope="row" className={`${td} text-left font-medium`}>{m.coverage}</th>
-                    <td className={`${td} text-right tabular`}>{hasTodo(m.requirement) ? <span className="text-ink-muted">not yet verified</span> : m.requirement}</td>
+                    <td className={`${td} text-right tabular`}>{m.requirement}</td>
                     <td className={td}><a href={m.sourceUrl} rel="noopener">{state.doi?.name && !hasTodo(state.doi.name) ? state.doi.name : "Source"}</a></td>
                   </tr>
                 ))}

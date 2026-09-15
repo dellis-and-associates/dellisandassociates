@@ -60,7 +60,8 @@
     "shell:shots": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/shell-shots.mts",
     "certificates": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/certificates.mts",
     "content:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/content-check.mts",
-    "fill:content": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/fill-content.mts"
+    "fill:content": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/fill-content.mts",
+    "mark:reviewed": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/mark-reviewed.mts"
   },
   "dependencies": {
     "@desert-peak/brand": "workspace:*",

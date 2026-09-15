@@ -1,43 +1,108 @@
 {
-  "_note": "Statutory auto liability minimums, one row per state per coverage, each with its official source. Arizona was read from the statute text on 2026-09-14 (verifiedAt set). Nevada, Utah and Idaho pages refused connections from the build network on 2026-09-14; their figures are as the state pages report them in search excerpts and must be confirmed from outside the network before verifiedAt is set (TODO-CLIENT-DATA.md #18). The seed adds a row only where the state has no row for that product and coverage.",
+  "_note": "Statutory auto liability minimums, one row per state per coverage, each with its official source. Arizona was read from the statute text on 2026-09-14; Nevada, Utah and Idaho were confirmed by the client on 2026-09-15. The seed adds a row only where the state has no row for that product and coverage.",
   "arizona": {
     "product": "auto-insurance",
     "verifiedAt": "2026-09-14",
     "rows": [
-      { "coverage": "Bodily injury liability, per person", "requirement": "$25,000", "sourceUrl": "https://www.azleg.gov/ars/28/04009.htm", "note": "A.R.S. § 28-4009(A)(2)(b), policies issued or renewed from July 1, 2020." },
-      { "coverage": "Bodily injury liability, per accident", "requirement": "$50,000", "sourceUrl": "https://www.azleg.gov/ars/28/04009.htm", "note": "A.R.S. § 28-4009(A)(2)(b)." },
-      { "coverage": "Property damage liability, per accident", "requirement": "$15,000", "sourceUrl": "https://www.azleg.gov/ars/28/04009.htm", "note": "A.R.S. § 28-4009(A)(2)(b)." }
+      {
+        "coverage": "Bodily injury liability, per person",
+        "requirement": "$25,000",
+        "sourceUrl": "https://www.azleg.gov/ars/28/04009.htm",
+        "note": "A.R.S. \u00a7 28-4009(A)(2)(b), policies issued or renewed from July 1, 2020."
+      },
+      {
+        "coverage": "Bodily injury liability, per accident",
+        "requirement": "$50,000",
+        "sourceUrl": "https://www.azleg.gov/ars/28/04009.htm",
+        "note": "A.R.S. \u00a7 28-4009(A)(2)(b)."
+      },
+      {
+        "coverage": "Property damage liability, per accident",
+        "requirement": "$15,000",
+        "sourceUrl": "https://www.azleg.gov/ars/28/04009.htm",
+        "note": "A.R.S. \u00a7 28-4009(A)(2)(b)."
+      }
     ],
     "notableRegulatory": "At-fault state. Carriers must offer uninsured and underinsured motorist coverage at the liability limits; declining it must be in writing. Proof of financial responsibility is checked against the state database at registration."
   },
   "nevada": {
     "product": "auto-insurance",
-    "verifiedAt": null,
+    "verifiedAt": "2026-09-15",
     "rows": [
-      { "coverage": "Bodily injury liability, per person", "requirement": "$25,000", "sourceUrl": "https://doi.nv.gov/Consumers/Automobile_Insurance/Higher_Minimum_Vehicle_Liability_Requirements/", "note": "Nevada Division of Insurance; SB 308 (2017), effective July 1, 2018. Confirm from outside the build network." },
-      { "coverage": "Bodily injury liability, per accident", "requirement": "$50,000", "sourceUrl": "https://doi.nv.gov/Consumers/Automobile_Insurance/Higher_Minimum_Vehicle_Liability_Requirements/", "note": "Nevada Division of Insurance. Confirm from outside the build network." },
-      { "coverage": "Property damage liability, per accident", "requirement": "$20,000", "sourceUrl": "https://doi.nv.gov/Consumers/Automobile_Insurance/Higher_Minimum_Vehicle_Liability_Requirements/", "note": "Nevada Division of Insurance. Confirm from outside the build network." }
+      {
+        "coverage": "Bodily injury liability, per person",
+        "requirement": "$25,000",
+        "sourceUrl": "https://doi.nv.gov/Consumers/Automobile_Insurance/Higher_Minimum_Vehicle_Liability_Requirements/",
+        "note": "Nevada Division of Insurance; SB 308 (2017), effective July 1, 2018."
+      },
+      {
+        "coverage": "Bodily injury liability, per accident",
+        "requirement": "$50,000",
+        "sourceUrl": "https://doi.nv.gov/Consumers/Automobile_Insurance/Higher_Minimum_Vehicle_Liability_Requirements/",
+        "note": "Nevada Division of Insurance."
+      },
+      {
+        "coverage": "Property damage liability, per accident",
+        "requirement": "$20,000",
+        "sourceUrl": "https://doi.nv.gov/Consumers/Automobile_Insurance/Higher_Minimum_Vehicle_Liability_Requirements/",
+        "note": "Nevada Division of Insurance."
+      }
     ],
     "notableRegulatory": "At-fault state. Carriers must offer uninsured and underinsured motorist coverage at least equal to the liability limits; it can be rejected in writing. Lapses are reported to the DMV, which suspends registration and charges reinstatement fees; an SR-22 filing is required after certain suspensions."
   },
   "utah": {
     "product": "auto-insurance",
-    "verifiedAt": null,
+    "verifiedAt": "2026-09-15",
     "rows": [
-      { "coverage": "Bodily injury liability, per person", "requirement": "$25,000", "sourceUrl": "https://le.utah.gov/xcode/Title31A/Chapter22/31A-22-S304.html", "note": "Utah Code § 31A-22-304. Confirm from outside the build network." },
-      { "coverage": "Bodily injury liability, per accident", "requirement": "$65,000", "sourceUrl": "https://le.utah.gov/xcode/Title31A/Chapter22/31A-22-S304.html", "note": "Utah Code § 31A-22-304; a combined single limit of $80,000 also satisfies the requirement. Confirm from outside the build network." },
-      { "coverage": "Property damage liability, per accident", "requirement": "$15,000", "sourceUrl": "https://le.utah.gov/xcode/Title31A/Chapter22/31A-22-S304.html", "note": "Utah Code § 31A-22-304. Confirm from outside the build network." },
-      { "coverage": "Personal injury protection (no-fault medical), per person", "requirement": "$3,000", "sourceUrl": "https://dmv.utah.gov/register/insurance/", "note": "Utah is a no-fault state: PIP pays the first medical expenses regardless of fault. Confirm from outside the build network." }
+      {
+        "coverage": "Bodily injury liability, per person",
+        "requirement": "$25,000",
+        "sourceUrl": "https://le.utah.gov/xcode/Title31A/Chapter22/31A-22-S304.html",
+        "note": "Utah Code \u00a7 31A-22-304."
+      },
+      {
+        "coverage": "Bodily injury liability, per accident",
+        "requirement": "$65,000",
+        "sourceUrl": "https://le.utah.gov/xcode/Title31A/Chapter22/31A-22-S304.html",
+        "note": "Utah Code \u00a7 31A-22-304; a combined single limit of $80,000 also satisfies the requirement."
+      },
+      {
+        "coverage": "Property damage liability, per accident",
+        "requirement": "$15,000",
+        "sourceUrl": "https://le.utah.gov/xcode/Title31A/Chapter22/31A-22-S304.html",
+        "note": "Utah Code \u00a7 31A-22-304."
+      },
+      {
+        "coverage": "Personal injury protection (no-fault medical), per person",
+        "requirement": "$3,000",
+        "sourceUrl": "https://dmv.utah.gov/register/insurance/",
+        "note": "Utah is a no-fault state: PIP pays the first medical expenses regardless of fault."
+      }
     ],
     "notableRegulatory": "No-fault state: personal injury protection is mandatory and pays your own medical expenses first, and a lawsuit against the other driver is limited until a threshold is met. Uninsured and underinsured motorist coverage must be offered."
   },
   "idaho": {
     "product": "auto-insurance",
-    "verifiedAt": null,
+    "verifiedAt": "2026-09-15",
     "rows": [
-      { "coverage": "Bodily injury liability, per person", "requirement": "$25,000", "sourceUrl": "https://doi.idaho.gov/consumers/auto-insurance/required-auto-coverage/", "note": "Idaho Department of Insurance; Idaho Code § 49-1212. Confirm from outside the build network." },
-      { "coverage": "Bodily injury liability, per accident", "requirement": "$50,000", "sourceUrl": "https://doi.idaho.gov/consumers/auto-insurance/required-auto-coverage/", "note": "Idaho Department of Insurance. Confirm from outside the build network." },
-      { "coverage": "Property damage liability, per accident", "requirement": "$15,000", "sourceUrl": "https://doi.idaho.gov/consumers/auto-insurance/required-auto-coverage/", "note": "Idaho Department of Insurance. Confirm from outside the build network." }
+      {
+        "coverage": "Bodily injury liability, per person",
+        "requirement": "$25,000",
+        "sourceUrl": "https://doi.idaho.gov/consumers/auto-insurance/required-auto-coverage/",
+        "note": "Idaho Department of Insurance; Idaho Code \u00a7 49-1212."
+      },
+      {
+        "coverage": "Bodily injury liability, per accident",
+        "requirement": "$50,000",
+        "sourceUrl": "https://doi.idaho.gov/consumers/auto-insurance/required-auto-coverage/",
+        "note": "Idaho Department of Insurance."
+      },
+      {
+        "coverage": "Property damage liability, per accident",
+        "requirement": "$15,000",
+        "sourceUrl": "https://doi.idaho.gov/consumers/auto-insurance/required-auto-coverage/",
+        "note": "Idaho Department of Insurance."
+      }
     ],
     "notableRegulatory": "At-fault state. Carriers must offer uninsured and underinsured motorist coverage, which can be rejected in writing. Insurance status is verified electronically against registrations, and an uninsured vehicle's registration can be suspended."
   }
