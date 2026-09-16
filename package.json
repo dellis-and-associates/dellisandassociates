@@ -61,7 +61,14 @@
     "certificates": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/certificates.mts",
     "content:check": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/content-check.mts",
     "fill:content": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/fill-content.mts",
-    "mark:reviewed": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/mark-reviewed.mts"
+    "mark:reviewed": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/mark-reviewed.mts",
+    "verify:urls": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/verify-urls.mts",
+    "verify:sitemaps": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/verify-sitemaps.mts",
+    "verify:schema": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/verify-schema.mts",
+    "verify:og": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/verify-og.mts",
+    "verify:links": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/verify-links.mts",
+    "review:stale": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/review-stale.mts",
+    "rum:report": "cross-env PAYLOAD_MIGRATING=true node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON --env-file-if-exists=.env.local --env-file-if-exists=.env scripts/rum-report.mts"
   },
   "dependencies": {
     "@desert-peak/brand": "workspace:*",

@@ -1,6 +1,8 @@
 import Link from "next/link";
+import type { Crumb } from "../../lib/seo.ts";
 
-export type Crumb = { label: string; href: string };
+export type { Crumb };
+export { breadcrumbJsonLd } from "../../lib/seo.ts";
 
 /** Everywhere below the top level. The last item is the current page. */
 export function Breadcrumb({ items, label = "Breadcrumb" }: { items: Crumb[]; label?: string }) {
@@ -18,12 +20,4 @@ export function Breadcrumb({ items, label = "Breadcrumb" }: { items: Crumb[]; la
       </ol>
     </nav>
   );
-}
-
-export function breadcrumbJsonLd(items: Crumb[], siteUrl: string) {
-  return {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [{ label: "Home", href: "/" }, ...items].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.label, item: `${siteUrl}${c.href}` })),
-  };
 }

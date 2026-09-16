@@ -36,6 +36,8 @@ live. Against Supabase it is off: change the config, then
 | `pnpm leads:purge --dry-run` | leads past their retention date (counts only) |
 | `pnpm import:package` | regenerates `src/seed-data/*.json` from the sitemap package |
 | `pnpm seed --dry-run` | reconciliation table (created / updated / skipped / conflicts per collection); `pnpm seed` applies, filling empties only |
+| `pnpm verify:urls` · `verify:sitemaps` · `verify:schema` · `verify:og` · `verify:links` | the SEO contract: canonical and redirect rules, the sitemap index, JSON-LD, share cards (previews into `OG-PREVIEWS/`), and the internal link graph |
+| `pnpm review:stale` · `pnpm rum:report` | content past its twelve-month review, and Core Web Vitals p75 per path from the site's own beacons |
 | `pnpm verify:tokens` | zero hardcoded design values in app/, src/, packages/ |
 | `pnpm verify:routes` · `verify:seo` · `verify:redirects` · `verify:compliance` · `verify:uniqueness` · `verify:parity` | the site-level gates, against the running build |
 | `pnpm fonts:subset` · `fonts:fallbacks` | regenerate `public/fonts/` from the brand package (axis-range subsets) and the metric-matched fallback faces |

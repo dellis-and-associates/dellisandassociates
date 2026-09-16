@@ -49,6 +49,7 @@ export async function Footer() {
           <Link href="/resources/" className={link}>Guides</Link>
           <Link href="/resources/glossary/" className={link}>Glossary</Link>
           <Link href="/claims/" className={link}>Claims</Link>
+          <Link href="/about/editorial-policy/" className={link}>Editorial policy</Link>
           <Link href="/billing/" className={link}>Billing</Link>
         </nav>
         <nav aria-label="For partners" className={col}>

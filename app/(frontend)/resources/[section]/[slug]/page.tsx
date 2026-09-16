@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getArticle, getArticles, getPromotedWave } from "@/src/lib/content";
+import { getArticle, getArticles, getPromotedWave, getSiteSettings } from "@/src/lib/content";
 import { articlePath, glossaryPath, productPath, isWritten } from "@/src/lib/routes";
-import { articleJsonLd, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata, SITE } from "@/src/lib/seo";
+import { articleJsonLd, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata, SITE, AUTHOR_PATH } from "@/src/lib/seo";
 import { ARTICLE_SECTIONS } from "@/src/collections/Articles";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
 import { CtaBand, RelatedLinks, StrataRule } from "@/src/components/ui/misc";
@@ -32,16 +32,24 @@ export default async function ArticlePage({ params }: { params: Promise<{ sectio
   const articles = (a.relatedArticles ?? []).filter((p): p is Exclude<typeof p, number> => typeof p === "object");
   const terms = (a.relatedTerms ?? []).filter((p): p is Exclude<typeof p, number> => typeof p === "object");
   const drafted = a.generation?.status === "drafted" || (a.wordCount ?? 0) > 0;
+  const site = await getSiteSettings();
+  const author = { name: site.advisor?.name && !site.advisor.name.includes("{{TODO") ? site.advisor.name : "Desert Peak Insurance", path: AUTHOR_PATH };
+  const date = (v: string) => new Date(v).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   return (
     <article className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(articleJsonLd(a.title, path, a.excerpt ?? "", { published: a.createdAt, modified: a.updatedAt }))} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(articleJsonLd(a.title, path, a.excerpt ?? "", { published: a.createdAt, modified: a.updatedAt }, { author, reviewedAt: a.reviewedAt }))} />
       <Breadcrumb items={crumbs} />
       <header className="grid gap-4">
         <p className="kicker">{sec?.label}</p>
         <h1>{a.title}</h1>
         {a.excerpt ? <p className="lead max-w-measure-body">{a.excerpt}</p> : null}
-        <p className="font-sans text-caption text-ink-muted tabular">Updated {new Date(a.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}{a.wordCount ? ` · ${a.wordCount} words` : ""}</p>
+        <p className="font-sans text-caption text-ink-muted">
+          Written by <Link href={author.path} className="ui-link">{author.name}</Link>
+          {a.reviewedAt ? <> · <span className="tabular">Last reviewed {date(a.reviewedAt)}</span></> : null}
+          <> · <span className="tabular">Updated {date(a.updatedAt)}</span></>
+          {a.wordCount ? <> · <span className="tabular">{a.wordCount} words</span></> : null}
+        </p>
         <StrataRule />
       </header>
       <div className="grid gap-12 lg:grid-cols-[minmax(0,1fr)_18rem]">

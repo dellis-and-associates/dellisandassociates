@@ -1,3 +1,4 @@
+import { isUtilityPath } from "@/src/lib/routes";
 import { displayText } from "@/src/lib/text";
 import { notFound } from "next/navigation";
 import { getPage, getPages, getStates, getPromotedWave } from "@/src/lib/content";
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: { params: Promise<{ path: str
   const path = toPath((await params).path);
   const page = await getPage(path);
   if (!page) return {};
-  return pageMetadata({ title: page.seo?.title ?? page.title, description: page.seo?.description ?? page.lede ?? `${page.title} — Desert Peak Insurance.`, path, indexable: isIndexable(page, { promotedWave: await getPromotedWave(), utility: page.template === "utility" || page.noindex === true }) });
+  return pageMetadata({ title: page.seo?.title ?? page.title, description: page.seo?.description ?? page.lede ?? `${page.title} — Desert Peak Insurance.`, path, indexable: isIndexable(page, { promotedWave: await getPromotedWave(), utility: page.template === "utility" || page.noindex === true || isUtilityPath(page.path) }) });
 }
 
 export default async function CmsPage({ params }: { params: Promise<{ path: string[] }> }) {

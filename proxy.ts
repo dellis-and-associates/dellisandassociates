@@ -47,9 +47,12 @@ export async function proxy(request: NextRequest) {
   // IndexNow ownership file: /{key}.txt containing the key, served from the env value so the key is never committed.
   if (env.INDEXNOW_KEY && request.nextUrl.pathname === `/${env.INDEXNOW_KEY}.txt`)
     return new Response(env.INDEXNOW_KEY, { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=86400" } });
-  const path = request.nextUrl.pathname.endsWith("/") ? request.nextUrl.pathname : `${request.nextUrl.pathname}/`;
+  const raw = request.nextUrl.pathname;
+  const path = raw.endsWith("/") ? raw : `${raw}/`;
   const map = await rows(request.nextUrl.origin);
-  const row = map.get(path.toLowerCase());
+  // Both forms: a legacy path that looks like a file (/wp-login.php) is stored without a slash, and Next's
+  // trailing-slash rule would otherwise answer 308 first, turning a clean 410 into a chain.
+  const row = map.get(path.toLowerCase()) ?? map.get(raw.toLowerCase());
   if (row) {
     if (row.statusCode === "410") return GONE.clone();
     if (row.to) return NextResponse.redirect(row.to.startsWith("http") ? row.to : new URL(row.to, request.nextUrl.origin), 301);

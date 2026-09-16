@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
 import { env } from "../env.ts";
 import { hasTodo } from "../fields/index.ts";
-import type { Crumb } from "../components/ui/breadcrumb.tsx";
-export { breadcrumbJsonLd } from "../components/ui/breadcrumb.tsx";
+export { isIndexable } from "./indexable.ts";
+export type Crumb = { label: string; href: string };
+
+/** The visible breadcrumb as markup. Lives here, not in the component, so Node-run scripts and Payload hooks can import it. */
+export function breadcrumbJsonLd(items: Crumb[], siteUrl: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [{ label: "Home", href: "/" }, ...items].map((c, i) => ({ "@type": "ListItem", position: i + 1, name: c.label, item: `${siteUrl}${c.href}` })),
+  };
+}
 
 export const SITE = env.NEXT_PUBLIC_SITE_URL;
 export const abs = (path: string) => `${SITE}${path}`;
@@ -12,6 +21,8 @@ export const ogImagePath = (path: string) => abs(`/og${path === "/" ? "/" : path
 const trim = (s: string, n: number) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, "")}…`);
 
 export const BRAND = "Desert Peak Insurance";
+/** The principal advisor page every article byline and Article JSON-LD author points at. */
+export const AUTHOR_PATH = "/about/daniel-ellis/";
 export const TITLE_MAX = 60;
 /**
  * The title contract: the template's own phrase, then " | Desert Peak Insurance"
@@ -46,15 +57,6 @@ export function pageMetadata(opts: { title: string; description: string; path: s
   };
 }
 
-/**
- * Structural indexability: reviewed, in a wave the site has promoted, not a
- * utility route, and no required fact still a TODO token. `promotedWave` comes
- * from SiteSettings (default 1), so promotion is a field change, not a deploy.
- */
-export function isIndexable(doc: { reviewStatus?: string | null; indexWave?: string | null }, extra: { utility?: boolean; hasTodo?: boolean; promotedWave?: number } = {}): boolean {
-  const wave = Number(doc.indexWave ?? 3);
-  return doc.reviewStatus === "reviewed" && wave <= (extra.promotedWave ?? 1) && !extra.utility && !extra.hasTodo;
-}
 
 export const textHasTodo = (...values: (string | null | undefined)[]) => values.some((v) => hasTodo(v));
 
@@ -140,4 +142,3 @@ export const articleJsonLd = (title: string, path: string, description: string, 
   publisher: { "@type": "Organization", name: BRAND, url: SITE },
 });
 
-export type { Crumb };

@@ -20,6 +20,7 @@ export function StateHubTemplate({ state, cities, products }: { state: State; ci
       <Breadcrumb items={crumbs} />
       <header className="grid gap-4">
         <h1>Insurance in {state.name}</h1>
+        {state.updatedAt ? <p className="font-sans text-caption text-ink-muted tabular">Last reviewed {new Date(state.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p> : null}
         <p className="lead max-w-measure-body">What {state.name} requires, the lines we write there, and the {cities.length} cities where we have local pages. Every minimum below is cited to its source; where we have not verified one, we say so.</p>
         <StrataRule />
       </header>

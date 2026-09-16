@@ -333,7 +333,10 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
     const seen = new Set<string>(); // /feed and /feed/ normalize to one row
     for (const [path, page] of Object.entries(crawl.pages)) {
       if (path === "/" || path === "/robots.txt" || path === "/sitemap.xml" || path.includes("parity-probe")) continue;
-      const from = path.endsWith("/") ? path : `${path}/`;
+      // File-like legacy paths (/wp-login.php) keep their exact shape: Next strips the trailing slash from them, so a
+      // slashed row would answer 308 then 410 — a chain. Everything else is stored with the trailing slash.
+      const fileLike = /\.[a-z0-9]{2,5}$/i.test(path);
+      const from = fileLike ? path.replace(/\/$/, "") : path.endsWith("/") ? path : `${path}/`;
       if (seen.has(from)) continue;
       seen.add(from);
       if (gone.has(path)) {

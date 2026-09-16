@@ -9,7 +9,7 @@
  */
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook, GlobalAfterChangeHook } from "payload";
 import { articlePath, glossaryPath, productPath, productSubPath, statePath, tag } from "../lib/routes.ts";
-import { isIndexable } from "../lib/seo.ts";
+import { isIndexable } from "../lib/indexable.ts";
 import { submitToIndexNow } from "./indexnow.ts";
 
 async function revalidate(tags: string[]): Promise<void> {

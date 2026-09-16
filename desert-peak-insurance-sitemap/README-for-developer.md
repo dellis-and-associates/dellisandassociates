@@ -48,3 +48,11 @@ This is deliberate. Generating `/insurance/pet-insurance/{every-city}/` for a lo
 - Agent names (`data` embedded only in `full-sitemap.xml`/architecture counts, not a separate roster file — pull real agent names/bios from the agency)
 - Carrier partner names (currently "Carrier Partner 1–15")
 - Domain name (currently `desertpeakinsurance.com`)
+
+## Correction, 2026-09-16
+
+The generator doubled the business-owners-policy slug in `full-sitemap.xml`
+(`/insurance/business-owners-policy-business-owners-policy/...`), 41 URLs in all,
+and its own duplicate check did not catch it. They are corrected here to the
+single slug the app uses. No other URL in the fixture changed; `pnpm verify:sitemaps`
+now asserts every fixture URL exists in the app, so the file stays a regression input.

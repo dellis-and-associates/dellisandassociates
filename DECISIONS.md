@@ -528,6 +528,52 @@ canonical, OG `url`, JSON-LD and the sitemap all derive from it. The email
 `daniel@desertpeakinsurance.com` replaces the legacy address; that is the
 one non-empty value the seed overwrites, and only that exact string.
 
+## SEO
+
+**Trailing slash is canonical, and one origin.** Every route ends in a slash
+(the sitemap package and the redirect map assume it); the no-slash and
+uppercase variants answer a single 301, never a chain. `NEXT_PUBLIC_SITE_URL`
+is the only source of the origin, and production refuses to boot on anything
+but `https://www.desertpeakinsurance.com`, so canonical, OG `url`, JSON-LD and
+the sitemaps cannot disagree.
+
+**The brand suffix yields to the 60-character limit.** The SEO brief's title
+patterns end in "| Desert Peak Insurance", which overflows 60 characters on
+long product and article names. `seoTitle` appends the brand only when the pair
+fits and otherwise keeps the specific phrase, because a truncated brand name
+reads worse than none and the phrase is what distinguishes the page.
+
+**Wave promotion is a field, not a deploy.** `SiteSettings.promotedWave` (1, 2
+or 3) drives both the robots meta and the route manifest through one resolver,
+so the sitemap can never list a page the page itself marks noindex. The
+criteria for opening each wave are in `SEO-PLAYBOOK.md`; the mechanism is a
+select field in the admin.
+
+**Indexability keeps its structural veto.** Reviewed and in a promoted wave is
+necessary, not sufficient: a utility route, or a required fact still a TODO
+token, still forces noindex. City pages therefore stay out of the index until
+the nearest-office field is filled, which is why 380 local pages are built but
+not submitted.
+
+**The shipped sitemap fixture is a regression input, and it was wrong.** Its
+generator doubled the business-owners-policy slug on 41 URLs. The fixture is
+corrected to the slug the app serves and `verify:sitemaps` asserts every URL in
+it exists here, so the file keeps its job of catching a route that disappears.
+
+**"No links to noindex pages" is scoped to permanent noindex.** The brief asks
+for zero links from indexable pages to noindex ones. Two classes are exempt
+because the link is correct and the target is temporary: pages awaiting a later
+indexation wave, and city pages waiting on the nearest-office fact. A state hub
+that hid its own cities would be worse for a reader than the crawl budget it
+saves, and both classes become indexable without a code change. `verify:links`
+counts them in its report and still fails on anything permanently noindex.
+
+**IndexNow is used, and its limits are stated.** Submissions fire on
+`afterChange` for documents that are indexable, in production only, with the key
+served from the environment at `/{key}.txt`. Bing and Yandex honour the protocol
+and Google does not; the playbook says so rather than implying the ping reaches
+Google.
+
 ## Phase 6
 
 **Tags, never paths.** `src/hooks/revalidate.ts` maps every collection to

@@ -1,5 +1,5 @@
 import { getPage, getProducts, getSiteSettings, getStates, getPromotedWave } from "@/src/lib/content";
-import { faqJsonLd, isIndexable, jsonLd, orgJsonLd, pageMetadata } from "@/src/lib/seo";
+import { faqJsonLd, isIndexable, jsonLd, orgJsonLd, pageMetadata, websiteJsonLd } from "@/src/lib/seo";
 import { richTextToPlain } from "@/src/lib/text";
 import { PageBlocks } from "@/src/components/site/page-blocks";
 import { CarrierStrip, ClosingBand, CoverageGroups, Faq, Hero, LifeEvents, Recognition, Testimonials, homeFaqs } from "@/src/components/site/home";
@@ -26,6 +26,7 @@ export default async function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgJsonLd(site, states.map((s) => s.name)))} />
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(websiteJsonLd())} />
       {faqs.length ? <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd(faqs.map((f) => ({ q: f.question, a: richTextToPlain(f.answer) }))))} /> : null}
       <Hero site={site} states={states} headline={headline} lede={lede} />
       <CarrierStrip site={site} />

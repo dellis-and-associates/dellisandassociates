@@ -24,6 +24,7 @@ export async function ProductTemplate({ product, sub, states }: { product: Produ
       <Breadcrumb items={crumbs} />
       <header className="grid gap-4">
         <h1>{title}</h1>
+        {product.reviewedAt ? <p className="font-sans text-caption text-ink-muted tabular">Last reviewed {new Date(product.reviewedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p> : null}
         {product.summary && !product.summary.includes("{{TODO") ? <p className="lead max-w-measure-body">{product.summary}</p> : null}
         <StrataRule />
       </header>

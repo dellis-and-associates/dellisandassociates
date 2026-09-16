@@ -80,7 +80,7 @@ export function buildManifest(input: {
   const out: RouteEntry[] = [];
   const push = (e: Omit<RouteEntry, "indexable"> & { reviewed: boolean }) => out.push({ ...e, indexable: e.reviewed && e.wave <= promoted });
   for (const pg of input.pages) {
-    const utility = pg.template === "utility" || pg.noindex === true;
+    const utility = pg.template === "utility" || pg.noindex === true || isUtilityPath(pg.path);
     const group: RouteGroup = utility ? "utility" : pg.path.startsWith("/legal/") ? "legal" : "core";
     push({ path: pg.path, lastmod: newest(pg), group, tags: [tag.page(pg.path)], wave: utility ? 3 : wave(pg, 1), reviewed: reviewed(pg) && !utility, priority: pg.path === "/" ? 1 : group === "legal" ? 0.3 : 0.6, changefreq: pg.path === "/" ? "weekly" : "monthly" });
   }

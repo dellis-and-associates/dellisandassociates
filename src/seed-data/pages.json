@@ -24,6 +24,22 @@
     "legalState": null
   },
   {
+    "title": "Daniel Ellis, principal advisor",
+    "path": "/about/daniel-ellis/",
+    "template": "static",
+    "priority": 0.5,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
+    "title": "Editorial policy",
+    "path": "/about/editorial-policy/",
+    "template": "static",
+    "priority": 0.4,
+    "changefreq": "yearly",
+    "legalState": null
+  },
+  {
     "title": "Meet the Team",
     "path": "/agents/",
     "template": "team-hub",

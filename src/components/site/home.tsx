@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Product, SiteSetting, State } from "../../payload-types.ts";
 import { hasTodo } from "../../fields/index.ts";
+import { AUTHOR_PATH } from "../../lib/seo.ts";
 import { GROUPS, groupProducts, orderStates } from "../../lib/groups.ts";
 import { productPath } from "../../lib/routes.ts";
 import { richTextToPlain } from "../../lib/text.ts";
@@ -64,7 +65,7 @@ export function Hero({ site, states, headline, lede }: { site: SiteSetting; stat
           <aside className="relative z-10 grid gap-4 rounded-surface border border-border bg-surface-raised p-6 text-ink shadow-2 md:mt-10 md:mr-16 md:max-w-sm" aria-label="Your advisor">
             {photo ? <img src={photo.url!} alt={photo.alt || advisor?.name || ""} width={photo.width ?? 96} height={photo.height ?? 96} className="size-24 rounded-surface object-cover" fetchPriority="high" /> : <StrataRule />}
             <div>
-              <p className="font-sans text-title-sm">{advisor?.name && !hasTodo(advisor.name) ? advisor.name : "A licensed advisor"}</p>
+              <p className="font-sans text-title-sm">{advisor?.name && !hasTodo(advisor.name) ? <Link href={AUTHOR_PATH} className="ui-link text-ink">{advisor.name}</Link> : "A licensed advisor"}</p>
               {advisor?.title && !hasTodo(advisor.title) ? <p className="font-sans text-small text-ink-muted">{advisor.title}</p> : null}
             </div>
             {advisor?.statement && !hasTodo(advisor.statement) ? <p className="max-w-measure-narrow">{advisor.statement}</p> : null}
