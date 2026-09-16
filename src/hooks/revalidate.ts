@@ -8,7 +8,9 @@
  * that is swallowed on purpose.
  */
 import type { CollectionAfterChangeHook, CollectionAfterDeleteHook, GlobalAfterChangeHook } from "payload";
-import { tag } from "../lib/routes.ts";
+import { articlePath, glossaryPath, productPath, productSubPath, statePath, tag } from "../lib/routes.ts";
+import { isIndexable } from "../lib/seo.ts";
+import { submitToIndexNow } from "./indexnow.ts";
 
 async function revalidate(tags: string[]): Promise<void> {
   const unique = [...new Set(tags)].filter(Boolean);
@@ -49,8 +51,31 @@ export function tagsFor(collection: string, doc: Record<string, unknown>, previo
   }
 }
 
-export const afterChangeRevalidate: CollectionAfterChangeHook = async ({ doc, previousDoc, collection }) => {
+/** The document's own canonical route(s) — not the pages it fans out to, which a crawler reaches from them. */
+function ownPaths(collection: string, doc: Record<string, unknown>): string[] {
+  const d = doc as never;
+  switch (collection) {
+    case "products": return [productPath(d), productSubPath(d, "coverage"), productSubPath(d, "third")];
+    case "articles": return [articlePath(String(doc.section ?? ""), String(doc.slug ?? ""))];
+    case "glossary-terms": return [glossaryPath(String(doc.slug ?? ""))];
+    case "states": return [statePath(d)];
+    case "pages": return [String(doc.path ?? "")];
+    default: return [];
+  }
+}
+
+export const afterChangeRevalidate: CollectionAfterChangeHook = async ({ doc, previousDoc, collection, req }) => {
   await revalidate(tagsFor(collection.slug, doc as Record<string, unknown>, previousDoc as Record<string, unknown> | undefined));
+  // IndexNow: only for documents that are actually indexable now, and only in production with a key set.
+  try {
+    const record = doc as Record<string, unknown>;
+    if (record.reviewStatus === "reviewed") {
+      const site = (await req.payload.findGlobal({ slug: "site-settings", depth: 0 })) as { promotedWave?: string | null };
+      if (isIndexable(record as never, { promotedWave: Number(site.promotedWave ?? 1) })) await submitToIndexNow(ownPaths(collection.slug, record).filter(Boolean), req.payload);
+    }
+  } catch {
+    /* never fail a save because of a search-engine ping */
+  }
   return doc;
 };
 export const afterDeleteRevalidate: CollectionAfterDeleteHook = async ({ doc, collection }) => {

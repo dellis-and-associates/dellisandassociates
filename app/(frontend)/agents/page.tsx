@@ -1,4 +1,4 @@
-import { getAgents, getPage } from "@/src/lib/content";
+import { getAgents, getPage, getPromotedWave } from "@/src/lib/content";
 import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
 import { EmptyState } from "@/src/components/ui/misc";
@@ -7,7 +7,7 @@ import { Card, CardGrid } from "@/src/components/ui/card";
 export const revalidate = false;
 export async function generateMetadata() {
   const page = await getPage("/agents/");
-  return pageMetadata({ title: "Meet the team", description: "The licensed agents at Desert Peak Insurance, with the states they hold licenses in and the lines they write.", path: "/agents/", indexable: page ? isIndexable(page) : false });
+  return pageMetadata({ title: "Meet the team", description: "The licensed agents at Desert Peak Insurance, with the states they hold licenses in and the lines they write.", path: "/agents/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 /** Renders from an empty-but-typed roster. No placeholder person, ever (page-generation defect 5). */
 export default async function Agents() {

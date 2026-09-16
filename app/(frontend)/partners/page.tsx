@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPage } from "@/src/lib/content";
+import { getPage, getPromotedWave } from "@/src/lib/content";
 import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
 import { PageBlocks } from "@/src/components/site/page-blocks";
@@ -8,7 +8,7 @@ import { StrataRule } from "@/src/components/ui/misc";
 export const revalidate = false;
 export async function generateMetadata() {
   const page = await getPage("/partners/");
-  return pageMetadata({ title: "Partner with Desert Peak", description: "For licensed producers, realtors, mortgage brokers and dealers: how referrals to Desert Peak Insurance work, and the portal where you see their status.", path: "/partners/", indexable: page ? isIndexable(page) : false });
+  return pageMetadata({ title: "Partner with Desert Peak", description: "For licensed producers, realtors, mortgage brokers and dealers: how referrals to Desert Peak Insurance work, and the portal where you see their status.", path: "/partners/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 /** Replaces the legacy /work-with-us. The program itself stays off until counsel has filled the rule table. */
 export default async function Partners() {

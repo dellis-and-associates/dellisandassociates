@@ -32,6 +32,18 @@ export const SiteSettings: GlobalConfig = {
     },
     { name: "officeHours", type: "text" },
     {
+      name: "promotedWave",
+      type: "select",
+      required: true,
+      defaultValue: "1",
+      options: [
+        { label: "1 — launch set only", value: "1" },
+        { label: "2 — plus remaining city and state-product pages", value: "2" },
+        { label: "3 — plus resources", value: "3" },
+      ],
+      admin: { position: "sidebar", description: "Indexation: documents in this wave and below are indexable once reviewed. Promotion is this field, not a deploy. Criteria in SEO-PLAYBOOK.md." },
+    },
+    {
       name: "advisor",
       type: "group",
       admin: { description: "The advisor panel in the homepage hero. The photo is optional; the panel holds without one." },

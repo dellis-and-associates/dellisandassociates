@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getArticles, getPage } from "@/src/lib/content";
+import { getArticles, getPage, getPromotedWave } from "@/src/lib/content";
 import { articlePath, isWritten } from "@/src/lib/routes";
 import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
 import { ARTICLE_SECTIONS } from "@/src/collections/Articles";
@@ -9,7 +9,7 @@ import { EmptyState } from "@/src/components/ui/misc";
 export const revalidate = false;
 export async function generateMetadata() {
   const page = await getPage("/resources/");
-  return pageMetadata({ title: "Insurance guides and glossary", description: "Plain-language guides to auto, home, life, Medicare and commercial insurance in Arizona, Nevada, Utah and Idaho, plus a glossary of the words on your policy.", path: "/resources/", indexable: page ? isIndexable(page) : false });
+  return pageMetadata({ title: "Insurance guides and glossary", description: "Plain-language guides to auto, home, life, Medicare and commercial insurance in Arizona, Nevada, Utah and Idaho, plus a glossary of the words on your policy.", path: "/resources/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 
 export default async function Resources() {

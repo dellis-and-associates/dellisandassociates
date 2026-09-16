@@ -16,6 +16,8 @@ export const db = () => (cached ??= getPayload({ config }));
 const cachedFind = <T>(key: string[], tags: string[], fn: () => Promise<T>) => unstable_cache(fn, key, { tags, revalidate: false })();
 
 export const getSiteSettings = () => cachedFind(["site-settings"], [tag.nav], async () => (await db()).findGlobal({ slug: "site-settings", depth: 1 }) as Promise<SiteSetting>);
+/** The promoted indexation wave (SiteSettings). Cached with the nav tag, so a change revalidates with the rest of the shell. */
+export const getPromotedWave = async (): Promise<number> => Number((await getSiteSettings()).promotedWave ?? 1);
 export const getCompliance = () => cachedFind(["compliance-settings"], [tag.compliance], async () => (await db()).findGlobal({ slug: "compliance-settings", depth: 0 }) as Promise<ComplianceSetting>);
 
 export const getProducts = () => cachedFind(["products"], ["products"], async () => (await (await db()).find({ collection: "products", limit: 0, pagination: false, depth: 0, sort: "name" })).docs as Product[]);

@@ -1,4 +1,4 @@
-import { getPage, getProducts, getSiteSettings, getStates } from "@/src/lib/content";
+import { getPage, getProducts, getSiteSettings, getStates, getPromotedWave } from "@/src/lib/content";
 import { faqJsonLd, isIndexable, jsonLd, orgJsonLd, pageMetadata } from "@/src/lib/seo";
 import { richTextToPlain } from "@/src/lib/text";
 import { PageBlocks } from "@/src/components/site/page-blocks";
@@ -9,7 +9,7 @@ export const revalidate = false;
 
 export async function generateMetadata() {
   const page = await getPage("/");
-  return pageMetadata({ title: "Desert Peak Insurance — independent, AZ · NV · UT · ID", description: page?.seo?.description ?? "We compare the carriers we represent across auto, home, life, Medicare and commercial lines, and tell you what we find. The analysis costs nothing.", path: "/", indexable: page ? isIndexable(page) : false });
+  return pageMetadata({ title: "Desert Peak Insurance — independent, AZ · NV · UT · ID", description: page?.seo?.description ?? "We compare the carriers we represent across auto, home, life, Medicare and commercial lines, and tell you what we find. The analysis costs nothing.", path: "/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 
 /**

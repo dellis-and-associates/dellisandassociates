@@ -292,6 +292,10 @@ export interface Product {
    */
   reviewStatus: 'draft' | 'in-review' | 'reviewed';
   /**
+   * Stamped when reviewStatus first becomes reviewed. Shown as "Last reviewed" and cited in Article JSON-LD.
+   */
+  reviewedAt?: string | null;
+  /**
    * Promoted by changing this, not by rebuilding.
    */
   indexWave: '1' | '2' | '3';
@@ -740,6 +744,10 @@ export interface Article {
    */
   reviewStatus: 'draft' | 'in-review' | 'reviewed';
   /**
+   * Stamped when reviewStatus first becomes reviewed. Shown as "Last reviewed" and cited in Article JSON-LD.
+   */
+  reviewedAt?: string | null;
+  /**
    * Promoted by changing this, not by rebuilding.
    */
   indexWave: '1' | '2' | '3';
@@ -832,6 +840,10 @@ export interface GlossaryTerm {
    * Only an admin can set reviewed. Everything else renders noindex.
    */
   reviewStatus: 'draft' | 'in-review' | 'reviewed';
+  /**
+   * Stamped when reviewStatus first becomes reviewed. Shown as "Last reviewed" and cited in Article JSON-LD.
+   */
+  reviewedAt?: string | null;
   /**
    * Promoted by changing this, not by rebuilding.
    */
@@ -964,6 +976,10 @@ export interface Page {
    * Only an admin can set reviewed. Everything else renders noindex.
    */
   reviewStatus: 'draft' | 'in-review' | 'reviewed';
+  /**
+   * Stamped when reviewStatus first becomes reviewed. Shown as "Last reviewed" and cited in Article JSON-LD.
+   */
+  reviewedAt?: string | null;
   /**
    * Promoted by changing this, not by rebuilding.
    */
@@ -1722,6 +1738,7 @@ export interface ProductsSelect<T extends boolean = true> {
         image?: T;
       };
   reviewStatus?: T;
+  reviewedAt?: T;
   indexWave?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -1839,6 +1856,7 @@ export interface ArticlesSelect<T extends boolean = true> {
         image?: T;
       };
   reviewStatus?: T;
+  reviewedAt?: T;
   indexWave?: T;
   generation?:
     | T
@@ -1872,6 +1890,7 @@ export interface GlossaryTermsSelect<T extends boolean = true> {
         image?: T;
       };
   reviewStatus?: T;
+  reviewedAt?: T;
   indexWave?: T;
   generation?:
     | T
@@ -1952,6 +1971,7 @@ export interface PagesSelect<T extends boolean = true> {
         image?: T;
       };
   reviewStatus?: T;
+  reviewedAt?: T;
   indexWave?: T;
   updatedAt?: T;
   createdAt?: T;
@@ -2487,6 +2507,10 @@ export interface SiteSetting {
   };
   officeHours?: string | null;
   /**
+   * Indexation: documents in this wave and below are indexable once reviewed. Promotion is this field, not a deploy. Criteria in SEO-PLAYBOOK.md.
+   */
+  promotedWave: '1' | '2' | '3';
+  /**
    * The advisor panel in the homepage hero. The photo is optional; the panel holds without one.
    */
   advisor?: {
@@ -2635,6 +2659,7 @@ export interface SiteSettingsSelect<T extends boolean = true> {
         zip?: T;
       };
   officeHours?: T;
+  promotedWave?: T;
   advisor?:
     | T
     | {

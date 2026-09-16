@@ -41,6 +41,16 @@ export const reviewFields = (): Field[] => [
     },
   },
   {
+    name: "reviewedAt",
+    type: "date",
+    admin: { position: "sidebar", readOnly: true, description: "Stamped when reviewStatus first becomes reviewed. Shown as \"Last reviewed\" and cited in Article JSON-LD." },
+    hooks: {
+      beforeChange: [
+        ({ siblingData, value }) => (siblingData?.reviewStatus === "reviewed" ? (value ?? new Date().toISOString()) : value),
+      ],
+    },
+  },
+  {
     name: "indexWave",
     type: "select",
     required: true,

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getArticle, getArticles } from "@/src/lib/content";
+import { getArticle, getArticles, getPromotedWave } from "@/src/lib/content";
 import { articlePath, glossaryPath, productPath, isWritten } from "@/src/lib/routes";
 import { articleJsonLd, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata, SITE } from "@/src/lib/seo";
 import { ARTICLE_SECTIONS } from "@/src/collections/Articles";
@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ section: 
   const a = await getArticle(section, slug);
   if (!a) return {};
   const fallback = `${a.title}: a plain-language guide from an independent agency in Arizona, Nevada, Utah and Idaho.`;
-  return pageMetadata({ title: a.seo?.title ?? a.title, description: a.seo?.description ?? a.excerpt ?? (richTextToPlain(a.body).slice(0, 150) || fallback), path: articlePath(section, slug), indexable: isIndexable(a), type: "article" });
+  return pageMetadata({ title: a.seo?.title ?? a.title, description: a.seo?.description ?? a.excerpt ?? (richTextToPlain(a.body).slice(0, 150) || fallback), path: articlePath(section, slug), indexable: isIndexable(a, { promotedWave: await getPromotedWave() }), type: "article" });
 }
 export default async function ArticlePage({ params }: { params: Promise<{ section: string; slug: string }> }) {
   const { section, slug } = await params;

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getPage, getProducts, getStates } from "@/src/lib/content";
+import { getPage, getProducts, getStates, getPromotedWave } from "@/src/lib/content";
 import { productPath, statePath } from "@/src/lib/routes";
 import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
@@ -10,7 +10,7 @@ import { PageBlocks } from "@/src/components/site/page-blocks";
 export const revalidate = false;
 export async function generateMetadata() {
   const page = await getPage("/insurance/");
-  return pageMetadata({ title: "Insurance lines we write", description: "Every personal and commercial line Desert Peak Insurance writes, with what each policy is for and where it is available.", path: "/insurance/", indexable: page ? isIndexable(page) : false });
+  return pageMetadata({ title: "Insurance lines we write", description: "Every personal and commercial line Desert Peak Insurance writes, with what each policy is for and where it is available.", path: "/insurance/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 
 export default async function InsuranceHub() {

@@ -140,6 +140,12 @@ export const schema = {
   RUM_WRITE_KEY: { required: false },
   NEXT_PUBLIC_RUM_ENABLED: { required: false },
 
+  // Staging guard: set on preview deployments only; production refuses to boot with it on.
+  STAGING_NOINDEX: { required: false, validate: (v) => (v === "true" || v === "false" ? null : 'must be "true" or "false"') },
+
+  // IndexNow (optional): the key file is served at /{key}.txt and submissions run only in production.
+  INDEXNOW_KEY: { required: false, validate: (v) => (/^[a-zA-Z0-9-]{8,128}$/.test(v) ? null : "must be 8–128 characters of letters, digits or hyphens") },
+
   // Error reporting (optional)
   ERROR_REPORTING_DSN: { required: false, degrade: "ERROR_REPORTING_DSN is unset; errors stay in server logs." },
 } as const satisfies Record<string, Spec>;
@@ -204,6 +210,8 @@ export function validateEnv(source: Record<string, string | undefined>): { env: 
       problems.push(`NEXT_PUBLIC_SITE_URL must be ${PRODUCTION_SITE_URL} in production (canonical, OG url and JSON-LD all derive from it)`);
     if (isLocalDatabase(out.PAYLOAD_DATABASE_URI))
       problems.push("PAYLOAD_DATABASE_URI points at a local database; production refuses to boot");
+    if (out.STAGING_NOINDEX === "true")
+      problems.push("STAGING_NOINDEX is true; that is a preview-only flag and production refuses to boot with it");
   }
 
   if (problems.length) throw new EnvError(problems);

@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getGlossary, getTerm } from "@/src/lib/content";
+import { getGlossary, getTerm, getPromotedWave } from "@/src/lib/content";
 import { glossaryPath, productPath } from "@/src/lib/routes";
 import { breadcrumbJsonLd, definedTermJsonLd, isIndexable, jsonLd, pageMetadata, SITE } from "@/src/lib/seo";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const t = await getTerm((await params).slug);
   if (!t) return {};
-  return pageMetadata({ title: `${t.term}, defined`, description: t.seo?.description ?? (richTextToPlain(t.definition).slice(0, 150) || `What "${t.term}" means on an insurance policy, in plain language, with a worked example.`), path: glossaryPath(t.slug), indexable: isIndexable(t) });
+  return pageMetadata({ title: `${t.term}, defined`, description: t.seo?.description ?? (richTextToPlain(t.definition).slice(0, 150) || `What "${t.term}" means on an insurance policy, in plain language, with a worked example.`), path: glossaryPath(t.slug), indexable: isIndexable(t, { promotedWave: await getPromotedWave() }) });
 }
 export default async function Term({ params }: { params: Promise<{ slug: string }> }) {
   const t = await getTerm((await params).slug);

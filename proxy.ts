@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { env } from "@/src/env";
 
 /**
  * The redirect map, served with the right status codes. Rows come from the
@@ -43,6 +44,9 @@ async function rows(origin: string): Promise<Map<string, Row>> {
 const GONE = new Response("<!doctype html><title>Gone</title><h1>That page is gone</h1><p>It was part of the old site and has no replacement. <a href=\"/\">Home</a></p>", { status: 410, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "public, max-age=3600" } });
 
 export async function proxy(request: NextRequest) {
+  // IndexNow ownership file: /{key}.txt containing the key, served from the env value so the key is never committed.
+  if (env.INDEXNOW_KEY && request.nextUrl.pathname === `/${env.INDEXNOW_KEY}.txt`)
+    return new Response(env.INDEXNOW_KEY, { headers: { "content-type": "text/plain; charset=utf-8", "cache-control": "public, max-age=86400" } });
   const path = request.nextUrl.pathname.endsWith("/") ? request.nextUrl.pathname : `${request.nextUrl.pathname}/`;
   const map = await rows(request.nextUrl.origin);
   const row = map.get(path.toLowerCase());
@@ -59,10 +63,13 @@ export async function proxy(request: NextRequest) {
       if (page?.ok) return new Response(await page.text(), { status: 404, headers: { "content-type": "text/html; charset=utf-8", "cache-control": "no-store" } });
     }
   }
-  return NextResponse.next();
+  const next = NextResponse.next();
+  // Every non-production deployment is noindex at the header level, whatever a page's own robots meta says.
+  if (env.APP_ENV !== "production") next.headers.set("X-Robots-Tag", "noindex, nofollow");
+  return next;
 }
 
 export const config = {
   // Everything except static assets, the admin, and the API itself.
-  matcher: ["/((?!_next/|admin|api/|og/|fonts/|brand/|certificates/|favicon|apple-touch-icon|icon-|manifest\\.webmanifest|robots\\.txt|sitemap\\.xml).*)"],
+  matcher: ["/((?!_next/|admin|api/|og/|fonts/|brand/|certificates/|favicon|apple-touch-icon|icon-|manifest\\.webmanifest|robots\\.txt|sitemap[a-z-]*\\.xml).*)"],
 };

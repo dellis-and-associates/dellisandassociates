@@ -11,15 +11,29 @@ export const ogImagePath = (path: string) => abs(`/og${path === "/" ? "/" : path
 
 const trim = (s: string, n: number) => (s.length <= n ? s : `${s.slice(0, n - 1).replace(/\s+\S*$/, "")}…`);
 
+export const BRAND = "Desert Peak Insurance";
+export const TITLE_MAX = 60;
+/**
+ * The title contract: the template's own phrase, then " | Desert Peak Insurance"
+ * when the pair fits in 60 characters. Long product and article names (the SEO
+ * brief's patterns overflow on them) keep the phrase and drop the suffix rather
+ * than ship a truncated brand name; see DECISIONS.md, SEO.
+ */
+export function seoTitle(base: string, brand: string | false = BRAND): string {
+  const withBrand = brand ? `${base} | ${brand}` : base;
+  if (withBrand.length <= TITLE_MAX) return withBrand;
+  return trim(base, TITLE_MAX);
+}
+
 /**
  * Metadata for a route. Indexability is structural: a route is indexable only
  * when its document is reviewed, its wave is 1 (or promoted), and it is not a
  * utility route; a TODO token anywhere in the local text also means noindex
  * (page-generation: unknown field → the page does not build as indexable).
  */
-export function pageMetadata(opts: { title: string; description: string; path: string; indexable: boolean; image?: string | null; type?: "website" | "article" }): Metadata {
+export function pageMetadata(opts: { title: string; description: string; path: string; indexable: boolean; image?: string | null; type?: "website" | "article"; brand?: string | false }): Metadata {
   // Absolute: the layout's "— Desert Peak Insurance" template would push most titles past 60 characters.
-  const title = trim(opts.title, 60);
+  const title = seoTitle(opts.title, opts.brand ?? BRAND);
   const description = trim(opts.description, 155);
   return {
     title: { absolute: title },
@@ -27,13 +41,19 @@ export function pageMetadata(opts: { title: string; description: string; path: s
     alternates: { canonical: abs(opts.path) },
     robots: opts.indexable ? { index: true, follow: true } : { index: false, follow: true },
     // Every page ships an OG image: the brand template rendered for this path by app/(frontend)/og (verify:seo checks it).
-    openGraph: { title, description, url: abs(opts.path), siteName: "Desert Peak Insurance", type: opts.type ?? "website", images: [{ url: opts.image ?? ogImagePath(opts.path), width: 1200, height: 630, alt: title }] },
-    twitter: { card: "summary_large_image", title, description, images: [opts.image ?? ogImagePath(opts.path)] },
+    openGraph: { title, description, url: abs(opts.path), siteName: BRAND, locale: "en_US", type: opts.type ?? "website", images: [{ url: opts.image ?? ogImagePath(opts.path), width: 1200, height: 630, alt: title }] },
+    twitter: { card: "summary_large_image", title, description, images: [{ url: opts.image ?? ogImagePath(opts.path), alt: title }] },
   };
 }
 
-export function isIndexable(doc: { reviewStatus?: string | null; indexWave?: string | null }, extra: { utility?: boolean; hasTodo?: boolean } = {}): boolean {
-  return doc.reviewStatus === "reviewed" && doc.indexWave === "1" && !extra.utility && !extra.hasTodo;
+/**
+ * Structural indexability: reviewed, in a wave the site has promoted, not a
+ * utility route, and no required fact still a TODO token. `promotedWave` comes
+ * from SiteSettings (default 1), so promotion is a field change, not a deploy.
+ */
+export function isIndexable(doc: { reviewStatus?: string | null; indexWave?: string | null }, extra: { utility?: boolean; hasTodo?: boolean; promotedWave?: number } = {}): boolean {
+  const wave = Number(doc.indexWave ?? 3);
+  return doc.reviewStatus === "reviewed" && wave <= (extra.promotedWave ?? 1) && !extra.utility && !extra.hasTodo;
 }
 
 export const textHasTodo = (...values: (string | null | undefined)[]) => values.some((v) => hasTodo(v));
@@ -51,6 +71,25 @@ export const orgJsonLd = (site: { name: string; phone?: string | null; email?: s
   ...(site.email ? { email: site.email } : {}),
   areaServed: states.map((s) => ({ "@type": "State", name: s })),
   sameAs: [site.social?.facebook, site.social?.instagram].filter(Boolean),
+});
+
+/** WebSite + SearchAction: truthful because the header search dialog and /search/ both exist. */
+export const websiteJsonLd = () => ({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: BRAND,
+  url: SITE,
+  potentialAction: { "@type": "SearchAction", target: { "@type": "EntryPoint", urlTemplate: `${SITE}/search/?q={search_term_string}` }, "query-input": "required name=search_term_string" },
+});
+
+/** The author every article points at; only fields that are visible on /about/daniel-ellis/. */
+export const personJsonLd = (p: { name: string; jobTitle?: string | null; path: string }) => ({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: p.name,
+  ...(p.jobTitle ? { jobTitle: p.jobTitle } : {}),
+  url: abs(p.path),
+  worksFor: { "@type": "InsuranceAgency", name: BRAND, url: SITE },
 });
 
 export const serviceJsonLd = (name: string, path: string, description: string, areas: string[]) => ({
@@ -88,7 +127,7 @@ export const definedTermJsonLd = (term: string, path: string, description: strin
   inDefinedTermSet: { "@type": "DefinedTermSet", name: "Desert Peak Insurance glossary", url: abs("/resources/glossary/") },
 });
 
-export const articleJsonLd = (title: string, path: string, description: string, dates: { published: string; modified: string }) => ({
+export const articleJsonLd = (title: string, path: string, description: string, dates: { published: string; modified: string }, extra: { author?: { name: string; path: string } | null; reviewedAt?: string | null } = {}) => ({
   "@context": "https://schema.org",
   "@type": "Article",
   headline: title,
@@ -96,7 +135,9 @@ export const articleJsonLd = (title: string, path: string, description: string, 
   description,
   datePublished: dates.published,
   dateModified: dates.modified,
-  publisher: { "@type": "Organization", name: "Desert Peak Insurance", url: SITE },
+  ...(extra.author ? { author: { "@type": "Person", name: extra.author.name, url: abs(extra.author.path) } } : {}),
+  ...(extra.reviewedAt ? { reviewedBy: { "@type": "Person", name: extra.author?.name ?? BRAND, ...(extra.author ? { url: abs(extra.author.path) } : {}) } } : {}),
+  publisher: { "@type": "Organization", name: BRAND, url: SITE },
 });
 
 export type { Crumb };

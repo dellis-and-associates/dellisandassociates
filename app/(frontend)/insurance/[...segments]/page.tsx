@@ -54,10 +54,10 @@ export async function generateMetadata({ params }: { params: Promise<Params> }) 
   const { segments } = await params;
   const r = await resolve(segments);
   if (!r) return {};
-  if (r.kind === "state") return metaStateHub(r.state);
-  if (r.kind === "product") return metaProduct(r.product, r.sub);
-  if (r.kind === "product-state") return metaProductState(r.product, r.state);
-  return metaProductCity(r.product, r.state, r.city);
+  if (r.kind === "state") return await metaStateHub(r.state);
+  if (r.kind === "product") return await metaProduct(r.product, r.sub);
+  if (r.kind === "product-state") return await metaProductState(r.product, r.state);
+  return await metaProductCity(r.product, r.state, r.city);
 }
 
 export default async function InsuranceRoute({ params }: { params: Promise<Params> }) {

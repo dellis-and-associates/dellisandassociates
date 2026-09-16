@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { getCities, getPage, getProducts, getStates } from "@/src/lib/content";
+import { getCities, getPage, getProducts, getStates, getPromotedWave } from "@/src/lib/content";
 import { productCityPath, statePath } from "@/src/lib/routes";
 import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
@@ -8,7 +8,7 @@ import { hasTodo } from "@/src/fields";
 export const revalidate = false;
 export async function generateMetadata() {
   const page = await getPage("/locations/");
-  return pageMetadata({ title: "Locations we serve", description: "Every city in Arizona, Nevada, Utah and Idaho where Desert Peak Insurance writes policies, with local pages for the ten lines people search for most.", path: "/locations/", indexable: page ? isIndexable(page) : false });
+  return pageMetadata({ title: "Locations we serve", description: "Every city in Arizona, Nevada, Utah and Idaho where Desert Peak Insurance writes policies, with local pages for the ten lines people search for most.", path: "/locations/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 
 export default async function Locations() {

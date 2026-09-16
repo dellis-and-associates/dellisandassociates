@@ -1,4 +1,4 @@
-import { getCarriers, getPage } from "@/src/lib/content";
+import { getCarriers, getPage, getPromotedWave } from "@/src/lib/content";
 import { SITE, breadcrumbJsonLd, isIndexable, jsonLd, pageMetadata } from "@/src/lib/seo";
 import { Breadcrumb } from "@/src/components/ui/breadcrumb";
 import { EmptyState } from "@/src/components/ui/misc";
@@ -7,7 +7,7 @@ import { TableWrap, td, th } from "@/src/components/ui/table";
 export const revalidate = false;
 export async function generateMetadata() {
   const page = await getPage("/carriers/");
-  return pageMetadata({ title: "Carrier partners", description: "The insurance carriers Desert Peak Insurance is appointed with, by line and by state.", path: "/carriers/", indexable: page ? isIndexable(page) : false });
+  return pageMetadata({ title: "Carrier partners", description: "The insurance carriers Desert Peak Insurance is appointed with, by line and by state.", path: "/carriers/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 export default async function Carriers() {
   const carriers = await getCarriers();

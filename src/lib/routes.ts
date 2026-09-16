@@ -14,6 +14,8 @@ export type RouteGroup =
   | "product-state" | "product-city" | "article" | "glossary" | "agent" | "carrier" | "utility";
 
 export type RouteEntry = {
+  /** ISO date from the document's updatedAt (never build time); undefined when no document backs the route. */
+  lastmod?: string;
   path: string;
   group: RouteGroup;
   /** Documents this route is composed from, by slug, for cache tags. */
@@ -55,45 +57,52 @@ export const tag = {
 
 type ReviewLike = { reviewStatus?: string | null; indexWave?: string | null };
 const reviewed = (d: ReviewLike) => d.reviewStatus === "reviewed";
-export type ArticleLike = { section: string; slug: string; reviewStatus?: string | null; indexWave?: string | null; wordCount?: number | null; generation?: { status?: string | null } | null };
+export type ArticleLike = { section: string; slug: string; reviewStatus?: string | null; indexWave?: string | null; wordCount?: number | null; generation?: { status?: string | null } | null; updatedAt?: string | null };
+type Dated = { updatedAt?: string | null };
+/** The newest real date among the documents a route is composed from; undefined when none carries one. */
+const newest = (...docs: (Dated | undefined)[]): string | undefined => {
+  const dates = docs.map((d) => d?.updatedAt).filter((d): d is string => typeof d === "string" && !Number.isNaN(Date.parse(d)));
+  return dates.length ? dates.sort().at(-1) : undefined;
+};
 /** Written = generated from an authored draft (or given a body in the admin). Seeded shells are not public. */
 export const isWritten = (a: Pick<ArticleLike, "wordCount" | "generation">): boolean => a.generation?.status === "drafted" || (a.wordCount ?? 0) > 0;
 const wave = (d: ReviewLike, fallback: 1 | 2 | 3): 1 | 2 | 3 => (d.indexWave === "1" ? 1 : d.indexWave === "2" ? 2 : d.indexWave === "3" ? 3 : fallback);
 
 /** Wave rules from the page-generation prompt: 1 = core, legal, product hubs, state hubs, top-30 city pages; 2 = remaining city and state-product pages; 3 = resources. */
 export function buildManifest(input: {
-  products: Pick<Product, "slug" | "tier" | "thirdSubpage" | "reviewStatus" | "indexWave">[];
-  states: (Pick<State, "slug"> & { cities: (Pick<City, "slug"> & { factsComplete?: number | null })[] })[];
-  pages: Pick<Page, "path" | "template" | "reviewStatus" | "indexWave" | "noindex">[];
+  products: (Pick<Product, "slug" | "tier" | "thirdSubpage" | "reviewStatus" | "indexWave"> & Dated)[];
+  states: (Pick<State, "slug"> & Dated & { cities: (Pick<City, "slug"> & Dated & { factsComplete?: number | null })[] })[];
+  pages: (Pick<Page, "path" | "template" | "reviewStatus" | "indexWave" | "noindex"> & Dated)[];
   articles: ArticleLike[];
-  glossary: { slug: string; reviewStatus?: string | null; indexWave?: string | null }[];
-}): RouteEntry[] {
+  glossary: ({ slug: string; reviewStatus?: string | null; indexWave?: string | null } & Dated)[];
+}, opts: { promotedWave?: number } = {}): RouteEntry[] {
+  const promoted = opts.promotedWave ?? 1;
   const out: RouteEntry[] = [];
-  const push = (e: Omit<RouteEntry, "indexable"> & { reviewed: boolean }) => out.push({ ...e, indexable: e.reviewed && e.wave === 1 });
+  const push = (e: Omit<RouteEntry, "indexable"> & { reviewed: boolean }) => out.push({ ...e, indexable: e.reviewed && e.wave <= promoted });
   for (const pg of input.pages) {
     const utility = pg.template === "utility" || pg.noindex === true;
     const group: RouteGroup = utility ? "utility" : pg.path.startsWith("/legal/") ? "legal" : "core";
-    push({ path: pg.path, group, tags: [tag.page(pg.path)], wave: utility ? 3 : wave(pg, 1), reviewed: reviewed(pg) && !utility, priority: pg.path === "/" ? 1 : group === "legal" ? 0.3 : 0.6, changefreq: pg.path === "/" ? "weekly" : "monthly" });
+    push({ path: pg.path, lastmod: newest(pg), group, tags: [tag.page(pg.path)], wave: utility ? 3 : wave(pg, 1), reviewed: reviewed(pg) && !utility, priority: pg.path === "/" ? 1 : group === "legal" ? 0.3 : 0.6, changefreq: pg.path === "/" ? "weekly" : "monthly" });
   }
   for (const p of input.products) {
     const r = reviewed(p);
-    push({ path: productPath(p), group: "product-hub", tags: [tag.product(p.slug)], wave: wave(p, 1), reviewed: r, priority: 0.8, changefreq: "monthly" });
-    push({ path: productSubPath(p, "coverage"), group: "product-coverage", tags: [tag.product(p.slug)], wave: wave(p, 1), reviewed: r, priority: 0.7, changefreq: "monthly" });
-    push({ path: productSubPath(p, "third"), group: "product-third", tags: [tag.product(p.slug)], wave: wave(p, 1), reviewed: r, priority: 0.6, changefreq: "monthly" });
+    push({ path: productPath(p), lastmod: newest(p), group: "product-hub", tags: [tag.product(p.slug)], wave: wave(p, 1), reviewed: r, priority: 0.8, changefreq: "monthly" });
+    push({ path: productSubPath(p, "coverage"), lastmod: newest(p), group: "product-coverage", tags: [tag.product(p.slug)], wave: wave(p, 1), reviewed: r, priority: 0.7, changefreq: "monthly" });
+    push({ path: productSubPath(p, "third"), lastmod: newest(p), group: "product-third", tags: [tag.product(p.slug)], wave: wave(p, 1), reviewed: r, priority: 0.6, changefreq: "monthly" });
     for (const s of input.states) {
-      push({ path: productStatePath(p, s), group: "product-state", tags: [tag.product(p.slug), tag.state(s.slug)], wave: p.tier === "1" ? 1 : 2, reviewed: r, priority: 0.7, changefreq: "monthly" });
+      push({ path: productStatePath(p, s), lastmod: newest(p, s), group: "product-state", tags: [tag.product(p.slug), tag.state(s.slug)], wave: p.tier === "1" ? 1 : 2, reviewed: r, priority: 0.7, changefreq: "monthly" });
       // A city page is indexable only with every CityFacts field filled; the page itself writes noindex from the same fact (compose.localText).
-      if (p.tier === "1") for (const c of s.cities) push({ path: productCityPath(p, s, c), group: "product-city", tags: [tag.product(p.slug), tag.state(s.slug), tag.city(s.slug, c.slug)], wave: TOP_CITY_SLUGS.has(c.slug) ? 1 : 2, reviewed: r && (c.factsComplete === undefined || c.factsComplete === CITY_FACT_COUNT), priority: 0.6, changefreq: "monthly" });
+      if (p.tier === "1") for (const c of s.cities) push({ path: productCityPath(p, s, c), lastmod: newest(p, s, c), group: "product-city", tags: [tag.product(p.slug), tag.state(s.slug), tag.city(s.slug, c.slug)], wave: TOP_CITY_SLUGS.has(c.slug) ? 1 : 2, reviewed: r && (c.factsComplete === undefined || c.factsComplete === CITY_FACT_COUNT), priority: 0.6, changefreq: "monthly" });
     }
   }
-  for (const s of input.states) push({ path: statePath(s), group: "state-hub", tags: [tag.state(s.slug)], wave: 1, reviewed: true, priority: 0.7, changefreq: "monthly" });
+  for (const s of input.states) push({ path: statePath(s), lastmod: newest(s), group: "state-hub", tags: [tag.state(s.slug)], wave: 1, reviewed: true, priority: 0.7, changefreq: "monthly" });
   // Resource index pages: the glossary hub is a complete, real index (indexable); the six section lists carry drafts and stay noindex until their sections are reviewed.
   const hasGlossaryPage = input.pages.some((pg) => pg.path === "/resources/glossary/");
   if (!hasGlossaryPage) push({ path: "/resources/glossary/", group: "core", tags: ["glossary"], wave: 1, reviewed: true, priority: 0.6, changefreq: "monthly" });
   for (const section of ["guides", "state-requirements", "compare", "how-to", "life-events", "seasonal"]) push({ path: `/resources/${section}/`, group: "core", tags: ["articles"], wave: 3, reviewed: false, priority: 0.5, changefreq: "weekly" });
   // An article shell with no body is not a public page: it is listed nowhere, is not in the manifest (so the proxy answers 404) and appears the day it is drafted.
-  for (const a of input.articles.filter(isWritten)) push({ path: articlePath(a.section, a.slug), group: "article", tags: [tag.article(a.slug)], wave: wave(a, 3), reviewed: reviewed(a), priority: 0.5, changefreq: "monthly" });
-  for (const g of input.glossary) push({ path: glossaryPath(g.slug), group: "glossary", tags: [tag.glossary(g.slug)], wave: wave(g, 3), reviewed: reviewed(g), priority: 0.4, changefreq: "yearly" });
+  for (const a of input.articles.filter(isWritten)) push({ path: articlePath(a.section, a.slug), lastmod: newest(a), group: "article", tags: [tag.article(a.slug)], wave: wave(a, 3), reviewed: reviewed(a), priority: 0.5, changefreq: "monthly" });
+  for (const g of input.glossary) push({ path: glossaryPath(g.slug), lastmod: newest(g), group: "glossary", tags: [tag.glossary(g.slug)], wave: wave(g, 3), reviewed: reviewed(g), priority: 0.4, changefreq: "yearly" });
   return out;
 }
 
