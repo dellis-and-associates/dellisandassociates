@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // The IA uses trailing slashes everywhere (sitemap package, redirect map, canonical URLs).
   trailingSlash: true,
   poweredByHeader: false,
+  // Size build workers from available memory instead of CPU count: a full build prerenders ~475 pages, each worker
+  // loads Payload, and on a memory-constrained machine the CPU-count default was killed by the OOM killer.
+  experimental: { memoryBasedWorkersCount: true },
   images: {
     localPatterns: [{ pathname: "/api/media/file/**" }],
   },
