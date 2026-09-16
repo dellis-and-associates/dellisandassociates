@@ -98,7 +98,7 @@ Two notes so the run is read honestly:
 | C6 | [ ] | The IndexNow key file is live | engineer | `https://www.desertpeakinsurance.com/{key}.txt` returns the key as plain text. Bing and Yandex act on IndexNow; **Google does not** |
 | C7 | [ ] | A live page's source shows a self-referencing canonical, a title of 60 characters or fewer, and no `noindex` | engineer | `pnpm verify:seo --base=https://www.desertpeakinsurance.com` |
 | C8 | [ ] | The 21 legacy redirects are serving from the live domain | engineer | `pnpm verify:redirects --base=https://www.desertpeakinsurance.com` — 21 of 21 in one hop, 18 × 301 and 3 × 410 |
-| C9 | [ ] | The promoted wave is `1` in the admin | client (marketing) | Settings → Site settings → Promoted wave reads `1 — launch set only`. Promotion rules are in `SEO-PLAYBOOK.md` |
+| C9 | [ ] | The promoted wave is `3` in the admin | client (marketing) | Settings → Site settings → Promoted wave reads `3 — resources`. The client asked on 2026-09-16 for the whole library to be submitted, so all 1,043 eligible URLs are offered at once. `SEO-PLAYBOOK.md` records what that trades away and how to pull a batch back |
 | C10 | [ ] | Google Business Profile claimed, and its URL added to Site settings → Social → Google | client | The profile is published and the URL renders on the site |
 
 ## D. First week
@@ -131,7 +131,8 @@ in `TODO-CLIENT-DATA.md`.
 
 | Missing item | Owner | Effect on indexation |
 |---|---|---|
-| Nearest office or agent, for each of the 38 cities | client | **All city pages are noindex and absent from the sitemap**, including the top-30 city pages that are otherwise in wave 1. A city page needs all seven `CityFacts` fields; six are filled, this is the seventh. This is the single largest block |
+| Nearest office or agent, for each of the 38 cities | client | No longer blocks indexation: the field is contact detail, not local content, so it is excluded from the indexing rule (`CITY_INDEXING_FACT_KEYS`). Until it arrives the city pages simply do not name an office, and the "nearest office" row is hidden rather than shown empty |
+| Local life-insurance content, for each of the 38 cities | client | The 38 life-insurance city pages are live but noindex: hazards do not change a life policy, so there is not enough honest local substance to submit them. An employer mix, a local estate or probate rule, or anything genuinely local would clear the floor and add them to the sitemap automatically |
 | Office address | client | Feeds the field above, the footer, and the agency structured data |
 | Legal entity name | client | The organisation's structured data and the legal pages carry a placeholder until it arrives |
 | Four state license numbers (AZ, NV, UT, ID) | client | The per-state licensing pages and the licensing disclosure are incomplete; nothing is guessed |

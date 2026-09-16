@@ -7,15 +7,17 @@
 import type { City, Product, State } from "../payload-types.ts";
 import { hasTodo } from "../fields/index.ts";
 
-export type Block = "intro" | "local-risk" | "state-minimums" | "coverage" | "covered" | "discounts" | "faq" | "related" | "cta";
+export type Block = "intro" | "local-risk" | "local-guidance" | "product-summary" | "state-minimums" | "coverage" | "covered" | "discounts" | "faq" | "related" | "cta";
 
 export function blockOrder(product: Pick<Product, "tier" | "category">, city?: Pick<City, "sizeBand"> | null): Block[] {
   const commercial = product.category === "Commercial";
   const band = city?.sizeBand ?? "mid";
   if (!city) return commercial ? ["intro", "state-minimums", "coverage", "covered", "faq", "cta", "related"] : ["intro", "state-minimums", "coverage", "covered", "discounts", "faq", "cta", "related"];
-  if (band === "large") return commercial ? ["intro", "local-risk", "coverage", "state-minimums", "covered", "faq", "cta", "related"] : ["intro", "local-risk", "state-minimums", "coverage", "covered", "discounts", "faq", "cta", "related"];
-  if (band === "small") return commercial ? ["intro", "state-minimums", "local-risk", "coverage", "faq", "cta", "related"] : ["intro", "state-minimums", "local-risk", "covered", "coverage", "faq", "cta", "related"];
-  return commercial ? ["intro", "coverage", "local-risk", "state-minimums", "covered", "faq", "cta", "related"] : ["intro", "coverage", "local-risk", "state-minimums", "covered", "discounts", "faq", "cta", "related"];
+  // A city page carries the local blocks and points at the product pages for the shared detail; repeating the hub's
+  // coverage, discounts and FAQ on 380 pages made them near-duplicates of each other (verify:uniqueness).
+  if (band === "large") return ["intro", "local-risk", "local-guidance", "state-minimums", "product-summary", "cta", "related"];
+  if (band === "small") return ["intro", "state-minimums", "local-risk", "local-guidance", "product-summary", "cta", "related"];
+  return ["intro", "local-risk", "local-guidance", "state-minimums", "product-summary", "cta", "related"];
 }
 
 const HAZARD_TEXT: Record<string, string> = {
@@ -56,7 +58,8 @@ export function localText(product: Pick<Product, "name" | "category">, city: Cit
   parts.push({ key: "neighborhoods", text: hoods.length ? `We write policies across ${hoods.join(", ")}.` : "", todo: hoods.length === 0 });
   add("notableRegulatory", f.notableRegulatory, (s) => s);
   add("nearestOfficeOrAgent", f.nearestOfficeOrAgent, (s) => `Nearest office or agent: ${s}.`);
-  const complete = parts.every((p) => !p.todo);
+  // Indexability follows the local content; the office line is optional (src/collections/Cities.ts).
+  const complete = parts.every((p) => p.key === "nearestOfficeOrAgent" || !p.todo);
   const words = parts.map((p) => p.text).join(" ").split(/\s+/).filter(Boolean).length;
   return { parts, complete, words };
 }

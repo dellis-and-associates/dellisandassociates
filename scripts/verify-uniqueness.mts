@@ -5,7 +5,20 @@ import { jaccard, shingles } from "./lib/similarity.mts";
 const failures: string[] = [];
 const notes: string[] = [];
 const manifest = await withPayload(loadManifest);
-const local = (html: string) => strip([...html.matchAll(/<[^>]*data-local[^>]*>([\s\S]*?)<\/(?:section|div)>/g)].map((m) => m[1]!).join(" "));
+/** Text inside the page's data-local regions. Nested elements are common there, so the closing tag is found by counting depth rather than by a lazy match, which used to stop at the first inner </div> and undercount every page. */
+const local = (html: string) => {
+  const out: string[] = [];
+  for (const m of html.matchAll(/<(section|div)\b[^>]*\bdata-local\b[^>]*>/g)) {
+    const tag = m[1]!;
+    let depth = 1;
+    const scan = new RegExp(`<(/?)${tag}\\b[^>]*>`, "g");
+    scan.lastIndex = m.index! + m[0].length;
+    let hit: RegExpExecArray | null = null;
+    while (depth > 0 && (hit = scan.exec(html))) depth += hit[1] ? -1 : 1;
+    out.push(html.slice(m.index! + m[0].length, hit ? hit.index : html.length));
+  }
+  return strip(out.join(" "));
+};
 const body = (html: string) => strip(main(html).replace(/<nav[\s\S]*?<\/nav>|<section[^>]*cta-band[\s\S]*?<\/section>/g, ""));
 
 async function family(group: string, threshold: number, textOf: (html: string) => string) {

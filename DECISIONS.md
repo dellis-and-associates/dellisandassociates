@@ -630,3 +630,55 @@ gone from `public/brand`.
 
 **Open Graph images are the stacked logo split across the card.** `src/lib/og.tsx` sets the outlined wordmark top-left of a 760 px text column (kicker, title, rule, domain) and the badge at 280 px on the right, vertically centred, on `surface`; the Medicare TPMO band stays below. Every route that calls `pageMetadata()` renders its own image at `/og/{path}image.png`; the root layout now declares `/og/image.png` as the default so no page ships without one.
 
+
+## SEO: submitting the whole library (2026-09-16)
+
+**The promoted wave is 3 and the sitemap offers 1,043 URLs.** The client asked
+for all ~1,000 pages to be submitted rather than released in waves. The wave
+machinery stays in the code and in the admin — it is how a batch is pulled back
+out — but nothing is being held behind it today. Counts: core 38, insurance 252,
+locations 346, resources 186, glossary 221.
+
+**The nearest-office fact no longer gates indexation.** A city page needed all
+seven `CityFacts` fields, and the seventh is an office contact the client has
+not supplied, which held every city page out of the index. It is contact detail,
+not local content: `CITY_INDEXING_FACT_KEYS` is now the six content facts, the
+empty row is hidden rather than rendered blank, and the 38 cities are indexable.
+
+**City pages stopped repeating the product hub.** Every city page for one
+product used to carry the hub's copy, which put 400 pairs at 0.79–0.80
+similarity — doorway pages by any reading. The composition now summarises the
+product in a paragraph, links to the hub and the product × state page, and
+spends its words on `src/lib/local-guidance.ts`: one paragraph per hazard the
+city actually carries, written for that coverage group, so a monsoon city and a
+wildfire city read differently for the same policy. Worst pair is now 0.55
+against a 0.70 gate, and no indexable city page is under 250 local words.
+
+**A city page earns indexing with 150 words of hazard guidance for its own
+line.** `hasLocalGuidance()` applies the floor in the manifest and in the page's
+own robots meta, so the sitemap and the page can never disagree. The 38
+life-insurance city pages fall below it and are noindex: the only hazard with
+anything honest to say about a life policy is outdoor work in prolonged heat,
+and padding thirty-eight pages to reach a word count is the thing the duplicate
+gate exists to stop. They stay live and linked for visitors.
+
+**Thin pages are topped up from the city's own researched facts, not from
+invention.** Henderson and Boulder City carry three hazards each and landed just
+under the floor. `TRAITS` in `src/lib/local-guidance.ts` adds a paragraph of
+ordinary policy mechanism — loss assessment where an association governs the
+property, ordinance or law where the stock is older, watercraft and trailer
+limits where boats and RVs are ordinary, uninsured motorist where visitor
+traffic is heavy — and only when the city's own fact prose states the trait, and
+only while the page is below 260 guidance words. Cities with plenty to say
+locally are given nothing extra to share with everywhere else.
+
+**Article section hubs are indexable now that they list articles.**
+`/resources/guides/` and its five siblings were hardcoded noindex from when the
+sections were empty, which left 204 indexable articles linking into a noindex
+page. They are indexable when the section lists at least one written article,
+and the "(draft)" label beside unreviewed titles is gone.
+
+**`verify:uniqueness` counted local words with a lazy regex.** It matched to the
+first `</div>`, so any `data-local` section with a nested element was cut short
+and every city page was undercounted. It now counts tag depth. The 250-word rule
+is unchanged; it is now measured against what the page actually says.

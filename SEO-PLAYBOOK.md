@@ -79,7 +79,7 @@ pnpm verify:sitemaps --base=https://www.desertpeakinsurance.com
 
 That prints the URL count in the sitemap index and its five children (core,
 insurance, locations, resources, glossary). Indexed should climb toward that
-count, not toward 1,083 — routes that are not in a promoted wave are noindex on
+count, not toward 1,083 — routes that are not offered are noindex on
 purpose and are absent from the sitemap by design.
 
 What to do:
@@ -181,9 +181,11 @@ promotion, a redesign, or a domain change.
 
 ## Indexation waves
 
-The site does not offer all 1,083 routes to search engines at once. A new domain
-publishing a thousand pages in a day is how sites end up half-indexed. Pages are
-released in three waves.
+The site holds 1,083 routes. The waves below are how they were released; on
+2026-09-16 the client asked for the whole library to be submitted at once, so
+**the promoted wave is 3** and every route that passes the rules is in the
+sitemap: 1,043 URLs (core 38, insurance 252, locations 346, resources 186,
+glossary 221).
 
 | Wave | What is in it |
 |---|---|
@@ -191,51 +193,51 @@ released in three waves.
 | 2 | The remaining city pages and the tier-2 product × state pages |
 | 3 | Resources: the 186 articles and the 221 glossary terms |
 
-A page is offered to search engines only when **all four** of these are true:
+A page is offered to search engines only when **all** of these are true:
 
 1. Its document is marked `reviewed`.
 2. Its wave is at or below the site's promoted wave.
 3. It is not a utility route (the two form pages are never indexable).
 4. No required fact is still missing.
+5. For a city page, the page has enough to say about *that line of insurance*
+   *in that city* — see below.
 
-Rule 4 is why **city pages are not indexable today**. A city page needs all
-seven `CityFacts` fields; six were researched and filled on 2026-09-15, and the
-seventh — nearest office or agent — is empty for all 38 cities because it
-depends on an office address the client has not supplied. Until that field is
-filled, the top-30 city pages in wave 1 stay noindex and stay out of the
-sitemap, whatever the promoted wave says.
+Rule 4 counts the six local-content facts in `CityFacts`. The seventh, nearest
+office or agent, is deliberately excluded (`CITY_INDEXING_FACT_KEYS`): it is
+contact detail waiting on an office address the client has not supplied, and it
+does not change what the page says about local risk. All 38 cities have the six
+content facts filled.
 
-### When to promote to wave 2
+Rule 5 is `hasLocalGuidance()` in `src/lib/local-guidance.ts`. A city page earns
+a place in the index by carrying at least 150 words of guidance written for the
+hazards that city actually has and for that coverage group. In practice:
 
-Both conditions, not either:
+- **342 of the 380 city pages are indexed.** Auto, home, renters, motorcycle,
+  umbrella and the four commercial lines all clear the floor in every city.
+- **The 38 life-insurance city pages are noindex.** A wildfire, a monsoon or a
+  flood plain does not change a life policy, and the writer refused to pretend
+  otherwise; the only hazard with anything honest to say about life is outdoor
+  work in prolonged heat, one paragraph. Thirty-eight near-identical URLs is
+  what the duplicate gate exists to prevent. They stay live for visitors and
+  are linked from the life hub; they are simply not submitted. If the client
+  later supplies genuinely local life content (an employer mix, a local estate
+  or probate rule), they clear the floor and join the sitemap automatically.
 
-- **At least 90% of wave 1 is indexed in Search Console.** Get the number from
-  Search Console → Indexing → Pages → indexed count, and the denominator from
-  `pnpm verify:sitemaps --base=https://www.desertpeakinsurance.com`, which
-  prints how many URLs the sitemap currently offers. Ninety per cent of a wave
-  that is still climbing week over week is worth waiting for; a wave stuck at
-  70% for three weeks is a problem to diagnose, not to bury under more pages.
-- **Every wave-2 city has all seven `CityFacts` fields filled.** Payload admin →
-  Cities. The list shows a `factsComplete` column (0–7) and a `factsMissing`
-  column naming what is absent. Sort by `factsComplete`; every row must read 7.
+`verify:uniqueness` enforces the other half of the same idea: no indexable city
+page may carry under 250 local words, and no pair may exceed 0.70 similarity
+(the worst pair today is 0.55).
 
-### When to promote to wave 3
+### If indexing stalls
 
-Wave 3 is the resource library, and it is released per document rather than in
-one go. Every article and glossary term is already marked `reviewed`, so moving
-the promoted wave straight to 3 would offer all 407 resource pages on the same
-day — exactly what the wave plan exists to prevent.
+Promoting a wave is no longer the lever — everything is promoted. If the
+indexed share sits below 90% for three weeks, the diagnosis is on the page, not
+the queue: check Search Console's exclusion reasons first, and read the
+"Discovered – currently not indexed" and "Crawled – not indexed" buckets before
+changing anything. Adding pages is not the answer to pages not being indexed.
 
-Release them in batches instead:
-
-- Leave the promoted wave at 2.
-- In the admin, open the articles or glossary terms you want live, change the
-  sidebar field **Index wave** from `3 — as review completes` to
-  `2 — second wave`, and save. They join the promoted wave immediately.
-- A sensible batch is 20–40 documents a week while the indexed share of the
-  previous batch holds above 90%.
-- Move the promoted wave to 3 only when you want everything remaining to go out
-  at once, and only after waves 1 and 2 are settled.
+To take a batch back out, set **Index wave** on those documents to `3` and drop
+the site's promoted wave; the sitemap and the pages' robots meta follow within
+the revalidation window.
 
 The **Index wave** field is admin-only. If you cannot see or change it, your
 account is an editor and an admin has to make the change.

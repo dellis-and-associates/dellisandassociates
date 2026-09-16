@@ -5,6 +5,13 @@ import { hasTodo, slugField } from "../fields/index.ts";
 
 /** The seven CityFacts fields the uniqueness requirement depends on (page-generation Phase 2). */
 export const CITY_FACT_KEYS = ["county", "nearestOfficeOrAgent", "localHazards", "housingStock", "drivingContext", "neighborhoods", "notableRegulatory"] as const;
+/**
+ * The subset that decides indexability: the local content a reader comes for.
+ * `nearestOfficeOrAgent` is a service detail the client still owes
+ * (TODO-CLIENT-DATA.md #14); the page simply leaves it out, and its absence no
+ * longer keeps 380 researched city pages out of the index.
+ */
+export const CITY_INDEXING_FACT_KEYS = CITY_FACT_KEYS.filter((k) => k !== "nearestOfficeOrAgent");
 
 export const LOCAL_HAZARDS = [
   "monsoon-dust",

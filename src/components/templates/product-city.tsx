@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { City, LocationOverride, Product, State } from "../../payload-types.ts";
 import { blockOrder, ctaLabel, hazardLabel, localText } from "../../lib/compose.ts";
+import { localGuidance } from "../../lib/local-guidance.ts";
 import { productCityPath, productPath, productStatePath, statePath } from "../../lib/routes.ts";
 import { breadcrumbJsonLd, jsonLd, localBusinessJsonLd, SITE } from "../../lib/seo.ts";
 import { hasTodo } from "../../fields/index.ts";
@@ -22,6 +23,7 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
   const local = localText(product, city, state);
   const order = blockOrder(product, city);
   const f = city.cityFacts ?? {};
+  const guidance = localGuidance(product, city);
   const testimonial = override?.testimonial?.consentOnFile && override.testimonial.quote ? override.testimonial : null;
   const blocks: Record<string, React.ReactNode> = {
     intro: (
@@ -46,6 +48,23 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
         </div>
         {f.notableRegulatory && !hasTodo(f.notableRegulatory) ? <p className="max-w-measure-body">{f.notableRegulatory}</p> : null}
         <p className="sr-only">{local.parts.map((p) => p.text).join(" ")}</p>
+      </section>
+    ),
+    "local-guidance": guidance.length ? (
+      <section aria-labelledby="local-guidance" className="grid gap-4" data-local>
+        <h2 id="local-guidance">What that means for {product.name.toLowerCase()} here</h2>
+        {guidance.map((text, i) => <p key={i} className="max-w-measure-body">{text}</p>)}
+      </section>
+    ) : null,
+    "product-summary": (
+      <section aria-labelledby="product-summary" className="grid gap-3">
+        <h2 id="product-summary">{product.name}, in short</h2>
+        {product.summary && !hasTodo(product.summary) ? <p className="max-w-measure-body">{product.summary}</p> : null}
+        <p className="max-w-measure-body font-sans text-small">
+          The full detail — what the policy covers part by part, what it does not, the discounts carriers offer and the questions people ask — is on{" "}
+          <Link href={productPath(product)}>the {product.name.toLowerCase()} page</Link>, and the state rules are on{" "}
+          <Link href={productStatePath(product, state)}>{product.name} in {state.name}</Link>.
+        </p>
       </section>
     ),
     "state-minimums": <StateMinimumsTable state={state} product={product} />,

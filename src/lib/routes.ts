@@ -6,8 +6,14 @@
  * from this one place.
  */
 import type { City, Page, Product, State } from "../payload-types.ts";
-/** Number of CityFacts fields (src/collections/Cities.ts CITY_FACT_KEYS); a city with fewer filled is not indexable. */
-export const CITY_FACT_COUNT = 7;
+import { hasLocalGuidance } from "./local-guidance.ts";
+/** The CityFacts a page needs to be indexable; the office contact is not one of them (src/collections/Cities.ts). */
+export const CITY_INDEXING_FACTS = ["county", "localHazards", "housingStock", "drivingContext", "neighborhoods", "notableRegulatory"];
+/** `factsMissing` is the comma-separated list the Cities hook writes; a city is ready when none of the required facts is in it. */
+export const cityReady = (c: { factsMissing?: string | null }): boolean => {
+  const missing = (c.factsMissing ?? "").split(",").map((s) => s.trim()).filter(Boolean);
+  return !missing.some((k) => CITY_INDEXING_FACTS.includes(k));
+};
 
 export type RouteGroup =
   | "core" | "legal" | "product-hub" | "product-coverage" | "product-third" | "state-hub"
@@ -70,8 +76,8 @@ const wave = (d: ReviewLike, fallback: 1 | 2 | 3): 1 | 2 | 3 => (d.indexWave ===
 
 /** Wave rules from the page-generation prompt: 1 = core, legal, product hubs, state hubs, top-30 city pages; 2 = remaining city and state-product pages; 3 = resources. */
 export function buildManifest(input: {
-  products: (Pick<Product, "slug" | "tier" | "thirdSubpage" | "reviewStatus" | "indexWave"> & Dated)[];
-  states: (Pick<State, "slug"> & Dated & { cities: (Pick<City, "slug"> & Dated & { factsComplete?: number | null })[] })[];
+  products: (Pick<Product, "slug" | "category" | "tier" | "thirdSubpage" | "reviewStatus" | "indexWave"> & Dated)[];
+  states: (Pick<State, "slug"> & Dated & { cities: (Pick<City, "slug"> & Dated & { factsComplete?: number | null; factsMissing?: string | null; cityFacts?: { localHazards?: string[] | null } | null })[] })[];
   pages: (Pick<Page, "path" | "template" | "reviewStatus" | "indexWave" | "noindex"> & Dated)[];
   articles: ArticleLike[];
   glossary: ({ slug: string; reviewStatus?: string | null; indexWave?: string | null } & Dated)[];
@@ -92,14 +98,18 @@ export function buildManifest(input: {
     for (const s of input.states) {
       push({ path: productStatePath(p, s), lastmod: newest(p, s), group: "product-state", tags: [tag.product(p.slug), tag.state(s.slug)], wave: p.tier === "1" ? 1 : 2, reviewed: r, priority: 0.7, changefreq: "monthly" });
       // A city page is indexable only with every CityFacts field filled; the page itself writes noindex from the same fact (compose.localText).
-      if (p.tier === "1") for (const c of s.cities) push({ path: productCityPath(p, s, c), lastmod: newest(p, s, c), group: "product-city", tags: [tag.product(p.slug), tag.state(s.slug), tag.city(s.slug, c.slug)], wave: TOP_CITY_SLUGS.has(c.slug) ? 1 : 2, reviewed: r && (c.factsComplete === undefined || c.factsComplete === CITY_FACT_COUNT), priority: 0.6, changefreq: "monthly" });
+      if (p.tier === "1") for (const c of s.cities) push({ path: productCityPath(p, s, c), lastmod: newest(p, s, c), group: "product-city", tags: [tag.product(p.slug), tag.state(s.slug), tag.city(s.slug, c.slug)], wave: TOP_CITY_SLUGS.has(c.slug) ? 1 : 2, reviewed: r && cityReady(c) && hasLocalGuidance(p, (c.cityFacts?.localHazards ?? []) as string[]), priority: 0.6, changefreq: "monthly" });
     }
   }
   for (const s of input.states) push({ path: statePath(s), lastmod: newest(s), group: "state-hub", tags: [tag.state(s.slug)], wave: 1, reviewed: true, priority: 0.7, changefreq: "monthly" });
   // Resource index pages: the glossary hub is a complete, real index (indexable); the six section lists carry drafts and stay noindex until their sections are reviewed.
   const hasGlossaryPage = input.pages.some((pg) => pg.path === "/resources/glossary/");
   if (!hasGlossaryPage) push({ path: "/resources/glossary/", group: "core", tags: ["glossary"], wave: 1, reviewed: true, priority: 0.6, changefreq: "monthly" });
-  for (const section of ["guides", "state-requirements", "compare", "how-to", "life-events", "seasonal"]) push({ path: `/resources/${section}/`, group: "core", tags: ["articles"], wave: 3, reviewed: false, priority: 0.5, changefreq: "weekly" });
+  // Section hubs are indexable once the section lists written articles; an empty section stays out.
+  for (const section of ["guides", "state-requirements", "compare", "how-to", "life-events", "seasonal"]) {
+    const written = input.articles.filter((a) => a.section === section && isWritten(a));
+    push({ path: `/resources/${section}/`, group: "core", tags: ["articles"], wave: 3, reviewed: written.length > 0, priority: 0.5, changefreq: "weekly", lastmod: newest(...written) });
+  }
   // An article shell with no body is not a public page: it is listed nowhere, is not in the manifest (so the proxy answers 404) and appears the day it is drafted.
   for (const a of input.articles.filter(isWritten)) push({ path: articlePath(a.section, a.slug), lastmod: newest(a), group: "article", tags: [tag.article(a.slug)], wave: wave(a, 3), reviewed: reviewed(a), priority: 0.5, changefreq: "monthly" });
   for (const g of input.glossary) push({ path: glossaryPath(g.slug), lastmod: newest(g), group: "glossary", tags: [tag.glossary(g.slug)], wave: wave(g, 3), reviewed: reviewed(g), priority: 0.4, changefreq: "yearly" });
