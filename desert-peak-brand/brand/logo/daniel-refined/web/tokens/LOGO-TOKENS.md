@@ -12,7 +12,7 @@ Extracted 2026-09-15 from `brand/logo/daniel-refined/web/logo-horizontal.svg`. T
 | wordmark | `ink` | #1E293B | 13.63 | Desert Peak / INSURANCE in the web lockup. |
 | wordmark-accent | `brand` | #243858 | 10.98 | INSURANCE in the stacked print version (v1). On the site the action colour is the badge's navy: buttons, links. |
 | ground | `surface` | #FBF6F2 | 1.00 | The paper the logo sits on. The page background. |
-| ground-inverse | `surface-inverse` | #0C1421 | 17.20 | Where the reversed lockup goes: footer, dark panels. |
+| ground-inverse | `surface-inverse` | #1E293B | 13.63 | Where the reversed lockup goes: footer, dark panels. |
 
 ## What the logo adds to the site
 
