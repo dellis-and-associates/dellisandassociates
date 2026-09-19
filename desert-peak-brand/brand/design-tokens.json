@@ -3,7 +3,7 @@
   "$description": "Desert Peak Insurance design tokens. Single source of truth. Palette from Daniel's badge (navy and sage on cream; 2026-09-15) on the Strata token system. Everything in dist/ and brand-sheet.html is generated from this file by scripts/build-tokens.ts; do not edit generated files.",
   "$extensions": {
     "com.desertpeak": {
-      "version": "2.4.0",
+      "version": "3.0.0",
       "direction": "daniel-badge",
       "theme": {
         "light": "populated",
@@ -751,116 +751,94 @@
       }
     },
     "scale": {
-      "$description": "Minor third, ratio 1.2, base 17px. Each step pairs its own line-height and letter-spacing.",
-      "caption": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "0.75rem",
-          "lineHeight": 1.4,
-          "letterSpacing": "0.01em",
-          "fontWeight": 500
-        },
-        "$description": "12px. Captions, table footnotes, legal lines. Never below 12px."
-      },
-      "small": {
-        "$type": "typography",
-        "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "0.875rem",
-          "lineHeight": 1.5,
-          "letterSpacing": "0",
-          "fontWeight": 400
-        },
-        "$description": "14px. UI text, table cells, form help."
-      },
+      "$description": "Fluid from here: each step is a clamp(), so there is no breakpoint to maintain. Display steps are Instrument Serif and never fall below 26px; everything below that is Figtree. Nothing is set under 15px, which is why the 14px `small` and 12px `caption` steps no longer exist — `meta` (15px) is the floor for a label and `copy`/`body` (17px) for a paragraph.",
       "body": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.serif}",
+          "fontFamily": "{typography.family.text}",
           "fontSize": "1.0625rem",
-          "lineHeight": 1.6,
+          "lineHeight": 1.7,
           "letterSpacing": "0",
           "fontWeight": 400
         },
-        "$description": "17px. Long-form paragraphs. Source Serif 4 at opsz 17."
+        "$description": "17px. Paragraphs, every template. The floor for any paragraph, disclosures included."
       },
       "lead": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.serif}",
-          "fontSize": "1.25rem",
-          "lineHeight": 1.55,
+          "fontFamily": "{typography.family.text}",
+          "fontSize": "clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)",
+          "lineHeight": 1.6,
           "letterSpacing": "0",
           "fontWeight": 400
         },
-        "$description": "20px. Article intros and pull text."
+        "$description": "18→21px, fluid. Article intros and the paragraph under a display heading."
       },
       "title-sm": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "1.5rem",
-          "lineHeight": 1.3,
-          "letterSpacing": "-0.005em",
+          "fontFamily": "{typography.family.text}",
+          "fontSize": "clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem)",
+          "lineHeight": 1.28,
+          "letterSpacing": "-0.008em",
           "fontWeight": 600
         },
-        "$description": "24px. h4, card titles."
+        "$description": "18→22px, fluid. h3, h4, card and item titles. Below the display face's 28px floor, so it is Figtree."
       },
       "title": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "1.8125rem",
-          "lineHeight": 1.25,
-          "letterSpacing": "-0.01em",
-          "fontWeight": 600
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem)",
+          "lineHeight": 1.15,
+          "letterSpacing": "-0.012em",
+          "fontWeight": 400
         },
-        "$description": "29px. h3."
+        "$description": "26→36px, fluid. Section headings inside an article."
       },
       "title-lg": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "2.1875rem",
-          "lineHeight": 1.2,
-          "letterSpacing": "-0.012em",
-          "fontWeight": 600
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(2rem, 1.35rem + 2.6vw, 3.25rem)",
+          "lineHeight": 1.06,
+          "letterSpacing": "-0.016em",
+          "fontWeight": 400
         },
-        "$description": "35px. h2."
+        "$description": "32→52px, fluid. h2."
       },
       "headline": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "2.625rem",
-          "lineHeight": 1.12,
-          "letterSpacing": "-0.015em",
-          "fontWeight": 640
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(2.5rem, 1.8rem + 2.8vw, 4rem)",
+          "lineHeight": 1.06,
+          "letterSpacing": "-0.018em",
+          "fontWeight": 400
         },
-        "$description": "42px. h1 on content pages."
+        "$description": "40→64px, fluid. h1 on content pages — a clear step above title-lg (h2), which tops out at 52px."
       },
       "display": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "3.1875rem",
-          "lineHeight": 1.06,
-          "letterSpacing": "-0.02em",
-          "fontWeight": 660
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem)",
+          "lineHeight": 1.02,
+          "letterSpacing": "-0.022em",
+          "fontWeight": 400
         },
-        "$description": "51px. Home and hub page heroes."
+        "$description": "44→84px, fluid. Hub and landing heroes."
       },
       "display-lg": {
         "$type": "typography",
         "$value": {
-          "fontFamily": "{typography.family.sans}",
-          "fontSize": "3.8125rem",
-          "lineHeight": 1.02,
-          "letterSpacing": "-0.022em",
-          "fontWeight": 680
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(3rem, 1.7rem + 5.2vw, 6rem)",
+          "lineHeight": 1.0,
+          "letterSpacing": "-0.024em",
+          "fontWeight": 400
         },
-        "$description": "61px. Rare. Campaign or landing heroes only."
+        "$description": "48→96px, fluid. Rare: one campaign surface."
       },
       "display-xl": {
         "$type": "typography",

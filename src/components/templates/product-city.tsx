@@ -35,12 +35,12 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
       <section aria-labelledby="local" className="grid gap-4" data-local>
         <h2 id="local">{product.name} in {city.name}: what is different here</h2>
         <div className="grid gap-4 rounded-surface border border-border bg-surface-raised p-6 md:grid-cols-2">
-          <dl className="grid gap-3 font-sans text-small">
+          <dl className="grid gap-3 font-text text-copy">
             {f.county && !hasTodo(f.county) ? <div><dt className="kicker">County</dt><dd>{f.county}</dd></div> : null}
             {f.localHazards?.length ? <div><dt className="kicker">Local hazards</dt><dd><ul className="mt-1 grid gap-1">{f.localHazards.map((h) => <li key={h} className="border-l-2 border-accent pl-3">{hazardLabel(h)}</li>)}</ul></dd></div> : null}
             {f.nearestOfficeOrAgent && !hasTodo(f.nearestOfficeOrAgent) ? <div><dt className="kicker">Nearest office or agent</dt><dd>{f.nearestOfficeOrAgent}</dd></div> : null}
           </dl>
-          <dl className="grid gap-3 font-sans text-small">
+          <dl className="grid gap-3 font-text text-copy">
             {f.housingStock && !hasTodo(f.housingStock) ? <div><dt className="kicker">Housing</dt><dd>{f.housingStock}</dd></div> : null}
             {f.drivingContext && !hasTodo(f.drivingContext) ? <div><dt className="kicker">Driving</dt><dd>{f.drivingContext}</dd></div> : null}
             {f.neighborhoods?.length ? <div><dt className="kicker">Neighborhoods</dt><dd>{f.neighborhoods.map((n) => n.name).join(", ")}</dd></div> : null}
@@ -60,7 +60,7 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
       <section aria-labelledby="product-summary" className="grid gap-3">
         <h2 id="product-summary">{product.name}, in short</h2>
         {product.summary && !hasTodo(product.summary) ? <p className="max-w-measure-body">{product.summary}</p> : null}
-        <p className="max-w-measure-body font-sans text-small">
+        <p className="max-w-measure-body font-text text-copy">
           The full detail — what the policy covers part by part, what it does not, the discounts carriers offer and the questions people ask — is on{" "}
           <Link href={productPath(product)}>the {product.name.toLowerCase()} page</Link>, and the state rules are on{" "}
           <Link href={productStatePath(product, state)}>{product.name} in {state.name}</Link>.
@@ -78,7 +78,7 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
     ),
   };
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 pb-24 md:px-8 md:pb-10">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10 pb-24 md:pb-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(localBusinessJsonLd(`${site.name} — ${product.name} in ${city.name}`, path, city.name, state.name, site.phone))} />
       <Breadcrumb items={crumbs} />
@@ -87,10 +87,10 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
         <p className="lead max-w-measure-body">{product.summary && !hasTodo(product.summary) ? product.summary : `An independent comparison of ${product.name.toLowerCase()} for ${city.name}, ${state.name}, across the carriers we represent.`}</p>
         <StrataRule />
       </header>
-      {testimonial ? <blockquote data-testimonial className="max-w-measure-body border-l-4 border-accent pl-4"><p>“{testimonial.quote}”</p><footer className="mt-2 font-sans text-small text-ink-muted">{testimonial.attribution}</footer></blockquote> : null}
+      {testimonial ? <blockquote data-testimonial className="max-w-measure-body border-l-4 border-accent pl-4"><p>“{testimonial.quote}”</p><footer className="mt-2 font-text text-copy text-ink-muted">{testimonial.attribution}</footer></blockquote> : null}
       <div className="grid gap-12">{order.map((b) => <div key={b}>{blocks[b]}</div>)}</div>
       <MedicareDisclaimer product={product} />
-      <p className="font-sans text-caption text-ink-muted">Also: <Link href={productStatePath(product, state)} className="ui-link ui-link-inline">{product.name} in {state.name}</Link></p>
+      <p className="font-text text-meta text-ink-muted">Also: <Link href={productStatePath(product, state)} className="ui-link ui-link-inline">{product.name} in {state.name}</Link></p>
     </div>
   );
 }

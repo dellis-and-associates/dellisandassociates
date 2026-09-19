@@ -23,15 +23,15 @@ export default async function Search({ searchParams }: { searchParams: Promise<{
       ]
     : [];
   return (
-    <div className="mx-auto grid max-w-measure-page gap-8 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-8 px-gutter py-10">
       <h1>Search</h1>
       <form action="/search/" method="get" role="search" aria-label="Search results" className="flex max-w-measure-body gap-2">
         <label htmlFor="s-q" className="sr-only">Search products, places and terms</label>
-        <input id="s-q" name="q" type="search" defaultValue={q} autoFocus className="min-h-11 flex-1 rounded-control border border-border-strong bg-surface-raised px-3 font-sans text-body" />
-        <button className="min-h-11 rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink">Search</button>
+        <input id="s-q" name="q" type="search" defaultValue={q} autoFocus className="min-h-11 flex-1 rounded-control border border-border-strong bg-surface-raised px-3 font-text text-body" />
+        <button className="min-h-11 rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink">Search</button>
       </form>
       {q && results.length === 0 ? <EmptyState title={`Nothing matched “${q}”`} action={{ label: "See every line we write", href: "/insurance/" }}>Try the name of a line (auto, home, umbrella), a city, or a word from your policy.</EmptyState> : null}
-      {results.length ? <ol className="grid gap-3 font-sans text-small" aria-label="Results">{results.slice(0, 50).map((r) => <li key={r.href}><span className="kicker mr-2">{r.kind}</span><Link href={r.href} className="font-semibold">{r.label}</Link></li>)}</ol> : null}
+      {results.length ? <ol className="grid gap-3 font-text text-copy" aria-label="Results">{results.slice(0, 50).map((r) => <li key={r.href}><span className="kicker mr-2">{r.kind}</span><Link href={r.href} className="font-semibold">{r.label}</Link></li>)}</ol> : null}
     </div>
   );
 }

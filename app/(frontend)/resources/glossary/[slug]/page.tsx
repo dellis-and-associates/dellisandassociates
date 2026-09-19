@@ -27,7 +27,7 @@ export default async function Term({ params }: { params: Promise<{ slug: string 
   const products = (t.relatedProducts ?? []).filter((r): r is Exclude<typeof r, number> => typeof r === "object");
   const def = richTextToPlain(t.definition);
   return (
-    <article className="mx-auto grid max-w-measure-page gap-8 px-4 py-10 md:px-8">
+    <article className="mx-auto grid max-w-measure-shell gap-8 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       {def ? <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(definedTermJsonLd(t.term, path, def))} /> : null}
       <Breadcrumb items={crumbs} />
@@ -35,13 +35,13 @@ export default async function Term({ params }: { params: Promise<{ slug: string 
       {def ? (
         <>
           <RichText value={t.definition} className="prose lead" />
-          {t.inPractice ? <section aria-labelledby="practice" className="grid gap-3"><h2 id="practice" className="font-sans text-title-sm">In practice</h2><RichText value={t.inPractice} /></section> : null}
-          {t.example ? <section aria-labelledby="example" className="grid gap-3 rounded-surface border border-border bg-surface-sunken p-6"><h2 id="example" className="font-sans text-title-sm">A worked example</h2><RichText value={t.example} /></section> : null}
+          {t.inPractice ? <section aria-labelledby="practice" className="grid gap-3"><h2 id="practice" className="font-text text-title-sm">In practice</h2><RichText value={t.inPractice} /></section> : null}
+          {t.example ? <section aria-labelledby="example" className="grid gap-3 rounded-surface border border-border bg-surface-sunken p-6"><h2 id="example" className="font-text text-title-sm">A worked example</h2><RichText value={t.example} /></section> : null}
         </>
       ) : null}
-      {products.length ? <p className="font-sans text-small">Applies to: {products.map((p) => <Link key={p.id} href={productPath(p)} className="mr-3">{p.name}</Link>)}</p> : null}
+      {products.length ? <p className="font-text text-copy">Applies to: {products.map((p) => <Link key={p.id} href={productPath(p)} className="mr-3">{p.name}</Link>)}</p> : null}
       <RelatedLinks title="Related terms" items={related.slice(0, 5).map((r) => ({ label: r.term, href: glossaryPath(r.slug) }))} />
-      <p className="font-sans text-small"><Link href="/resources/glossary/">All terms</Link></p>
+      <p className="font-text text-copy"><Link href="/resources/glossary/">All terms</Link></p>
     </article>
   );
 }

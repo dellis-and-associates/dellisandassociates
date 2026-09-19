@@ -14,7 +14,7 @@ export async function generateMetadata() {
 export default async function Partners() {
   const page = await getPage("/partners/");
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Partners", href: "/partners/"}], SITE))} />
       <Breadcrumb items={[{ label: "Partners", href: "/partners/" }]} />
       <header className="grid gap-4"><h1>{page?.title ?? "Partner with Desert Peak"}</h1><p className="lead max-w-measure-body">{page?.lede ?? "Licensed producers, realtors, mortgage brokers and dealers refer people to us; we compare the carriers we represent and tell them what we find. The portal shows you the status of every referral you send."}</p><StrataRule /></header>
@@ -23,15 +23,15 @@ export default async function Partners() {
           <PageBlocks layout={page?.layout} />
           <section aria-labelledby="how" className="grid gap-4">
             <h2 id="how">How it works</h2>
-            <ol className="grid gap-4 md:grid-cols-3">{[["You refer", "From the portal or your link, with the person's permission."], ["They opt in", "One message, from us, naming you. They can say no."], ["You see the status", "Contacted, qualified, and any thank-you the program allows in their state."]].map(([t, b], i) => <li key={t} className="grid gap-2 border-t-2 border-ink pt-4"><span className="font-sans text-caption font-medium text-ink-muted tabular">Step {i + 1}</span><h3 className="font-sans text-title-sm">{t}</h3><p className="font-sans text-small text-ink-muted">{b}</p></li>)}</ol>
+            <ol className="grid gap-4 md:grid-cols-3">{[["You refer", "From the portal or your link, with the person's permission."], ["They opt in", "One message, from us, naming you. They can say no."], ["You see the status", "Contacted, qualified, and any thank-you the program allows in their state."]].map(([t, b], i) => <li key={t} className="grid gap-2 border-t-2 border-ink pt-4"><span className="font-text text-meta font-medium text-ink-muted tabular">Step {i + 1}</span><h3 className="font-text text-title-sm">{t}</h3><p className="font-text text-copy text-ink-muted">{b}</p></li>)}</ol>
           </section>
-          <p className="max-w-measure-body font-sans text-small text-ink-muted">Any thank-you for a referral is set by state rules, is never contingent on a policy being sold, and is switched on only after counsel has confirmed the rules for each state. Until then the portal tracks referrals without rewards.</p>
+          <p className="max-w-measure-body font-text text-copy text-ink-muted">Any thank-you for a referral is set by state rules, is never contingent on a policy being sold, and is switched on only after counsel has confirmed the rules for each state. Until then the portal tracks referrals without rewards.</p>
         </div>
         <aside className="grid content-start gap-4 rounded-surface border border-border bg-surface-raised p-5">
-          <h2 className="font-sans text-title-sm">Partner portal</h2>
-          <p className="font-sans text-small text-ink-muted">Sign in to send a referral and see the status of the ones you have sent.</p>
-          <Link href="/partners/portal/" className="inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink no-underline hover:bg-brand-hover">Open the portal</Link>
-          <Link href="/contact/" className="ui-link font-sans text-small">Ask about partnering</Link>
+          <h2 className="font-text text-title-sm">Partner portal</h2>
+          <p className="font-text text-copy text-ink-muted">Sign in to send a referral and see the status of the ones you have sent.</p>
+          <Link href="/partners/portal/" className="inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink no-underline hover:bg-brand-hover">Open the portal</Link>
+          <Link href="/contact/" className="ui-link font-text text-copy">Ask about partnering</Link>
         </aside>
       </div>
     </div>

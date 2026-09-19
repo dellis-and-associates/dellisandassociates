@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.4.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v3.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /* Tailwind v4. Import after tokens.css:  @import "@desert-peak/brand/tokens.css"; @import "@desert-peak/brand/theme.css"; */
 
 @theme inline {
@@ -46,14 +46,6 @@
   --font-mono: var(--dp-font-mono);
 
   --text-*: initial;
-  --text-caption: var(--dp-text-caption-size);
-  --text-caption--line-height: var(--dp-text-caption-line-height);
-  --text-caption--letter-spacing: var(--dp-text-caption-letter-spacing);
-  --text-caption--font-weight: var(--dp-text-caption-weight);
-  --text-small: var(--dp-text-small-size);
-  --text-small--line-height: var(--dp-text-small-line-height);
-  --text-small--letter-spacing: var(--dp-text-small-letter-spacing);
-  --text-small--font-weight: var(--dp-text-small-weight);
   --text-body: var(--dp-text-body-size);
   --text-body--line-height: var(--dp-text-body-line-height);
   --text-body--letter-spacing: var(--dp-text-body-letter-spacing);

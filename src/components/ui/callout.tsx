@@ -15,7 +15,7 @@ export function Callout({ kind = "info", lead, children, className = "" }: { kin
   return (
     <div role={kind === "critical" ? "alert" : undefined} className={`flex gap-3 rounded-surface border border-l-4 p-4 ${s.box} ${className}`}>
       <span className="mt-0.5 shrink-0">{s.icon}</span>
-      <div className="font-sans text-small">
+      <div className="font-text text-copy">
         <strong className="font-semibold">{lead ?? s.word}</strong> {children}
       </div>
     </div>

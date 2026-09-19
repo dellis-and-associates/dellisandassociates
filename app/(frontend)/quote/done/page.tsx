@@ -10,12 +10,12 @@ export default async function Done({ searchParams }: { searchParams: Promise<{ r
   const { ref } = await searchParams;
   const site = await getSiteSettings();
   return (
-    <div className="mx-auto grid max-w-measure-page gap-6 px-4 py-16 md:px-8" data-quote-done>
+    <div className="mx-auto grid max-w-measure-shell gap-6 px-gutter py-16" data-quote-done>
       <ClearDraft />
       <h1>Request received</h1>
       <Callout kind="positive" lead="Saved.">Reference <strong className="tabular" data-reference>{ref}</strong>. A licensed agent will compare the carriers we represent and send you the finding, usually within two business days. If keeping what you have is right, that is what you will hear.</Callout>
       <p className="max-w-measure-body">Questions in the meantime{site.phone ? <>: call <a href={site.phoneHref ?? "#"} className="tabular">{site.phone}</a></> : ": use the contact page"}.</p>
-      <p className="font-sans text-small"><Link href="/">Back to the home page</Link></p>
+      <p className="font-text text-copy"><Link href="/">Back to the home page</Link></p>
     </div>
   );
 }

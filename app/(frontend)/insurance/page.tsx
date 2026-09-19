@@ -17,7 +17,7 @@ export default async function InsuranceHub() {
   const [page, products, states] = await Promise.all([getPage("/insurance/"), getProducts(), getStates()]);
   const groups = [["Personal", products.filter((p) => p.category === "Personal")], ["Commercial", products.filter((p) => p.category === "Commercial")]] as const;
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Insurance", href: "/insurance/"}], SITE))} />
       <Breadcrumb items={[{ label: "Insurance", href: "/insurance/" }]} />
       <div className="grid gap-4">
@@ -45,7 +45,7 @@ export default async function InsuranceHub() {
       ))}
       <PageBlocks layout={page?.layout} />
       <CtaBand heading="Not sure which line you need?" body="Tell us what you own and what you are worried about. We will say which policies matter and which do not." action={{ label: "Request the analysis", href: "/quote/" }} />
-      <p className="font-sans text-small text-ink-muted">States: {states.map((s) => <Link key={s.id} href={statePath(s)} className="mr-3">{s.name}</Link>)}</p>
+      <p className="font-text text-copy text-ink-muted">States: {states.map((s) => <Link key={s.id} href={statePath(s)} className="mr-3">{s.name}</Link>)}</p>
     </div>
   );
 }

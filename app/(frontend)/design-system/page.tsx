@@ -16,7 +16,7 @@ export const metadata = pageMetadata({ title: "Design system", description: "Eve
 
 const Section = ({ id, title, note, children }: { id: string; title: string; note?: string; children: React.ReactNode }) => (
   <section id={id} aria-labelledby={`${id}-h`} className="grid gap-6 border-t border-border pt-10">
-    <div className="grid gap-1"><h2 id={`${id}-h`}>{title}</h2>{note ? <p className="max-w-measure-body font-sans text-small text-ink-muted">{note}</p> : null}</div>
+    <div className="grid gap-1"><h2 id={`${id}-h`}>{title}</h2>{note ? <p className="max-w-measure-body font-text text-copy text-ink-muted">{note}</p> : null}</div>
     {children}
   </section>
 );
@@ -29,9 +29,9 @@ export default async function DesignSystem() {
   const [site, products] = await Promise.all([getSiteSettings(), getProducts()]);
   const ids = ["type", "colour", "buttons", "fields", "choice", "callout", "table", "card", "nav", "disclosure", "states", "brand", "icons", "shell", "home"];
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <Breadcrumb items={[{ label: "Design system", href: "/design-system/" }]} />
-      <header className="grid gap-4"><h1>Design system</h1><p className="lead max-w-measure-body">Twenty-five components, every state, composed only from brand tokens. This page is the review artifact and the visual regression baseline.</p><nav aria-label="Sections" className="flex flex-wrap gap-x-4 gap-y-1 font-sans text-small">{ids.map((i) => <a key={i} href={`#${i}`} className="ui-link px-1">{i}</a>)}</nav></header>
+      <header className="grid gap-4"><h1>Design system</h1><p className="lead max-w-measure-body">Twenty-five components, every state, composed only from brand tokens. This page is the review artifact and the visual regression baseline.</p><nav aria-label="Sections" className="flex flex-wrap gap-x-4 gap-y-1 font-text text-copy">{ids.map((i) => <a key={i} href={`#${i}`} className="ui-link px-1">{i}</a>)}</nav></header>
 
       <Section id="type" title="Typography" note="Minor third on a 17 px base. Archivo for UI and headings, Source Serif 4 for prose. Nothing below 12 px.">
         <p className="display">Coverage is a finding, not a pitch.</p>
@@ -41,13 +41,13 @@ export default async function DesignSystem() {
         <h4>Per person</h4>
         <p className="lead max-w-measure-body">An umbrella policy pays after your auto or home liability limit is used up. Most carriers require an underlying auto limit before they will write one.</p>
         <p className="max-w-measure-body">Body copy is Source Serif 4 at 17 px on a 68ch measure. <a href="#type">Links in prose are underlined</a> with a 3 px offset. <em>Emphasis is the serif italic.</em> Figures in prose are proportional; in tables they are tabular: 250,000 · 50,000 · 25,000.</p>
-        <p className="font-sans text-small">UI text: Archivo 14 px.</p>
-        <p className="font-sans text-caption">Caption: Archivo 12 px, the legal line. Never smaller.</p>
+        <p className="font-text text-copy">UI text: Archivo 14 px.</p>
+        <p className="font-text text-meta">Caption: Archivo 12 px, the legal line. Never smaller.</p>
         <p className="kicker">Kicker above an article title</p>
       </Section>
 
       <Section id="colour" title="Colour roles" note="Surfaces are caliche, ink is basalt, brand is hematite. Ochre is ornament and never text.">
-        <ul className="grid gap-3 sm:grid-cols-3 lg:grid-cols-5 font-sans text-caption">
+        <ul className="grid gap-3 sm:grid-cols-3 lg:grid-cols-5 font-text text-meta">
           {[["bg-surface", "surface"], ["bg-surface-raised", "surface-raised"], ["bg-surface-sunken", "surface-sunken"], ["bg-surface-inverse", "surface-inverse"], ["bg-brand", "brand"], ["bg-brand-subtle", "brand-subtle"], ["bg-accent", "accent (ornament, never text)"], ["bg-positive-surface border-positive-border", "positive-surface / border"], ["bg-notice-surface border-notice-border", "notice-surface / border"], ["bg-critical-surface border-critical-border", "critical-surface / border"]].map(([c, l]) => (
             <li key={l} className="grid gap-1"><span className={`block min-h-12 rounded-surface border border-border ${c}`} aria-hidden /><span>{l}</span></li>
           ))}
@@ -97,7 +97,7 @@ export default async function DesignSystem() {
         </TableWrap>
       </Section>
 
-      <Section id="card" title="Card" note="One kind. Bordered, 4 px radius, shadow-0. Hover is a border change; nothing lifts.">
+      <Section id="card" title="Card" note="One kind. Bordered, 4 px radius,. Hover is a border change; nothing lifts.">
         <CardGrid>
           <Card title="Auto insurance" href="/insurance/auto-insurance/" meta="Every city">Liability, collision and comprehensive for cars and trucks.</Card>
           <Card title="Umbrella insurance" href="/insurance/umbrella-insurance/" meta="Every city">Pays after your auto or home liability limit is used up.</Card>
@@ -115,7 +115,7 @@ export default async function DesignSystem() {
       <Section id="disclosure" title="Accordion, dialog, tooltip, toast" note="Accordion is native details; the dialog is the native element; the tooltip's text is also available on focus.">
         <Accordion items={[{ id: "ds-q1", question: "Does home insurance cover monsoon damage?", answer: <p>Wind and hail from a monsoon storm are usually covered perils; flood from the same storm is not, unless you hold a separate flood policy.</p> }, { id: "ds-q2", question: "What is an underlying limit?", answer: <p>The liability limit your auto or home policy must carry before an umbrella carrier will write the umbrella on top of it.</p> }]} />
         <Dialog id="ds-dialog" title="Remove this vehicle?" open className="static">It will be removed from the comparison. Nothing else changes.</Dialog>
-        <p className="font-sans text-small">A <Tooltip text="The amount you pay before the policy pays.">deductible</Tooltip> applies per claim.</p>
+        <p className="font-text text-copy">A <Tooltip text="The amount you pay before the policy pays.">deductible</Tooltip> applies per claim.</p>
         <div className="relative min-h-24"><Toast message="Saved. Come back any time this week." kind="positive" /></div>
       </Section>
 
@@ -144,7 +144,7 @@ export default async function DesignSystem() {
       </Section>
 
       <Section id="shell" title="Shell" note="The header and footer on this page are the components: sticky bar that compresses on scroll, Insurance and Locations as native menus, the phone, the search link that becomes a ⌘K dialog, the drawer under 768 px; the footer's five columns and the compliance strip in its fixed order.">
-        <p className="max-w-measure-body font-sans text-small">Scroll to see the bar compress; press <kbd className="rounded-control border border-border-strong px-1 font-sans text-caption">Ctrl</kbd> <kbd className="rounded-control border border-border-strong px-1 font-sans text-caption">K</kbd> for search; narrow the window under 768 px for the drawer.</p>
+        <p className="max-w-measure-body font-text text-copy">Scroll to see the bar compress; press <kbd className="rounded-control border border-border-strong px-1 font-text text-meta">Ctrl</kbd> <kbd className="rounded-control border border-border-strong px-1 font-text text-meta">K</kbd> for search; narrow the window under 768 px for the drawer.</p>
       </Section>
 
       <Section id="home" title="Homepage pieces" note="Carrier strip, coverage in four groups, the policy-review moments, the plan-year recognition, the closing band. The testimonial card has no specimen: it renders only from a quote with written consent on file, and none exists yet.">
@@ -154,7 +154,7 @@ export default async function DesignSystem() {
         <Recognition />
         <ClosingBand site={site} />
       </Section>
-      <p className="font-sans text-small"><Link href="/">Home</Link></p>
+      <p className="font-text text-copy"><Link href="/">Home</Link></p>
     </div>
   );
 }

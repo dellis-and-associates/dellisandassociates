@@ -36,7 +36,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ sectio
   const author = { name: site.advisor?.name && !site.advisor.name.includes("{{TODO") ? site.advisor.name : "Desert Peak Insurance", path: AUTHOR_PATH };
   const date = (v: string) => new Date(v).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
   return (
-    <article className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <article className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(articleJsonLd(a.title, path, a.excerpt ?? "", { published: a.createdAt, modified: a.updatedAt }, { author, reviewedAt: a.reviewedAt }))} />
       <Breadcrumb items={crumbs} />
@@ -44,7 +44,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ sectio
         <p className="kicker">{sec?.label}</p>
         <h1>{a.title}</h1>
         {a.excerpt ? <p className="lead max-w-measure-body">{a.excerpt}</p> : null}
-        <p className="font-sans text-caption text-ink-muted">
+        <p className="font-text text-meta text-ink-muted">
           Written by <Link href={author.path} className="ui-link">{author.name}</Link>
           {a.reviewedAt ? <> · <span className="tabular">Last reviewed {date(a.reviewedAt)}</span></> : null}
           <> · <span className="tabular">Updated {date(a.updatedAt)}</span></>
@@ -57,8 +57,8 @@ export default async function ArticlePage({ params }: { params: Promise<{ sectio
           {drafted ? <RichText value={a.body} /> : null}
         </div>
         <aside className="grid content-start gap-8 lg:sticky lg:top-24 lg:self-start">
-          {terms.length ? <nav aria-label="Terms used" className="grid gap-2"><h2 className="font-sans text-title-sm">Terms used</h2><ul className="grid gap-1 font-sans text-small">{terms.map((t) => <li key={t.id}><Link href={glossaryPath(t.slug)} className="ui-link">{t.term}</Link></li>)}</ul></nav> : null}
-          {products.length ? <nav aria-label="Lines this applies to" className="grid gap-2"><h2 className="font-sans text-title-sm">Applies to</h2><ul className="grid gap-1 font-sans text-small">{products.map((p) => <li key={p.id}><Link href={productPath(p)} className="ui-link">{p.name}</Link></li>)}</ul></nav> : null}
+          {terms.length ? <nav aria-label="Terms used" className="grid gap-2"><h2 className="font-text text-title-sm">Terms used</h2><ul className="grid gap-1 font-text text-copy">{terms.map((t) => <li key={t.id}><Link href={glossaryPath(t.slug)} className="ui-link">{t.term}</Link></li>)}</ul></nav> : null}
+          {products.length ? <nav aria-label="Lines this applies to" className="grid gap-2"><h2 className="font-text text-title-sm">Applies to</h2><ul className="grid gap-1 font-text text-copy">{products.map((p) => <li key={p.id}><Link href={productPath(p)} className="ui-link">{p.name}</Link></li>)}</ul></nav> : null}
         </aside>
       </div>
       <CtaBand heading="Want this applied to your policy?" body="Send us what you have. We compare it against the carriers we represent and show the math." action={{ label: "Request the analysis", href: "/quote/" }} />

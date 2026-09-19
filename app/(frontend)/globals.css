@@ -33,14 +33,15 @@
   html { background: var(--dp-surface); color: var(--dp-ink); -webkit-text-size-adjust: 100%; scroll-padding-top: var(--dp-space-20); }
   body {
     margin: 0;
-    font-family: var(--dp-font-serif);
+    font-family: var(--dp-font-text);
     font-size: var(--dp-text-body-size);
     line-height: var(--dp-text-body-line-height);
     font-weight: var(--dp-text-body-weight);
     overflow-wrap: anywhere;
   }
-  h1, h2, h3, h4, h5, h6, th, button, input, select, textarea, nav, summary, label, table, figcaption, cite { font-family: var(--dp-font-sans); }
-  h1 { font-size: var(--dp-text-headline-size); line-height: var(--dp-text-headline-line-height); letter-spacing: var(--dp-text-headline-letter-spacing); font-weight: var(--dp-text-headline-weight); font-stretch: var(--dp-width-display); margin: 0; text-wrap: balance; }
+  h1, h2 { font-family: var(--dp-font-display); font-optical-sizing: auto; }
+  h3, h4, h5, h6, th, button, input, select, textarea, nav, summary, label, table, figcaption, cite { font-family: var(--dp-font-text); }
+  h1 { font-size: var(--dp-text-headline-size); line-height: var(--dp-text-headline-line-height); letter-spacing: var(--dp-text-headline-letter-spacing); font-weight: var(--dp-text-headline-weight); margin: 0; text-wrap: balance; }
   h2 { font-size: var(--dp-text-title-lg-size); line-height: var(--dp-text-title-lg-line-height); letter-spacing: var(--dp-text-title-lg-letter-spacing); font-weight: var(--dp-text-title-lg-weight); margin: 0; text-wrap: balance; }
   h3 { font-size: var(--dp-text-title-size); line-height: var(--dp-text-title-line-height); letter-spacing: var(--dp-text-title-letter-spacing); font-weight: var(--dp-text-title-weight); margin: 0; }
   h4 { font-size: var(--dp-text-title-sm-size); line-height: var(--dp-text-title-sm-line-height); letter-spacing: var(--dp-text-title-sm-letter-spacing); font-weight: var(--dp-text-title-sm-weight); margin: 0; }
@@ -52,7 +53,7 @@
   input:focus, input:focus-within, select:focus, textarea:focus { outline: 2px solid var(--dp-focus-ring); outline-offset: 2px; box-shadow: 0 0 0 2px var(--dp-focus-ring-offset); }
   ::selection { background: var(--dp-brand-subtle); color: var(--dp-brand-subtle-ink); }
   img, svg, video { display: block; max-width: 100%; height: auto; }
-  table { border-collapse: collapse; width: 100%; font-size: var(--dp-text-small-size); line-height: var(--dp-text-small-line-height); }
+  table { border-collapse: collapse; width: 100%; font-size: var(--dp-text-meta-size); line-height: var(--dp-text-meta-line-height); }
   summary { cursor: pointer; list-style: none; }
   summary::-webkit-details-marker { display: none; }
   em, i { font-style: italic; }
@@ -85,8 +86,10 @@
   /* Prose: long-form content from the CMS. */
   .prose { max-width: var(--dp-measure-body); }
   .prose > * + * { margin-top: var(--dp-space-4); }
-  .prose > h2 { margin-top: var(--dp-space-12); }
-  .prose > h3 { margin-top: var(--dp-space-8); }
+  /* Headings inside long-form copy are section markers, not page titles: an article's h2 takes the `title` step
+     (26→36px) rather than the h2 default (32→52px), which is sized for a band heading on a hub page. */
+  .prose > h2 { margin-top: var(--dp-space-12); font-size: var(--dp-text-title-size); line-height: var(--dp-text-title-line-height); letter-spacing: var(--dp-text-title-letter-spacing); }
+  .prose > h3 { margin-top: var(--dp-space-8); font-size: var(--dp-text-title-sm-size); line-height: var(--dp-text-title-sm-line-height); letter-spacing: var(--dp-text-title-sm-letter-spacing); font-weight: var(--dp-text-title-sm-weight); }
   .prose > h2 + *, .prose > h3 + * { margin-top: var(--dp-space-3); }
   .prose ul, .prose ol { padding-left: var(--dp-space-6); }
   .prose ul { list-style: disc; }
@@ -95,13 +98,12 @@
   .prose blockquote { border-left: 4px solid var(--dp-accent); padding-left: var(--dp-space-4); color: var(--dp-ink-muted); }
   .prose table { font-variant-numeric: var(--dp-numeric-tabular); }
   .lead { font-size: var(--dp-text-lead-size); line-height: var(--dp-text-lead-line-height); font-weight: var(--dp-text-lead-weight); }
-  .headline { font-family: var(--dp-font-sans); font-size: var(--dp-text-headline-size); line-height: var(--dp-text-headline-line-height); letter-spacing: var(--dp-text-headline-letter-spacing); font-weight: var(--dp-text-headline-weight); font-stretch: var(--dp-width-display); }
-  .display { font-size: var(--dp-text-display-size); line-height: var(--dp-text-display-line-height); letter-spacing: var(--dp-text-display-letter-spacing); font-weight: var(--dp-text-display-weight); font-stretch: var(--dp-width-display); }
+  .headline { font-family: var(--dp-font-display); font-optical-sizing: auto; font-size: var(--dp-text-headline-size); line-height: var(--dp-text-headline-line-height); letter-spacing: var(--dp-text-headline-letter-spacing); font-weight: var(--dp-text-headline-weight); }
+  .display { font-family: var(--dp-font-display); font-optical-sizing: auto; font-size: var(--dp-text-display-size); line-height: var(--dp-text-display-line-height); letter-spacing: var(--dp-text-display-letter-spacing); font-weight: var(--dp-text-display-weight); }
   /* tokens-ok: Cloudflare's widget is a fixed 65 px tall; the box is exactly that, so the widget's arrival never shifts layout (a blocked widget leaves an honest gap, not a jump) and its inline iframe cannot add a descender gap below itself. */
   .cf-turnstile { height: 65px; overflow: hidden; }
   .cf-turnstile iframe { display: block; }
-  /* tokens-ok: the kicker's 0.08em tracking is specified in BRAND-GUIDE.md §3 ("uppercase with 0.08em tracking") and has no token of its own */
-  .kicker { font-family: var(--dp-font-sans); font-size: var(--dp-text-caption-size); line-height: var(--dp-text-caption-line-height); font-weight: var(--dp-text-caption-weight); letter-spacing: 0.08em; text-transform: uppercase; color: var(--dp-ink-muted); }
+  .kicker { font-family: var(--dp-font-mono); font-size: var(--dp-text-label-size); line-height: var(--dp-text-label-line-height); letter-spacing: var(--dp-text-label-letter-spacing); font-weight: var(--dp-text-label-weight); text-transform: uppercase; color: var(--dp-ink-muted); }
   /* The bar is transparent over the hero and takes the page surface plus a hairline once the reader has scrolled past
      the fold's first 80 px. Sticky, not fixed, so the transparent state shows the page's own ground, never content. */
   [data-shell-header] { background: transparent; border-bottom: 1px solid transparent; transition: background var(--dp-duration-base) var(--dp-ease-standard), border-color var(--dp-duration-base) var(--dp-ease-standard); }
@@ -143,7 +145,7 @@
   header, footer, nav, [data-no-print], .cta-band { display: none !important; }
   body { background: transparent; color: var(--dp-ink); }
   a { color: var(--dp-ink); text-decoration: none; }
-  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: var(--dp-text-caption-size); }
+  a[href^="http"]::after { content: " (" attr(href) ")"; font-size: var(--dp-text-meta-size); }
   .prose { max-width: none; }
   details > * { display: block; }
   summary { pointer-events: none; }

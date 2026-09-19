@@ -30,8 +30,8 @@ export function ClientForm({ slug, page, fields, submitLabel, siteKey }: { slug:
       })}
       <div className="cf-turnstile" data-sitekey={siteKey} data-size="flexible" />
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
-      <p className="font-sans text-caption text-ink-muted">Desert Peak Insurance is an independent agency, not an insurer. No coverage is bound by this form. We use what you send only to prepare your comparison.</p>
-      <button className="inline-flex min-h-11 w-fit items-center rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending}>{submitLabel}</button>
+      <p className="font-text text-meta text-ink-muted">Desert Peak Insurance is an independent agency, not an insurer. No coverage is bound by this form. We use what you send only to prepare your comparison.</p>
+      <button className="inline-flex min-h-11 w-fit items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending}>{submitLabel}</button>
     </form>
   );
 }

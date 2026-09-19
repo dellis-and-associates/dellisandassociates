@@ -10,9 +10,9 @@ export function TableWrap({ children, caption, className = "" }: { children: Rea
   );
 }
 
-export const th = "bg-surface-sunken px-3 py-2 text-left font-sans text-caption font-medium tracking-wide uppercase text-ink-muted";
+export const th = "bg-surface-sunken px-3 py-2 text-left font-text text-meta font-medium tracking-wide uppercase text-ink-muted";
 export const thNum = `${th} text-right`;
-export const td = "border-t border-border px-3 py-2 align-top font-sans text-small text-ink";
+export const td = "border-t border-border px-3 py-2 align-top font-text text-copy text-ink";
 export const tdNum = `${td} text-right tabular`;
 export const trTotal = "border-t-2 border-ink font-semibold";
 
@@ -53,7 +53,7 @@ export function ComparisonTable({ caption, columns, rows, recommended, footnote 
         {footnote ? (
           <tfoot>
             <tr>
-              <td colSpan={columns.length + 1} className="border-t border-border px-3 py-2 font-sans text-caption text-ink-muted">{footnote}</td>
+              <td colSpan={columns.length + 1} className="border-t border-border px-3 py-2 font-text text-meta text-ink-muted">{footnote}</td>
             </tr>
           </tfoot>
         ) : null}

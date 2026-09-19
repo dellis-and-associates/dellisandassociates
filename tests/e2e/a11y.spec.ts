@@ -42,7 +42,12 @@ test.describe("accessibility floor", () => {
           const cs = getComputedStyle(el);
           const rect = el.getBoundingClientRect();
           const visible = cs.outlineStyle !== "none" && cs.outlineWidth !== "0px" || cs.boxShadow !== "none";
-          const obscured = rect.height > 0 && rect.top < hb && rect.bottom > 0 && !el.closest("header");
+          // 2.4.11 Focus Not Obscured (Minimum): the focused component must not be *entirely* hidden. A control that
+          // fits under the header has to clear it outright; one taller than the viewport (a scrollable minimums table
+          // on a phone) can never put its top edge below a sticky header, so the test is whether any of it is visible.
+          const fits = rect.height <= window.innerHeight - hb;
+          const visiblePart = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, hb);
+          const obscured = rect.height > 0 && !el.closest("header") && (fits ? rect.top < hb && rect.bottom > 0 : visiblePart <= 0);
           return { tag: el.tagName, text: (el.textContent ?? "").trim().slice(0, 30), visible, obscured, sr: el.closest(".sr-only") !== null };
         }, headerBottom);
         if (!r) break;

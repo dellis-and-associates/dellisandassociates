@@ -1,7 +1,7 @@
-/* GENERATED from brand/design-tokens.json (v2.4.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v3.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /** Typed token export. Prefer `semantic.*.css` in components; `hex` exists for places CSS variables cannot reach (email, canvas, PDF, CMS admin previews). */
 export const tokens = {
-  "version": "2.4.0",
+  "version": "3.0.0",
   "primitives": {
     "brand": {
       "50": {
@@ -594,85 +594,69 @@ export const tokens = {
       "default": "proportional-nums"
     },
     "scale": {
-      "caption": {
-        "family": "sans",
-        "fontSize": "0.75rem",
-        "lineHeight": 1.4,
-        "letterSpacing": "0.01em",
-        "fontWeight": 500,
-        "description": "12px. Captions, table footnotes, legal lines. Never below 12px."
-      },
-      "small": {
-        "family": "sans",
-        "fontSize": "0.875rem",
-        "lineHeight": 1.5,
+      "body": {
+        "family": "text",
+        "fontSize": "1.0625rem",
+        "lineHeight": 1.7,
         "letterSpacing": "0",
         "fontWeight": 400,
-        "description": "14px. UI text, table cells, form help."
+        "description": "17px. Paragraphs, every template. The floor for any paragraph, disclosures included."
       },
-      "body": {
-        "family": "serif",
-        "fontSize": "1.0625rem",
+      "lead": {
+        "family": "text",
+        "fontSize": "clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)",
         "lineHeight": 1.6,
         "letterSpacing": "0",
         "fontWeight": 400,
-        "description": "17px. Long-form paragraphs. Source Serif 4 at opsz 17."
-      },
-      "lead": {
-        "family": "serif",
-        "fontSize": "1.25rem",
-        "lineHeight": 1.55,
-        "letterSpacing": "0",
-        "fontWeight": 400,
-        "description": "20px. Article intros and pull text."
+        "description": "18→21px, fluid. Article intros and the paragraph under a display heading."
       },
       "title-sm": {
-        "family": "sans",
-        "fontSize": "1.5rem",
-        "lineHeight": 1.3,
-        "letterSpacing": "-0.005em",
+        "family": "text",
+        "fontSize": "clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem)",
+        "lineHeight": 1.28,
+        "letterSpacing": "-0.008em",
         "fontWeight": 600,
-        "description": "24px. h4, card titles."
+        "description": "18→22px, fluid. h3, h4, card and item titles. Below the display face's 28px floor, so it is Figtree."
       },
       "title": {
-        "family": "sans",
-        "fontSize": "1.8125rem",
-        "lineHeight": 1.25,
-        "letterSpacing": "-0.01em",
-        "fontWeight": 600,
-        "description": "29px. h3."
+        "family": "display",
+        "fontSize": "clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem)",
+        "lineHeight": 1.15,
+        "letterSpacing": "-0.012em",
+        "fontWeight": 400,
+        "description": "26→36px, fluid. Section headings inside an article."
       },
       "title-lg": {
-        "family": "sans",
-        "fontSize": "2.1875rem",
-        "lineHeight": 1.2,
-        "letterSpacing": "-0.012em",
-        "fontWeight": 600,
-        "description": "35px. h2."
+        "family": "display",
+        "fontSize": "clamp(2rem, 1.35rem + 2.6vw, 3.25rem)",
+        "lineHeight": 1.06,
+        "letterSpacing": "-0.016em",
+        "fontWeight": 400,
+        "description": "32→52px, fluid. h2."
       },
       "headline": {
-        "family": "sans",
-        "fontSize": "2.625rem",
-        "lineHeight": 1.12,
-        "letterSpacing": "-0.015em",
-        "fontWeight": 640,
-        "description": "42px. h1 on content pages."
+        "family": "display",
+        "fontSize": "clamp(2.5rem, 1.8rem + 2.8vw, 4rem)",
+        "lineHeight": 1.06,
+        "letterSpacing": "-0.018em",
+        "fontWeight": 400,
+        "description": "40→64px, fluid. h1 on content pages — a clear step above title-lg (h2), which tops out at 52px."
       },
       "display": {
-        "family": "sans",
-        "fontSize": "3.1875rem",
-        "lineHeight": 1.06,
-        "letterSpacing": "-0.02em",
-        "fontWeight": 660,
-        "description": "51px. Home and hub page heroes."
-      },
-      "display-lg": {
-        "family": "sans",
-        "fontSize": "3.8125rem",
+        "family": "display",
+        "fontSize": "clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem)",
         "lineHeight": 1.02,
         "letterSpacing": "-0.022em",
-        "fontWeight": 680,
-        "description": "61px. Rare. Campaign or landing heroes only."
+        "fontWeight": 400,
+        "description": "44→84px, fluid. Hub and landing heroes."
+      },
+      "display-lg": {
+        "family": "display",
+        "fontSize": "clamp(3rem, 1.7rem + 5.2vw, 6rem)",
+        "lineHeight": 1,
+        "letterSpacing": "-0.024em",
+        "fontWeight": 400,
+        "description": "48→96px, fluid. Rare: one campaign surface."
       },
       "display-xl": {
         "family": "display",

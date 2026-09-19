@@ -12,7 +12,7 @@ export async function generateMetadata() {
 export default async function Carriers() {
   const carriers = await getCarriers();
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Carrier partners", href: "/carriers/"}], SITE))} />
       <Breadcrumb items={[{ label: "Carrier partners", href: "/carriers/" }]} />
       <header className="grid gap-4"><h1>Carrier partners</h1><p className="lead max-w-measure-body">An independent agency is appointed with several carriers and compares them for you. Each carrier below is listed only with a confirmed appointment date.</p></header>

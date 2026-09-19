@@ -13,7 +13,7 @@ export async function generateMetadata() {
 export default async function Agents() {
   const agents = await getAgents();
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Meet the team", href: "/agents/"}], SITE))} />
       <Breadcrumb items={[{ label: "Meet the team", href: "/agents/" }]} />
       <header className="grid gap-4"><h1>Meet the team</h1><p className="lead max-w-measure-body">Licensed agents, with license numbers on file per state. Profiles appear here once the roster is confirmed.</p></header>

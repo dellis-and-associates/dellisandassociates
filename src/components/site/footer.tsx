@@ -18,18 +18,18 @@ import { Lockup } from "../ui/logo.tsx";
 export async function Footer() {
   const [site, compliance, products, allStates] = await Promise.all([getSiteSettings(), getCompliance(), getProducts(), getStates()]);
   const states = orderStates(allStates);
-  const col = "grid content-start gap-1 font-text text-copy";
-  const head = "eyebrow mb-3 text-ink-inverse-secondary";
+  const col = "grid content-start font-text text-copy";
+  const head = "eyebrow mb-2 text-ink-inverse-secondary";
   const link = "ui-link min-h-11 text-ink-inverse";
   const groups = GROUPS.map((g) => ({ ...g, ...groupProducts(products, g.key) }));
   const address = site.address && [site.address.street, site.address.city, site.address.zip].some((v) => v && !hasTodo(v)) ? site.address : null;
   const year = new Date().getFullYear();
   return (
-    <footer data-inverse className="mt-16 bg-logo-ground-inverse text-ink-inverse [overflow-wrap:anywhere] print:hidden">
-      <div className="shell grid gap-10 py-20 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] lg:gap-0">
+    <footer data-inverse className="mt-0 bg-logo-ground-inverse text-ink-inverse [overflow-wrap:anywhere] print:hidden">
+      <div className="shell grid gap-8 py-14 md:grid-cols-3 lg:grid-cols-[2fr_1fr_1fr_1fr_1fr_1fr] lg:gap-0">
         <div className="grid content-start gap-4 md:col-span-3 lg:col-span-1">
           <Link href="/" className="ui-link w-fit py-2 text-ink-inverse no-underline" aria-label="Desert Peak Insurance, home"><Lockup reversed height={56} lazy /></Link>
-          <div className="grid gap-1 font-text text-copy">
+          <div className="grid font-text text-copy">
             {site.phoneHref ? <a href={site.phoneHref} className={`${link} tabular`} data-contact>{site.phone}</a> : null}
             {site.email ? <a href={`mailto:${site.email}`} className={link}>{site.email}</a> : null}
             {address ? <p className="text-ink-inverse">{[address.street, [address.city, typeof address.state === "object" ? address.state?.abbr : null].filter(Boolean).join(", "), address.zip].filter((v) => v && !hasTodo(v)).join(" · ")}</p> : null}
@@ -69,7 +69,7 @@ export async function Footer() {
         </nav>
       </div>
       <div className="border-t border-ink-inverse/25">
-        <div className="shell grid gap-4 py-10 font-text text-copy text-ink-inverse-secondary">
+        <div className="shell grid gap-3 py-8 font-text text-copy text-ink-inverse-secondary">
           <p data-disclosure="independentAgency">{compliance.independentAgencyDisclosure}</p>
           <p data-disclosure="licensedStates">
             Licensed in {states.map((s, i) => <span key={s.id}>{i > 0 ? (i === states.length - 1 ? " and " : ", ") : ""}<Link href={`/legal/licensing/${s.slug}/`} className={link}>{s.name}</Link></span>)}. Each state&rsquo;s licensing disclosure lists the license number.

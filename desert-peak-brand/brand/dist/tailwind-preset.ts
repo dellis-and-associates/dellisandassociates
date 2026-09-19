@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.4.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v3.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /**
  * Tailwind preset: semantic roles -> utility names. Every value is a CSS variable from tokens.css,
  * so dark mode is a token swap, not a rebuild. The default colour palette is replaced (not extended)
@@ -82,22 +82,6 @@ const desertPeak = {
       ]
     },
     "fontSize": {
-      "caption": [
-        "var(--dp-text-caption-size)",
-        {
-          "lineHeight": "var(--dp-text-caption-line-height)",
-          "letterSpacing": "var(--dp-text-caption-letter-spacing)",
-          "fontWeight": "var(--dp-text-caption-weight)"
-        }
-      ],
-      "small": [
-        "var(--dp-text-small-size)",
-        {
-          "lineHeight": "var(--dp-text-small-line-height)",
-          "letterSpacing": "var(--dp-text-small-letter-spacing)",
-          "fontWeight": "var(--dp-text-small-weight)"
-        }
-      ],
       "body": [
         "var(--dp-text-body-size)",
         {

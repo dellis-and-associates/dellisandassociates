@@ -12,7 +12,7 @@ export function ProductStateTemplate({ product, state, cities }: { product: Prod
   const path = productStatePath(product, state);
   const crumbs = [{ label: "Insurance", href: "/insurance/" }, { label: product.name, href: productPath(product) }, { label: state.name, href: path }];
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(serviceJsonLd(`${product.name} in ${state.name}`, path, product.summary ?? "", [state.name]))} />
       <Breadcrumb items={crumbs} />
@@ -35,7 +35,7 @@ export function ProductStateTemplate({ product, state, cities }: { product: Prod
       {cities.length ? (
         <section aria-labelledby="cities" className="grid gap-4">
           <h2 id="cities">{product.name} by city in {state.name}</h2>
-          <ul className="grid gap-2 font-sans text-small sm:grid-cols-2 lg:grid-cols-4">{cities.map((c) => <li key={c.id}><Link href={productCityPath(product, state, c)} className="ui-link text-ink">{c.name}</Link></li>)}</ul>
+          <ul className="grid gap-2 font-text text-copy sm:grid-cols-2 lg:grid-cols-4">{cities.map((c) => <li key={c.id}><Link href={productCityPath(product, state, c)} className="ui-link text-ink">{c.name}</Link></li>)}</ul>
         </section>
       ) : null}
       <CtaBand heading={`${ctaLabel(product)} for ${product.name.toLowerCase()} in ${state.name}`} action={{ label: ctaLabel(product), href: `/quote/?product=${product.slug}&state=${state.slug}` }} secondary={{ label: "Talk to a person", href: "/contact/" }} sticky />

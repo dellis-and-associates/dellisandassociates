@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Desert Peak Insurance — Brand Sheet v2.4.0</title>
+<title>Desert Peak Insurance — Brand Sheet v3.0.0</title>
 <style>
 /* ---- fonts (embedded; no network) ---- */
 @font-face {
@@ -65,7 +65,7 @@
   font-display: swap;
 }
 /* ---- tokens (generated) ---- */
-/* GENERATED from brand/design-tokens.json (v2.4.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v3.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
 
 :root {
   color-scheme: light;
@@ -194,56 +194,46 @@
   --dp-measure-editorial: 64ch;
   --dp-numeric-tabular: tabular-nums;
   --dp-numeric-default: proportional-nums;
-  --dp-text-caption-family: var(--dp-font-sans);
-  --dp-text-caption-size: 0.75rem;
-  --dp-text-caption-line-height: 1.4;
-  --dp-text-caption-letter-spacing: 0.01em;
-  --dp-text-caption-weight: 500;
-  --dp-text-small-family: var(--dp-font-sans);
-  --dp-text-small-size: 0.875rem;
-  --dp-text-small-line-height: 1.5;
-  --dp-text-small-letter-spacing: 0;
-  --dp-text-small-weight: 400;
-  --dp-text-body-family: var(--dp-font-serif);
+  --dp-text-body-family: var(--dp-font-text);
   --dp-text-body-size: 1.0625rem;
-  --dp-text-body-line-height: 1.6;
+  --dp-text-body-line-height: 1.7;
   --dp-text-body-letter-spacing: 0;
   --dp-text-body-weight: 400;
-  --dp-text-lead-family: var(--dp-font-serif);
-  --dp-text-lead-size: 1.25rem;
-  --dp-text-lead-line-height: 1.55;
+  --dp-text-lead-family: var(--dp-font-text);
+  --dp-text-lead-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --dp-text-lead-line-height: 1.6;
   --dp-text-lead-letter-spacing: 0;
   --dp-text-lead-weight: 400;
-  --dp-text-title-sm-family: var(--dp-font-sans);
-  --dp-text-title-sm-size: 1.5rem;
-  --dp-text-title-sm-line-height: 1.3;
-  --dp-text-title-sm-letter-spacing: -0.005em;
+  --dp-text-title-sm-family: var(--dp-font-text);
+  --dp-text-title-sm-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem);
+  --dp-text-title-sm-line-height: 1.28;
+  --dp-text-title-sm-letter-spacing: -0.008em;
   --dp-text-title-sm-weight: 600;
-  --dp-text-title-family: var(--dp-font-sans);
-  --dp-text-title-size: 1.8125rem;
-  --dp-text-title-line-height: 1.25;
-  --dp-text-title-letter-spacing: -0.01em;
-  --dp-text-title-weight: 600;
-  --dp-text-title-lg-family: var(--dp-font-sans);
-  --dp-text-title-lg-size: 2.1875rem;
-  --dp-text-title-lg-line-height: 1.2;
-  --dp-text-title-lg-letter-spacing: -0.012em;
-  --dp-text-title-lg-weight: 600;
-  --dp-text-headline-family: var(--dp-font-sans);
-  --dp-text-headline-size: 2.625rem;
-  --dp-text-headline-line-height: 1.12;
-  --dp-text-headline-letter-spacing: -0.015em;
-  --dp-text-headline-weight: 640;
-  --dp-text-display-family: var(--dp-font-sans);
-  --dp-text-display-size: 3.1875rem;
-  --dp-text-display-line-height: 1.06;
-  --dp-text-display-letter-spacing: -0.02em;
-  --dp-text-display-weight: 660;
-  --dp-text-display-lg-family: var(--dp-font-sans);
-  --dp-text-display-lg-size: 3.8125rem;
-  --dp-text-display-lg-line-height: 1.02;
-  --dp-text-display-lg-letter-spacing: -0.022em;
-  --dp-text-display-lg-weight: 680;
+  --dp-text-title-family: var(--dp-font-display);
+  --dp-text-title-size: clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem);
+  --dp-text-title-line-height: 1.15;
+  --dp-text-title-letter-spacing: -0.012em;
+  --dp-text-title-weight: 400;
+  --dp-text-title-lg-family: var(--dp-font-display);
+  --dp-text-title-lg-size: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
+  --dp-text-title-lg-line-height: 1.06;
+  --dp-text-title-lg-letter-spacing: -0.016em;
+  --dp-text-title-lg-weight: 400;
+  --dp-text-headline-family: var(--dp-font-display);
+  --dp-text-headline-size: clamp(2.5rem, 1.8rem + 2.8vw, 4rem);
+  --dp-text-headline-line-height: 1.06;
+  --dp-text-headline-letter-spacing: -0.018em;
+  --dp-text-headline-weight: 400;
+  --dp-text-display-family: var(--dp-font-display);
+  --dp-text-display-size: clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem);
+  --dp-text-display-line-height: 1.02;
+  --dp-text-display-letter-spacing: -0.022em;
+  --dp-text-display-weight: 400;
+  --dp-text-display-lg-family: var(--dp-font-display);
+  --dp-text-display-lg-size: clamp(3rem, 1.7rem + 5.2vw, 6rem);
+  --dp-text-display-lg-line-height: 1;
+  --dp-text-display-lg-letter-spacing: -0.024em;
+  --dp-text-display-lg-weight: 400;
   --dp-text-display-xl-family: var(--dp-font-display);
   --dp-text-display-xl-size: clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem);
   --dp-text-display-xl-line-height: 1.02;
@@ -498,7 +488,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <div class="wrap">
 
 <header>
-  <p class="meta tab">Brand sheet · Direction 1, Strata · tokens v2.4.0 · generated from <code>design-tokens.json</code></p>
+  <p class="meta tab">Brand sheet · Direction 1, Strata · tokens v3.0.0 · generated from <code>design-tokens.json</code></p>
   <h1>Desert Peak Insurance</h1>
   <p class="lede">The complete visual system on one page for sign-off: logo variants, colour ramps with contrast ratios, the type scale in use, every control state, a content block and a comparison table. Everything on this page is drawn from the token file; nothing here is hand-coloured.</p>
 </header>
@@ -626,16 +616,14 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 
 <h2 id="type">3. Typography</h2>
 <p class="meta">Archivo (display, UI, tables) and Source Serif 4 (long-form body). Minor-third scale, ratio 1.2, 17px base. Each step carries its own line-height and letter-spacing. Body measure 68ch.</p>
-<div class="ts"><div class="ts-meta"><code>caption</code><span class="tab">12px / 1.4 / 0.01em</span><span>Archivo 500</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:0.75rem;line-height:1.4;letter-spacing:0.01em;font-weight:500;">Captions, table footnotes, legal lines. Never below 12px.</div></div>
-<div class="ts"><div class="ts-meta"><code>small</code><span class="tab">14px / 1.5 / 0</span><span>Archivo 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:0.875rem;line-height:1.5;letter-spacing:0;font-weight:400;">UI text, table cells, form help.</div></div>
-<div class="ts"><div class="ts-meta"><code>body</code><span class="tab">17px / 1.6 / 0</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-serif);font-size:1.0625rem;line-height:1.6;letter-spacing:0;font-weight:400;">Long-form paragraphs. Source Serif 4 at opsz 17.</div></div>
-<div class="ts"><div class="ts-meta"><code>lead</code><span class="tab">20px / 1.55 / 0</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-serif);font-size:1.25rem;line-height:1.55;letter-spacing:0;font-weight:400;">Article intros and pull text.</div></div>
-<div class="ts"><div class="ts-meta"><code>title-sm</code><span class="tab">24px / 1.3 / -0.005em</span><span>Archivo 600</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:1.5rem;line-height:1.3;letter-spacing:-0.005em;font-weight:600;">h4, card titles.</div></div>
-<div class="ts"><div class="ts-meta"><code>title</code><span class="tab">29px / 1.25 / -0.01em</span><span>Archivo 600</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:1.8125rem;line-height:1.25;letter-spacing:-0.01em;font-weight:600;">h3.</div></div>
-<div class="ts"><div class="ts-meta"><code>title-lg</code><span class="tab">35px / 1.2 / -0.012em</span><span>Archivo 600</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:2.1875rem;line-height:1.2;letter-spacing:-0.012em;font-weight:600;">h2.</div></div>
-<div class="ts"><div class="ts-meta"><code>headline</code><span class="tab">42px / 1.12 / -0.015em</span><span>Archivo 640</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:2.625rem;line-height:1.12;letter-spacing:-0.015em;font-weight:640;font-stretch:var(--dp-width-display);">h1 on content pages.</div></div>
-<div class="ts"><div class="ts-meta"><code>display</code><span class="tab">51px / 1.06 / -0.02em</span><span>Archivo 660</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:3.1875rem;line-height:1.06;letter-spacing:-0.02em;font-weight:660;font-stretch:var(--dp-width-display);">Home and hub page heroes.</div></div>
-<div class="ts"><div class="ts-meta"><code>display-lg</code><span class="tab">61px / 1.02 / -0.022em</span><span>Archivo 680</span></div><div class="ts-sample" style="font-family:var(--dp-font-sans);font-size:3.8125rem;line-height:1.02;letter-spacing:-0.022em;font-weight:680;font-stretch:var(--dp-width-display);">Rare. Campaign or landing heroes only.</div></div>
+<div class="ts"><div class="ts-meta"><code>body</code><span class="tab">17px / 1.7 / 0</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-text);font-size:1.0625rem;line-height:1.7;letter-spacing:0;font-weight:400;">Paragraphs, every template. The floor for any paragraph, disclosures included.</div></div>
+<div class="ts"><div class="ts-meta"><code>lead</code><span class="tab">NaNpx / 1.6 / 0</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-text);font-size:clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);line-height:1.6;letter-spacing:0;font-weight:400;">18→21px, fluid. Article intros and the paragraph under a display heading.</div></div>
+<div class="ts"><div class="ts-meta"><code>title-sm</code><span class="tab">NaNpx / 1.28 / -0.008em</span><span>Source Serif 4 600</span></div><div class="ts-sample" style="font-family:var(--dp-font-text);font-size:clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem);line-height:1.28;letter-spacing:-0.008em;font-weight:600;">18→22px, fluid. h3, h4, card and item titles. Below the display face's 28px floor, so it is Figtree.</div></div>
+<div class="ts"><div class="ts-meta"><code>title</code><span class="tab">NaNpx / 1.15 / -0.012em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem);line-height:1.15;letter-spacing:-0.012em;font-weight:400;">26→36px, fluid. Section headings inside an article.</div></div>
+<div class="ts"><div class="ts-meta"><code>title-lg</code><span class="tab">NaNpx / 1.06 / -0.016em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(2rem, 1.35rem + 2.6vw, 3.25rem);line-height:1.06;letter-spacing:-0.016em;font-weight:400;">32→52px, fluid. h2.</div></div>
+<div class="ts"><div class="ts-meta"><code>headline</code><span class="tab">NaNpx / 1.06 / -0.018em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(2.5rem, 1.8rem + 2.8vw, 4rem);line-height:1.06;letter-spacing:-0.018em;font-weight:400;">40→64px, fluid. h1 on content pages — a clear step above title-lg (h2), which tops out at 52px.</div></div>
+<div class="ts"><div class="ts-meta"><code>display</code><span class="tab">NaNpx / 1.02 / -0.022em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem);line-height:1.02;letter-spacing:-0.022em;font-weight:400;">44→84px, fluid. Hub and landing heroes.</div></div>
+<div class="ts"><div class="ts-meta"><code>display-lg</code><span class="tab">NaNpx / 1 / -0.024em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(3rem, 1.7rem + 5.2vw, 6rem);line-height:1;letter-spacing:-0.024em;font-weight:400;">48→96px, fluid. Rare: one campaign surface.</div></div>
 <div class="ts"><div class="ts-meta"><code>display-xl</code><span class="tab">NaNpx / 1.02 / -0.022em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem);line-height:1.02;letter-spacing:-0.022em;font-weight:400;">44px→84px, fluid. One per page: the hero heading. Instrument Serif.</div></div>
 <div class="ts"><div class="ts-meta"><code>display-l</code><span class="tab">NaNpx / 1.06 / -0.016em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(2rem, 1.35rem + 2.6vw, 3.25rem);line-height:1.06;letter-spacing:-0.016em;font-weight:400;">32px→52px, fluid. Section headings (h2) in the editorial system.</div></div>
 <div class="ts"><div class="ts-meta"><code>display-m</code><span class="tab">NaNpx / 1.15 / -0.012em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-display);font-size:clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem);line-height:1.15;letter-spacing:-0.012em;font-weight:400;">26px→36px, fluid. Pull quotes and the advisor statement. The floor for this family.</div></div>
@@ -706,7 +694,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <p class="meta" style="margin-top:var(--dp-space-4)">Radius by role: <code>control</code> 2px, <code>surface</code> 4px, <code>pill</code> for status dots and counters only. Motion: fast 120ms, base 200ms, slow 320ms, deliberate 480ms on <code>cubic-bezier(0.2, 0, 0, 1)</code>; all durations drop to 0ms under <code>prefers-reduced-motion</code>.</p>
 
 <footer style="margin-top:var(--dp-space-16);color:var(--dp-ink-muted);font-size:var(--dp-text-caption-size)">
-  Desert Peak Insurance brand sheet, tokens v2.4.0. Generated by <code>scripts/build-tokens.ts</code>. Fonts: Archivo and Source Serif 4, SIL Open Font License 1.1 (see LICENSES.md).
+  Desert Peak Insurance brand sheet, tokens v3.0.0. Generated by <code>scripts/build-tokens.ts</code>. Fonts: Archivo and Source Serif 4, SIL Open Font License 1.1 (see LICENSES.md).
 </footer>
 </div>
 </body>

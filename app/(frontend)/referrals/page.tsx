@@ -17,8 +17,8 @@ export default async function CustomerPortal() {
   const payload = await db();
   const referrer = (await payload.find({ collection: "referrers", where: { and: [{ track: { equals: "customer" } }, { email: { equals: email } }] }, limit: 1, depth: 0, overrideAccess: true })).docs[0];
   return (
-    <div className="mx-auto grid max-w-measure-page gap-8 px-4 py-10 md:px-8">
-      <div className="flex flex-wrap items-end justify-between gap-4"><h1>Your referrals</h1><form action="/referrals/auth/signout/" method="post"><button className="min-h-11 rounded-control border border-border-strong px-4 font-sans text-small font-semibold">Sign out</button></form></div>
+    <div className="mx-auto grid max-w-measure-shell gap-8 px-gutter py-10">
+      <div className="flex flex-wrap items-end justify-between gap-4"><h1>Your referrals</h1><form action="/referrals/auth/signout/" method="post"><button className="min-h-11 rounded-control border border-border-strong px-4 font-text text-copy font-semibold">Sign out</button></form></div>
       {referrer ? <PortalBody payload={payload} referrer={referrer as never} siteUrl={env.NEXT_PUBLIC_SITE_URL} track="customer" /> : <EmptyState title="No referral code is linked to this email" action={{ label: "Ask the office for a code", href: "/contact/" }}>You are signed in as {email}. Codes are issued by the office to clients who ask for one. <Link href="/">Home</Link></EmptyState>}
     </div>
   );

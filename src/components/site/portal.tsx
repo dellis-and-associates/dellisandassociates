@@ -22,11 +22,11 @@ export async function PortalBody({ payload, referrer, siteUrl, track }: { payloa
     <div className="grid gap-10">
       {!tenant.referralsEnabled ? <Callout kind="info" lead="Thank-yous are not switched on yet.">Referrals are tracked and contacted. Any thank-you depends on state rules and is enabled only once counsel has confirmed them.</Callout> : null}
       <section aria-labelledby="code" className="grid gap-4 rounded-surface border border-border bg-surface-raised p-6">
-        <h2 id="code" className="font-sans text-title-sm">Your code</h2>
-        <p className="font-sans text-title tabular tracking-wider">{referrer.code}</p>
-        <p className="font-sans text-small text-ink-muted">Share the link or read the code out loud. It has no 0/O or 1/I/L, so it survives a phone call.</p>
-        <p className="font-sans text-small"><a href={link} className="break-all">{link}</a></p>
-        <div className="flex flex-wrap gap-3 font-sans text-small">
+        <h2 id="code" className="font-text text-title-sm">Your code</h2>
+        <p className="font-text text-title tabular tracking-wider">{referrer.code}</p>
+        <p className="font-text text-copy text-ink-muted">Share the link or read the code out loud. It has no 0/O or 1/I/L, so it survives a phone call.</p>
+        <p className="font-text text-copy"><a href={link} className="break-all">{link}</a></p>
+        <div className="flex flex-wrap gap-3 font-text text-copy">
           <a href={`mailto:?subject=${encodeURIComponent("Desert Peak Insurance")}&body=${encodeURIComponent(`I thought this might be useful: ${link}`)}`} className="ui-link inline-flex min-h-11 items-center rounded-control border border-border-strong px-4 font-semibold text-ink">Share by email</a>
           <a href={`sms:?body=${encodeURIComponent(link)}`} className="ui-link inline-flex min-h-11 items-center rounded-control border border-border-strong px-4 font-semibold text-ink">Share by text</a>
           <Link href={track === "partner" ? "/partners/portal/refer/" : "/referrals/refer/"} className="inline-flex min-h-11 items-center rounded-control bg-brand px-4 font-semibold text-brand-ink no-underline hover:bg-brand-hover">Refer someone</Link>
@@ -45,9 +45,9 @@ export async function PortalBody({ payload, referrer, siteUrl, track }: { payloa
       <section aria-labelledby="rewards" className="grid gap-4">
         <h2 id="rewards">Your thank-yous</h2>
         <dl className="grid gap-3 sm:grid-cols-3">
-          {[["Earned this year", balances.earnedThisYear], ["Issued this year", balances.issuedThisYear], ["Outstanding", balances.outstanding]].map(([l, v]) => <div key={String(l)} className="rounded-surface border border-border bg-surface-raised p-4"><dt className="kicker">{l}</dt><dd className="font-sans text-title-sm tabular">{typeof v === "number" ? v.toLocaleString("en-US", { style: "currency", currency: "USD" }) : v}</dd></div>)}
+          {[["Earned this year", balances.earnedThisYear], ["Issued this year", balances.issuedThisYear], ["Outstanding", balances.outstanding]].map(([l, v]) => <div key={String(l)} className="rounded-surface border border-border bg-surface-raised p-4"><dt className="kicker">{l}</dt><dd className="font-text text-title-sm tabular">{typeof v === "number" ? v.toLocaleString("en-US", { style: "currency", currency: "USD" }) : v}</dd></div>)}
         </dl>
-        {ledger.docs.length ? <TableWrap caption="Reward history"><table><thead><tr><th scope="col" className={th}>Date</th><th scope="col" className={th}>Entry</th><th scope="col" className={`${th} text-right`}>Amount</th></tr></thead><tbody>{ledger.docs.map((e: Doc) => <tr key={e.id}><td className={`${td} tabular`}>{new Date(e.createdAt).toLocaleDateString("en-US")}</td><td className={td}>{e.type} · {e.rewardType}</td><td className={`${td} text-right tabular`}>{Number(e.amount).toLocaleString("en-US", { style: "currency", currency: "USD" })}</td></tr>)}</tbody></table></TableWrap> : <p className="font-sans text-small text-ink-muted">Nothing yet. Amounts are computed from the ledger, never stored.</p>}
+        {ledger.docs.length ? <TableWrap caption="Reward history"><table><thead><tr><th scope="col" className={th}>Date</th><th scope="col" className={th}>Entry</th><th scope="col" className={`${th} text-right`}>Amount</th></tr></thead><tbody>{ledger.docs.map((e: Doc) => <tr key={e.id}><td className={`${td} tabular`}>{new Date(e.createdAt).toLocaleDateString("en-US")}</td><td className={td}>{e.type} · {e.rewardType}</td><td className={`${td} text-right tabular`}>{Number(e.amount).toLocaleString("en-US", { style: "currency", currency: "USD" })}</td></tr>)}</tbody></table></TableWrap> : <p className="font-text text-copy text-ink-muted">Nothing yet. Amounts are computed from the ledger, never stored.</p>}
       </section>
     </div>
   );

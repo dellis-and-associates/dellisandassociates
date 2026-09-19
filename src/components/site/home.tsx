@@ -5,7 +5,7 @@ import { AUTHOR_PATH } from "../../lib/seo.ts";
 import { GROUPS, groupProducts, orderStates } from "../../lib/groups.ts";
 import { productPath } from "../../lib/routes.ts";
 import { richTextToPlain } from "../../lib/text.ts";
-import { Accordion, StrataRule } from "../ui/misc.tsx";
+import { Accordion } from "../ui/misc.tsx";
 import { IconPhone } from "../ui/icons.tsx";
 import { RichText } from "./richtext.tsx";
 import { Reveal } from "./reveal.tsx";
@@ -16,28 +16,6 @@ const primary = "inline-flex min-h-11 items-center rounded-control bg-brand px-5
 /** Secondary action on a light surface: hairline border, no fill, no shadow. */
 const secondary = "inline-flex min-h-11 items-center gap-2 rounded-control border border-border-strong px-5 font-text text-copy font-semibold text-ink no-underline hover:border-ink";
 
-/**
- * The watermark behind the advisor panel: the Strata geometry (horizontal
- * bands cut by one normal fault, the right block up-thrown by half a band
- * period), drawn large and faint. It is a device derived from the mark's
- * geometry, not the logo file, so the logo rules about backgrounds hold.
- */
-function StrataWatermark() {
-  const bands = 7, band = 10, gap = 4, period = band + gap, W = 240, H = bands * period;
-  const fault = 138, throwUp = period / 2;
-  const rects: string[] = [];
-  for (let i = 0; i < bands; i++) {
-    const y = i * period;
-    rects.push(`M0 ${y}h${fault - 3 - i * 2}l-${2}${" "}${band}H0z`);
-    rects.push(`M${fault + 3 - i * 2} ${y - throwUp}H${W}v${band}H${fault + 1 - i * 2}z`);
-  }
-  return (
-    <svg viewBox={`0 ${-throwUp} ${W} ${H + throwUp}`} className="pointer-events-none absolute -right-8 bottom-0 h-auto w-4/5 text-border" aria-hidden focusable="false" preserveAspectRatio="xMaxYMax meet">
-      <path d={rects.join("")} fill="currentColor" />
-    </svg>
-  );
-}
-
 /** Sentence per line: the hero's two sentences break where they were written to break, not where the viewport decides. */
 const sentences = (text: string): string[] => text.match(/[^.!?]+[.!?]*\s*/g)?.map((t) => t.trim()).filter(Boolean) ?? [text];
 
@@ -47,30 +25,31 @@ export function Hero({ site, states, headline, lede }: { site: SiteSetting; stat
   const names = orderStates(states).map((s) => s.name);
   const facts = ["Independent", "No fee for the analysis", `Licensed in ${names.join(", ")}`];
   return (
-    <section className="band shell grid gap-band-gap md:grid-cols-12" aria-labelledby="hero-h">
-      <div className="grid content-start gap-6 md:col-span-7">
-        {/* Not revealed: this is the LCP element and must paint immediately. */}
-        <h1 id="hero-h" className="display-type text-display-xl text-ink">
-          {sentences(headline).map((line) => <span key={line} className="block">{line}</span>)}
-        </h1>
-        <p className="max-w-measure-editorial font-text text-lede text-ink-secondary">{lede}</p>
-        <div className="flex flex-wrap gap-3">
-          <Link href="/quote/" className={primary}>{CTA}</Link>
-          {site.phoneHref ? <a href={site.phoneHref} className={`${secondary} tabular`}><IconPhone />Call {site.phone}</a> : null}
-        </div>
-      </div>
-      <div className="relative isolate overflow-hidden md:col-span-5 md:col-start-8">
-        <StrataWatermark />
-        <aside className="relative z-10 grid gap-5 rounded-surface border border-border bg-surface-raised p-6 text-ink md:mt-12" aria-label="Your advisor">
-          {photo ? <img src={photo.url!} alt={photo.alt || advisor?.name || ""} width={photo.width ?? 96} height={photo.height ?? 96} className="size-24 rounded-surface object-cover" /> : <StrataRule />}
-          <div className="grid gap-1">
-            <p className="font-text text-subhead font-semibold">{advisor?.name && !hasTodo(advisor.name) ? <Link href={AUTHOR_PATH} className="ui-link -my-3 py-3 text-ink">{advisor.name}</Link> : "A licensed advisor"}</p>
-            {advisor?.title && !hasTodo(advisor.title) ? <p className="eyebrow">{advisor.title}</p> : null}
+    <section className="band shell grid gap-band-gap" aria-labelledby="hero-h">
+      {/* The headline takes the whole shell. Nothing shares its line, which is the one piece of scale on the page. */}
+      <h1 id="hero-h" className="display-type text-display-xl text-ink">
+        {sentences(headline).map((line) => <span key={line} className="block">{line}</span>)}
+      </h1>
+      <div className="grid gap-band-gap border-t border-border pt-8 md:grid-cols-12">
+        <div className="grid content-start gap-6 md:col-span-6">
+          <p className="max-w-measure-editorial font-text text-lede text-ink-secondary">{lede}</p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/quote/" className={primary}>{CTA}</Link>
+            {site.phoneHref ? <a href={site.phoneHref} className={`${secondary} tabular`}><IconPhone />Call {site.phone}</a> : null}
           </div>
-          {advisor?.statement && !hasTodo(advisor.statement) ? <p className="display-type text-display-m text-ink">{advisor.statement}</p> : null}
+        </div>
+        <aside className="grid content-start gap-5 border-t border-border pt-6 md:col-span-5 md:col-start-8 md:border-l md:border-t-0 md:pl-8 md:pt-0" aria-label="Your advisor">
+          {advisor?.statement && !hasTodo(advisor.statement) ? <p className="display-type max-w-measure-editorial text-display-m text-ink">{advisor.statement}</p> : null}
+          <div className="flex items-center gap-4">
+            {photo ? <img src={photo.url!} alt={photo.alt || advisor?.name || ""} width={photo.width ?? 64} height={photo.height ?? 64} className="size-16 shrink-0 rounded-pill object-cover" /> : null}
+            <div className="grid gap-1">
+              <p className="font-text text-copy font-semibold">{advisor?.name && !hasTodo(advisor.name) ? <Link href={AUTHOR_PATH} className="ui-link -my-3 py-3 text-ink">{advisor.name}</Link> : "A licensed advisor"}</p>
+              {advisor?.title && !hasTodo(advisor.title) ? <p className="eyebrow">{advisor.title}</p> : null}
+            </div>
+          </div>
         </aside>
       </div>
-      <ul className="grid gap-2 border-t border-border pt-5 md:col-span-12 lg:flex lg:items-center lg:gap-0" aria-label="Three facts">
+      <ul className="grid gap-2 border-t border-border pt-5 lg:flex lg:items-center lg:gap-0" aria-label="Three facts">
         {facts.map((f, i) => (
           <li key={f} className={`eyebrow text-ink-secondary lg:whitespace-nowrap ${i ? "lg:ml-5 lg:border-l lg:border-border lg:pl-5" : ""}`}>{f}</li>
         ))}

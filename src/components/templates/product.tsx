@@ -17,14 +17,14 @@ export async function ProductTemplate({ product, sub, states }: { product: Produ
   const faqs = (product.faqs ?? []).map((f) => ({ q: f.question, a: richTextToPlain(f.answer) }));
   const title = sub === "coverage" ? titles.coverage(product) : sub === "third" ? titles.third(product) : product.name;
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(serviceJsonLd(product.name, path, product.summary ?? "", states.map((s) => s.name)))} />
       {sub === "third" && faqs.length ? <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd(faqs))} /> : null}
       <Breadcrumb items={crumbs} />
       <header className="grid gap-4">
         <h1>{title}</h1>
-        {product.reviewedAt ? <p className="font-sans text-caption text-ink-muted tabular">Last reviewed {new Date(product.reviewedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p> : null}
+        {product.reviewedAt ? <p className="font-text text-meta text-ink-muted tabular">Last reviewed {new Date(product.reviewedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p> : null}
         {product.summary && !product.summary.includes("{{TODO") ? <p className="lead max-w-measure-body">{product.summary}</p> : null}
         <StrataRule />
       </header>
@@ -52,9 +52,9 @@ export async function ProductTemplate({ product, sub, states }: { product: Produ
         </div>
         <aside className="grid content-start gap-6 lg:sticky lg:top-24 lg:self-start" aria-label="On this line">
           <div className="rounded-surface border border-border bg-surface-raised p-5">
-            <h2 className="font-sans text-title-sm">{ctaLabel(product)}</h2>
-            <p className="mt-2 font-sans text-small text-ink-muted">We compare the carriers we represent for {product.name.toLowerCase()} and show the math. If what you have is right, we say so.</p>
-            <Link href={`/quote/?product=${product.slug}`} className="mt-4 inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink no-underline hover:bg-brand-hover">{ctaLabel(product)}</Link>
+            <h2 className="font-text text-title-sm">{ctaLabel(product)}</h2>
+            <p className="mt-2 font-text text-copy text-ink-muted">We compare the carriers we represent for {product.name.toLowerCase()} and show the math. If what you have is right, we say so.</p>
+            <Link href={`/quote/?product=${product.slug}`} className="mt-4 inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink no-underline hover:bg-brand-hover">{ctaLabel(product)}</Link>
           </div>
           <StateLinks product={product} states={states} />
         </aside>

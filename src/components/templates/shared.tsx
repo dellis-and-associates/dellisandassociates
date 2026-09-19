@@ -43,12 +43,12 @@ export function CoveredLists({ product }: { product: Product }) {
       <h2 id="covered">Covered and not covered</h2>
       <div className="grid gap-6 rounded-surface border border-border bg-surface-raised p-6 md:grid-cols-2">
         <div>
-          <h3 className="font-sans text-title-sm">Covered</h3>
-          <ul className="mt-3 grid gap-2 font-sans text-small">{covered.map((c) => <li key={c} className="border-l-2 border-positive-border pl-3">{c}</li>)}</ul>
+          <h3 className="font-text text-title-sm">Covered</h3>
+          <ul className="mt-3 grid gap-2 font-text text-copy">{covered.map((c) => <li key={c} className="border-l-2 border-positive-border pl-3">{c}</li>)}</ul>
         </div>
         <div>
-          <h3 className="font-sans text-title-sm">Not covered</h3>
-          <ul className="mt-3 grid gap-2 font-sans text-small">{not.map((c) => <li key={c} className="border-l-2 border-critical-border pl-3">{c}</li>)}</ul>
+          <h3 className="font-text text-title-sm">Not covered</h3>
+          <ul className="mt-3 grid gap-2 font-text text-copy">{not.map((c) => <li key={c} className="border-l-2 border-critical-border pl-3">{c}</li>)}</ul>
         </div>
       </div>
     </section>
@@ -80,12 +80,12 @@ export function Discounts({ product }: { product: Product }) {
       <dl className="grid gap-3 sm:grid-cols-2">
         {items.map((d) => (
           <div key={d.name} className="rounded-surface border border-border bg-surface-raised p-4">
-            <dt className="font-sans text-small font-semibold">{d.name}</dt>
-            <dd className="mt-1 font-sans text-small text-ink-muted">{d.description}</dd>
+            <dt className="font-text text-copy font-semibold">{d.name}</dt>
+            <dd className="mt-1 font-text text-copy text-ink-muted">{d.description}</dd>
           </div>
         ))}
       </dl>
-      <p className="max-w-measure-body font-sans text-caption text-ink-muted">Which discounts apply, and how much they change a premium, depends on the carrier and the policy. We do not quote a savings figure.</p>
+      <p className="max-w-measure-body font-text text-meta text-ink-muted">Which discounts apply, and how much they change a premium, depends on the carrier and the policy. We do not quote a savings figure.</p>
     </section>
   );
 }
@@ -105,12 +105,12 @@ export async function MedicareDisclaimer({ product }: { product: Product }) {
   if (!product.medicareTouching) return null;
   const c = await getCompliance();
   if (!c.medicareInScope) return null;
-  return <p data-disclosure="medicareTpmo" className="rounded-surface border border-border bg-surface-sunken p-4 font-sans text-caption text-ink">{c.medicareTpmoDisclaimer}</p>;
+  return <p data-disclosure="medicareTpmo" className="rounded-surface border border-border bg-surface-sunken p-4 font-text text-meta text-ink">{c.medicareTpmoDisclaimer}</p>;
 }
 
 export function StateLinks({ product, states }: { product: Product; states: State[] }) {
   return (
-    <p className="font-sans text-small text-ink-muted">
+    <p className="font-text text-copy text-ink-muted">
       {product.name} by state: {states.map((s) => <Link key={s.id} href={`/insurance/${product.slug}/${s.slug}/`} className="mr-3">{s.name}</Link>)}
     </p>
   );

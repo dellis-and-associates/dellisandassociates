@@ -12,13 +12,13 @@ export function ReferForm({ track, products, back }: { track: "customer" | "part
   const errors = state?.errors ?? [];
   const err = (f: string) => errors.find((e) => e.field === f)?.message;
   if (state?.done) return (
-    <div className="mx-auto grid max-w-measure-page gap-6 px-4 py-10 md:px-8"><h1>Sent</h1>
+    <div className="mx-auto grid max-w-measure-shell gap-6 px-gutter py-10"><h1>Sent</h1>
       {state.done === "submitted" ? <Callout kind="positive" lead="One message is on its way.">{state.firstName} will get a single email from us that names you. If they say yes, we get in touch; if not, that is the end of it.</Callout> : <Callout kind="notice" lead="Not sent.">{state.reason === "self-referral" ? "That looks like your own contact details. Referrals are for other people." : state.reason === "duplicate-referee" ? "Someone has already referred this person recently." : state.reason === "disposable-email" ? "That email domain is a temporary-address service. Use their usual address." : "This referral could not be sent. The office can see why and will follow up if needed."}</Callout>}
-      <p className="font-sans text-small"><Link href={back}>Back to the portal</Link></p>
+      <p className="font-text text-copy"><Link href={back}>Back to the portal</Link></p>
     </div>
   );
   return (
-    <div className="mx-auto grid max-w-measure-page gap-8 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-8 px-gutter py-10">
       <div className="grid max-w-measure-body gap-6">
         <h1>Refer someone</h1>
         <p className="max-w-measure-body">They get one email from us, naming you, and can say no. We do not call or text anyone before they say yes.</p>
@@ -34,8 +34,8 @@ export function ReferForm({ track, products, back }: { track: "customer" | "part
           <div className="cf-turnstile" data-sitekey={publicEnv.TURNSTILE_SITE_KEY} data-size="flexible" />
           <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
           <div className="flex flex-wrap items-center gap-4">
-            <button className="inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending}>Send the one message</button>
-            <Link href={back} className="ui-link font-sans text-small underline">Cancel</Link>
+            <button className="inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending}>Send the one message</button>
+            <Link href={back} className="ui-link font-text text-copy underline">Cancel</Link>
           </div>
         </form>
       </div>

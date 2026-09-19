@@ -17,8 +17,8 @@ export async function SiteMapList() {
         const list = manifest.filter((r) => r.group === g);
         return (
           <section key={g} aria-labelledby={`sm-${g}`} className="grid gap-2">
-            <h2 id={`sm-${g}`} className="font-sans text-title-sm">{LABEL[g]} <span className="text-ink-muted tabular">({list.length})</span></h2>
-            <ul className="columns-1 gap-6 font-sans text-small sm:columns-2 lg:columns-3">{list.map((r) => <li key={r.path}><Link href={r.path} className="ui-link text-ink">{r.path}</Link></li>)}</ul>
+            <h2 id={`sm-${g}`} className="font-text text-title-sm">{LABEL[g]} <span className="text-ink-muted tabular">({list.length})</span></h2>
+            <ul className="columns-1 gap-6 font-text text-copy sm:columns-2 lg:columns-3">{list.map((r) => <li key={r.path}><Link href={r.path} className="ui-link text-ink">{r.path}</Link></li>)}</ul>
           </section>
         );
       })}

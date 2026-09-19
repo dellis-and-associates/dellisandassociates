@@ -40,14 +40,14 @@ export default async function CmsPage({ params }: { params: Promise<{ path: stri
   // Intermediate segments with no page of their own (e.g. /legal/) are not linked.
   const crumbs = segs.map((_, i) => ({ label: i === segs.length - 1 ? page.title : segs[i]!.replace(/-/g, " ").replace(/^\w/, (c) => c.toUpperCase()), href: toPath(segs.slice(0, i + 1)) })).filter((c) => known.has(c.href));
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       <Breadcrumb items={crumbs} />
       <header className="grid gap-4"><h1>{page.title}</h1>{page.lede ? <p className="lead max-w-measure-body">{displayText(page.lede)}</p> : null}<StrataRule /></header>
       <div className="grid gap-10">
         <PageBlocks layout={page.layout} stateLicense={legalState ? { state: legalState.name, licenseNumber: legalState.licenseNumber } : undefined} />
-        {legalState ? <p data-license className="rounded-surface border border-border bg-surface-sunken p-4 font-sans text-small">{legalState.licenseNumber && !legalState.licenseNumber.includes("{{TODO") ? <>License, {legalState.name}: <span className="tabular">{legalState.licenseNumber}</span></> : <>Licensed in {legalState.name}. Verify the license</>}{legalState.doi?.url && !legalState.doi.url.includes("{{TODO") ? <> with the <a href={legalState.doi.url} rel="noopener">{legalState.doi.name}</a></> : null}.</p> : null}
-        {path === "/sitemap/" ? <SiteMapList /> : !page.layout?.length ? <p className="max-w-measure-body font-sans text-small text-ink-muted">This page is being written.</p> : null}
+        {legalState ? <p data-license className="rounded-surface border border-border bg-surface-sunken p-4 font-text text-copy">{legalState.licenseNumber && !legalState.licenseNumber.includes("{{TODO") ? <>License, {legalState.name}: <span className="tabular">{legalState.licenseNumber}</span></> : <>Licensed in {legalState.name}. Verify the license</>}{legalState.doi?.url && !legalState.doi.url.includes("{{TODO") ? <> with the <a href={legalState.doi.url} rel="noopener">{legalState.doi.name}</a></> : null}.</p> : null}
+        {path === "/sitemap/" ? <SiteMapList /> : !page.layout?.length ? <p className="max-w-measure-body font-text text-copy text-ink-muted">This page is being written.</p> : null}
       </div>
     </div>
   );

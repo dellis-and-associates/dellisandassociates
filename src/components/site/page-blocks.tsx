@@ -33,7 +33,7 @@ export async function PageBlocks({ layout, stateLicense }: { layout: Layout | nu
     else if (b.blockType === "steps") out.push(<Steps key={i} block={b} id={`steps-${i}`} />);
     else if (b.blockType === "disclosure") {
       const text = b.key === "medicareTpmo" ? compliance.medicareTpmoDisclaimer : b.key === "stateLicensing" ? licensingText(compliance.stateLicensingDisclosure ?? "", stateLicense) : compliance.independentAgencyDisclosure;
-      out.push(<p key={i} data-disclosure={b.key} className="rounded-surface border border-border bg-surface-sunken p-4 font-sans text-small text-ink">{text}</p>);
+      out.push(<p key={i} data-disclosure={b.key} className="rounded-surface border border-border bg-surface-sunken p-4 font-text text-copy text-ink">{text}</p>);
     } else if (b.blockType === "form") {
       const formId = typeof b.form === "object" ? b.form.id : b.form;
       const form = typeof b.form === "object" ? b.form : null;

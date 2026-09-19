@@ -93,15 +93,15 @@ export function SearchDialog({ quickLinks }: { quickLinks: ReactNode }) {
       <dialog ref={ref} className="search-dialog m-auto max-w-measure-body rounded-surface border border-border bg-surface-raised p-0 text-ink shadow-3 backdrop:bg-surface-inverse/60" aria-labelledby="search-dialog-title" onClick={(e) => { if (e.target === ref.current) ref.current?.close(); }}>
         <form action="/search/" method="get" role="search" className="grid gap-4 p-6">
           <div className="flex items-center justify-between gap-4">
-            <h2 id="search-dialog-title" className="font-sans text-title-sm">Search</h2>
+            <h2 id="search-dialog-title" className="font-text text-title-sm">Search</h2>
             <button type="button" onClick={() => ref.current?.close()} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-control border border-border-strong text-ink" aria-label="Close search"><IconClose /></button>
           </div>
-          <label htmlFor="dialog-q" className="font-sans text-small font-semibold">Products, places and glossary terms</label>
+          <label htmlFor="dialog-q" className="font-text text-copy font-semibold">Products, places and glossary terms</label>
           <div className="flex gap-2">
-            <input id="dialog-q" name="q" type="search" autoComplete="off" className="min-h-11 flex-1 rounded-control border border-border-strong bg-surface-raised px-3 font-sans text-body" placeholder="auto, Chandler, deductible" />
-            <button className="min-h-11 rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink">Search</button>
+            <input id="dialog-q" name="q" type="search" autoComplete="off" className="min-h-11 flex-1 rounded-control border border-border-strong bg-surface-raised px-3 font-text text-body" placeholder="auto, Chandler, deductible" />
+            <button className="min-h-11 rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink">Search</button>
           </div>
-          <div className="grid gap-2 font-sans text-small text-ink-muted">
+          <div className="grid gap-2 font-text text-copy text-ink-muted">
             <p>Or go straight to</p>
             <div className="flex flex-wrap gap-x-4 gap-y-1">{quickLinks}</div>
           </div>

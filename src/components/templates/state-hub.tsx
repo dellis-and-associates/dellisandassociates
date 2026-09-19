@@ -15,12 +15,12 @@ export function StateHubTemplate({ state, cities, products }: { state: State; ci
   const tier2 = products.filter((p) => p.tier === "2");
   const mins = state.statutoryMinimums ?? [];
   return (
-    <div className="mx-auto grid max-w-measure-page gap-10 px-4 py-10 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd(crumbs, SITE))} />
       <Breadcrumb items={crumbs} />
       <header className="grid gap-4">
         <h1>Insurance in {state.name}</h1>
-        {state.updatedAt ? <p className="font-sans text-caption text-ink-muted tabular">Last reviewed {new Date(state.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p> : null}
+        {state.updatedAt ? <p className="font-text text-meta text-ink-muted tabular">Last reviewed {new Date(state.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p> : null}
         <p className="lead max-w-measure-body">What {state.name} requires, the lines we write there, and the {cities.length} cities where we have local pages. Every minimum below is cited to its source; where we have not verified one, we say so.</p>
         <StrataRule />
       </header>
@@ -43,20 +43,20 @@ export function StateHubTemplate({ state, cities, products }: { state: State; ci
             </table>
           </TableWrap>
         ) : (
-          <p className="max-w-measure-body font-sans text-small text-ink-muted">Statutory minimums for {state.name} are being verified against the {state.doi?.url && !hasTodo(state.doi.url) ? <a href={state.doi.url} rel="noopener">{state.doi.name}</a> : "state Department of Insurance"} and will appear here with their citations. We do not publish a figure without its source.</p>
+          <p className="max-w-measure-body font-text text-copy text-ink-muted">Statutory minimums for {state.name} are being verified against the {state.doi?.url && !hasTodo(state.doi.url) ? <a href={state.doi.url} rel="noopener">{state.doi.name}</a> : "state Department of Insurance"} and will appear here with their citations. We do not publish a figure without its source.</p>
         )}
         {state.riskNotes ? <RichText value={state.riskNotes} /> : null}
       </section>
       <section aria-labelledby="lines" className="grid gap-4">
         <h2 id="lines">Lines we write in {state.name}</h2>
         <div className="grid gap-6 md:grid-cols-2">
-          <div><h3 className="font-sans text-title-sm">With local pages in every city</h3><ul className="mt-3 grid gap-2 font-sans text-small">{tier1.map((p) => <li key={p.id}><Link href={productStatePath(p, state)} className="ui-link text-ink">{p.name} in {state.name}</Link></li>)}</ul></div>
-          <div><h3 className="font-sans text-title-sm">Statewide</h3><ul className="mt-3 grid gap-2 font-sans text-small sm:grid-cols-2">{tier2.map((p) => <li key={p.id}><Link href={productStatePath(p, state)} className="ui-link text-ink">{p.name}</Link></li>)}</ul></div>
+          <div><h3 className="font-text text-title-sm">With local pages in every city</h3><ul className="mt-3 grid gap-2 font-text text-copy">{tier1.map((p) => <li key={p.id}><Link href={productStatePath(p, state)} className="ui-link text-ink">{p.name} in {state.name}</Link></li>)}</ul></div>
+          <div><h3 className="font-text text-title-sm">Statewide</h3><ul className="mt-3 grid gap-2 font-text text-copy sm:grid-cols-2">{tier2.map((p) => <li key={p.id}><Link href={productStatePath(p, state)} className="ui-link text-ink">{p.name}</Link></li>)}</ul></div>
         </div>
       </section>
       <section aria-labelledby="cities" className="grid gap-4">
         <h2 id="cities">Cities we serve in {state.name}</h2>
-        <ul className="grid gap-2 font-sans text-small sm:grid-cols-2 lg:grid-cols-4">
+        <ul className="grid gap-2 font-text text-copy sm:grid-cols-2 lg:grid-cols-4">
           {cities.map((c) => <li key={c.id}><Link href={productCityPath(tier1[0] ?? { slug: "auto-insurance" }, state, c)} className="ui-link ui-link-inline text-ink">{c.name}</Link>{c.cityFacts?.county && !hasTodo(c.cityFacts.county) ? <span className="block text-ink-muted">{c.cityFacts.county}</span> : null}</li>)}
         </ul>
       </section>

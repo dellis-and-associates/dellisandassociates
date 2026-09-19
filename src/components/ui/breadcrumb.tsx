@@ -8,7 +8,7 @@ export { breadcrumbJsonLd } from "../../lib/seo.ts";
 export function Breadcrumb({ items, label = "Breadcrumb" }: { items: Crumb[]; label?: string }) {
   if (items.length === 0) return null;
   return (
-    <nav aria-label={label} className="font-sans text-small text-ink-muted">
+    <nav aria-label={label} className="font-text text-copy text-ink-muted">
       <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
         <li><Link href="/" className="ui-link text-ink-muted hover:text-ink">Home</Link></li>
         {items.map((c, i) => (

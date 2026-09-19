@@ -8,7 +8,7 @@ const VARIANT: Record<ButtonVariant, string> = {
   quiet: "bg-transparent text-brand hover:underline underline-offset-4",
   destructive: "bg-transparent text-critical border border-critical hover:bg-critical-surface",
 };
-const BASE = "inline-flex min-h-11 items-center justify-center gap-2 rounded-control px-5 font-sans text-small font-semibold no-underline transition-colors duration-(--dp-duration-fast) aria-disabled:cursor-not-allowed aria-disabled:opacity-45 disabled:cursor-not-allowed disabled:opacity-45";
+const BASE = "inline-flex min-h-11 items-center justify-center gap-2 rounded-control px-5 font-text text-copy font-semibold no-underline transition-colors duration-(--dp-duration-fast) aria-disabled:cursor-not-allowed aria-disabled:opacity-45 disabled:cursor-not-allowed disabled:opacity-45";
 
 export function buttonClass(variant: ButtonVariant = "primary", extra = "") {
   return `${BASE} ${VARIANT[variant]} ${extra}`;

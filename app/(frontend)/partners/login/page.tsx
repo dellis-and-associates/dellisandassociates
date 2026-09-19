@@ -8,16 +8,16 @@ export const metadata = pageMetadata({ title: "Partner sign in", description: "S
 export default async function PartnerLogin({ searchParams }: { searchParams: Promise<{ error?: string }> }) {
   const { error } = await searchParams;
   return (
-    <div className="mx-auto grid max-w-measure-page gap-6 px-4 py-16 md:px-8">
+    <div className="mx-auto grid max-w-measure-shell gap-6 px-gutter py-16">
       <div className="grid max-w-measure-narrow gap-6">
         <h1>Partner sign in</h1>
         {error ? <Callout kind="critical" lead="Not signed in.">Check the email and password. Accounts are created by the office; ask if you do not have one.</Callout> : null}
         <form action="/api/partner-login/" method="post" className="grid gap-4">
           <TextField id="email" name="email" label="Email" type="email" autoComplete="email" inputMode="email" required />
           <TextField id="password" name="password" label="Password" type="password" autoComplete="current-password" required />
-          <button className="inline-flex min-h-11 w-fit items-center rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink hover:bg-brand-hover">Sign in</button>
+          <button className="inline-flex min-h-11 w-fit items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink hover:bg-brand-hover">Sign in</button>
         </form>
-        <p className="font-sans text-small text-ink-muted">Partner accounts are created by the office after your agreement is on file.</p>
+        <p className="font-text text-copy text-ink-muted">Partner accounts are created by the office after your agreement is on file.</p>
       </div>
     </div>
   );
