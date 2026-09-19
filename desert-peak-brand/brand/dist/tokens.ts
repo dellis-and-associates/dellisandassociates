@@ -1,7 +1,7 @@
-/* GENERATED from brand/design-tokens.json (v2.2.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.3.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /** Typed token export. Prefer `semantic.*.css` in components; `hex` exists for places CSS variables cannot reach (email, canvas, PDF, CMS admin previews). */
 export const tokens = {
-  "version": "2.2.0",
+  "version": "2.3.0",
   "primitives": {
     "brand": {
       "50": {
@@ -727,9 +727,9 @@ export const tokens = {
         "family": "mono",
         "fontSize": "0.9375rem",
         "lineHeight": 1.4,
-        "letterSpacing": "0.1em",
+        "letterSpacing": "0.08em",
         "fontWeight": 400,
-        "description": "15px. Uppercase eyebrows, indices and tags. DM Mono. Nothing on this site is set below 15px."
+        "description": "15px, 0.08em. Uppercase eyebrows, indices and tags. DM Mono. Nothing on this site is set below 15px; the tracking is lower than a 12px label would take because at this size 0.1em competes with the heading under it."
       },
       "stat": {
         "family": "mono",

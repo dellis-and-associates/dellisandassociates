@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.2.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.3.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /**
  * Tailwind preset: semantic roles -> utility names. Every value is a CSS variable from tokens.css,
  * so dark mode is a token swap, not a rebuild. The default colour palette is replaced (not extended)

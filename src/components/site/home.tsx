@@ -45,12 +45,10 @@ export function Hero({ site, states, headline, lede }: { site: SiteSetting; stat
   const advisor = site.advisor;
   const photo = advisor?.photo && typeof advisor.photo === "object" && advisor.photo.url ? advisor.photo : null;
   const names = orderStates(states).map((s) => s.name);
-  const stateList = names.length > 1 ? `${names.slice(0, -1).join(", ")} and ${names[names.length - 1]}` : names[0] ?? "";
   const facts = ["Independent", "No fee for the analysis", `Licensed in ${names.join(", ")}`];
   return (
     <section className="band shell grid gap-band-gap md:grid-cols-12" aria-labelledby="hero-h">
       <div className="grid content-start gap-6 md:col-span-7">
-        <p className="eyebrow text-ink-secondary">Independent insurance agency in {stateList}</p>
         {/* Not revealed: this is the LCP element and must paint immediately. */}
         <h1 id="hero-h" className="display-type text-display-xl text-ink">
           {sentences(headline).map((line) => <span key={line} className="block">{line}</span>)}

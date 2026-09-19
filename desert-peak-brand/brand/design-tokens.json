@@ -3,7 +3,7 @@
   "$description": "Desert Peak Insurance design tokens. Single source of truth. Palette from Daniel's badge (navy and sage on cream; 2026-09-15) on the Strata token system. Everything in dist/ and brand-sheet.html is generated from this file by scripts/build-tokens.ts; do not edit generated files.",
   "$extensions": {
     "com.desertpeak": {
-      "version": "2.2.0",
+      "version": "2.3.0",
       "direction": "daniel-badge",
       "theme": {
         "light": "populated",
@@ -940,10 +940,10 @@
           "fontFamily": "{typography.family.mono}",
           "fontSize": "0.9375rem",
           "lineHeight": 1.4,
-          "letterSpacing": "0.1em",
+          "letterSpacing": "0.08em",
           "fontWeight": 400
         },
-        "$description": "15px. Uppercase eyebrows, indices and tags. DM Mono. Nothing on this site is set below 15px."
+        "$description": "15px, 0.08em. Uppercase eyebrows, indices and tags. DM Mono. Nothing on this site is set below 15px; the tracking is lower than a 12px label would take because at this size 0.1em competes with the heading under it."
       },
       "stat": {
         "$type": "typography",

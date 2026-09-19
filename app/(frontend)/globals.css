@@ -118,6 +118,10 @@
   /* Header lockup height from the logo tokens: 40 px on phones, 48 px from the md breakpoint (768 px, no breakpoint token exists). */
   .lockup-header { height: var(--dp-logo-header-mobile); }
   @media (min-width: 768px) { .lockup-header { height: var(--dp-logo-header-desktop); } }
+  /* On an inverse surface a UI link keeps its underline: it sits at ink-inverse, the same brightness as the copy around
+     it, so colour is not carrying the distinction on its own (WCAG 1.4.1). Anything dimmer than the body ink is banned
+     here — brand-300 measures 7.59:1 on surface-inverse against 10.20:1 for the copy, which reads as a disabled link. */
+  [data-inverse] .ui-link { text-decoration: underline; text-underline-offset: 3px; }
   /* UI links (nav, lists, cards): 24 px minimum target (WCAG 2.2), underline on hover only. Links inside prose are not ui-links. */
   .ui-link { text-decoration: none; display: inline-flex; align-items: center; min-height: var(--dp-space-6); }
   .ui-link:hover { text-decoration: underline; }
