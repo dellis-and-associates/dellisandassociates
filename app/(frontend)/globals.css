@@ -102,6 +102,10 @@
   .cf-turnstile iframe { display: block; }
   /* tokens-ok: the kicker's 0.08em tracking is specified in BRAND-GUIDE.md §3 ("uppercase with 0.08em tracking") and has no token of its own */
   .kicker { font-family: var(--dp-font-sans); font-size: var(--dp-text-caption-size); line-height: var(--dp-text-caption-line-height); font-weight: var(--dp-text-caption-weight); letter-spacing: 0.08em; text-transform: uppercase; color: var(--dp-ink-muted); }
+  /* The bar is transparent over the hero and takes the page surface plus a hairline once the reader has scrolled past
+     the fold's first 80 px. Sticky, not fixed, so the transparent state shows the page's own ground, never content. */
+  [data-shell-header] { background: transparent; border-bottom: 1px solid transparent; transition: background var(--dp-duration-base) var(--dp-ease-standard), border-color var(--dp-duration-base) var(--dp-ease-standard); }
+  [data-shell-header][data-compact="true"] { background: var(--dp-surface); border-bottom-color: var(--dp-border); }
   /* Header bar: 64 px on phones (56 once the page has scrolled), 80 px from 768 px (64 scrolled) so the 48 px lockup has room; data-compact is set by header-client.tsx. */
   .shell-bar { height: var(--dp-space-16); transition: height var(--dp-duration-fast) var(--dp-ease-standard); }
   [data-compact="true"] .shell-bar { height: calc(var(--spacing) * 14); }

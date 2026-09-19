@@ -25,15 +25,15 @@ export async function Header() {
   const [site, products, allStates] = await Promise.all([getSiteSettings(), getProducts(), getStates()]);
   const states = orderStates(allStates);
   const groups = GROUPS.map((g) => ({ ...g, ...groupProducts(products, g.key) }));
-  const top = "ui-link flex min-h-11 items-center gap-1 whitespace-nowrap px-2 font-sans text-small font-semibold text-ink hover:text-brand";
-  const item = "ui-link block min-h-6 py-1 font-sans text-small text-ink hover:text-brand";
-  const panel = "absolute left-0 top-full z-30 mt-1 hidden rounded-surface border border-border bg-surface-raised p-6 shadow-2 group-open:block";
+  const top = "ui-link flex min-h-11 items-center gap-1 whitespace-nowrap px-1 font-text text-copy font-medium text-ink hover:text-brand xl:px-2";
+  const item = "ui-link block min-h-11 font-text text-copy text-ink hover:text-brand";
+  const panel = "absolute left-0 top-full z-30 hidden rounded-surface border border-border bg-surface-raised p-6 group-open:block";
   const quick = [...products.filter((p) => p.tier === "1").slice(0, 4).map((p) => ({ label: p.name, href: productPath(p) })), ...states.map((s) => ({ label: s.name, href: statePath(s) })), { label: "Glossary", href: "/resources/glossary/" }];
   return (
-    <header data-shell-header data-compact="false" className="sticky top-0 z-40 border-b border-border bg-logo-ground shadow-0">
+    <header data-shell-header data-compact="false" className="sticky top-0 z-40">
       <HeaderBehaviour />
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-control focus:bg-surface-raised focus:px-4 focus:py-2 focus:font-sans focus:text-small">Skip to content</a>
-      <div className="shell-bar mx-auto flex max-w-measure-page items-center justify-between gap-4 px-4 md:px-8">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:rounded-control focus:bg-surface-raised focus:px-4 focus:py-2 focus:font-text focus:text-copy">Skip to content</a>
+      <div className="shell-bar shell flex items-center justify-between gap-4">
         <Link href="/" className="ui-link shrink-0 py-2" aria-label="Desert Peak Insurance, home">
           <span className="lockup-full"><Lockup height="header" /></span>
           <span className="lockup-mark"><Mark height={40} /></span>
@@ -47,7 +47,7 @@ export async function Header() {
                   <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     {groups.map((g) => (
                       <div key={g.key}>
-                        <p className="mb-2 font-sans text-small font-semibold text-ink">{g.name}</p>
+                        <p className="eyebrow mb-2">{g.name}</p>
                         {g.headline.map((p) => <Link key={p.id} href={productPath(p)} className={item}>{p.name}</Link>)}
                       </div>
                     ))}
@@ -70,12 +70,12 @@ export async function Header() {
         </nav>
         <div className="flex shrink-0 items-center gap-1 sm:gap-2">
           {site.phoneHref ? (
-            <a href={site.phoneHref} className="ui-link inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-control px-2 font-sans text-small font-semibold text-ink hover:bg-surface-sunken" data-contact>
+            <a href={site.phoneHref} className="ui-link inline-flex min-h-11 min-w-11 items-center justify-center gap-2 rounded-control px-2 font-text text-copy font-medium text-ink hover:bg-surface-sunken" data-contact>
               <IconPhone /> <span className="hidden whitespace-nowrap xl:inline tabular">{site.phone}</span><span className="sr-only xl:hidden">Call {site.phone}</span>
             </a>
           ) : null}
           <SearchDialog quickLinks={quick.map((q) => <Link key={q.href} href={q.href} className="ui-link text-brand">{q.label}</Link>)} />
-          <Link href="/quote/" className="hidden min-h-11 items-center whitespace-nowrap rounded-control bg-brand px-5 font-sans text-small font-semibold text-brand-ink no-underline hover:bg-brand-hover sm:inline-flex">{CTA}</Link>
+          <Link href="/quote/" className="hidden min-h-11 items-center whitespace-nowrap rounded-control bg-brand px-4 font-text text-copy font-semibold text-brand-ink no-underline hover:bg-brand-hover sm:inline-flex xl:px-5">{CTA}</Link>
           <details data-drawer className="group lg:hidden">
             <summary className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-control border border-border-strong text-ink" aria-label="Menu">
               <span className="group-open:hidden"><IconMenu /></span><span className="hidden group-open:inline"><IconClose /></span>
@@ -84,24 +84,24 @@ export async function Header() {
               <nav aria-label="Primary, phone" className="grid content-start gap-6 px-4 py-6">
                 {groups.map((g) => (
                   <div key={g.key} className="grid gap-1">
-                    <p className="font-sans text-small font-semibold text-ink-muted">{g.name}</p>
-                    {g.headline.map((p) => <Link key={p.id} href={productPath(p)} className="ui-link min-h-11 font-sans text-body text-ink">{p.name}</Link>)}
+                    <p className="eyebrow">{g.name}</p>
+                    {g.headline.map((p) => <Link key={p.id} href={productPath(p)} className="ui-link min-h-11 font-text text-copy text-ink">{p.name}</Link>)}
                   </div>
                 ))}
-                <Link href="/insurance/" className="ui-link min-h-11 font-sans text-body font-semibold text-brand">All {products.length} lines</Link>
+                <Link href="/insurance/" className="ui-link min-h-11 font-text text-copy font-semibold text-brand">All {products.length} lines</Link>
                 <div className="grid gap-1 border-t border-border pt-6">
-                  <p className="font-sans text-small font-semibold text-ink-muted">Licensed in</p>
-                  {states.map((s) => <Link key={s.id} href={statePath(s)} className="ui-link min-h-11 font-sans text-body text-ink">{s.name}</Link>)}
-                  <Link href="/locations/" className="ui-link min-h-11 font-sans text-body font-semibold text-brand">Every city</Link>
+                  <p className="eyebrow">Licensed in</p>
+                  {states.map((s) => <Link key={s.id} href={statePath(s)} className="ui-link min-h-11 font-text text-copy text-ink">{s.name}</Link>)}
+                  <Link href="/locations/" className="ui-link min-h-11 font-text text-copy font-semibold text-brand">Every city</Link>
                 </div>
                 <div className="grid gap-1 border-t border-border pt-6">
-                  {TOP.map(([label, href]) => <Link key={href} href={href} className="ui-link min-h-11 font-sans text-body text-ink">{label}</Link>)}
-                  <Link href="/contact/" className="ui-link min-h-11 font-sans text-body text-ink">Contact</Link>
+                  {TOP.map(([label, href]) => <Link key={href} href={href} className="ui-link min-h-11 font-text text-copy text-ink">{label}</Link>)}
+                  <Link href="/contact/" className="ui-link min-h-11 font-text text-copy text-ink">Contact</Link>
                 </div>
               </nav>
               <div className="sticky bottom-0 mt-auto grid grid-cols-2 gap-3 border-t border-border bg-surface-raised px-4 py-3">
-                {site.phoneHref ? <a href={site.phoneHref} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-control border border-border-strong font-sans text-small font-semibold text-ink no-underline tabular"><IconPhone />{site.phone}</a> : <span />}
-                <Link href="/quote/" className="inline-flex min-h-11 items-center justify-center rounded-control bg-brand px-4 font-sans text-small font-semibold text-brand-ink no-underline">{CTA}</Link>
+                {site.phoneHref ? <a href={site.phoneHref} className="inline-flex min-h-11 items-center justify-center gap-2 rounded-control border border-border-strong font-text text-copy font-semibold text-ink no-underline tabular"><IconPhone />{site.phone}</a> : <span />}
+                <Link href="/quote/" className="inline-flex min-h-11 items-center justify-center rounded-control bg-brand px-4 font-text text-copy font-semibold text-brand-ink no-underline">{CTA}</Link>
               </div>
             </div>
           </details>

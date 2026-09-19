@@ -8,7 +8,7 @@ import { IconClose, IconSearch } from "../ui/icons.tsx";
 /**
  * Progressive enhancement for the shell. Without JavaScript the header is
  * complete: <details> menus, a <details> drawer and a search link. With it:
- *  - the header compresses (64 → 56 px on phones, 80 → 64 px from 768 px) after the page scrolls;
+ *  - the header compresses (64 → 56 px on phones, 80 → 64 px from 768 px) and takes its surface and hairline once the page has scrolled past 80 px;
  *  - only one desktop menu is open at a time, Escape and an outside click close it;
  *  - the phone drawer locks body scroll, traps focus, closes on Escape and on
  *    route change;
@@ -20,7 +20,7 @@ export function HeaderBehaviour() {
   useEffect(() => {
     const header = document.querySelector<HTMLElement>("[data-shell-header]");
     if (!header) return;
-    const onScroll = () => header.setAttribute("data-compact", window.scrollY > 24 ? "true" : "false");
+    const onScroll = () => header.setAttribute("data-compact", window.scrollY > 80 ? "true" : "false");
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     const menus = [...header.querySelectorAll<HTMLDetailsElement>("details[data-menu]")];
