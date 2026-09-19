@@ -96,16 +96,19 @@ export function LinkTabs({ items, current, label }: { items: { label: string; hr
 }
 
 /** Accordion: native details/summary; open works without JS; 120 ms opacity on the body only. */
-export function Accordion({ items, name }: { items: { id: string; question: string; answer: ReactNode }[]; name?: string }) {
+export function Accordion({ items, name, tone = "default", openFirst = false }: { items: { id: string; question: string; answer: ReactNode }[]; name?: string; tone?: "default" | "inverse"; openFirst?: boolean }) {
+  // <details> rather than a button + JS: it is a native disclosure, so it carries aria-expanded, works from the
+  // keyboard, keeps its answer in the DOM for search engines, and opens with JavaScript off.
+  const inverse = tone === "inverse";
   return (
-    <div className="divide-y divide-border rounded-surface border border-border" data-faq>
-      {items.map((it) => (
-        <details key={it.id} id={it.id} name={name} className="group">
-          <summary className="flex min-h-11 items-center justify-between gap-4 px-4 py-3 font-sans text-small font-semibold text-ink hover:bg-surface-sunken">
+    <div className={`divide-y ${inverse ? "divide-ink-inverse/25 border-y border-ink-inverse/25" : "divide-border rounded-surface border border-border"}`} data-faq>
+      {items.map((it, i) => (
+        <details key={it.id} id={it.id} name={name} open={openFirst && i === 0} className="group">
+          <summary className={`flex min-h-11 items-center justify-between gap-4 py-5 font-text text-subhead font-medium ${inverse ? "text-ink-inverse" : "px-4 text-ink hover:bg-surface-sunken"}`}>
             <span>{it.question}</span>
-            <span aria-hidden className="text-ink-muted transition-transform duration-(--dp-duration-fast) group-open:rotate-180">⌄</span>
+            <span aria-hidden className={`transition-transform duration-(--dp-duration-fast) group-open:rotate-180 ${inverse ? "text-ink-inverse-secondary" : "text-ink-muted"}`}>⌄</span>
           </summary>
-          <div className="prose px-4 pb-4 pt-1 text-small">{it.answer}</div>
+          <div className={`prose max-w-measure-editorial pb-6 font-text text-copy ${inverse ? "text-ink-inverse-secondary" : "px-4 pt-1 text-ink-secondary"}`}>{it.answer}</div>
         </details>
       ))}
     </div>

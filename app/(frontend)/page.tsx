@@ -36,14 +36,12 @@ export default async function Home() {
       <Hero site={site} states={states} headline={headline} lede={lede} />
       <CarrierStrip site={site} />
       {steps ? <Steps block={steps} /> : null}
-      <div className="mx-auto grid max-w-measure-page gap-16 px-4 py-16 md:px-8 md:gap-20">
-        <CoverageGroups products={products} />
-        <LifeEvents />
-        <Faq items={faqs} />
-        <Testimonials site={site} />
-        <Recognition />
-        <PageBlocks layout={rest} />
-      </div>
+      <CoverageGroups products={products} />
+      <LifeEvents />
+      <Recognition />
+      <Faq items={faqs} />
+      <Testimonials site={site} />
+      {rest?.length ? <div className="band shell grid gap-band-gap">{<PageBlocks layout={rest} />}</div> : null}
       <ClosingBand site={site} />
     </>
   );

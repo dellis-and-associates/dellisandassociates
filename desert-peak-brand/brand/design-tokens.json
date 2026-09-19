@@ -3,7 +3,7 @@
   "$description": "Desert Peak Insurance design tokens. Single source of truth. Palette from Daniel's badge (navy and sage on cream; 2026-09-15) on the Strata token system. Everything in dist/ and brand-sheet.html is generated from this file by scripts/build-tokens.ts; do not edit generated files.",
   "$extensions": {
     "com.desertpeak": {
-      "version": "2.3.0",
+      "version": "2.4.0",
       "direction": "daniel-badge",
       "theme": {
         "light": "populated",
@@ -543,6 +543,11 @@
         "$type": "color",
         "$value": "{color.neutral.50}",
         "$description": "Text on surface-inverse and on brand."
+      },
+      "ink-inverse-secondary": {
+        "$type": "color",
+        "$value": "{color.neutral.200}",
+        "$description": "Body copy on the inverse surface. 10.20:1 there, where ink-inverse is 13.63:1 — so a link set in ink-inverse is brighter than the copy around it, never dimmer."
       },
       "border": {
         "$type": "color",

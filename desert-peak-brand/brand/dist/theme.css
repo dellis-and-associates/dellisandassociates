@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.3.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.4.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /* Tailwind v4. Import after tokens.css:  @import "@desert-peak/brand/tokens.css"; @import "@desert-peak/brand/theme.css"; */
 
 @theme inline {
@@ -12,6 +12,7 @@
   --color-ink-secondary: var(--dp-ink-secondary);
   --color-ink-muted: var(--dp-ink-muted);
   --color-ink-inverse: var(--dp-ink-inverse);
+  --color-ink-inverse-secondary: var(--dp-ink-inverse-secondary);
   --color-border: var(--dp-border);
   --color-border-strong: var(--dp-border-strong);
   --color-brand: var(--dp-brand);

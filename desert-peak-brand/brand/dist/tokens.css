@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.3.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.4.0) by scripts/build-tokens.ts. Do not edit by hand. */
 
 :root {
   color-scheme: light;
@@ -81,6 +81,7 @@
   --dp-ink-secondary: var(--dp-color-neutral-700);
   --dp-ink-muted: var(--dp-color-neutral-600);
   --dp-ink-inverse: var(--dp-color-neutral-50);
+  --dp-ink-inverse-secondary: var(--dp-color-neutral-200);
   --dp-border: var(--dp-color-neutral-200);
   --dp-border-strong: var(--dp-color-neutral-500);
   --dp-brand: var(--dp-color-brand-600);
@@ -281,6 +282,7 @@
   /* --dp-ink-secondary: var(--dp-color-neutral-700); */
   /* --dp-ink-muted: var(--dp-color-neutral-600); */
   /* --dp-ink-inverse: var(--dp-color-neutral-50); */
+  /* --dp-ink-inverse-secondary: var(--dp-color-neutral-200); */
   /* --dp-border: var(--dp-color-neutral-200); */
   /* --dp-border-strong: var(--dp-color-neutral-500); */
   /* --dp-brand: var(--dp-color-brand-600); */

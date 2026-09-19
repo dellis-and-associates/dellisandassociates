@@ -1,7 +1,7 @@
-/* GENERATED from brand/design-tokens.json (v2.3.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.4.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /** Typed token export. Prefer `semantic.*.css` in components; `hex` exists for places CSS variables cannot reach (email, canvas, PDF, CMS admin previews). */
 export const tokens = {
-  "version": "2.3.0",
+  "version": "2.4.0",
   "primitives": {
     "brand": {
       "50": {
@@ -340,6 +340,13 @@ export const tokens = {
       "hex": "#FBF6F2",
       "ref": "neutral.50",
       "description": "Text on surface-inverse and on brand."
+    },
+    "ink-inverse-secondary": {
+      "var": "--dp-ink-inverse-secondary",
+      "css": "var(--dp-ink-inverse-secondary)",
+      "hex": "#DED6D0",
+      "ref": "neutral.200",
+      "description": "Body copy on the inverse surface. 10.20:1 there, where ink-inverse is 13.63:1 — so a link set in ink-inverse is brighter than the copy around it, never dimmer."
     },
     "border": {
       "var": "--dp-border",
