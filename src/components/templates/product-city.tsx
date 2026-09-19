@@ -90,7 +90,7 @@ export async function ProductCityTemplate({ product, state, city, override, sibl
       {testimonial ? <blockquote data-testimonial className="max-w-measure-body border-l-4 border-accent pl-4"><p>“{testimonial.quote}”</p><footer className="mt-2 font-sans text-small text-ink-muted">{testimonial.attribution}</footer></blockquote> : null}
       <div className="grid gap-12">{order.map((b) => <div key={b}>{blocks[b]}</div>)}</div>
       <MedicareDisclaimer product={product} />
-      <p className="font-sans text-caption text-ink-muted">Also: <Link href={productStatePath(product, state)} className="ui-link">{product.name} in {state.name}</Link></p>
+      <p className="font-sans text-caption text-ink-muted">Also: <Link href={productStatePath(product, state)} className="ui-link ui-link-inline">{product.name} in {state.name}</Link></p>
     </div>
   );
 }

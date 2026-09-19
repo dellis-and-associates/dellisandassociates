@@ -26,7 +26,7 @@ export default async function Locations() {
             <section key={s.id} aria-labelledby={`s-${s.slug}`} className="grid gap-3">
               <h2 id={`s-${s.slug}`}><Link href={statePath(s)} className="ui-link text-ink">{s.name}</Link></h2>
               <ul className="grid gap-2 font-sans text-small sm:grid-cols-2">
-                {list.map((c) => <li key={c.id}><Link href={productCityPath(auto, s, c)} className="ui-link text-ink">{c.name}</Link>{c.cityFacts?.county && !hasTodo(c.cityFacts.county) ? <span className="block text-ink-muted">{c.cityFacts.county}</span> : null}</li>)}
+                {list.map((c) => <li key={c.id}><Link href={productCityPath(auto, s, c)} className="ui-link ui-link-inline text-ink">{c.name}</Link>{c.cityFacts?.county && !hasTodo(c.cityFacts.county) ? <span className="block text-ink-muted">{c.cityFacts.county}</span> : null}</li>)}
               </ul>
             </section>
           );

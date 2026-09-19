@@ -42,6 +42,7 @@
     "fonts:fallbacks": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/font-fallbacks.mts",
     "ux:audit": "node --disable-warning=MODULE_TYPELESS_PACKAGE_JSON scripts/ux-audit.mts",
     "test:a11y": "playwright test tests/e2e/a11y.spec.ts --project=mobile --project=tablet --project=desktop --project=wide",
+    "test:motion": "playwright test tests/e2e/motion.spec.ts --project=mobile --project=desktop --project=wide",
     "test:visual": "playwright test tests/e2e/visual.spec.ts",
     "test:visual:update": "playwright test tests/e2e/visual.spec.ts --update-snapshots",
     "test:nojs": "playwright test tests/e2e/nojs.spec.ts --project=nojs --project=nojs-mobile",

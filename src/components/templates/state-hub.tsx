@@ -57,7 +57,7 @@ export function StateHubTemplate({ state, cities, products }: { state: State; ci
       <section aria-labelledby="cities" className="grid gap-4">
         <h2 id="cities">Cities we serve in {state.name}</h2>
         <ul className="grid gap-2 font-sans text-small sm:grid-cols-2 lg:grid-cols-4">
-          {cities.map((c) => <li key={c.id}><Link href={productCityPath(tier1[0] ?? { slug: "auto-insurance" }, state, c)} className="ui-link text-ink">{c.name}</Link>{c.cityFacts?.county && !hasTodo(c.cityFacts.county) ? <span className="block text-ink-muted">{c.cityFacts.county}</span> : null}</li>)}
+          {cities.map((c) => <li key={c.id}><Link href={productCityPath(tier1[0] ?? { slug: "auto-insurance" }, state, c)} className="ui-link ui-link-inline text-ink">{c.name}</Link>{c.cityFacts?.county && !hasTodo(c.cityFacts.county) ? <span className="block text-ink-muted">{c.cityFacts.county}</span> : null}</li>)}
         </ul>
       </section>
       <CtaBand heading={`Request the analysis in ${state.name}`} body="Send what you have. We compare it against the carriers we represent and show the math." action={{ label: "Request the analysis", href: `/quote/?state=${state.slug}` }} />

@@ -19,7 +19,9 @@ export function Reveal({ children, index = 0, as: Tag = "div", className = "" }:
     document.documentElement.dataset.revealReady = "1";
     const el = ref.current;
     if (!el) return;
-    if (!("IntersectionObserver" in window)) { el.dataset.revealed = ""; return; }
+    // If the failsafe already dropped the flag, this element is visible: mark it revealed and never touch it again.
+    // Mounting late must not re-hide copy a reader is already looking at.
+    if (!document.documentElement.dataset.js || !("IntersectionObserver" in window)) { el.dataset.revealed = ""; return; }
     const io = new IntersectionObserver((entries) => {
       for (const e of entries) if (e.isIntersecting) { (e.target as HTMLElement).dataset.revealed = ""; io.unobserve(e.target); }
     }, { rootMargin: "0px 0px -12% 0px" });

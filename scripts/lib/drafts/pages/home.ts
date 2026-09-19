@@ -10,8 +10,16 @@ import type { PageDraft } from "../types.mts";
  * four step titles, which are labels the prose did not have. Sentences that
  * were not in the prose do not appear at all.
  *
+ * Step titles label rather than restate: in a numbered layout the title is
+ * scanned and the body is read, so a title that repeats the body's opening
+ * words wastes the scan. None of them refers to another step, because the
+ * index comes from array position and the copy must survive a reorder.
+ *
  * Pending client sign-off: this file is the proposal. `fill:content` has not
- * been run, so the live page still carries the two paragraphs.
+ * been run, so the live page still carries the two paragraphs. The intro joins
+ * two approved sentences that sat paragraphs apart; joined, "the analysis"
+ * lands twice in two sentences. Fixing that means editing approved copy, so it
+ * is an option for the client, not a change made here.
  */
 export const draft: PageDraft = {
   lede: "An independent insurance agency licensed in Arizona, Nevada, Utah and Idaho. We compare your current policy against the carriers we represent, show the numbers, and say when keeping what you have is the right call. The analysis costs nothing.",
@@ -27,11 +35,11 @@ export const draft: PageDraft = {
           body: "Send a declarations page, or answer the questions in the quote flow.",
         },
         {
-          title: "A licensed advisor reads it", // NEW
+          title: "Against what you own, owe and earn", // NEW label, built from the sentence's own tail
           body: "A licensed advisor reads the limits and deductibles against what you own, owe and earn.",
         },
         {
-          title: "Gaps and duplicates get marked", // NEW
+          title: "Marked, then priced", // NEW label
           body: "Gaps get marked, duplicated coverage gets marked, and the same coverages are priced with each carrier we hold an appointment with.",
         },
         {

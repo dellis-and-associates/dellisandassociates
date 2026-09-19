@@ -121,10 +121,16 @@
   /* On an inverse surface a UI link keeps its underline: it sits at ink-inverse, the same brightness as the copy around
      it, so colour is not carrying the distinction on its own (WCAG 1.4.1). Anything dimmer than the body ink is banned
      here — brand-300 measures 7.59:1 on surface-inverse against 10.20:1 for the copy, which reads as a disabled link. */
-  [data-inverse] .ui-link { text-decoration: underline; text-underline-offset: 3px; }
+  /* Focus on an inverse surface: the default ring is ink (neutral-900), which is the inverse surface itself since
+     surface-inverse moved there — invisible. Light ring, dark offset, same 2px geometry. */
+  [data-inverse] :focus-visible { outline-color: var(--dp-ink-inverse); box-shadow: 0 0 0 2px var(--dp-surface-inverse); }
   /* UI links (nav, lists, cards): 24 px minimum target (WCAG 2.2), underline on hover only. Links inside prose are not ui-links. */
   .ui-link { text-decoration: none; display: inline-flex; align-items: center; min-height: var(--dp-space-6); }
   .ui-link:hover { text-decoration: underline; }
+  /* A UI link that sits beside text it does not own keeps its underline: hue alone cannot carry the distinction
+     (WCAG 1.4.1), and on an inverse surface the link is the same ink as the copy around it. Declared after .ui-link
+     because it has the same specificity — source order is what decides. Nav, buttons and whole-card links are exempt. */
+  [data-inverse] .ui-link, .ui-link-inline { text-decoration: underline; text-underline-offset: 3px; }
   /* Strata ornament: the only ornament. 64 × 10, 3 px bands, 2 px gaps. */
   .strata { width: var(--dp-space-16); height: 10px; background: repeating-linear-gradient(to bottom, var(--dp-brand) 0 3px, transparent 3px 5px); }
 }
