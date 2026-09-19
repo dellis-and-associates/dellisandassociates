@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.1.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.2.0) by scripts/build-tokens.ts. Do not edit by hand. */
 
 :root {
   color-scheme: light;
@@ -76,7 +76,7 @@
   --dp-surface: var(--dp-color-neutral-50);
   --dp-surface-raised: var(--dp-color-neutral-0);
   --dp-surface-sunken: var(--dp-color-neutral-100);
-  --dp-surface-inverse: var(--dp-color-neutral-950);
+  --dp-surface-inverse: var(--dp-color-neutral-900);
   --dp-ink: var(--dp-color-neutral-900);
   --dp-ink-secondary: var(--dp-color-neutral-700);
   --dp-ink-muted: var(--dp-color-neutral-600);
@@ -212,7 +212,7 @@
   --dp-text-meta-letter-spacing: 0;
   --dp-text-meta-weight: 400;
   --dp-text-label-family: var(--dp-font-mono);
-  --dp-text-label-size: 0.75rem;
+  --dp-text-label-size: 0.9375rem;
   --dp-text-label-line-height: 1.4;
   --dp-text-label-letter-spacing: 0.1em;
   --dp-text-label-weight: 400;
@@ -276,7 +276,7 @@
   /* --dp-surface: var(--dp-color-neutral-50); */
   /* --dp-surface-raised: var(--dp-color-neutral-0); */
   /* --dp-surface-sunken: var(--dp-color-neutral-100); */
-  /* --dp-surface-inverse: var(--dp-color-neutral-950); */
+  /* --dp-surface-inverse: var(--dp-color-neutral-900); */
   /* --dp-ink: var(--dp-color-neutral-900); */
   /* --dp-ink-secondary: var(--dp-color-neutral-700); */
   /* --dp-ink-muted: var(--dp-color-neutral-600); */

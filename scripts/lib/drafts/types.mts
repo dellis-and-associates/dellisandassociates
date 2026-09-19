@@ -64,7 +64,9 @@ export type PageBlockDraft =
   | { type: "richText"; sections: ArticleSection[] }
   | { type: "faq"; heading?: string; items: { question: string; answer: InlineInput[] }[] }
   | { type: "cta"; heading: string; body?: string; label: string; href: string }
-  | { type: "disclosure"; key: "independentAgency" | "medicareTpmo" | "stateLicensing" };
+  | { type: "disclosure"; key: "independentAgency" | "medicareTpmo" | "stateLicensing" }
+  /** A numbered sequence. The index is the array position; never author it. */
+  | { type: "steps"; eyebrow?: string; heading: string; intro?: string; items: { title: string; body: string }[] };
 
 export type PageDraft = {
   /** Replaces the seeded placeholder title when set. */

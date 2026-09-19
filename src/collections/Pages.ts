@@ -43,6 +43,27 @@ const DisclosureBlock: Block = {
   ],
 };
 const FormBlock: Block = { slug: "form", fields: [{ name: "form", type: "relationship", relationTo: "forms", required: true }] };
+/**
+ * A numbered sequence: how something works, in order. The index is never
+ * authored — the renderer counts from the array position, so reordering the
+ * steps in the admin cannot leave the numbering saying something else.
+ */
+const StepsBlock: Block = {
+  slug: "steps",
+  fields: [
+    { name: "eyebrow", type: "text", admin: { description: "Mono label above the heading. Two or three words." } },
+    { name: "heading", type: "text", required: true },
+    { name: "intro", type: "textarea" },
+    {
+      name: "items",
+      type: "array",
+      minRows: 2,
+      maxRows: 6,
+      admin: { description: "Numbered in the order shown here. Drag to reorder; the numbers follow." },
+      fields: [{ name: "title", type: "text", required: true }, { name: "body", type: "textarea", required: true }],
+    },
+  ],
+};
 
 /**
  * 29 hand-built routes: 20 core + 9 legal. `path` is the full route path so
@@ -83,7 +104,7 @@ export const Pages: CollectionConfig = {
     { name: "template", type: "select", required: true, defaultValue: "static", options: PAGE_TEMPLATES.map((v) => ({ label: v, value: v })), admin: { position: "sidebar" } },
     { name: "legalState", type: "relationship", relationTo: "states", admin: { condition: (data) => data?.template === "legal-static", description: "For /legal/licensing/{state}/." } },
     { name: "lede", type: "textarea", maxLength: 300 },
-    { name: "layout", type: "blocks", blocks: [RichTextBlock, FaqBlock, CtaBlock, DisclosureBlock, FormBlock] },
+    { name: "layout", type: "blocks", blocks: [RichTextBlock, StepsBlock, FaqBlock, CtaBlock, DisclosureBlock, FormBlock] },
     seoFields(),
     ...reviewFields(),
   ],

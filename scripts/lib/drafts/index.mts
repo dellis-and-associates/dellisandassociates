@@ -144,6 +144,7 @@ export const pageToFields = (d: PageDraft) => ({
     }
     if (b.type === "faq") return { blockType: "faq", heading: b.heading ?? null, items: b.items.map((it) => ({ question: it.question, answer: doc(it.answer.map((p) => paragraph(p))) })) };
     if (b.type === "cta") return { blockType: "cta", heading: b.heading, body: b.body ?? null, label: b.label, href: b.href };
+    if (b.type === "steps") return { blockType: "steps", eyebrow: b.eyebrow ?? null, heading: b.heading, intro: b.intro ?? null, items: b.items.map((it) => ({ title: it.title, body: it.body })) };
     return { blockType: "disclosure", key: b.key };
   }),
   ...(d.seo ? { seo: d.seo } : {}),
@@ -156,6 +157,7 @@ export const pageProse = (d: PageDraft): { where: string; text: string; heading?
     if (b.type === "richText") return b.sections.flatMap((s, j) => [...(s.heading ? [{ where: `blocks[${i}].sections[${j}].heading`, text: s.heading, heading: true }] : []), ...s.paragraphs.map((p, k) => ({ where: `blocks[${i}].sections[${j}].paragraphs[${k}]`, text: inlineText(p) })), ...(s.bullets ?? []).map((p, k) => ({ where: `blocks[${i}].sections[${j}].bullets[${k}]`, text: inlineText(p) }))]);
     if (b.type === "faq") return [...(b.heading ? [{ where: `blocks[${i}].heading`, text: b.heading, heading: true }] : []), ...b.items.flatMap((it, j) => [{ where: `blocks[${i}].items[${j}].question`, text: it.question }, ...it.answer.map((p, k) => ({ where: `blocks[${i}].items[${j}].answer[${k}]`, text: inlineText(p) }))])];
     if (b.type === "cta") return [{ where: `blocks[${i}].heading`, text: b.heading }, ...(b.body ? [{ where: `blocks[${i}].body`, text: b.body }] : []), { where: `blocks[${i}].label`, text: b.label }];
+    if (b.type === "steps") return [...(b.eyebrow ? [{ where: `blocks[${i}].eyebrow`, text: b.eyebrow, heading: true }] : []), { where: `blocks[${i}].heading`, text: b.heading, heading: true }, ...(b.intro ? [{ where: `blocks[${i}].intro`, text: b.intro }] : []), ...b.items.flatMap((it, j) => [{ where: `blocks[${i}].items[${j}].title`, text: it.title, heading: true }, { where: `blocks[${i}].items[${j}].body`, text: it.body }])];
     return [];
   }),
 ];

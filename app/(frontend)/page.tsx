@@ -4,6 +4,7 @@ import { richTextToPlain } from "@/src/lib/text";
 import { PageBlocks } from "@/src/components/site/page-blocks";
 import { CarrierStrip, ClosingBand, CoverageGroups, Faq, Hero, LifeEvents, Recognition, Testimonials, homeFaqs } from "@/src/components/site/home";
 import { orderStates } from "@/src/lib/groups";
+import { Steps } from "@/src/components/site/steps";
 
 export const revalidate = false;
 
@@ -23,6 +24,10 @@ export default async function Home() {
   const headline = page?.title && !page.title.includes("{{TODO") && page.title !== "Home" ? page.title : "Compared across carriers. Explained with the math.";
   const lede = page?.lede && !page.lede.includes("{{TODO") ? page.lede : `We compare your current policies against the carriers we represent in ${orderStates(states).map((s) => s.name).join(", ")}. It costs nothing, and if what you have is the best option, we say so.`;
   const faqs = homeFaqs(products);
+  // "How the analysis works" is promoted out of the block stack to just under the carriers: it is the most persuasive
+  // thing on the page and it used to sit at the bottom with no heading. The rest of the page's blocks stay where they are.
+  const steps = page?.layout?.find((b) => b.blockType === "steps");
+  const rest = page?.layout?.filter((b) => b.blockType !== "steps");
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(orgJsonLd(site, states.map((s) => s.name)))} />
@@ -30,13 +35,14 @@ export default async function Home() {
       {faqs.length ? <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(faqJsonLd(faqs.map((f) => ({ q: f.question, a: richTextToPlain(f.answer) }))))} /> : null}
       <Hero site={site} states={states} headline={headline} lede={lede} />
       <CarrierStrip site={site} />
+      {steps ? <Steps block={steps} /> : null}
       <div className="mx-auto grid max-w-measure-page gap-16 px-4 py-16 md:px-8 md:gap-20">
         <CoverageGroups products={products} />
         <LifeEvents />
         <Faq items={faqs} />
         <Testimonials site={site} />
         <Recognition />
-        <PageBlocks layout={page?.layout} />
+        <PageBlocks layout={rest} />
       </div>
       <ClosingBand site={site} />
     </>

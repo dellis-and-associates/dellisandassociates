@@ -6,6 +6,7 @@ import * as migration_20260912_183954_phase4c_tenant_limits from './20260912_183
 import * as migration_20260913_060400_phase5_sessions_rum from './20260913_060400_phase5_sessions_rum';
 import * as migration_20260913_182450_shell_home_settings from './20260913_182450_shell_home_settings';
 import * as migration_20260916_173045_seo_waves_reviewed_at from './20260916_173045_seo_waves_reviewed_at';
+import * as migration_20260919_141134_steps_block from './20260919_141134_steps_block';
 
 export const migrations = [
   {
@@ -46,6 +47,11 @@ export const migrations = [
   {
     up: migration_20260916_173045_seo_waves_reviewed_at.up,
     down: migration_20260916_173045_seo_waves_reviewed_at.down,
-    name: '20260916_173045_seo_waves_reviewed_at'
+    name: '20260916_173045_seo_waves_reviewed_at',
+  },
+  {
+    up: migration_20260919_141134_steps_block.up,
+    down: migration_20260919_141134_steps_block.down,
+    name: '20260919_141134_steps_block'
   },
 ];

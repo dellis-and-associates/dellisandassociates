@@ -5,6 +5,7 @@ import { CtaBand } from "../ui/misc.tsx";
 import { RichText } from "./richtext.tsx";
 import { richTextToPlain } from "../../lib/text.ts";
 import { FormRenderer } from "./form-renderer.tsx";
+import { Steps } from "./steps.tsx";
 
 type Layout = NonNullable<Page["layout"]>;
 
@@ -29,6 +30,7 @@ export async function PageBlocks({ layout, stateLicense }: { layout: Layout | nu
       </section>,
     );
     else if (b.blockType === "cta") out.push(<CtaBand key={i} heading={b.heading} body={b.body ?? undefined} action={{ label: b.label, href: b.href }} />);
+    else if (b.blockType === "steps") out.push(<Steps key={i} block={b} id={`steps-${i}`} />);
     else if (b.blockType === "disclosure") {
       const text = b.key === "medicareTpmo" ? compliance.medicareTpmoDisclaimer : b.key === "stateLicensing" ? licensingText(compliance.stateLicensingDisclosure ?? "", stateLicense) : compliance.independentAgencyDisclosure;
       out.push(<p key={i} data-disclosure={b.key} className="rounded-surface border border-border bg-surface-sunken p-4 font-sans text-small text-ink">{text}</p>);

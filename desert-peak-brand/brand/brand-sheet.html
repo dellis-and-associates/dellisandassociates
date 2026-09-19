@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Desert Peak Insurance — Brand Sheet v2.1.0</title>
+<title>Desert Peak Insurance — Brand Sheet v2.2.0</title>
 <style>
 /* ---- fonts (embedded; no network) ---- */
 @font-face {
@@ -65,7 +65,7 @@
   font-display: swap;
 }
 /* ---- tokens (generated) ---- */
-/* GENERATED from brand/design-tokens.json (v2.1.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.2.0) by scripts/build-tokens.ts. Do not edit by hand. */
 
 :root {
   color-scheme: light;
@@ -143,7 +143,7 @@
   --dp-surface: var(--dp-color-neutral-50);
   --dp-surface-raised: var(--dp-color-neutral-0);
   --dp-surface-sunken: var(--dp-color-neutral-100);
-  --dp-surface-inverse: var(--dp-color-neutral-950);
+  --dp-surface-inverse: var(--dp-color-neutral-900);
   --dp-ink: var(--dp-color-neutral-900);
   --dp-ink-secondary: var(--dp-color-neutral-700);
   --dp-ink-muted: var(--dp-color-neutral-600);
@@ -279,7 +279,7 @@
   --dp-text-meta-letter-spacing: 0;
   --dp-text-meta-weight: 400;
   --dp-text-label-family: var(--dp-font-mono);
-  --dp-text-label-size: 0.75rem;
+  --dp-text-label-size: 0.9375rem;
   --dp-text-label-line-height: 1.4;
   --dp-text-label-letter-spacing: 0.1em;
   --dp-text-label-weight: 400;
@@ -343,7 +343,7 @@
   /* --dp-surface: var(--dp-color-neutral-50); */
   /* --dp-surface-raised: var(--dp-color-neutral-0); */
   /* --dp-surface-sunken: var(--dp-color-neutral-100); */
-  /* --dp-surface-inverse: var(--dp-color-neutral-950); */
+  /* --dp-surface-inverse: var(--dp-color-neutral-900); */
   /* --dp-ink: var(--dp-color-neutral-900); */
   /* --dp-ink-secondary: var(--dp-color-neutral-700); */
   /* --dp-ink-muted: var(--dp-color-neutral-600); */
@@ -496,7 +496,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <div class="wrap">
 
 <header>
-  <p class="meta tab">Brand sheet · Direction 1, Strata · tokens v2.1.0 · generated from <code>design-tokens.json</code></p>
+  <p class="meta tab">Brand sheet · Direction 1, Strata · tokens v2.2.0 · generated from <code>design-tokens.json</code></p>
   <h1>Desert Peak Insurance</h1>
   <p class="lede">The complete visual system on one page for sign-off: logo variants, colour ramps with contrast ratios, the type scale in use, every control state, a content block and a comparison table. Everything on this page is drawn from the token file; nothing here is hand-coloured.</p>
 </header>
@@ -540,7 +540,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <tbody><tr><td><span class="chip" style="background:#FBF6F2"></span></td><td><code>surface</code></td><td><code>--dp-surface</code></td><td><code>neutral.50</code></td><td class="tab">#FBF6F2</td><td>Page background.</td></tr>
 <tr><td><span class="chip" style="background:#FEFBF9"></span></td><td><code>surface-raised</code></td><td><code>--dp-surface-raised</code></td><td><code>neutral.0</code></td><td class="tab">#FEFBF9</td><td>Cards, popovers, anything lifted off the page.</td></tr>
 <tr><td><span class="chip" style="background:#F1EAE5"></span></td><td><code>surface-sunken</code></td><td><code>--dp-surface-sunken</code></td><td><code>neutral.100</code></td><td class="tab">#F1EAE5</td><td>Wells, table headers, inset areas.</td></tr>
-<tr><td><span class="chip" style="background:#0C1421"></span></td><td><code>surface-inverse</code></td><td><code>--dp-surface-inverse</code></td><td><code>neutral.950</code></td><td class="tab">#0C1421</td><td>Dark panels and footers. Pair with ink-inverse.</td></tr>
+<tr><td><span class="chip" style="background:#1E293B"></span></td><td><code>surface-inverse</code></td><td><code>--dp-surface-inverse</code></td><td><code>neutral.900</code></td><td class="tab">#1E293B</td><td>The one dark band, and the footer. Deliberately not the ramp's darkest step: near-black under near-white causes halation, which costs an older reader more than the extra contrast buys. Lifted and slightly warmer, it puts ink-inverse at 13.63:1 — the same side of the scale as the light page, where base is neutral-50 rather than white.</td></tr>
 <tr><td><span class="chip" style="background:#1E293B"></span></td><td><code>ink</code></td><td><code>--dp-ink</code></td><td><code>neutral.900</code></td><td class="tab">#1E293B</td><td>Body and heading text.</td></tr>
 <tr><td><span class="chip" style="background:#344458"></span></td><td><code>ink-secondary</code></td><td><code>--dp-ink-secondary</code></td><td><code>neutral.700</code></td><td class="tab">#344458</td><td>Lede and supporting copy. 9.26:1 on surface — clears AAA, where ink-muted (6.92:1) does not.</td></tr>
 <tr><td><span class="chip" style="background:#44576C"></span></td><td><code>ink-muted</code></td><td><code>--dp-ink-muted</code></td><td><code>neutral.600</code></td><td class="tab">#44576C</td><td>Secondary text, captions, metadata. Still AA for body.</td></tr>
@@ -581,7 +581,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <tr class=""><td><span class="pair" style="background:#FBF6F2;color:#44576C">Aa</span></td><td><code>ink-muted</code> on <code>surface</code></td><td class="tab">6.92</td><td class="tab">4.5</td><td>pass</td><td>Captions and metadata</td></tr>
 <tr class=""><td><span class="pair" style="background:#FEFBF9;color:#44576C">Aa</span></td><td><code>ink-muted</code> on <code>surface-raised</code></td><td class="tab">7.21</td><td class="tab">4.5</td><td>pass</td><td>Captions on cards</td></tr>
 <tr class=""><td><span class="pair" style="background:#F1EAE5;color:#44576C">Aa</span></td><td><code>ink-muted</code> on <code>surface-sunken</code></td><td class="tab">6.24</td><td class="tab">4.5</td><td>pass</td><td>Captions in wells</td></tr>
-<tr class=""><td><span class="pair" style="background:#0C1421;color:#FBF6F2">Aa</span></td><td><code>ink-inverse</code> on <code>surface-inverse</code></td><td class="tab">17.20</td><td class="tab">4.5</td><td>pass</td><td>Text on dark panels and footer</td></tr>
+<tr class=""><td><span class="pair" style="background:#1E293B;color:#FBF6F2">Aa</span></td><td><code>ink-inverse</code> on <code>surface-inverse</code></td><td class="tab">13.63</td><td class="tab">4.5</td><td>pass</td><td>Text on dark panels and footer</td></tr>
 <tr class=""><td><span class="pair" style="background:#FBF6F2;color:#243858">Aa</span></td><td><code>brand</code> on <code>surface</code></td><td class="tab">10.98</td><td class="tab">4.5</td><td>pass</td><td>Links and brand-coloured text</td></tr>
 <tr class=""><td><span class="pair" style="background:#FEFBF9;color:#243858">Aa</span></td><td><code>brand</code> on <code>surface-raised</code></td><td class="tab">11.44</td><td class="tab">4.5</td><td>pass</td><td>Links on cards</td></tr>
 <tr class=""><td><span class="pair" style="background:#FBF6F2;color:#182944">Aa</span></td><td><code>brand-hover</code> on <code>surface</code></td><td class="tab">13.59</td><td class="tab">4.5</td><td>pass</td><td>Hovered links</td></tr>
@@ -613,7 +613,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <tr class=""><td><span class="pair" style="background:#F1EAE5;color:#1E293B">Aa</span></td><td><code>focus-ring</code> on <code>surface-sunken</code></td><td class="tab">12.29</td><td class="tab">3</td><td>pass</td><td>Focus ring against wells</td></tr>
 <tr class=""><td><span class="pair" style="background:#FBF6F2;color:#1E293B">Aa</span></td><td><code>focus-ring</code> on <code>focus-ring-offset</code></td><td class="tab">13.63</td><td class="tab">3</td><td>pass</td><td>Focus ring against its own 2px halo</td></tr>
 <tr class=""><td><span class="pair" style="background:#243858;color:#FBF6F2">Aa</span></td><td><code>focus-ring-offset</code> on <code>brand</code></td><td class="tab">10.98</td><td class="tab">3</td><td>pass</td><td>Focus halo against a primary button (the ring sits outside the halo)</td></tr>
-<tr class=""><td><span class="pair" style="background:#0C1421;color:#FBF6F2">Aa</span></td><td><code>focus-ring-offset</code> on <code>surface-inverse</code></td><td class="tab">17.20</td><td class="tab">3</td><td>pass</td><td>Focus halo against a dark panel</td></tr>
+<tr class=""><td><span class="pair" style="background:#1E293B;color:#FBF6F2">Aa</span></td><td><code>focus-ring-offset</code> on <code>surface-inverse</code></td><td class="tab">13.63</td><td class="tab">3</td><td>pass</td><td>Focus halo against a dark panel</td></tr>
 <tr class=""><td><span class="pair" style="background:#243858;color:#FBF6F2">Aa</span></td><td><code>ink-inverse</code> on <code>brand</code></td><td class="tab">10.98</td><td class="tab">3</td><td>pass</td><td>Icons on brand fills</td></tr>
 <tr class=""><td><span class="pair" style="background:#FBF6F2;color:#DED6D0">Aa</span></td><td><code>border</code> on <code>surface</code></td><td class="tab">1.34</td><td class="tab">n/a</td><td>—</td><td>Hairline dividers. Decorative only; must never carry meaning</td></tr>
 <tr class=""><td><span class="pair" style="background:#FBF6F2;color:#9F6C00">Aa</span></td><td><code>accent</code> on <code>surface</code></td><td class="tab">4.24</td><td class="tab">n/a</td><td>—</td><td>Ochre rules and marks. Decorative only; never text</td></tr>
@@ -640,7 +640,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <div class="ts"><div class="ts-meta"><code>subhead</code><span class="tab">NaNpx / 1.28 / -0.008em</span><span>Source Serif 4 600</span></div><div class="ts-sample" style="font-family:var(--dp-font-text);font-size:clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem);line-height:1.28;letter-spacing:-0.008em;font-weight:600;">18px→22px, fluid. Card and item titles (h3) in the editorial system.</div></div>
 <div class="ts"><div class="ts-meta"><code>copy</code><span class="tab">17px / 1.7 / 0</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-text);font-size:1.0625rem;line-height:1.7;letter-spacing:0;font-weight:400;">Body paragraphs in the editorial system. The floor for any paragraph, disclosures included.</div></div>
 <div class="ts"><div class="ts-meta"><code>meta</code><span class="tab">15px / 1.6 / 0</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-text);font-size:0.9375rem;line-height:1.6;letter-spacing:0;font-weight:400;">Captions and supporting metadata. Never a paragraph.</div></div>
-<div class="ts"><div class="ts-meta"><code>label</code><span class="tab">12px / 1.4 / 0.1em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-mono);font-size:0.75rem;line-height:1.4;letter-spacing:0.1em;font-weight:400;">Uppercase eyebrows, indices and tags. DM Mono.</div></div>
+<div class="ts"><div class="ts-meta"><code>label</code><span class="tab">15px / 1.4 / 0.1em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-mono);font-size:0.9375rem;line-height:1.4;letter-spacing:0.1em;font-weight:400;">Uppercase eyebrows, indices and tags. DM Mono. Nothing on this site is set below 15px.</div></div>
 <div class="ts"><div class="ts-meta"><code>stat</code><span class="tab">NaNpx / 1.05 / -0.02em</span><span>Source Serif 4 400</span></div><div class="ts-sample" style="font-family:var(--dp-font-mono);font-size:clamp(2rem, 1.4rem + 2.4vw, 3rem);line-height:1.05;letter-spacing:-0.02em;font-weight:400;">32px→48px, fluid. Step indices and figures. Tabular numerals.</div></div>
 <div class="ts"><div class="ts-meta"><code>tabular figures</code><span>font-variant-numeric</span></div><div class="ts-sample tab" style="font-family:var(--dp-font-sans)">$1,000,000 / $2,000,000 aggregate · $500 deductible · 1.2 % · 11/30/2026<br><span style="font-family:var(--dp-font-serif)">$1,000,000 / $2,000,000 aggregate · $500 deductible · 1.2 % · 11/30/2026</span></div></div>
 
@@ -703,7 +703,7 @@ tr.fail td { background: var(--dp-critical-surface); color: var(--dp-critical-in
 <p class="meta" style="margin-top:var(--dp-space-4)">Radius by role: <code>control</code> 2px, <code>surface</code> 4px, <code>pill</code> for status dots and counters only. Motion: fast 120ms, base 200ms, slow 320ms, deliberate 480ms on <code>cubic-bezier(0.2, 0, 0, 1)</code>; all durations drop to 0ms under <code>prefers-reduced-motion</code>.</p>
 
 <footer style="margin-top:var(--dp-space-16);color:var(--dp-ink-muted);font-size:var(--dp-text-caption-size)">
-  Desert Peak Insurance brand sheet, tokens v2.1.0. Generated by <code>scripts/build-tokens.ts</code>. Fonts: Archivo and Source Serif 4, SIL Open Font License 1.1 (see LICENSES.md).
+  Desert Peak Insurance brand sheet, tokens v2.2.0. Generated by <code>scripts/build-tokens.ts</code>. Fonts: Archivo and Source Serif 4, SIL Open Font License 1.1 (see LICENSES.md).
 </footer>
 </div>
 </body>

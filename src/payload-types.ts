@@ -912,6 +912,27 @@ export interface Page {
             blockType: 'richText';
           }
         | {
+            /**
+             * Mono label above the heading. Two or three words.
+             */
+            eyebrow?: string | null;
+            heading: string;
+            intro?: string | null;
+            /**
+             * Numbered in the order shown here. Drag to reorder; the numbers follow.
+             */
+            items?:
+              | {
+                  title: string;
+                  body: string;
+                  id?: string | null;
+                }[]
+              | null;
+            id?: string | null;
+            blockName?: string | null;
+            blockType: 'steps';
+          }
+        | {
             heading?: string | null;
             items?:
               | {
@@ -1921,6 +1942,22 @@ export interface PagesSelect<T extends boolean = true> {
           | T
           | {
               body?: T;
+              id?: T;
+              blockName?: T;
+            };
+        steps?:
+          | T
+          | {
+              eyebrow?: T;
+              heading?: T;
+              intro?: T;
+              items?:
+                | T
+                | {
+                    title?: T;
+                    body?: T;
+                    id?: T;
+                  };
               id?: T;
               blockName?: T;
             };

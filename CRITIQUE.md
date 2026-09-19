@@ -17,6 +17,10 @@ thing. This is what went, and why.
 | Quote flow | Any progress animation | "Step 2 of 4 · About you" in text is the indicator; the bar repeats it silently |
 | Article | A hero image slot | There is no real photograph of the subject; the lede in serif and the strata rule carry the top |
 | Glossary term | A "related terms" tag cloud | At most five links, each with a reason; the person came to read one definition and leave |
+| Home hero (editorial rebuild) | The navy slab behind the hero | One dark band on the page, and it is the FAQ (§4). On the warm ground the hairline card and the strata texture carry the structure, and the accent is back under 5% of the pixels |
+| Home hero | The drop shadow under the advisor panel | Depth is a hairline and a surface step; the shadow was the only thing on the page pretending to be lifted |
+| Home hero | The 14px UI text in the CTAs and the trust row | Nothing on this page is set below 15px now: buttons are 17px, the mono tags 15px |
+| How the analysis works | The heading-less prose block at the foot of the page | It was the most persuasive thing on the page, set as two anonymous paragraphs below the recognition band. Promoted to the third band with four numbered steps |
 | Contact / forms | A map embed and office hours block | Both would be third-party or invented; the phone number and the form are the page |
 | Partner portal | Dashboard widgets (charts) | A realtor between showings wants the statement table and the status list; nothing else |
 | 404 | A "popular pages" grid | A search box and the ten lines; the redirect map makes this page rare |
@@ -50,3 +54,13 @@ guide allows); no arrows glued to links; no emoji icons; no fade-up
 sections; no hover lift; no stock photography of any kind; no countdowns,
 confirmshaming or pre-checked consent; no chat widget; no testimonials
 without consent on file.
+
+## Kept, but on notice (2026-09-19)
+
+**The strata watermark behind the advisor panel.** On the navy hero it read as
+the brand device. On the warm ground it first rendered as three grey slabs —
+the SVG was being scaled to the column's height, so a 10px band became a 40px
+block. Scaling it by width instead brings the fault offset back and it reads as
+texture again. It stays because the client asked for it by name, but it is the
+one element on this surface that is decoration rather than structure, and it is
+the first thing to go if the band ever needs to be quieter.

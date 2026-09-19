@@ -1,7 +1,7 @@
-/* GENERATED from brand/design-tokens.json (v2.1.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.2.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /** Typed token export. Prefer `semantic.*.css` in components; `hex` exists for places CSS variables cannot reach (email, canvas, PDF, CMS admin previews). */
 export const tokens = {
-  "version": "2.1.0",
+  "version": "2.2.0",
   "primitives": {
     "brand": {
       "50": {
@@ -309,9 +309,9 @@ export const tokens = {
     "surface-inverse": {
       "var": "--dp-surface-inverse",
       "css": "var(--dp-surface-inverse)",
-      "hex": "#0C1421",
-      "ref": "neutral.950",
-      "description": "Dark panels and footers. Pair with ink-inverse."
+      "hex": "#1E293B",
+      "ref": "neutral.900",
+      "description": "The one dark band, and the footer. Deliberately not the ramp's darkest step: near-black under near-white causes halation, which costs an older reader more than the extra contrast buys. Lifted and slightly warmer, it puts ink-inverse at 13.63:1 — the same side of the scale as the light page, where base is neutral-50 rather than white."
     },
     "ink": {
       "var": "--dp-ink",
@@ -725,11 +725,11 @@ export const tokens = {
       },
       "label": {
         "family": "mono",
-        "fontSize": "0.75rem",
+        "fontSize": "0.9375rem",
         "lineHeight": 1.4,
         "letterSpacing": "0.1em",
         "fontWeight": 400,
-        "description": "12px. Uppercase eyebrows, indices and tags. DM Mono."
+        "description": "15px. Uppercase eyebrows, indices and tags. DM Mono. Nothing on this site is set below 15px."
       },
       "stat": {
         "family": "mono",
