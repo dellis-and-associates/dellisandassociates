@@ -47,7 +47,7 @@ export async function ogImage(input: OgInput): Promise<ImageResponse> {
       <div style={{ width: W, height: H, display: "flex", flexDirection: "column", background: sem("surface"), color: sem("ink"), fontFamily: "Figtree" }}>
         <div style={{ display: "flex", flex: 1, padding: `${PAD}px ${PAD}px 0` }}>
           <div style={{ display: "flex", flexDirection: "column", width: TEXT_W }}>
-            <img src={f.wordmark} width={250} height={46} alt="" />
+            <img src={f.wordmark} width={250} height={76} alt="" />
             <div style={{ display: "flex", marginTop: 44, fontFamily: "DM Mono", fontSize: 22, fontWeight: 400, letterSpacing: "0.08em", color: sem("ink-muted") }}>{kicker}</div>
             <div style={{ display: "flex", marginTop: 24, fontFamily: "Instrument Serif", fontSize: size, fontWeight: 400, lineHeight: 1.04, letterSpacing: "-0.02em", maxWidth: TEXT_W }}>{input.title}</div>
             <div style={{ display: "flex", flexDirection: "column", marginTop: "auto", paddingBottom: tpmo ? 28 : PAD }}>

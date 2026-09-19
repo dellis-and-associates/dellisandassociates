@@ -1,15 +1,15 @@
 /**
  * The logo files exactly as the brand package ships them
  * (desert-peak-brand/brand/logo/daniel-refined/web → public/brand, byte-identical:
- * Daniel's badge with the wordmark set in Figtree, the brand text face). Nothing is re-drawn or re-typeset
+ * Daniel's badge with the wordmark set in Instrument Serif over DM Mono, the brand's display and label faces). Nothing is re-drawn or re-typeset
  * here; the <img> keeps each file's own <title>. The badge alone (mark.svg,
  * mark-reversed.svg) is the lockup's own badge group at 400 × 400.
  * Sizes from the logo tokens: 48 px in the header on desktop, 40 on mobile
  * (`.lockup-header`), the badge alone under 360 px; 56 px in the footer. The badge reads fully at
  * 40 px and above and as ring-and-peak at 24–32 px (web/CHANGES.md).
  */
-const LOCKUP = { w: 297.44, h: 69 }; // viewBox of logo-horizontal.svg / logo-reversed.svg / logo-mono.svg
-const STACKED = { w: 205.05, h: 270 }; // viewBox of logo-stacked.svg / logo-stacked-reversed.svg
+const LOCKUP = { w: 263.24, h: 69 }; // viewBox of logo-horizontal.svg / logo-reversed.svg / logo-mono.svg
+const STACKED = { w: 200, h: 277 }; // viewBox of logo-stacked.svg / logo-stacked-reversed.svg
 const MARK = { w: 400, h: 400 }; // viewBox of mark.svg / mark-reversed.svg
 const at = (box: { w: number; h: number }, h: number) => ({ width: Math.round((box.w / box.h) * h), height: h });
 const ALT = "Desert Peak Insurance";

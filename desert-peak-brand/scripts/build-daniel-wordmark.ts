@@ -1,11 +1,17 @@
 /**
- * Re-outlines the logo wordmark in Figtree, the brand's text face, replacing the Archivo outlines
- * carried over from the Strata identity. Only the typeface changes: cap heights (27 / 10), tracking
- * (-0.012em / 0.22em), the two-line hierarchy, the badge, the gap and the vertical centring are the
- * ones already in the files. Widths shift slightly because Figtree is narrower than Archivo, so each
- * lockup's viewBox is recomputed and printed — update src/components/ui/logo.tsx with the new numbers.
+ * Re-outlines the logo wordmark, leaving the badge byte-for-byte alone.
  *
- * Usage: node scripts/build-daniel-wordmark.ts [--face Figtree] [--out <dir>]
+ * The name is set in Instrument Serif, the brand's display face, and "INSURANCE" in DM Mono, its label
+ * face — the same display-plus-label pairing every band on the site opens with. It replaced a Figtree
+ * SemiBold wordmark (itself replacing Archivo) that read as UI rather than as an identity: a geometric
+ * sans over a serif site is two brands in one lockup. The sub-line is left-aligned to the name rather
+ * than centred under it, because a centred, widely tracked sub-line is the small-agency pattern.
+ *
+ * Only the typesetting changes. The badge group, the lockup height and the vertical centring are the
+ * ones already in the files; widths shift with the face, so each lockup's viewBox is recomputed and
+ * printed — update src/components/ui/logo.tsx with the new numbers.
+ *
+ * Usage: node scripts/build-daniel-wordmark.ts [--name-file X.ttf] [--sub-file Y.ttf] [--out <dir>]
  */
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { createRequire } from "node:module";
@@ -19,14 +25,18 @@ const { optimize } = require("svgo");
 const arg = (k: string, d?: string) => { const i = process.argv.indexOf(`--${k}`); return i > -1 ? process.argv[i + 1] : d; };
 const WEB = join(ROOT, "brand", "logo", "daniel-refined", "web");
 const OUT = arg("out", WEB)!;
-const FACE = arg("face", "Figtree")!;
+const NAME_FILE = arg("name-file", "InstrumentSerif-Regular.ttf")!;
+const SUB_FILE = arg("sub-file", "DMMono-Regular.ttf")!;
 mkdirSync(OUT, { recursive: true });
 const r = (n: number) => Math.round(n * 100) / 100;
 
 // ---------------------------------------------------------------------------
 // The wordmark, outlined. Metrics are the ones the current lockups use.
 // ---------------------------------------------------------------------------
-const NAME_CAP = 27, SUB_CAP = 10, NAME_TRACK = -0.012, SUB_TRACK = 0.22, BLOCK_H = 46;
+// The serif carries less negative tracking than a geometric sans, and stands a little taller against the
+// badge so the two have the same optical weight; the mono sub-line sits on the name's left edge.
+const NAME_CAP = 32, SUB_CAP = 9, NAME_TRACK = -0.005, SUB_TRACK = 0.2, SUB_GAP = 12;
+const BLOCK_H = NAME_CAP + SUB_GAP + SUB_CAP;
 function outline(file: string, text: string, capHeight: number, trackEm: number): { d: string; w: number } {
   const f = fontkit.openSync(join(BRAND, "fonts", "static", file));
   const size = capHeight / (f.capHeight / f.unitsPerEm), s = size / f.unitsPerEm;
@@ -40,12 +50,12 @@ function outline(file: string, text: string, capHeight: number, trackEm: number)
   });
   return { d: ds.join(" "), w: x - trackEm * size };
 }
-const NAME = outline(`${FACE}-SemiBold.ttf`, "Desert Peak", NAME_CAP, NAME_TRACK);
-const SUB = outline(`${FACE}-Medium.ttf`, "INSURANCE", SUB_CAP, SUB_TRACK);
+const NAME = outline(NAME_FILE, "Desert Peak", NAME_CAP, NAME_TRACK);
+const SUB = outline(SUB_FILE, "INSURANCE", SUB_CAP, SUB_TRACK);
 const WM_W = Math.max(NAME.w, SUB.w);
-/** Wordmark at (x, y) where y is the top of the 46-unit block; the sub-line is centred on the name. */
+/** Wordmark at (x, y) where y is the top of the block; the sub-line starts on the name's left edge. */
 const wordmark = (x: number, yTop: number, fill: string) =>
-  `<g fill="${fill}" data-logo="wordmark.svg"><path transform="translate(${r(x)} ${r(yTop + NAME_CAP)})" d="${NAME.d}"/><path transform="translate(${r(x + (NAME.w - SUB.w) / 2)} ${r(yTop + BLOCK_H)})" d="${SUB.d}"/></g>`;
+  `<g fill="${fill}" data-logo="wordmark.svg"><path transform="translate(${r(x)} ${r(yTop + NAME_CAP)})" d="${NAME.d}"/><path transform="translate(${r(x)} ${r(yTop + BLOCK_H)})" d="${SUB.d}"/></g>`;
 
 const TITLE = `<title id="t">Desert Peak Insurance</title>`;
 const svg = (w: number, h: number, body: string) => `<svg xmlns="http://www.w3.org/2000/svg" aria-labelledby="t" viewBox="0 0 ${r(w)} ${r(h)}">${TITLE}${body}</svg>\n`;
@@ -70,7 +80,7 @@ function badgeGroup(svgText: string): string {
     if (depth === 0) return svgText.slice(g, j);
   }
 }
-const GAP_H = 24.39;            // badge to wordmark, horizontal lockup (from the committed artwork)
+const GAP_H = 22;               // badge to wordmark, horizontal lockup
 const BADGE_H = 68;             // badge height in the horizontal lockup (scale .17 of 400)
 const H_H = 69;                 // horizontal lockup height
 const BADGE_S = 200;            // badge size in the stacked lockup (scale .5 of 400)
@@ -111,5 +121,5 @@ for (const j of JOBS) {
 const wmSvg = optimize(svg(WM_W, BLOCK_H, wordmark((WM_W - NAME.w) / 2, 0, sem("ink"))), { path: "wordmark.svg", ...svgoConfig }).data;
 writeFileSync(join(OUT, "wordmark.svg"), wmSvg + "\n");
 
-console.log(`build-daniel-wordmark: ${FACE}, "Desert Peak" ${r(NAME.w)} wide, "INSURANCE" ${r(SUB.w)} wide`);
+console.log(`build-daniel-wordmark: ${NAME_FILE} + ${SUB_FILE}, "Desert Peak" ${r(NAME.w)} wide, "INSURANCE" ${r(SUB.w)} wide`);
 for (const d of dims) console.log(`  update src/components/ui/logo.tsx: ${d}`);
