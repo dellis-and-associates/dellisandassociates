@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.1.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /* Tailwind v4. Import after tokens.css:  @import "@desert-peak/brand/tokens.css"; @import "@desert-peak/brand/theme.css"; */
 
 @theme inline {
@@ -9,6 +9,7 @@
   --color-surface-sunken: var(--dp-surface-sunken);
   --color-surface-inverse: var(--dp-surface-inverse);
   --color-ink: var(--dp-ink);
+  --color-ink-secondary: var(--dp-ink-secondary);
   --color-ink-muted: var(--dp-ink-muted);
   --color-ink-inverse: var(--dp-ink-inverse);
   --color-border: var(--dp-border);
@@ -39,6 +40,9 @@
   --font-*: initial;
   --font-sans: var(--dp-font-sans);
   --font-serif: var(--dp-font-serif);
+  --font-display: var(--dp-font-display);
+  --font-text: var(--dp-font-text);
+  --font-mono: var(--dp-font-mono);
 
   --text-*: initial;
   --text-caption: var(--dp-text-caption-size);
@@ -81,6 +85,42 @@
   --text-display-lg--line-height: var(--dp-text-display-lg-line-height);
   --text-display-lg--letter-spacing: var(--dp-text-display-lg-letter-spacing);
   --text-display-lg--font-weight: var(--dp-text-display-lg-weight);
+  --text-display-xl: var(--dp-text-display-xl-size);
+  --text-display-xl--line-height: var(--dp-text-display-xl-line-height);
+  --text-display-xl--letter-spacing: var(--dp-text-display-xl-letter-spacing);
+  --text-display-xl--font-weight: var(--dp-text-display-xl-weight);
+  --text-display-l: var(--dp-text-display-l-size);
+  --text-display-l--line-height: var(--dp-text-display-l-line-height);
+  --text-display-l--letter-spacing: var(--dp-text-display-l-letter-spacing);
+  --text-display-l--font-weight: var(--dp-text-display-l-weight);
+  --text-display-m: var(--dp-text-display-m-size);
+  --text-display-m--line-height: var(--dp-text-display-m-line-height);
+  --text-display-m--letter-spacing: var(--dp-text-display-m-letter-spacing);
+  --text-display-m--font-weight: var(--dp-text-display-m-weight);
+  --text-lede: var(--dp-text-lede-size);
+  --text-lede--line-height: var(--dp-text-lede-line-height);
+  --text-lede--letter-spacing: var(--dp-text-lede-letter-spacing);
+  --text-lede--font-weight: var(--dp-text-lede-weight);
+  --text-subhead: var(--dp-text-subhead-size);
+  --text-subhead--line-height: var(--dp-text-subhead-line-height);
+  --text-subhead--letter-spacing: var(--dp-text-subhead-letter-spacing);
+  --text-subhead--font-weight: var(--dp-text-subhead-weight);
+  --text-copy: var(--dp-text-copy-size);
+  --text-copy--line-height: var(--dp-text-copy-line-height);
+  --text-copy--letter-spacing: var(--dp-text-copy-letter-spacing);
+  --text-copy--font-weight: var(--dp-text-copy-weight);
+  --text-meta: var(--dp-text-meta-size);
+  --text-meta--line-height: var(--dp-text-meta-line-height);
+  --text-meta--letter-spacing: var(--dp-text-meta-letter-spacing);
+  --text-meta--font-weight: var(--dp-text-meta-weight);
+  --text-label: var(--dp-text-label-size);
+  --text-label--line-height: var(--dp-text-label-line-height);
+  --text-label--letter-spacing: var(--dp-text-label-letter-spacing);
+  --text-label--font-weight: var(--dp-text-label-weight);
+  --text-stat: var(--dp-text-stat-size);
+  --text-stat--line-height: var(--dp-text-stat-line-height);
+  --text-stat--letter-spacing: var(--dp-text-stat-letter-spacing);
+  --text-stat--font-weight: var(--dp-text-stat-weight);
 
   --spacing: 0.25rem; /* 4px base; p-4 = 16px */
 
@@ -99,6 +139,7 @@
   --ease-standard: var(--dp-ease-standard);
   --ease-enter: var(--dp-ease-enter);
   --ease-exit: var(--dp-ease-exit);
+  --ease-out: var(--dp-ease-out);
   --default-transition-duration: var(--dp-duration-base);
   --default-transition-timing-function: var(--dp-ease-standard);
 
@@ -107,6 +148,8 @@
   --container-measure-narrow: var(--dp-measure-narrow);
   --container-measure-body: var(--dp-measure-body);
   --container-measure-wide: var(--dp-measure-wide);
+  --container-measure-shell: var(--dp-measure-shell);
+  --container-measure-editorial: var(--dp-measure-editorial);
 }
 
 @utility tabular { font-variant-numeric: var(--dp-numeric-tabular); }

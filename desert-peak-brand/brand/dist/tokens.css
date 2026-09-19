@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.1.0) by scripts/build-tokens.ts. Do not edit by hand. */
 
 :root {
   color-scheme: light;
@@ -78,6 +78,7 @@
   --dp-surface-sunken: var(--dp-color-neutral-100);
   --dp-surface-inverse: var(--dp-color-neutral-950);
   --dp-ink: var(--dp-color-neutral-900);
+  --dp-ink-secondary: var(--dp-color-neutral-700);
   --dp-ink-muted: var(--dp-color-neutral-600);
   --dp-ink-inverse: var(--dp-color-neutral-50);
   --dp-border: var(--dp-color-neutral-200);
@@ -108,6 +109,9 @@
   /* Typography */
   --dp-font-sans: "Archivo", "Archivo Fallback", "Helvetica Neue", "Arial", sans-serif;
   --dp-font-serif: "Source Serif 4", "Source Serif Fallback", "Iowan Old Style", "Georgia", serif;
+  --dp-font-display: "Instrument Serif", "Instrument Serif Fallback", "Iowan Old Style", "Georgia", serif;
+  --dp-font-text: "Figtree", "Figtree Fallback", "Helvetica Neue", "Arial", sans-serif;
+  --dp-font-mono: "DM Mono", "DM Mono Fallback", ui-monospace, "SFMono-Regular", "Menlo", monospace;
   --dp-width-display: 112%;
   --dp-width-ui: 100%;
   --dp-weight-regular: 400;
@@ -118,6 +122,8 @@
   --dp-measure-narrow: 45ch;
   --dp-measure-body: 68ch;
   --dp-measure-wide: 84ch;
+  --dp-measure-shell: 80rem;
+  --dp-measure-editorial: 64ch;
   --dp-numeric-tabular: tabular-nums;
   --dp-numeric-default: proportional-nums;
   --dp-text-caption-family: var(--dp-font-sans);
@@ -170,6 +176,51 @@
   --dp-text-display-lg-line-height: 1.02;
   --dp-text-display-lg-letter-spacing: -0.022em;
   --dp-text-display-lg-weight: 680;
+  --dp-text-display-xl-family: var(--dp-font-display);
+  --dp-text-display-xl-size: clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem);
+  --dp-text-display-xl-line-height: 1.02;
+  --dp-text-display-xl-letter-spacing: -0.022em;
+  --dp-text-display-xl-weight: 400;
+  --dp-text-display-l-family: var(--dp-font-display);
+  --dp-text-display-l-size: clamp(2rem, 1.35rem + 2.6vw, 3.25rem);
+  --dp-text-display-l-line-height: 1.06;
+  --dp-text-display-l-letter-spacing: -0.016em;
+  --dp-text-display-l-weight: 400;
+  --dp-text-display-m-family: var(--dp-font-display);
+  --dp-text-display-m-size: clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem);
+  --dp-text-display-m-line-height: 1.15;
+  --dp-text-display-m-letter-spacing: -0.012em;
+  --dp-text-display-m-weight: 400;
+  --dp-text-lede-family: var(--dp-font-text);
+  --dp-text-lede-size: clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem);
+  --dp-text-lede-line-height: 1.6;
+  --dp-text-lede-letter-spacing: 0;
+  --dp-text-lede-weight: 400;
+  --dp-text-subhead-family: var(--dp-font-text);
+  --dp-text-subhead-size: clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem);
+  --dp-text-subhead-line-height: 1.28;
+  --dp-text-subhead-letter-spacing: -0.008em;
+  --dp-text-subhead-weight: 600;
+  --dp-text-copy-family: var(--dp-font-text);
+  --dp-text-copy-size: 1.0625rem;
+  --dp-text-copy-line-height: 1.7;
+  --dp-text-copy-letter-spacing: 0;
+  --dp-text-copy-weight: 400;
+  --dp-text-meta-family: var(--dp-font-text);
+  --dp-text-meta-size: 0.9375rem;
+  --dp-text-meta-line-height: 1.6;
+  --dp-text-meta-letter-spacing: 0;
+  --dp-text-meta-weight: 400;
+  --dp-text-label-family: var(--dp-font-mono);
+  --dp-text-label-size: 0.75rem;
+  --dp-text-label-line-height: 1.4;
+  --dp-text-label-letter-spacing: 0.1em;
+  --dp-text-label-weight: 400;
+  --dp-text-stat-family: var(--dp-font-mono);
+  --dp-text-stat-size: clamp(2rem, 1.4rem + 2.4vw, 3rem);
+  --dp-text-stat-line-height: 1.05;
+  --dp-text-stat-letter-spacing: -0.02em;
+  --dp-text-stat-weight: 400;
 
   /* Space (4px base) */
   --dp-space-0: 0px;
@@ -187,6 +238,9 @@
   --dp-space-24: 6rem;
   --dp-space-32: 8rem;
   --dp-space-px: 1px;
+  --dp-space-band-y: clamp(5rem, 9vw, 10rem);
+  --dp-space-band-gap: clamp(2.5rem, 4vw, 4rem);
+  --dp-space-gutter: clamp(1.25rem, 4vw, 2.5rem);
 
   /* Radius, by role */
   --dp-radius-control: 2px;
@@ -204,9 +258,12 @@
   --dp-duration-base: 200ms;
   --dp-duration-slow: 320ms;
   --dp-duration-deliberate: 480ms;
+  --dp-duration-entrance: 520ms;
+  --dp-duration-stagger: 60ms;
   --dp-ease-standard: cubic-bezier(0.2, 0, 0, 1);
   --dp-ease-enter: cubic-bezier(0, 0, 0.2, 1);
   --dp-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+  --dp-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 [data-theme="dark"] {
@@ -221,6 +278,7 @@
   /* --dp-surface-sunken: var(--dp-color-neutral-100); */
   /* --dp-surface-inverse: var(--dp-color-neutral-950); */
   /* --dp-ink: var(--dp-color-neutral-900); */
+  /* --dp-ink-secondary: var(--dp-color-neutral-700); */
   /* --dp-ink-muted: var(--dp-color-neutral-600); */
   /* --dp-ink-inverse: var(--dp-color-neutral-50); */
   /* --dp-border: var(--dp-color-neutral-200); */
@@ -255,5 +313,7 @@
     --dp-duration-base: 0ms;
     --dp-duration-slow: 0ms;
     --dp-duration-deliberate: 0ms;
+    --dp-duration-entrance: 0ms;
+    --dp-duration-stagger: 0ms;
   }
 }

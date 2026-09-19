@@ -3,7 +3,7 @@
   "$description": "Desert Peak Insurance design tokens. Single source of truth. Palette from Daniel's badge (navy and sage on cream; 2026-09-15) on the Strata token system. Everything in dist/ and brand-sheet.html is generated from this file by scripts/build-tokens.ts; do not edit generated files.",
   "$extensions": {
     "com.desertpeak": {
-      "version": "2.0.0",
+      "version": "2.1.0",
       "direction": "daniel-badge",
       "theme": {
         "light": "populated",
@@ -529,6 +529,11 @@
         "$value": "{color.neutral.900}",
         "$description": "Body and heading text."
       },
+      "ink-secondary": {
+        "$type": "color",
+        "$value": "{color.neutral.700}",
+        "$description": "Lede and supporting copy. 9.26:1 on surface — clears AAA, where ink-muted (6.92:1) does not."
+      },
       "ink-muted": {
         "$type": "color",
         "$value": "{color.neutral.600}",
@@ -674,6 +679,40 @@
           "serif"
         ],
         "$description": "Body copy and long-form."
+      },
+      "display": {
+        "$type": "fontFamily",
+        "$value": [
+          "Instrument Serif",
+          "Instrument Serif Fallback",
+          "Iowan Old Style",
+          "Georgia",
+          "serif"
+        ],
+        "$description": "Editorial display only: hero and section headings, pull quotes. High-contrast face — never below 28px, never for body, controls or navigation."
+      },
+      "text": {
+        "$type": "fontFamily",
+        "$value": [
+          "Figtree",
+          "Figtree Fallback",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif"
+        ],
+        "$description": "Body copy, sub-headings, navigation, buttons, forms and labels in the editorial system."
+      },
+      "mono": {
+        "$type": "fontFamily",
+        "$value": [
+          "DM Mono",
+          "DM Mono Fallback",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace"
+        ],
+        "$description": "Eyebrows, section indices, metadata, stat figures and tags. Never for sentences."
       }
     },
     "width": {
@@ -817,6 +856,105 @@
           "fontWeight": 680
         },
         "$description": "61px. Rare. Campaign or landing heroes only."
+      },
+      "display-xl": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem)",
+          "lineHeight": 1.02,
+          "letterSpacing": "-0.022em",
+          "fontWeight": 400
+        },
+        "$description": "44px→84px, fluid. One per page: the hero heading. Instrument Serif."
+      },
+      "display-l": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(2rem, 1.35rem + 2.6vw, 3.25rem)",
+          "lineHeight": 1.06,
+          "letterSpacing": "-0.016em",
+          "fontWeight": 400
+        },
+        "$description": "32px→52px, fluid. Section headings (h2) in the editorial system."
+      },
+      "display-m": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.display}",
+          "fontSize": "clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem)",
+          "lineHeight": 1.15,
+          "letterSpacing": "-0.012em",
+          "fontWeight": 400
+        },
+        "$description": "26px→36px, fluid. Pull quotes and the advisor statement. The floor for this family."
+      },
+      "lede": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.text}",
+          "fontSize": "clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)",
+          "lineHeight": 1.6,
+          "letterSpacing": "0",
+          "fontWeight": 400
+        },
+        "$description": "18px→21px, fluid. The paragraph under a display heading."
+      },
+      "subhead": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.text}",
+          "fontSize": "clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem)",
+          "lineHeight": 1.28,
+          "letterSpacing": "-0.008em",
+          "fontWeight": 600
+        },
+        "$description": "18px→22px, fluid. Card and item titles (h3) in the editorial system."
+      },
+      "copy": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.text}",
+          "fontSize": "1.0625rem",
+          "lineHeight": 1.7,
+          "letterSpacing": "0",
+          "fontWeight": 400
+        },
+        "$description": "17px. Body paragraphs in the editorial system. The floor for any paragraph, disclosures included."
+      },
+      "meta": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.text}",
+          "fontSize": "0.9375rem",
+          "lineHeight": 1.6,
+          "letterSpacing": "0",
+          "fontWeight": 400
+        },
+        "$description": "15px. Captions and supporting metadata. Never a paragraph."
+      },
+      "label": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.mono}",
+          "fontSize": "0.75rem",
+          "lineHeight": 1.4,
+          "letterSpacing": "0.1em",
+          "fontWeight": 400
+        },
+        "$description": "12px. Uppercase eyebrows, indices and tags. DM Mono."
+      },
+      "stat": {
+        "$type": "typography",
+        "$value": {
+          "fontFamily": "{typography.family.mono}",
+          "fontSize": "clamp(2rem, 1.4rem + 2.4vw, 3rem)",
+          "lineHeight": 1.05,
+          "letterSpacing": "-0.02em",
+          "fontWeight": 400
+        },
+        "$description": "32px→48px, fluid. Step indices and figures. Tabular numerals."
       }
     },
     "measure": {
@@ -839,6 +977,16 @@
         "$type": "dimension",
         "$value": "84ch",
         "$description": "Comparison tables and code. Never running prose."
+      },
+      "shell": {
+        "$type": "dimension",
+        "$value": "80rem",
+        "$description": "Editorial shell width (1280px at 16px root). Wider than measure.page, which the pre-editorial templates use."
+      },
+      "editorial": {
+        "$type": "dimension",
+        "$value": "64ch",
+        "$description": "Prose measure in the editorial system. Never set prose wider than measure.body (68ch)."
       }
     },
     "numeric": {
@@ -915,6 +1063,21 @@
       "$type": "dimension",
       "$value": "1px",
       "$description": "Hairlines only."
+    },
+    "band-y": {
+      "$type": "dimension",
+      "$value": "clamp(5rem, 9vw, 10rem)",
+      "$description": "Vertical padding of an editorial band. 80px→160px, fluid."
+    },
+    "band-gap": {
+      "$type": "dimension",
+      "$value": "clamp(2.5rem, 4vw, 4rem)",
+      "$description": "Heading block to content, inside a band. 40px→64px, fluid."
+    },
+    "gutter": {
+      "$type": "dimension",
+      "$value": "clamp(1.25rem, 4vw, 2.5rem)",
+      "$description": "Page side gutter. 20px→40px, fluid."
     }
   },
   "radius": {
@@ -1033,6 +1196,16 @@
         "$type": "duration",
         "$value": "480ms",
         "$description": "Page-level transitions. Rare."
+      },
+      "entrance": {
+        "$type": "duration",
+        "$value": "520ms",
+        "$description": "Scroll entrance: opacity and a 12px rise, once per element. Collapses to 0ms under prefers-reduced-motion."
+      },
+      "stagger": {
+        "$type": "duration",
+        "$value": "60ms",
+        "$description": "Delay between sibling entrances, multiplied by the element's index and capped at five."
       }
     },
     "easing": {
@@ -1063,6 +1236,16 @@
           1,
           1
         ]
+      },
+      "out": {
+        "$type": "cubicBezier",
+        "$value": [
+          0.22,
+          1,
+          0.36,
+          1
+        ],
+        "$description": "Entrance easing: fast out of the gate, long settle."
       }
     }
   }

@@ -1,7 +1,7 @@
-/* GENERATED from brand/design-tokens.json (v2.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.1.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /** Typed token export. Prefer `semantic.*.css` in components; `hex` exists for places CSS variables cannot reach (email, canvas, PDF, CMS admin previews). */
 export const tokens = {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "primitives": {
     "brand": {
       "50": {
@@ -320,6 +320,13 @@ export const tokens = {
       "ref": "neutral.900",
       "description": "Body and heading text."
     },
+    "ink-secondary": {
+      "var": "--dp-ink-secondary",
+      "css": "var(--dp-ink-secondary)",
+      "hex": "#344458",
+      "ref": "neutral.700",
+      "description": "Lede and supporting copy. 9.26:1 on surface — clears AAA, where ink-muted (6.92:1) does not."
+    },
     "ink-muted": {
       "var": "--dp-ink-muted",
       "css": "var(--dp-ink-muted)",
@@ -524,6 +531,37 @@ export const tokens = {
           "serif"
         ],
         "css": "var(--dp-font-serif)"
+      },
+      "display": {
+        "stack": [
+          "Instrument Serif",
+          "Instrument Serif Fallback",
+          "Iowan Old Style",
+          "Georgia",
+          "serif"
+        ],
+        "css": "var(--dp-font-display)"
+      },
+      "text": {
+        "stack": [
+          "Figtree",
+          "Figtree Fallback",
+          "Helvetica Neue",
+          "Arial",
+          "sans-serif"
+        ],
+        "css": "var(--dp-font-text)"
+      },
+      "mono": {
+        "stack": [
+          "DM Mono",
+          "DM Mono Fallback",
+          "ui-monospace",
+          "SFMono-Regular",
+          "Menlo",
+          "monospace"
+        ],
+        "css": "var(--dp-font-mono)"
       }
     },
     "width": {
@@ -540,7 +578,9 @@ export const tokens = {
       "page": "72rem",
       "narrow": "45ch",
       "body": "68ch",
-      "wide": "84ch"
+      "wide": "84ch",
+      "shell": "80rem",
+      "editorial": "64ch"
     },
     "numeric": {
       "tabular": "tabular-nums",
@@ -626,6 +666,78 @@ export const tokens = {
         "letterSpacing": "-0.022em",
         "fontWeight": 680,
         "description": "61px. Rare. Campaign or landing heroes only."
+      },
+      "display-xl": {
+        "family": "display",
+        "fontSize": "clamp(2.75rem, 1.55rem + 4.8vw, 5.25rem)",
+        "lineHeight": 1.02,
+        "letterSpacing": "-0.022em",
+        "fontWeight": 400,
+        "description": "44px→84px, fluid. One per page: the hero heading. Instrument Serif."
+      },
+      "display-l": {
+        "family": "display",
+        "fontSize": "clamp(2rem, 1.35rem + 2.6vw, 3.25rem)",
+        "lineHeight": 1.06,
+        "letterSpacing": "-0.016em",
+        "fontWeight": 400,
+        "description": "32px→52px, fluid. Section headings (h2) in the editorial system."
+      },
+      "display-m": {
+        "family": "display",
+        "fontSize": "clamp(1.625rem, 1.3rem + 1.3vw, 2.25rem)",
+        "lineHeight": 1.15,
+        "letterSpacing": "-0.012em",
+        "fontWeight": 400,
+        "description": "26px→36px, fluid. Pull quotes and the advisor statement. The floor for this family."
+      },
+      "lede": {
+        "family": "text",
+        "fontSize": "clamp(1.125rem, 1.05rem + 0.35vw, 1.3125rem)",
+        "lineHeight": 1.6,
+        "letterSpacing": "0",
+        "fontWeight": 400,
+        "description": "18px→21px, fluid. The paragraph under a display heading."
+      },
+      "subhead": {
+        "family": "text",
+        "fontSize": "clamp(1.125rem, 1.05rem + 0.3vw, 1.375rem)",
+        "lineHeight": 1.28,
+        "letterSpacing": "-0.008em",
+        "fontWeight": 600,
+        "description": "18px→22px, fluid. Card and item titles (h3) in the editorial system."
+      },
+      "copy": {
+        "family": "text",
+        "fontSize": "1.0625rem",
+        "lineHeight": 1.7,
+        "letterSpacing": "0",
+        "fontWeight": 400,
+        "description": "17px. Body paragraphs in the editorial system. The floor for any paragraph, disclosures included."
+      },
+      "meta": {
+        "family": "text",
+        "fontSize": "0.9375rem",
+        "lineHeight": 1.6,
+        "letterSpacing": "0",
+        "fontWeight": 400,
+        "description": "15px. Captions and supporting metadata. Never a paragraph."
+      },
+      "label": {
+        "family": "mono",
+        "fontSize": "0.75rem",
+        "lineHeight": 1.4,
+        "letterSpacing": "0.1em",
+        "fontWeight": 400,
+        "description": "12px. Uppercase eyebrows, indices and tags. DM Mono."
+      },
+      "stat": {
+        "family": "mono",
+        "fontSize": "clamp(2rem, 1.4rem + 2.4vw, 3rem)",
+        "lineHeight": 1.05,
+        "letterSpacing": "-0.02em",
+        "fontWeight": 400,
+        "description": "32px→48px, fluid. Step indices and figures. Tabular numerals."
       }
     }
   },
@@ -644,7 +756,10 @@ export const tokens = {
     "20": "5rem",
     "24": "6rem",
     "32": "8rem",
-    "px": "1px"
+    "px": "1px",
+    "band-y": "clamp(5rem, 9vw, 10rem)",
+    "band-gap": "clamp(2.5rem, 4vw, 4rem)",
+    "gutter": "clamp(1.25rem, 4vw, 2.5rem)"
   },
   "radius": {
     "control": "2px",
@@ -662,12 +777,15 @@ export const tokens = {
       "fast": "120ms",
       "base": "200ms",
       "slow": "320ms",
-      "deliberate": "480ms"
+      "deliberate": "480ms",
+      "entrance": "520ms",
+      "stagger": "60ms"
     },
     "easing": {
       "standard": "cubic-bezier(0.2, 0, 0, 1)",
       "enter": "cubic-bezier(0, 0, 0.2, 1)",
-      "exit": "cubic-bezier(0.4, 0, 1, 1)"
+      "exit": "cubic-bezier(0.4, 0, 1, 1)",
+      "out": "cubic-bezier(0.22, 1, 0.36, 1)"
     }
   }
 } as const;

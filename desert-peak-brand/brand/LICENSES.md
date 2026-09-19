@@ -1,11 +1,14 @@
 # Font licenses
 
-Both families ship in `brand/fonts/` as Latin-subset variable WOFF2 files, self-hosted by the site. Neither is loaded from Google Fonts or any CDN at runtime; `dist/fonts.css` points at the local files and `brand-sheet.html` embeds them. Licensing was verified from the license file in each foundry's repository (not assumed from the font's presence on Google Fonts), retrieved 2026-09-12. Both files carry the identical SIL Open Font License 1.1 text below their copyright line; the two bodies were diffed and match.
+The families ship in `brand/fonts/` as Latin-subset WOFF2 files, self-hosted by the site. None is loaded from Google Fonts or any CDN at runtime; `dist/fonts.css` points at the local files and `brand-sheet.html` embeds them. Licensing was verified from the license file in each foundry's repository (not assumed from the font's presence on Google Fonts): the first two retrieved 2026-09-12, the three editorial families 2026-09-19. Every file carries the identical SIL Open Font License 1.1 text below its copyright line; the bodies were diffed and match.
 
 | Family | Use | Copyright line (verbatim) | License | Source |
 |---|---|---|---|---|
 | Archivo | Display, headings, UI, tables | `Copyright 2020 The Archivo Project Authors (https://github.com/Omnibus-Type/Archivo)` | SIL Open Font License 1.1 | https://github.com/Omnibus-Type/Archivo/blob/master/OFL.txt (mirror used for the files: https://github.com/google/fonts/tree/main/ofl/archivo) |
 | Source Serif 4 | Long-form body | `Copyright 2014 The Source Serif 4 Project Authors (https://github.com/adobe-fonts/source-serif)` | SIL Open Font License 1.1 | https://github.com/adobe-fonts/source-serif/blob/release/LICENSE.md (mirror used for the files: https://github.com/google/fonts/tree/main/ofl/sourceserif4) |
+| Instrument Serif | Editorial display: hero and section headings, pull quotes | `Copyright 2022 The Instrument Serif Project Authors (https://github.com/Instrument/instrument-serif)` | SIL Open Font License 1.1 | https://github.com/Instrument/instrument-serif (mirror used for the files: https://github.com/google/fonts/tree/main/ofl/instrumentserif) |
+| Figtree | Editorial text and UI: body copy, sub-headings, navigation, controls | `Copyright 2022 The Figtree Project Authors (https://github.com/erikdkennedy/figtree)` | SIL Open Font License 1.1 | https://github.com/erikdkennedy/figtree (mirror used for the files: https://github.com/google/fonts/tree/main/ofl/figtree) |
+| DM Mono | Eyebrows, indices, metadata, figures | `Copyright 2020 The DM Mono Project Authors (https://www.github.com/googlefonts/dm-mono)` | SIL Open Font License 1.1 | https://github.com/googlefonts/dm-mono (mirror used for the files: https://github.com/google/fonts/tree/main/ofl/dmmono) |
 
 ## What the license permits, in the license's own words
 
@@ -23,7 +26,7 @@ The clauses that matter for a commercial website that self-hosts and subsets the
 ## What that means for this repository
 
 - Self-hosting for a commercial site is permitted ("use … embed … redistribute").
-- Subsetting is a Modified Version. That is permitted. The subset files in `brand/fonts/` are renamed (`archivo-variable.woff2`, `source-serif-4-variable.woff2`) and do not present a Reserved Font Name as their primary name; the `font-family` names used in CSS ("Archivo", "Source Serif 4") are how the fonts are referenced, which the OFL FAQ treats as acceptable, but if counsel prefers, the `@font-face` family names can be changed to any other name with no other effect. Source Serif 4 reserves the name "Source"; Archivo's OFL file declares no Reserved Font Name.
+- Subsetting is a Modified Version. That is permitted. The subset files in `brand/fonts/` are renamed (`archivo-variable.woff2`, `source-serif-4-variable.woff2`, `instrument-serif-400.woff2`, `figtree-variable.woff2`, `dm-mono-400.woff2`) and do not present a Reserved Font Name as their primary name; the `font-family` names used in CSS ("Archivo", "Source Serif 4", "Instrument Serif", "Figtree", "DM Mono") are how the fonts are referenced, which the OFL FAQ treats as acceptable, but if counsel prefers, the `@font-face` family names can be changed to any other name with no other effect. Source Serif 4 reserves the name "Source"; the Archivo, Instrument Serif, Figtree and DM Mono OFL files declare no Reserved Font Name.
 - The font files may not be sold on their own. They are distributed here only as part of the brand package.
 - A copy of this license must accompany the font files wherever they are redistributed. This file, and the verbatim license below, satisfy that for the repository; the site build should ship `LICENSES.md` alongside `brand/fonts/`.
 - Documents and pages set in these fonts are not affected by the license.

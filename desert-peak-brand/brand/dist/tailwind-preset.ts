@@ -1,4 +1,4 @@
-/* GENERATED from brand/design-tokens.json (v2.0.0) by scripts/build-tokens.ts. Do not edit by hand. */
+/* GENERATED from brand/design-tokens.json (v2.1.0) by scripts/build-tokens.ts. Do not edit by hand. */
 /**
  * Tailwind preset: semantic roles -> utility names. Every value is a CSS variable from tokens.css,
  * so dark mode is a token swap, not a rebuild. The default colour palette is replaced (not extended)
@@ -20,6 +20,7 @@ const desertPeak = {
       },
       "ink": {
         "DEFAULT": "var(--dp-ink)",
+        "secondary": "var(--dp-ink-secondary)",
         "muted": "var(--dp-ink-muted)",
         "inverse": "var(--dp-ink-inverse)"
       },
@@ -68,6 +69,15 @@ const desertPeak = {
       ],
       "serif": [
         "var(--dp-font-serif)"
+      ],
+      "display": [
+        "var(--dp-font-display)"
+      ],
+      "text": [
+        "var(--dp-font-text)"
+      ],
+      "mono": [
+        "var(--dp-font-mono)"
       ]
     },
     "fontSize": {
@@ -150,6 +160,78 @@ const desertPeak = {
           "letterSpacing": "var(--dp-text-display-lg-letter-spacing)",
           "fontWeight": "var(--dp-text-display-lg-weight)"
         }
+      ],
+      "display-xl": [
+        "var(--dp-text-display-xl-size)",
+        {
+          "lineHeight": "var(--dp-text-display-xl-line-height)",
+          "letterSpacing": "var(--dp-text-display-xl-letter-spacing)",
+          "fontWeight": "var(--dp-text-display-xl-weight)"
+        }
+      ],
+      "display-l": [
+        "var(--dp-text-display-l-size)",
+        {
+          "lineHeight": "var(--dp-text-display-l-line-height)",
+          "letterSpacing": "var(--dp-text-display-l-letter-spacing)",
+          "fontWeight": "var(--dp-text-display-l-weight)"
+        }
+      ],
+      "display-m": [
+        "var(--dp-text-display-m-size)",
+        {
+          "lineHeight": "var(--dp-text-display-m-line-height)",
+          "letterSpacing": "var(--dp-text-display-m-letter-spacing)",
+          "fontWeight": "var(--dp-text-display-m-weight)"
+        }
+      ],
+      "lede": [
+        "var(--dp-text-lede-size)",
+        {
+          "lineHeight": "var(--dp-text-lede-line-height)",
+          "letterSpacing": "var(--dp-text-lede-letter-spacing)",
+          "fontWeight": "var(--dp-text-lede-weight)"
+        }
+      ],
+      "subhead": [
+        "var(--dp-text-subhead-size)",
+        {
+          "lineHeight": "var(--dp-text-subhead-line-height)",
+          "letterSpacing": "var(--dp-text-subhead-letter-spacing)",
+          "fontWeight": "var(--dp-text-subhead-weight)"
+        }
+      ],
+      "copy": [
+        "var(--dp-text-copy-size)",
+        {
+          "lineHeight": "var(--dp-text-copy-line-height)",
+          "letterSpacing": "var(--dp-text-copy-letter-spacing)",
+          "fontWeight": "var(--dp-text-copy-weight)"
+        }
+      ],
+      "meta": [
+        "var(--dp-text-meta-size)",
+        {
+          "lineHeight": "var(--dp-text-meta-line-height)",
+          "letterSpacing": "var(--dp-text-meta-letter-spacing)",
+          "fontWeight": "var(--dp-text-meta-weight)"
+        }
+      ],
+      "label": [
+        "var(--dp-text-label-size)",
+        {
+          "lineHeight": "var(--dp-text-label-line-height)",
+          "letterSpacing": "var(--dp-text-label-letter-spacing)",
+          "fontWeight": "var(--dp-text-label-weight)"
+        }
+      ],
+      "stat": [
+        "var(--dp-text-stat-size)",
+        {
+          "lineHeight": "var(--dp-text-stat-line-height)",
+          "letterSpacing": "var(--dp-text-stat-letter-spacing)",
+          "fontWeight": "var(--dp-text-stat-weight)"
+        }
       ]
     },
     "spacing": {
@@ -167,7 +249,10 @@ const desertPeak = {
       "20": "var(--dp-space-20)",
       "24": "var(--dp-space-24)",
       "32": "var(--dp-space-32)",
-      "px": "var(--dp-space-px)"
+      "px": "var(--dp-space-px)",
+      "band-y": "var(--dp-space-band-y)",
+      "band-gap": "var(--dp-space-band-gap)",
+      "gutter": "var(--dp-space-gutter)"
     },
     "borderRadius": {
       "none": "0px",
@@ -186,19 +271,24 @@ const desertPeak = {
       "fast": "var(--dp-duration-fast)",
       "base": "var(--dp-duration-base)",
       "slow": "var(--dp-duration-slow)",
-      "deliberate": "var(--dp-duration-deliberate)"
+      "deliberate": "var(--dp-duration-deliberate)",
+      "entrance": "var(--dp-duration-entrance)",
+      "stagger": "var(--dp-duration-stagger)"
     },
     "transitionTimingFunction": {
       "standard": "var(--dp-ease-standard)",
       "enter": "var(--dp-ease-enter)",
-      "exit": "var(--dp-ease-exit)"
+      "exit": "var(--dp-ease-exit)",
+      "out": "var(--dp-ease-out)"
     },
     "extend": {
       "maxWidth": {
         "measure-page": "var(--dp-measure-page)",
         "measure-narrow": "var(--dp-measure-narrow)",
         "measure-body": "var(--dp-measure-body)",
-        "measure-wide": "var(--dp-measure-wide)"
+        "measure-wide": "var(--dp-measure-wide)",
+        "measure-shell": "var(--dp-measure-shell)",
+        "measure-editorial": "var(--dp-measure-editorial)"
       }
     }
   }

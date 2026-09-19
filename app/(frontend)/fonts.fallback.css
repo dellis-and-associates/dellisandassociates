@@ -16,3 +16,28 @@
   descent-override: 31.1781%;
   size-adjust: 107.4471%;
 }
+@font-face {
+  font-family: "Figtree Fallback";
+  src: local('Arial'), local('ArialMT');
+  font-display: swap;
+  ascent-override: 94.3231%;
+  descent-override: 24.8219%;
+  line-gap-override: 0%;
+  size-adjust: 100.7176%;
+}
+@font-face {
+  font-family: "Instrument Serif Fallback";
+  src: local('Georgia');
+  font-display: swap;
+  ascent-override: 129.426%;
+  descent-override: 40.5273%;
+  size-adjust: 76.4916%;
+}
+@font-face {
+  font-family: "DM Mono Fallback";
+  src: local('Courier New'), local('CourierNewPSMT');
+  font-display: swap;
+  ascent-override: 99.2161%;
+  descent-override: 31.005%;
+  size-adjust: 99.9837%;
+}

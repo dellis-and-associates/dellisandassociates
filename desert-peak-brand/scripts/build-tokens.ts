@@ -35,10 +35,11 @@ const semantic = entries("semantic.color").map(([p, t]) => {
 });
 const semHex = new Map(semantic.map((s) => [s.name, s.hex]));
 
-type Step = { name: string; fontFamily: string[]; fontSize: string; lineHeight: number; letterSpacing: string; fontWeight: number; family: "sans" | "serif"; description: string };
+type Step = { name: string; fontFamily: string[]; fontSize: string; lineHeight: number; letterSpacing: string; fontWeight: number; family: string; description: string };
 const steps: Step[] = entries("typography.scale").map(([p, t]) => {
   const v = resolve<any>(t.$value, flat);
-  const family = aliasChainEnd((t.$value as any).fontFamily, flat)!.endsWith("serif") ? "serif" : "sans";
+  // The step's family is whichever family token it aliases (sans, serif, display, text, mono).
+  const family = aliasChainEnd((t.$value as any).fontFamily, flat)!.split(".").pop()!;
   return { name: p.replace("typography.scale.", ""), ...v, family, description: t.$description ?? "" };
 });
 const families = entries("typography.family").map(([p, t]) => ({ name: p.replace("typography.family.", ""), stack: t.$value as string[] }));
@@ -111,6 +112,10 @@ const FONT_FILES = [
   { family: "Archivo", file: "archivo-italic-variable.woff2", style: "italic", weight: "100 900", stretch: "62% 125%" },
   { family: "Source Serif 4", file: "source-serif-4-variable.woff2", style: "normal", weight: "200 900", stretch: "" },
   { family: "Source Serif 4", file: "source-serif-4-italic-variable.woff2", style: "italic", weight: "200 900", stretch: "" },
+  { family: "Instrument Serif", file: "instrument-serif-400.woff2", style: "normal", weight: "400", stretch: "" },
+  { family: "Figtree", file: "figtree-variable.woff2", style: "normal", weight: "400 600", stretch: "" },
+  { family: "Figtree", file: "figtree-italic-variable.woff2", style: "italic", weight: "400 600", stretch: "" },
+  { family: "DM Mono", file: "dm-mono-400.woff2", style: "normal", weight: "400", stretch: "" },
 ];
 function fontFace(src: (file: string) => string): string {
   return FONT_FILES.map((f) => [

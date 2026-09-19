@@ -18,6 +18,15 @@
   --color-logo-ground-inverse: var(--dp-logo-ground-inverse);
 }
 
+/* The editorial rhythm (homepage system): fluid band padding, the shell gutter and the gap from a heading block to its
+   content, named so a section reads `band shell` rather than carrying a stack of arbitrary spacing utilities. */
+@theme inline {
+  --spacing-band-y: var(--dp-space-band-y);
+  --spacing-band-gap: var(--dp-space-band-gap);
+  --spacing-gutter: var(--dp-space-gutter);
+  --color-ink-secondary: var(--dp-ink-secondary);
+}
+
 /* Every value below is a token. verify:tokens fails on anything else. */
 @layer base {
   :root { color-scheme: light; }
@@ -52,6 +61,27 @@
 }
 
 @layer components {
+  /* ---- Editorial system: three voices (Instrument Serif display, Figtree text, DM Mono labels), hairlines and
+     surface steps for structure, no shadows. Every value is a token; the classes exist so a band is spelled once. ---- */
+  /* The shell an editorial band lays out in: 1280 px with a fluid side gutter. */
+  .shell { margin-inline: auto; max-width: var(--dp-measure-shell); padding-inline: var(--dp-space-gutter); }
+  /* One band per section. Consecutive bands are separated by a single hairline — never a shadow, never a colour change. */
+  .band { padding-block: var(--dp-space-band-y); }
+  .band + .band { border-top: 1px solid var(--dp-border); }
+  /* Display voice. Instrument Serif is high-contrast: never below its display-m step, never in a paragraph or a control. */
+  .display-type { font-family: var(--dp-font-display); font-optical-sizing: auto; text-wrap: balance; }
+  /* Mono voice: eyebrows and section indices. Uppercase, widely tracked, muted, sitting above the heading it labels. */
+  .eyebrow { font-family: var(--dp-font-mono); font-size: var(--dp-text-label-size); line-height: var(--dp-text-label-line-height); letter-spacing: var(--dp-text-label-letter-spacing); font-weight: var(--dp-text-label-weight); text-transform: uppercase; color: var(--dp-ink-muted); }
+  /* Figures and indices: tabular, so a column of numbers lines up. */
+  .figure-mono { font-family: var(--dp-font-mono); font-variant-numeric: var(--dp-numeric-tabular); font-feature-settings: "tnum"; }
+  /* Entrance: opacity and a 12 px rise, once per element, siblings staggered by --reveal-index (capped at five in the
+     component). Gated on [data-js] so a page without JavaScript renders in its final state, and wrapped in
+     prefers-reduced-motion: no-preference so a reduced-motion user gets that same final state with no rule at all. */
+  @media (prefers-reduced-motion: no-preference) {
+    [data-js] .reveal { opacity: 0; transform: translateY(var(--dp-space-3)); transition: opacity var(--dp-duration-entrance) var(--dp-ease-out), transform var(--dp-duration-entrance) var(--dp-ease-out); transition-delay: calc(var(--dp-duration-stagger) * var(--reveal-index, 0)); }
+    [data-js] .reveal[data-revealed] { opacity: 1; transform: none; }
+  }
+
   /* Prose: long-form content from the CMS. */
   .prose { max-width: var(--dp-measure-body); }
   .prose > * + * { margin-top: var(--dp-space-4); }

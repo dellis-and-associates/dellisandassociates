@@ -64,7 +64,7 @@ Warm and mineral. The neutrals are tinted toward caliche and basalt, not gray; a
 
 ## 3. Typography
 
-Two families, both variable, both self-hosted from `fonts/` via `dist/fonts.css`, both SIL Open Font License (see `LICENSES.md`).
+Two families carry the templates; three more carry the editorial surfaces (see *Editorial typography* below). All are self-hosted from `fonts/` via `dist/fonts.css`, all SIL Open Font License (see `LICENSES.md`).
 
 - **Archivo** — display, headings, UI, navigation, tables, forms. Axes: weight 100–900, width 62–125.
 - **Source Serif 4** — long-form body copy. Axes: weight 200–900, optical size 8–60 (`font-optical-sizing: auto` is set on `:root`; leave it).
@@ -92,6 +92,31 @@ Tailwind: `text-body`, `text-headline` etc. set size, line-height, tracking and 
 h1 { font: var(--dp-text-headline-weight) var(--dp-text-headline-size) / var(--dp-text-headline-line-height) var(--dp-font-sans);
      letter-spacing: var(--dp-text-headline-letter-spacing); font-stretch: var(--dp-width-display); }
 ```
+
+### Editorial typography (v2.1, 2026-09-19)
+
+A second, additive system for editorial surfaces, starting with the homepage. Three voices, one job each; the two families above are unchanged and still set every other template.
+
+- **Instrument Serif** 400 — display only: the hero heading, section headings, pull quotes. High-contrast face: **never below the `display-m` step (26 px)**, never in a paragraph, a control, a form label or a nav item, always negatively tracked, always `font-optical-sizing: auto` and `text-wrap: balance` (utility `.display-type`).
+- **Figtree** 400/500/600 — body copy, sub-headings, navigation, buttons, forms, labels.
+- **DM Mono** 400 — eyebrows, section indices, metadata, tags and stat figures. Labels and numbers only, never a sentence; figures take `tabular` as everywhere else.
+
+| Step | Size | Line | Tracking | Family, weight | Use |
+|---|---:|---:|---:|---|---|
+| `label` | 12 px | 1.4 | 0.1em | DM Mono 400 | Uppercase eyebrows, indices, tags. Sits 32–40 px above the heading it labels. |
+| `meta` | 15 px | 1.6 | 0 | Figtree 400 | Captions and supporting metadata. Never a paragraph. |
+| `copy` | 17 px | 1.7 | 0 | Figtree 400 | Paragraphs. The floor for any paragraph, disclosures included. |
+| `lede` | 18→21 px | 1.6 | 0 | Figtree 400 | The paragraph under a display heading. |
+| `subhead` | 18→22 px | 1.28 | −0.008em | Figtree 600 | Card and item titles (h3). |
+| `display-m` | 26→36 px | 1.15 | −0.012em | Instrument Serif 400 | Pull quotes, advisor statement. |
+| `display-l` | 32→52 px | 1.06 | −0.016em | Instrument Serif 400 | Section headings (h2). |
+| `display-xl` | 44→84 px | 1.02 | −0.022em | Instrument Serif 400 | The hero heading. One per page. |
+
+The fluid steps are `clamp()`, so there is no breakpoint to maintain. Rhythm tokens go with them: `--dp-space-band-y` (80→160 px band padding), `--dp-space-band-gap` (40→64 px from a heading block to its content), `--dp-space-gutter` (20→40 px page gutter), `--dp-measure-shell` (1280 px), `--dp-measure-editorial` (64ch prose). Bands are separated by a 1 px `border` hairline — depth on editorial surfaces comes from hairlines and the `surface`/`surface-raised` step, **not** from shadows.
+
+`ink-secondary` (neutral-700, 9.26:1 on `surface`) exists for this system: editorial body copy targets AAA, and `ink-muted` measures 6.92:1.
+
+Motion: `--dp-duration-entrance` (520 ms) with `--dp-ease-out`, staggered by `--dp-duration-stagger` (60 ms) and capped at five siblings. Entrance is opacity and a 12 px rise, once, and never on the hero heading, which is the LCP element. Every duration collapses to 0 ms under `prefers-reduced-motion`.
 
 ### Measure
 
