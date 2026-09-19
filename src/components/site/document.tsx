@@ -9,8 +9,11 @@ export function Document({ children }: { children: ReactNode }) {
     <html lang="en">
       {/* eslint-disable-next-line @next/next/no-head-element -- App Router root layout: a plain <head> is the documented way to add a preload link; next/head is the Pages Router API. */}
       <head>
-        {/* Only the heading face is preloaded: the h1 is the LCP element on every template and swaps as soon as Archivo lands. The serif body face is font-display: optional (fonts.css), so it never delays the largest paint. */}
-        <link rel="preload" href="/fonts/archivo-variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        {/* Two faces are preloaded: the h1 is the LCP element on every template and is set in Instrument Serif, and
+            Figtree sets everything under it. Both swap, so a slow font delays nothing — the preload just means the
+            metric-matched fallback is on screen for less time. DM Mono is labels only and can wait. */}
+        <link rel="preload" href="/fonts/instrument-serif-400.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
+        <link rel="preload" href="/fonts/figtree-variable.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         {/* The entrance animation hides elements until they scroll in, so it is gated on this flag: no JavaScript, no hiding.
             The failsafe drops the flag if the observer never mounts (a hydration error, a blocked chunk), so a broken build
             shows the copy rather than a blank band. Reveal sets data-reveal-ready when it mounts. */}

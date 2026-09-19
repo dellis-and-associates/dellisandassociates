@@ -2,8 +2,6 @@
  * pnpm fonts:subset — writes public/fonts/*.woff2 from the brand package's
  * fonts (desert-peak-brand/brand/fonts, OFL 1.1, LICENSES.md), keeping only
  * the glyphs and variable-axis ranges the site renders:
- *   Archivo        wdth 100–112 (--dp-width-ui … --dp-width-display), wght 400–700
- *   Source Serif 4 opsz 8–60 (kept whole: the display specimen and print sizes use it), wght 400–700
  *   Figtree        wght 400–600 (the editorial text face)
  *   Instrument Serif, DM Mono  single static weights: glyph subset only
  * Glyphs: Basic Latin, Latin-1, Latin Extended-A, general punctuation, €, ™,
@@ -28,17 +26,12 @@ const RANGES: Array<[number, number]> = [
 let text = "";
 for (const [a, b] of RANGES) for (let c = a; c <= b; c++) text += String.fromCodePoint(c);
 
-const SANS = { wdth: { min: 100, max: 112 }, wght: { min: 400, max: 700 } };
-const SERIF = { opsz: { min: 8, max: 60 }, wght: { min: 400, max: 700 } };
-// Editorial system (BRAND-GUIDE "Editorial typography"): Figtree is variable and kept at the three weights the
-// system uses; Instrument Serif and DM Mono ship as single static weights, so only the glyph set is trimmed.
+// Figtree is variable and kept at the three weights the system uses; Instrument Serif and DM Mono ship as single
+// static weights, so only the glyph set is trimmed. Archivo and Source Serif 4 stay in the brand package for print
+// and collateral, but the site no longer loads them.
 const TEXT = { wght: { min: 400, max: 600 } };
 const STATIC = {};
 const FILES: Array<[string, Record<string, { min: number; max: number }>]> = [
-  ["archivo-variable.woff2", SANS],
-  ["archivo-italic-variable.woff2", SANS],
-  ["source-serif-4-variable.woff2", SERIF],
-  ["source-serif-4-italic-variable.woff2", SERIF],
   ["instrument-serif-400.woff2", STATIC],
   ["figtree-variable.woff2", TEXT],
   ["figtree-italic-variable.woff2", TEXT],

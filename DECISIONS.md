@@ -682,3 +682,63 @@ and the "(draft)" label beside unreviewed titles is gone.
 first `</div>`, so any `data-local` section with a nested element was cut short
 and every city page was undercounted. It now counts tag depth. The 250-word rule
 is unchanged; it is now measured against what the page actually says.
+
+## Design: the editorial system (2026-09-19)
+
+**Three voices, one job each.** Instrument Serif sets display only and never
+below 26px; Figtree sets body copy, sub-headings, navigation, controls and
+labels; DM Mono sets eyebrows, section indices, metadata and figures. The
+values live in `desert-peak-brand/brand/design-tokens.json` and are generated
+into `brand/dist`, which is what keeps `verify:tokens` green — the site's CSS
+references `var(--dp-*)` and nothing else. Every step is a `clamp()`, so there
+is no breakpoint to maintain.
+
+**Heading family is decided by rendered size, not by tag.** An audit of every
+heading found 60 at 29–51px and **22 at 24px** — `h2`, `h3` and `h4` alike, in
+CTA bands, related panels and dialogs. A family swap by tag would have put a
+high-contrast display face at 22px across the site, which is the failure the
+26px floor exists to prevent. So `display`, `headline`, `title-lg` and `title`
+are Instrument Serif; `title-sm` is Figtree 600. Headings inside long-form copy
+take the `title` step: an article's section marker is not a page title.
+
+**Nothing is set below 15px, and the steps that allowed it are deleted.** The
+14px `small` and 12px `caption` steps are gone from the token set rather than
+resized, because a step that stays available comes back: 132 and 25 usages were
+swept to `meta` (15px, labels and metadata) and `body` (17px, any paragraph).
+Footer disclosures went from 12px to 17px — legal text for an audience that
+skews older is set to be read.
+
+**Base is never white; inverse is never black.** `surface-inverse` moved from
+neutral-950 to neutral-900. Near-white on near-black measured 17.20:1, which is
+halation rather than legibility; it is 13.63:1 now, with `ink-inverse-secondary`
+(10.20:1) for copy on that surface, so a link set in ink-inverse is brighter
+than the text around it rather than dimmer.
+
+**Links are never distinguished by hue alone.** Base `a` is underlined; the
+`.ui-link` class strips it for nav, cards and link-only lists, which carry other
+affordances. An audit of every template found three patterns where a link sat
+beside text it did not own — the city lists on `/locations/` and the state hubs
+(where the link was the same ink as the caption next to it) and the product ×
+city "Also:" line. Those take `.ui-link-inline`. On an inverse surface every UI
+link keeps its underline.
+
+**Depth is hairlines and surface steps.** No `box-shadow` on a static element;
+the four that remain are the toast, the tooltip and the two dialogs, which
+float over content. Bands are separated by a 1px rule at a consistent rhythm,
+and the page has exactly one dark band — the FAQ.
+
+**Entrance animation only below the fold.** `pnpm test:motion` (in CI) asserts
+that no reveal-gated element sits in the initial viewport at any breakpoint,
+that reduced motion renders the final state, and that a late mount cannot
+re-hide copy the head script's failsafe has already revealed. The CSS is gated
+on `[data-js]`, set by a blocking inline script in `<head>`, so a page without
+JavaScript renders complete.
+
+**The site ships 68KB of fonts, down from 251KB.** Archivo and Source Serif 4
+remain the brand package's faces for print and collateral, but the site stopped
+loading them when the system flipped — including the preload, which was pointed
+at a face no page used. Lighthouse mobile after the flip: accessibility 100 and
+best practices 100 on all 22 templates, CLS 0, median performance 98 (95
+before). Three JavaScript-bound templates sit under 90 — `/claims/` at 78 with
+630ms of blocking time — which is bundle work, not typography, and is the next
+performance pass.

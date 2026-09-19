@@ -1,15 +1,9 @@
 /* Self-hosted brand fonts, subset by scripts/font-subset.mts from desert-peak-brand/brand/fonts (OFL; LICENSES.md).
-   Archivo (headings, UI) is preloaded and swaps in. Source Serif 4 (body copy) is `optional`: on a first, uncached
-   visit it is used only if it arrives within the block period, otherwise the page keeps the metric-matched
-   "Source Serif Fallback" and the font is cached for the next navigation. See DECISIONS.md, Phase 5 (fonts). */
-@font-face { font-family: "Archivo"; src: url("/fonts/archivo-variable.woff2") format("woff2"); font-weight: 400 700; font-stretch: 100% 112%; font-style: normal; font-display: swap; }
-@font-face { font-family: "Archivo"; src: url("/fonts/archivo-italic-variable.woff2") format("woff2"); font-weight: 400 700; font-stretch: 100% 112%; font-style: italic; font-display: swap; }
-@font-face { font-family: "Source Serif 4"; src: url("/fonts/source-serif-4-variable.woff2") format("woff2"); font-weight: 400 700; font-style: normal; font-display: optional; }
-@font-face { font-family: "Source Serif 4"; src: url("/fonts/source-serif-4-italic-variable.woff2") format("woff2"); font-weight: 400 700; font-style: italic; font-display: optional; }
-
-/* The editorial system: Instrument Serif (display only), Figtree (text and UI), DM Mono (labels, indices, figures).
-   All three swap. The hero H1 is set in Instrument Serif and is the LCP element, so the face must never block paint;
-   the metric-matched fallbacks below carry the layout until it lands, which is why the swap does not shift anything. */
+   The site sets three faces: Instrument Serif for display, Figtree for text and UI, DM Mono for labels and figures.
+   All three swap — the hero H1 is the LCP element and must never wait on a font — and the metric-matched fallbacks
+   below carry the layout until they land, so the swap shifts nothing. Archivo and Source Serif 4 are still the brand
+   package's faces for print and collateral; the site stopped using them when the editorial system landed, so they are
+   no longer declared or shipped (183 KB that used to be fetched for nothing). */
 @font-face { font-family: "Instrument Serif"; src: url("/fonts/instrument-serif-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Figtree"; src: url("/fonts/figtree-variable.woff2") format("woff2"); font-weight: 400 600; font-style: normal; font-display: swap; }
 @font-face { font-family: "Figtree"; src: url("/fonts/figtree-italic-variable.woff2") format("woff2"); font-weight: 400 600; font-style: italic; font-display: swap; }
