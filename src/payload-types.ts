@@ -184,7 +184,7 @@ export interface Product {
   tier: '1' | '2';
   category: 'Personal' | 'Commercial';
   /**
-   * Medicare and annuities have no discounts to describe (RECONCILIATION.md).
+   * Medicare and annuities have no discounts to describe (docs/RECONCILIATION.md).
    */
   thirdSubpage: 'discounts-faq' | 'plans-enrollment-faq';
   /**
@@ -2638,7 +2638,7 @@ export interface ComplianceSetting {
   id: number;
   independentAgencyDisclosure: string;
   /**
-   * RECONCILIATION.md: yes. When true, every Medicare-touching page must render the TPMO disclaimer.
+   * docs/RECONCILIATION.md: yes. When true, every Medicare-touching page must render the TPMO disclaimer.
    */
   medicareInScope?: boolean | null;
   /**

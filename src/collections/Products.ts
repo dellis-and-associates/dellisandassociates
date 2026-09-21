@@ -43,7 +43,7 @@ export const Products: CollectionConfig = {
             { label: "Discounts & FAQ", value: "discounts-faq" },
             { label: "Plans & enrollment FAQ", value: "plans-enrollment-faq" },
           ],
-          admin: { description: "Medicare and annuities have no discounts to describe (RECONCILIATION.md)." },
+          admin: { description: "Medicare and annuities have no discounts to describe (docs/RECONCILIATION.md)." },
         },
       ],
     },

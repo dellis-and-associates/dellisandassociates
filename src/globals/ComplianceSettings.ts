@@ -32,7 +32,7 @@ export const ComplianceSettings: GlobalConfig = {
           label: "Disclosures",
           fields: [
             { name: "independentAgencyDisclosure", type: "textarea", required: true, defaultValue: "Desert Peak Insurance is an independent agency, not an insurer. No coverage is bound by this website." },
-            { name: "medicareInScope", type: "checkbox", defaultValue: true, admin: { description: "RECONCILIATION.md: yes. When true, every Medicare-touching page must render the TPMO disclaimer." } },
+            { name: "medicareInScope", type: "checkbox", defaultValue: true, admin: { description: "docs/RECONCILIATION.md: yes. When true, every Medicare-touching page must render the TPMO disclaimer." } },
             { name: "medicareTpmoDisclaimer", type: "textarea", admin: { description: "Plan-year approved text. TODO token until supplied (TODO-CLIENT-DATA.md #11)." }, defaultValue: "{{TODO:compliance.medicareTpmoDisclaimer}}" },
             { name: "medicarePlanYear", type: "text", admin: { description: "e.g. 2027" } },
             { name: "stateLicensingDisclosure", type: "textarea", admin: { description: "Template. {{licenseNumber}} and {{state}} are substituted from States." }, defaultValue: "Desert Peak Insurance is licensed in {{state}}, license number {{licenseNumber}}." },

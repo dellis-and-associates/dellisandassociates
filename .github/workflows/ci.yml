@@ -4,7 +4,7 @@ on:
   push:
     branches: [main]
 
-# The Definition of done from docs/desert-peak-payload-supabase-prompt.md, in order.
+# The Definition of done, in order. The brief it came from is in git history, not in the tree.
 # No secrets are needed for the checks; the DB tests run against a Postgres
 # service with .env.test values. Production migrations run in the deploy job
 # over the direct connection BEFORE the app deploys.
