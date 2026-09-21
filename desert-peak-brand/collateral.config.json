@@ -6,6 +6,8 @@
   "siteUrl": "https://www.desertpeakinsurance.com",
   "domainConfirmed": false,
   "positioningLine": "We do the math. If what you have is right, we say so.",
+  "bannerSlogan": "Peak Protection, Every Policy",
+  "bannerSloganNote": "Client request, Breanna Ellis, 2026-09-21. Used on the social banners only; the site's proposition (positioningLine, the homepage H1) is unchanged. Flagged for compliance review: the brand voice bans superlatives and promised outcomes, and 'Peak Protection' reads as a claim about the level of cover while 'Every Policy' reads as a claim about all of them. See COLLATERAL-COMPLIANCE.md.",
   "states": [
     "AZ",
     "ID",

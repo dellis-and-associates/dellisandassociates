@@ -1,7 +1,8 @@
 /**
  * Daniel's badge, applied: (1) the tokens the website takes from the logo, written as aliases of the
  * existing brand tokens (logo-tokens.json + logo-tokens.css); (2) Facebook, LinkedIn and X banners
- * built around brand/logo/daniel-refined/web/logo-horizontal.svg, with the same verified platform specs
+ * built around brand/logo/daniel-refined/web/logo-horizontal.svg — the slogan in Instrument Serif, the
+ * display face the lockup itself is now set in, over the mono state line — with the same platform specs
  * and safe zones as scripts/build-social.ts. Writes brand/logo/daniel-refined/web/{tokens,banners}/.
  * Usage: node scripts/build-daniel-banners.ts
  */
@@ -70,6 +71,10 @@ const LK = { w: parseFloat(lockupSvg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)![1
 const lockupInner = lockupSvg.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "").replace(/<title[^>]*>[^<]*<\/title>/, "");
 const clamp = (v: number, a: number, b: number) => Math.max(a, Math.min(b, v));
 const STATES = config.states.map((s) => (config.stateNames as Record<string, string>)[s]).join(" · ");
+const SLOGAN: string = (config as any).bannerSlogan ?? config.positioningLine;   // client line, see bannerSloganNote
+// Break a two-clause slogan at its comma rather than wherever the column runs out: greedy wrapping put
+// "Peak Protection, Every" on the first line and left "Policy" alone on the second.
+const SLOGAN_SET = SLOGAN.replace(/,\s+/, ",\n");
 
 function banner(b: Banner, overlay: boolean): string {
   const { safe } = b;
@@ -79,25 +84,25 @@ function banner(b: Banner, overlay: boolean): string {
   if (stacked) { lockH = clamp(b.h * 0.2, 40, 64); lockW = (LK.w / LK.h) * lockH; }
   const gap = clamp(b.h * 0.16, 28, 64);
   const textX = stacked ? safe.x : safe.x + lockW + gap, textW = stacked ? safe.w : safe.x + safe.w - textX;
-  let posSize = fitSize(config.positioningLine, "sans-display", textW, 2, clamp(Math.round(b.h * 0.15), 22, 56), 18, -0.015);
-  let metaSize = clamp(Math.round(b.h * (stacked ? 0.07 : 0.085)), 15, 26);
-  const meta = `${STATES}   ${config.domain}`;
+  let posSize = fitSize(SLOGAN_SET, "display-400", textW, 2, clamp(Math.round(b.h * 0.16), 24, 58), 22, -0.005);   // Instrument Serif, the display face, never below its floor at banner scale
+  let metaSize = clamp(Math.round(b.h * (stacked ? 0.06 : 0.072)), 13, 21);   // DM Mono metadata line
+  const meta = `${STATES}\n${config.domain}`;   // always two lines: the states read as a list, the domain as its own line
   let posLines: string[] = [], metaLines: string[] = [], posBlock = 0, textBlockH = 0, blockH = 0;
   for (;;) {
-    posLines = wrap(config.positioningLine, "sans-display", posSize, textW, -0.015); metaLines = wrap(meta, "sans-500", metaSize, textW);
-    posBlock = posLines.length * posSize * 1.1; textBlockH = posBlock + posSize * 0.35 + metaSize * 1.6 * metaLines.length;
+    posLines = wrap(SLOGAN_SET, "display-400", posSize, textW, -0.005); metaLines = wrap(meta, "mono-400", metaSize, textW);
+    posBlock = posLines.length * posSize * 1.18; textBlockH = posBlock + posSize * 0.35 + metaSize * 1.6 * metaLines.length;
     blockH = stacked ? lockH + gap * 0.6 + textBlockH : Math.max(textBlockH, lockH);
-    if (blockH <= safe.h || posSize <= 18) break; posSize -= 2; if (metaSize > 15) metaSize -= 1;
+    if (blockH <= safe.h || posSize <= 20) break; posSize -= 2; if (metaSize > 15) metaSize -= 1;
   }
   const top = safe.y + (safe.h - blockH) / 2;
   const lockY = stacked ? top : top + (blockH - lockH) / 2, textTop = stacked ? top + lockH + gap * 0.6 : top + (blockH - textBlockH) / 2;
   const s = lockH / LK.h;
   let body = `<rect width="${b.w}" height="${b.h}" fill="${sem("surface")}"/>` +
     `<g data-logo="daniel/logo-horizontal.svg" transform="translate(${r(safe.x)} ${r(lockY)}) scale(${r(s)})">${lockupInner}</g>` +
-    svgText({ x: textX, y: textTop + posSize * 0.95, lines: posLines, size: posSize, family: "sans", weight: 640, stretch: 112, tracking: "-0.015em", fill: sem("ink"), lineHeight: 1.1 }) +
-    svgText({ x: textX, y: textTop + posBlock + posSize * 0.35 + metaSize * 1.2, lines: metaLines, size: metaSize, family: "sans", weight: 500, fill: sem("ink-muted"), lineHeight: 1.6 });
+    svgText({ x: textX, y: textTop + posSize * 0.95, lines: posLines, size: posSize, family: "display", weight: 400, tracking: "-0.005em", fill: sem("ink"), lineHeight: 1.1 }) +
+    svgText({ x: textX, y: textTop + posBlock + posSize * 0.35 + metaSize * 1.2, lines: metaLines, size: metaSize, family: "mono", weight: 400, fill: sem("ink-muted"), lineHeight: 1.7 });
   if (overlay) {
-    for (const z of b.zones) body += `<rect x="${z.x}" y="${z.y}" width="${z.w}" height="${z.h}" fill="${sem("accent")}" fill-opacity="0.35" stroke="${sem("critical")}" stroke-width="2"/>` + svgText({ x: z.x + 8, y: z.y + clamp(Math.round(b.h * 0.06), 12, 18) + 6, lines: [z.label], size: clamp(Math.round(b.h * 0.06), 12, 18), family: "sans", weight: 600, fill: sem("critical"), lineHeight: 1.2 });
+    for (const z of b.zones) body += `<rect x="${z.x}" y="${z.y}" width="${z.w}" height="${z.h}" fill="${sem("accent")}" fill-opacity="0.35" stroke="${sem("critical")}" stroke-width="2"/>` + svgText({ x: z.x + 8, y: z.y + clamp(Math.round(b.h * 0.06), 12, 18) + 6, lines: [z.label], size: clamp(Math.round(b.h * 0.06), 12, 18), family: "text", weight: 600, fill: sem("critical"), lineHeight: 1.2 });
     body += `<rect x="${safe.x}" y="${safe.y}" width="${safe.w}" height="${safe.h}" fill="none" stroke="${sem("positive")}" stroke-width="2" stroke-dasharray="8 6"/>`;
   }
   void measure;

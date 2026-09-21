@@ -48,3 +48,22 @@ Phone, social handles, office address and the media base URL for the signature l
 ## Statutory facts
 
 `content/state-facts.json`: AZ 25/50/15 (A.R.S. § 28-4009, fetched from azleg.gov), NV 25/50/20 (NRS 485.185), UT 30/65/25 or $90,000 single limit for policies issued or renewed on or after 2025-01-01 (Utah Code § 31A-22-304; the pre-2025 25/65/15 is superseded and must not be copied from older material), ID 25/50/15 (Idaho Code § 49-117). NV, UT and ID were verified on the Justia statute mirrors because the legislature sites refused automated connections on 2026-09-13; counsel should re-read the official text before print.
+
+## Banner slogan — flagged for compliance review (2026-09-21)
+
+The client (Breanna Ellis) asked for the banner line to read **"Peak Protection, Every Policy"**. It is in the banners now, and it lives in `collateral.config.json` as `bannerSlogan` so one edit changes all four.
+
+It is flagged, not blocked, because it sits against two rules the brand system calls hard:
+
+- **§2 Voice** bans superlatives and marketing enthusiasm. "Peak" doubles as the brand name, but it also reads as *maximum*, and that is the reading a regulator or a competitor's compliance officer will take.
+- **§9 Compliance** says never promise an outcome. "Peak Protection, Every Policy" can be read as a claim about the level of cover and about every policy the agency writes. The agency does not control the level of cover; the carrier and the underwriting do.
+
+The automated banned-phrase list does not catch it, and it never would: the list holds literal strings ("cheapest", "guaranteed savings"), and this is a claim made by implication. That is exactly the case §9 says to flag rather than publish.
+
+**For the agency's compliance review.** If the line is wanted as-is, the safe form is usually to make it descriptive rather than promissory. Three alternatives that keep the alliteration and the brand pun without the implied guarantee:
+
+- "Peak coverage, compared." — states the service, not the outcome.
+- "Every policy, compared line by line." — the actual offer, no superlative.
+- "Peak Protection, Every Policy — reviewed, not promised." — keeps the client's line, qualifies the claim.
+
+The site's own proposition is unchanged: `positioningLine` and the homepage H1 still read "Compared across carriers. Explained with the math."

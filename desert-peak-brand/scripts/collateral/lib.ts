@@ -53,7 +53,8 @@ for (const [p, t] of flat) if (p.startsWith("typography.scale.")) {
 }
 export function step(name: string): Step { const s = scale.get(name); if (!s) throw new Error(`Unknown type step: ${name}`); return s; }
 export const TYPE_STEPS: ReadonlyMap<string, Step> = scale;
-export const FAMILY = { sans: "Archivo", serif: "Source Serif 4" } as const;
+export const FAMILY = { sans: "Archivo", serif: "Source Serif 4", display: "Instrument Serif", text: "Figtree", mono: "DM Mono" } as const;
+export type FamilyKey = keyof typeof FAMILY;
 export const DISPLAY_WIDTH = (flat.get("typography.width.display")!.$value as number);
 export const RADIUS = { control: flat.get("radius.control")!.$value as string, surface: flat.get("radius.surface")!.$value as string, pill: flat.get("radius.pill")!.$value as string };
 export const TOKENS_CSS = readFileSync(join(BRAND, "dist", "tokens.css"), "utf8");
@@ -141,6 +142,10 @@ const FONT_FILES = [
   { family: "Archivo", file: "archivo-italic-variable.woff2", style: "italic", weight: "100 900", stretch: "62% 125%" },
   { family: "Source Serif 4", file: "source-serif-4-variable.woff2", style: "normal", weight: "200 900", stretch: "" },
   { family: "Source Serif 4", file: "source-serif-4-italic-variable.woff2", style: "italic", weight: "200 900", stretch: "" },
+  { family: "Instrument Serif", file: "instrument-serif-400.woff2", style: "normal", weight: "400", stretch: "" },
+  { family: "Figtree", file: "figtree-variable.woff2", style: "normal", weight: "300 900", stretch: "" },
+  { family: "Figtree", file: "figtree-italic-variable.woff2", style: "italic", weight: "300 900", stretch: "" },
+  { family: "DM Mono", file: "dm-mono-400.woff2", style: "normal", weight: "400", stretch: "" },
 ];
 /** @font-face rules. `base` is the URL prefix for the woff2 files (relative path or data:). */
 export function fontFaceCss(base: string | "data"): string {
@@ -149,10 +154,11 @@ export function fontFaceCss(base: string | "data"): string {
     return `@font-face{font-family:"${f.family}";src:url("${src}") format("woff2");font-weight:${f.weight};${f.stretch ? `font-stretch:${f.stretch};` : ""}font-style:${f.style};font-display:block}`;
   }).join("\n");
 }
-export type FontKey = "sans-400" | "sans-500" | "sans-600" | "sans-display" | "serif-400" | "serif-600" | "serif-italic";
+export type FontKey = "sans-400" | "sans-500" | "sans-600" | "sans-display" | "serif-400" | "serif-600" | "serif-italic" | "display-400" | "text-500" | "text-600" | "mono-400";
 const STATIC: Record<FontKey, string> = {
   "sans-400": "Archivo-Regular.ttf", "sans-500": "Archivo-Medium.ttf", "sans-600": "Archivo-SemiBold.ttf", "sans-display": "ArchivoDisplay-SemiBold.ttf",
   "serif-400": "SourceSerif4-Regular.ttf", "serif-600": "SourceSerif4-SemiBold.ttf", "serif-italic": "SourceSerif4-Italic.ttf",
+  "display-400": "InstrumentSerif-Regular.ttf", "text-500": "Figtree-Medium.ttf", "text-600": "Figtree-SemiBold.ttf", "mono-400": "DMMono-Regular.ttf",
 };
 export const staticFontPath = (k: FontKey) => join(FONTS, "static", STATIC[k]);
 const fkCache = new Map<FontKey, any>();
@@ -186,8 +192,8 @@ export function fitSize(text: string, key: FontKey, maxWidth: number, maxLines: 
 export const capHeightRatio = (key: FontKey) => fk(key).capHeight / fk(key).unitsPerEm;
 
 /** SVG <text> with one <tspan> per wrapped line. Weight/family are token families only. */
-export function svgText(opts: { x: number; y: number; lines: string[]; size: number; family: "sans" | "serif"; weight: number; fill: string; lineHeight: number; tracking?: string; anchor?: "start" | "middle" | "end"; stretch?: number; italic?: boolean; extra?: string }): string {
-  const fam = opts.family === "sans" ? FAMILY.sans : FAMILY.serif;
+export function svgText(opts: { x: number; y: number; lines: string[]; size: number; family: FamilyKey; weight: number; fill: string; lineHeight: number; tracking?: string; anchor?: "start" | "middle" | "end"; stretch?: number; italic?: boolean; extra?: string }): string {
+  const fam = FAMILY[opts.family];
   const lh = opts.size * opts.lineHeight;
   const spans = opts.lines.map((l, i) => `<tspan x="${r2(opts.x)}" y="${r2(opts.y + i * lh)}">${esc(l)}</tspan>`).join("");
   return `<text font-family="${fam}" font-size="${r2(opts.size)}" font-weight="${opts.weight}" fill="${opts.fill}"${opts.tracking ? ` letter-spacing="${opts.tracking}"` : ""}${opts.anchor ? ` text-anchor="${opts.anchor}"` : ""}${opts.stretch ? ` font-stretch="${opts.stretch}%"` : ""}${opts.italic ? ` font-style="italic"` : ""}${opts.extra ? ` ${opts.extra}` : ""}>${spans}</text>`;
