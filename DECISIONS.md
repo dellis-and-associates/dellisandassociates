@@ -742,3 +742,40 @@ best practices 100 on all 22 templates, CLS 0, median performance 98 (95
 before). Three JavaScript-bound templates sit under 90 — `/claims/` at 78 with
 630ms of blocking time — which is bundle work, not typography, and is the next
 performance pass.
+
+## Security headers (2026-09-21)
+
+**The CSP is static, not nonce-based.** Next's nonce recipe requires dynamic
+rendering on every page that carries a nonce. This site prerenders 1,083 pages
+with `revalidate: false`; nonces would trade the entire static build for one
+directive, and the pages would go from a CDN hit to a function call. The cost
+of the static policy is `'unsafe-inline'` on `script-src`: Next's hydration
+bootstrap is inline and its content differs per page, so neither a nonce nor a
+hash covers it without going dynamic. Everything else is closed — `object-src
+'none'`, `base-uri 'self'`, `form-action 'self'`, `frame-ancestors 'none'`, no
+`'unsafe-eval'`, and no third-party origin except the two Cloudflare Turnstile
+needs (its script, and the iframe it runs the challenge in). Supabase is in
+`connect-src` for the customer portal's magic-link auth. Media is served
+through Payload's own route, so images stay same-origin.
+
+Enforcement was verified in the browser rather than assumed: injecting a
+script, an image and an iframe from three unrelated origins raises
+`script-src-elem`, `img-src` and `frame-src` violations, while the Turnstile
+iframe is allowed.
+
+**The admin is exempt from the CSP, not from the rest.** `/admin` is Payload's
+own bundle — authenticated, noindex, and it loads what a CMS needs to render.
+It still gets `X-Frame-Options`, `Referrer-Policy`, `X-Content-Type-Options`,
+`Permissions-Policy` and `Cross-Origin-Opener-Policy`; only the policy written
+for the public pages is scoped away from it.
+
+**Permissions-Policy denies every feature the site does not use** — camera,
+microphone, geolocation, payment, USB, sensors and the rest are `()`. The site
+asks for none of them, so the header says so.
+
+**HSTS is Vercel's, and `includeSubDomains`/`preload` are the client's call.**
+The platform already sends `max-age=63072000`. Adding `includeSubDomains`
+forces HTTPS on every current and future subdomain, and `preload` is difficult
+to reverse once the domain is on the list; neither is a change to make on the
+engineering side without the client knowing what it commits them to. Recorded
+in LAUNCH-CHECKLIST.md instead.

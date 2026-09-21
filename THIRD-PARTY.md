@@ -34,3 +34,19 @@ Anything not in this table is a build failure. Fonts are self-hosted from
 `scripts/font-subset.mts` (subset-font, a HarfBuzz WebAssembly build, dev
 dependency only, never shipped); images are served from Supabase Storage through
 the media bucket, which is first-party for budget purposes.
+
+## What the Content-Security-Policy allows
+
+The policy in `next.config.ts` names every third party the browser is allowed
+to reach. Adding a script, a font host, an analytics beacon or an embedded
+video means adding its origin there, or the browser will refuse it silently
+apart from a console entry.
+
+| Origin | Directive | Why |
+|---|---|---|
+| `https://challenges.cloudflare.com` | `script-src`, `frame-src` | Turnstile: the bot check on the three public forms. It loads a script and runs the challenge in an iframe |
+| The Supabase project URL | `connect-src` | The customer portal's magic-link auth, read from `src/env.public.ts` |
+
+Everything else is `'self'`. Media is served through Payload's own route, so
+images, fonts and styles are same-origin; `object-src` is `'none'` and there is
+no `'unsafe-eval'`.
