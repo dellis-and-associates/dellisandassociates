@@ -1,6 +1,6 @@
 # Tokens from the logo
 
-Extracted 2026-09-15 from `brand/logo/daniel-refined/web/logo-horizontal.svg`. The logo uses five colours and one typeface, all in `brand/design-tokens.json` v2 (the palette taken from the badge: navy, sage, rust on cream), so the website needs no values of its own: these roles are aliases. Import `logo-tokens.css` after `brand/dist/tokens.css` and use `var(--dp-logo-*)` where a page element echoes the logo.
+Extracted 2026-09-21 from `brand/logo/daniel-refined/web/logo-horizontal.svg`. The logo uses five colours and one typeface, all in `brand/design-tokens.json` v2 (the palette taken from the badge: navy, sage, rust on cream), so the website needs no values of its own: these roles are aliases. Import `logo-tokens.css` after `brand/dist/tokens.css` and use `var(--dp-logo-*)` where a page element echoes the logo.
 
 | Logo element | Role | Hex | Contrast on surface | Site use |
 |---|---|---|---:|---|

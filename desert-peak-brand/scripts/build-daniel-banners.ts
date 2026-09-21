@@ -9,9 +9,15 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { CACHE, ROOT, config, fitSize, htmlForSvg, measure, pngSize, prim, relFonts, renderAll, sem, svgDoc, svgText, wrap, write, type RenderJob } from "./collateral/lib.ts";
+import { ridgeField, type Theme } from "./collateral/banner-art.ts";
 import { contrast } from "./lib.ts";
 
-const TODAY = "2026-09-15";
+const TODAY = "2026-09-21";
+const flag = (k: string) => process.argv.includes(`--${k}`);
+const opt = (k: string, d: string) => { const i = process.argv.indexOf(`--${k}`); return i > -1 ? process.argv[i + 1] : d; };
+const THEME = opt("theme", "light") as Theme;
+const ART = opt("art", "ridges");          // "ridges" | "none"
+const SUFFIX = opt("suffix", "");
 const WEB = join(ROOT, "brand", "logo", "daniel-refined", "web");
 const TOK = join(WEB, "tokens"), BAN = join(WEB, "banners");
 mkdirSync(TOK, { recursive: true }); mkdirSync(BAN, { recursive: true });
@@ -65,7 +71,7 @@ const BANNERS: Banner[] = [
   { key: "facebook", platform: "Facebook Page cover", w: 820, h: 312, safe: { x: 215, y: 28, w: 460, h: 256 }, zones: [{ x: 0, y: 0, w: 133, h: 312, label: "cropped on mobile" }, { x: 687, y: 0, w: 133, h: 312, label: "cropped on mobile" }, { x: 24, y: 196, w: 180, h: 116, label: "profile picture overlap (desktop)" }], spec: "820×312 desktop / 640×360 mobile" },
   { key: "x", platform: "X header", w: 1500, h: 500, safe: { x: 450, y: 80, w: 1010, h: 340 }, zones: [{ x: 0, y: 0, w: 1500, h: 60, label: "may be cropped" }, { x: 0, y: 440, w: 1500, h: 60, label: "may be cropped" }, { x: 0, y: 300, w: 420, h: 200, label: "avatar overlap" }], spec: "1500×500" },
 ];
-const lockupFile = join(WEB, "logo-horizontal.svg");
+const lockupFile = join(WEB, THEME === "dark" ? "logo-horizontal-reversed.svg" : "logo-horizontal.svg");
 const lockupSvg = readFileSync(lockupFile, "utf8");
 const LK = { w: parseFloat(lockupSvg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)![1]), h: parseFloat(lockupSvg.match(/viewBox="0 0 ([\d.]+) ([\d.]+)"/)![2]) };
 const lockupInner = lockupSvg.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "").replace(/<title[^>]*>[^<]*<\/title>/, "");
@@ -97,10 +103,15 @@ function banner(b: Banner, overlay: boolean): string {
   const top = safe.y + (safe.h - blockH) / 2;
   const lockY = stacked ? top : top + (blockH - lockH) / 2, textTop = stacked ? top + lockH + gap * 0.6 : top + (blockH - textBlockH) / 2;
   const s = lockH / LK.h;
-  let body = `<rect width="${b.w}" height="${b.h}" fill="${sem("surface")}"/>` +
+  const ground = THEME === "dark" ? sem("surface-inverse") : sem("surface");
+  const inkOn = THEME === "dark" ? sem("ink-inverse") : sem("ink");
+  const metaOn = THEME === "dark" ? prim("brand.400") : sem("ink-muted");
+  let body = `<rect width="${b.w}" height="${b.h}" fill="${ground}"/>` +
+    // the ridge field always stops short of the safe zone, stacked layouts included
+    (ART === "ridges" ? ridgeField({ w: b.w, h: b.h, theme: THEME, reach: Math.max(0.12, (safe.x - b.h * 0.10) / b.w) }) : "") +
     `<g data-logo="daniel/logo-horizontal.svg" transform="translate(${r(safe.x)} ${r(lockY)}) scale(${r(s)})">${lockupInner}</g>` +
-    svgText({ x: textX, y: textTop + posSize * 0.95, lines: posLines, size: posSize, family: "display", weight: 400, tracking: "-0.005em", fill: sem("ink"), lineHeight: 1.1 }) +
-    svgText({ x: textX, y: textTop + posBlock + posSize * 0.35 + metaSize * 1.2, lines: metaLines, size: metaSize, family: "mono", weight: 400, fill: sem("ink-muted"), lineHeight: 1.7 });
+    svgText({ x: textX, y: textTop + posSize * 0.95, lines: posLines, size: posSize, family: "display", weight: 400, tracking: "-0.005em", fill: inkOn, lineHeight: 1.1 }) +
+    svgText({ x: textX, y: textTop + posBlock + posSize * 0.35 + metaSize * 1.2, lines: metaLines, size: metaSize, family: "mono", weight: 400, fill: metaOn, lineHeight: 1.7 });
   if (overlay) {
     for (const z of b.zones) body += `<rect x="${z.x}" y="${z.y}" width="${z.w}" height="${z.h}" fill="${sem("accent")}" fill-opacity="0.35" stroke="${sem("critical")}" stroke-width="2"/>` + svgText({ x: z.x + 8, y: z.y + clamp(Math.round(b.h * 0.06), 12, 18) + 6, lines: [z.label], size: clamp(Math.round(b.h * 0.06), 12, 18), family: "text", weight: 600, fill: sem("critical"), lineHeight: 1.2 });
     body += `<rect x="${safe.x}" y="${safe.y}" width="${safe.w}" height="${safe.h}" fill="none" stroke="${sem("positive")}" stroke-width="2" stroke-dasharray="8 6"/>`;
@@ -113,7 +124,7 @@ const jobs: RenderJob[] = [];
 const rows: string[] = [];
 for (const b of BANNERS) {
   for (const overlay of [false, true]) {
-    const name = `${b.key}-${b.w}x${b.h}${overlay ? "-safe-zone" : ""}`;
+    const name = `${b.key}-${b.w}x${b.h}${SUFFIX}${overlay ? "-safe-zone" : ""}`;
     const svgPath = join(BAN, `${name}.svg`);
     const body = banner(b, overlay);
     write(svgPath, svgDoc(b.w, b.h, body, { title: `Desert Peak Insurance ${b.platform}${overlay ? " (safe-zone overlay)" : ""}`, fontBase: relFonts(svgPath) }));

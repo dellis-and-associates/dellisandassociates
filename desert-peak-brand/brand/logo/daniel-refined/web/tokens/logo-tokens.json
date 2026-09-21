@@ -1,5 +1,5 @@
 {
-  "$description": "Colours and type the website takes from Daniel's logo (brand/logo/daniel-refined/web). Extracted 2026-09-15. Every value aliases brand/design-tokens.json; the logo introduces no colour outside the palette, so the site keeps one source of truth. Use these roles where the site echoes the logo (header, footer, hero); use the ordinary semantic roles everywhere else.",
+  "$description": "Colours and type the website takes from Daniel's logo (brand/logo/daniel-refined/web). Extracted 2026-09-21. Every value aliases brand/design-tokens.json; the logo introduces no colour outside the palette, so the site keeps one source of truth. Use these roles where the site echoes the logo (header, footer, hero); use the ordinary semantic roles everywhere else.",
   "logo": {
     "ring": {
       "$type": "color",

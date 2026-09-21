@@ -80,8 +80,19 @@ function groupInner(svg: string, open: number): { inner: string; end: number } |
   }
   return null;
 }
+/** Brand illustration (ridge fields, strata bands) is declared with data-art and is allowed geometry. */
+function stripArt(svg: string): string {
+  let out = "", cursor = 0;
+  for (const m of svg.matchAll(/<g data-art="[^"]+"[^>]*>/g)) {
+    const g = groupInner(svg, m.index!);
+    if (!g) continue;
+    out += svg.slice(cursor, m.index!); cursor = g.end;
+  }
+  return out + svg.slice(cursor);
+}
 function checkMarks(file: string, svg: string) {
   if (file.startsWith(LOGOS)) return;
+  svg = stripArt(svg);
   // web/logos and web/favicons hold optimised whole-file copies of the reference logos: accept a file whose entire inner content matches one
   if (/\/web\/(logos|favicons)\/[^/]+\.svg$/.test(file)) {
     const inner = norm(svg.replace(/^[\s\S]*?<svg[^>]*>/, "").replace(/<\/svg>\s*$/, "").replace(/<title[^>]*>[^<]*<\/title>/, ""));
