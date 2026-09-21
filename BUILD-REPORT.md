@@ -72,7 +72,7 @@ with a guess.
 ## Redirects
 
 21 rows in `Redirects`, all from `inputs/legacy-crawl.json`: 18 × 301 to a
-page-level target, 3 × 410 for dead WordPress paths. `REDIRECTS-UNRESOLVED.md`
+page-level target, 3 × 410 for dead WordPress paths. `docs/REDIRECTS-UNRESOLVED.md`
 is empty after the decisions of 2026-09-12. Served by `proxy.ts` with real
 status codes; `verify:redirects` checks one hop to a 200 (or a login for the
 gated portal).
@@ -116,7 +116,7 @@ runs). "pass" means exit 0 with the count shown.
 | Redirects | `verify:redirects` | 21/21 resolve in one hop (18 × 301 → 200, 3 × 410) |
 | Compliance and dark-pattern tells | `verify:compliance` | 0 banned phrases, 0 prohibited tells, disclosures present where required |
 | Near-duplicate copy | `verify:uniqueness` | 0 indexable pairs above 0.70 Jaccard |
-| Accessibility | `test:a11y` | 108/108, zero axe violations (27 templates × 4 widths); `A11Y-REPORT.md` |
+| Accessibility | `test:a11y` | 108/108, zero axe violations (27 templates × 4 widths); `docs/A11Y-REPORT.md` |
 | Visual | `test:visual` | 111/111 baselines match (4 widths + print) |
 | Without JavaScript | `test:nojs` | 54/54 |
 | Quote flow, keyboard only | `test:quote-flow` | 2/2 |
@@ -213,7 +213,7 @@ templates.
 
 | Item | Owner | Blocks |
 |---|---|---|
-| Screen-reader passes (VoiceOver, NVDA) on the ten highest-traffic templates | a person with the devices | `A11Y-REPORT.md` sign-off |
+| Screen-reader passes (VoiceOver, NVDA) on the ten highest-traffic templates | a person with the devices | `docs/A11Y-REPORT.md` sign-off |
 | Client data: legal name, 4 license numbers, TPMO plan-year text, referral terms v1, city local knowledge (152 tokens) | client / office / counsel | `TODO-CLIENT-DATA.md`; city pages stay `noindex` |
 | Content: 197 glossary terms and 182 articles without a draft | writer, then a licensed reviewer | indexation waves 1–3 |
 | Agent and carrier profiles (45 routes) | client, with written consent for testimonials and awards | the two hubs show honest empty states |

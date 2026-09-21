@@ -1,7 +1,7 @@
 /**
  * pnpm shell:shots --label=before|after [--base=http://localhost:3000] — header, hero
  * and footer of the homepage at 320/768/1280/1920, clipped to the element, into
- * docs/ux-audit/shell/<label>/ for UX-AUDIT.md and CRITIQUE.md. Look at them.
+ * docs/ux-audit/shell/<label>/ for docs/UX-AUDIT.md and docs/CRITIQUE.md. Look at them.
  */
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";

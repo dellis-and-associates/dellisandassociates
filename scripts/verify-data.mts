@@ -1,7 +1,7 @@
 /**
  * pnpm verify:data — the sitemap package is a test fixture, the XML data files
  * are the source. Checks slugs and structure, applies the six Phase 0.A
- * corrections plus RECONCILIATION.md decision B, and prints the route plan
+ * corrections plus docs/RECONCILIATION.md decision B, and prints the route plan
  * with the numbers the build is held to.
  */
 import { readFileSync } from "node:fs";
@@ -77,11 +77,14 @@ const added = products.length - 29;
 const expectedTotal = fixture.total + tier1.length * states.length - fixture.tier1StateHubs + added * 7;
 if (fixture.total !== 1028) failures.push(`fixture has ${fixture.total} URLs, expected 1028`);
 if (fixture.agents !== 30 || fixture.carriers !== 15) failures.push(`fixture placeholders: ${fixture.agents} agents, ${fixture.carriers} carriers (expected 30/15)`);
-if (fixture.doubledBop !== 41) failures.push(`fixture doubled-BOP URLs: ${fixture.doubledBop} (expected 41)`);
+// The shipped fixture's generator doubled the business-owners-policy slug on 41 URLs. The fixture was corrected to
+// the slug the app serves (DECISIONS.md, "The shipped sitemap fixture is a regression input, and it was wrong"), but
+// this line stayed pinned to the broken state and had been failing since. It asserts the corrected state now.
+if (fixture.doubledBop !== 0) failures.push(`fixture doubled-BOP URLs: ${fixture.doubledBop} (expected 0 — the slug was corrected)`);
 if (total !== expectedTotal) failures.push(`route plan ${total} ≠ fixture-derived ${expectedTotal}`);
 // Reconciliation decision B
 const reconciled = ["medicare", "health-insurance", "annuities", "dental-and-vision-insurance", "term-life-insurance", "whole-life-insurance", "indexed-universal-life-insurance"];
-for (const r of reconciled) if (!pSlugs.includes(r)) failures.push(`RECONCILIATION.md product missing: ${r}`);
+for (const r of reconciled) if (!pSlugs.includes(r)) failures.push(`docs/RECONCILIATION.md product missing: ${r}`);
 for (const p of products.filter((p) => ["medicare", "annuities"].includes(p.slug))) if (p.subpage3 !== "plans-enrollment-faq") failures.push(`${p.slug} must use the plans-enrollment-faq subpage`);
 
 console.log(`products: ${products.length} (tier 1: ${tier1.length}, tier 2: ${tier2.length}; ${products.filter((p) => p.parent).length} with a parent)`);

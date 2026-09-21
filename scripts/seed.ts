@@ -8,7 +8,7 @@
  * Article and glossary shells are created as reviewStatus draft and never
  * touched again beyond structural fields. Nothing here ever sets `reviewed`.
  * Legacy URLs from inputs/legacy-crawl.json become Redirects; the ones with
- * no equivalent go to REDIRECTS-UNRESOLVED.md. Prints a reconciliation table.
+ * no equivalent go to docs/REDIRECTS-UNRESOLVED.md. Prints a reconciliation table.
  * Runs over the direct connection (PAYLOAD_MIGRATING=true via the script).
  * Logs slugs and counts only, never a document's contents.
  */
@@ -375,7 +375,7 @@ export async function runSeed(payload: Payload, opts: SeedOptions): Promise<Seed
       "resolves directly to its final target as seeded here.",
       "",
     ];
-    if (!opts.dryRun) writeFileSync(join(root, "REDIRECTS-UNRESOLVED.md"), lines.join("\n"));
+    if (!opts.dryRun) writeFileSync(join(root, "docs/REDIRECTS-UNRESOLVED.md"), lines.join("\n"));
     counts("redirects:unresolved").skipped = unresolved.length;
   }
 
@@ -481,7 +481,7 @@ export function formatReport(report: SeedReport, dryRun: boolean): string {
   t.push(`| **total** | **${tot.created}** | **${tot.updated}** | **${tot.skipped}** | **${tot.conflicts}** |`);
   const conflicts = rows.flatMap(([k, c]) => c.conflictList.map((x) => `  ${k} ${x}`));
   const unresolved = report["redirects:unresolved"]?.skipped ?? 0;
-  return [`seed ${dryRun ? "(dry run — nothing written)" : "(applied)"}`, ...t, `legacy URLs unresolved: ${unresolved} (REDIRECTS-UNRESOLVED.md)`, ...(conflicts.length ? ["conflicts (left untouched):", ...conflicts] : [])].join("\n");
+  return [`seed ${dryRun ? "(dry run — nothing written)" : "(applied)"}`, ...t, `legacy URLs unresolved: ${unresolved} (docs/REDIRECTS-UNRESOLVED.md)`, ...(conflicts.length ? ["conflicts (left untouched):", ...conflicts] : [])].join("\n");
 }
 
 const isMain = process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href;

@@ -2,7 +2,7 @@
  * pnpm ux:audit [--base=https://www.dellisandassociates.com] — the "before"
  * audit: screenshots at 320/768/1280/1920 on the device baseline (4× CPU,
  * Slow 4G emulation), axe-core per page, and a findings table written to
- * docs/ux-audit/<host>.json for UX-AUDIT.md.
+ * docs/ux-audit/<host>.json for docs/UX-AUDIT.md.
  */
 import { mkdirSync, writeFileSync } from "node:fs";
 import { join } from "node:path";

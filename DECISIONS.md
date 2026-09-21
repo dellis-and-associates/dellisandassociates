@@ -6,11 +6,11 @@ Every consequential platform choice, its reason, and what was rejected. Dates ar
 
 ## Phase 0
 
-**The build stopped at the Phase 1 gate.** `RECONCILIATION.md` does not exist,
+**The build stopped at the Phase 1 gate.** `docs/RECONCILIATION.md` does not exist,
 so the Phase 0.B scope conflict (P&C sitemap vs. the life/Medicare/health book
 the production site actually sells) has no recorded answer. The companion
-documents `desert-peak-page-generation-prompt.md` and
-`desert-peak-interface-standard-prompt.md` are not in the repo or on this machine.
+documents `docs/desert-peak-page-generation-prompt.md` and
+`docs/desert-peak-interface-standard-prompt.md` are not in the repo or on this machine.
 Phases 1–4 could be built without visual design, but Phase 2's collection shapes
 depend on which product lines exist, and that is the unanswered question.
 Rejected: guessing the answer from the sitemap alone, because the sitemap
@@ -62,7 +62,7 @@ brand changes.
 BOP slug on 41 URLs, 40 missing Tier-1 state hubs, 45 placeholder agent/carrier
 pages); one was already satisfied (apostrophe slugs are clean); the fixture
 treatment and the 1,068 figure follow arithmetically. Recorded in
-`INPUTS-INVENTORY.md` §1.
+`docs/INPUTS-INVENTORY.md` §1.
 
 ## Phase 1
 
@@ -81,7 +81,7 @@ three carry `parent="life-insurance"`, two carry `subpage3="plans-enrollment-faq
 so the template renames the third subpage for Medicare and annuities. Corrected
 plan: **1,117 routes, 1,072 buildable, 45 blocked**. `verify:data` computes this
 from the XML rather than trusting a number in a document. The file is still named
-`RECONCILIATION.md` (renamed from `Reconciliation.md`, which the Phase 0 gate
+`docs/RECONCILIATION.md` (renamed from `Reconciliation.md`, which the Phase 0 gate
 check would not have found).
 
 **Docs check (2026-09-12) and where the master document was stale.** Read
@@ -251,7 +251,7 @@ Arizona (403 behind a bot wall) and Idaho (unreachable) are TODO tokens rather
 than URLs typed from memory. License numbers, statutory minimums, every other
 `CityFacts` field: TODO tokens.
 
-**Six legacy URLs are unresolved on purpose** (`REDIRECTS-UNRESOLVED.md`):
+**Six legacy URLs are unresolved on purpose** (`docs/REDIRECTS-UNRESOLVED.md`):
 the two intake forms and their WordPress `-2` alias have no route in the IA,
 and adding `/forms/*` changes the route count (page-generation rule 4: ask,
 do not absorb); the two agent-facing pages wait for the Phase 4 partner
