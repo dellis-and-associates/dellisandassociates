@@ -4,6 +4,8 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+packageExtensionsChecksum: sha256-XRIjqZciQTXhu/MIDZZzD/rKgQd/YPYhy4ueGpkko88=
+
 importers:
 
   .:
@@ -7751,6 +7753,7 @@ snapshots:
     dependencies:
       console-table-printer: 2.12.1
       dequal: 2.0.3
+      drizzle-kit: 0.31.7
       drizzle-orm: 0.45.2(@types/pg@8.20.0)(pg@8.20.0)
       payload: 3.89.0(graphql@16.14.2)(typescript@5.9.3)
       prompts: 2.4.2
@@ -7786,6 +7789,7 @@ snapshots:
       - prisma
       - sql.js
       - sqlite3
+      - supports-color
 
   '@payloadcms/graphql@3.89.0(graphql@16.14.2)(payload@3.89.0(graphql@16.14.2)(typescript@5.9.3))(typescript@5.9.3)':
     dependencies:
@@ -7916,10 +7920,12 @@ snapshots:
       '@faceless-ui/modal': 3.0.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@faceless-ui/scroll-info': 2.0.0(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@faceless-ui/window-info': 3.0.1(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
+      '@floating-ui/react': 0.27.20(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@monaco-editor/react': 4.7.0(monaco-editor@0.56.0)(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@payloadcms/translations': 3.89.0
       '@swc/helpers': 0.5.23
       bson-objectid: 2.0.4
+      clsx: 2.1.1
       date-fns: 4.1.0
       dequal: 2.0.3
       md5: 2.3.0

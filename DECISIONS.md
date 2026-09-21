@@ -779,3 +779,29 @@ forces HTTPS on every current and future subdomain, and `preload` is difficult
 to reverse once the domain is on the list; neither is a change to make on the
 engineering side without the client knowing what it commits them to. Recorded
 in LAUNCH-CHECKLIST.md instead.
+
+## Dependencies: Payload's undeclared imports (2026-09-21)
+
+**Three modules Payload 3.89 imports without declaring are declared for it.**
+`@payloadcms/ui`'s shipped client chunk imports `clsx` and `@floating-ui/react`;
+`@payloadcms/drizzle` requires `drizzle-kit/api`. None appears in those
+packages' own `dependencies` or `peerDependencies`. They resolved anyway on
+every developer machine because pnpm hoists the whole tree into
+`.pnpm/node_modules`, so any package can reach any other package's dependency —
+and on the site's side `clsx` was additionally a direct dependency left over
+from the July scaffold. Removing that leftover (it is imported nowhere in the
+site) broke the Vercel build with `Can't resolve 'clsx'` from inside Payload's
+chunk, while every local reproduction — pristine clone, frozen lockfile, Node
+22, Turbopack and webpack — passed, because hoisting hid it.
+
+The fix is `pnpm.packageExtensions` in `package.json`, which declares each
+dependency on the package that actually imports it, pinned to the version the
+lockfile already resolves. That is the honest shape of the fix: the site does
+not use these modules, so they do not belong in its own dependency list, and a
+declaration on the importer holds under any hoisting configuration. Verified by
+installing with hoisting disabled entirely (`--config.hoist-pattern=`), which
+reproduced the Vercel failure on the previous commit and builds clean on this
+one, on Node 22.
+
+Lesson recorded for the next dependency change: a build that passes locally
+proves nothing about undeclared imports until it also passes with hoisting off.
