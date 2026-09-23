@@ -30,7 +30,10 @@
 /* Every value below is a token. verify:tokens fails on anything else. */
 @layer base {
   :root { color-scheme: light; }
-  html { background: var(--dp-surface); color: var(--dp-ink); -webkit-text-size-adjust: 100%; scroll-padding-top: var(--dp-space-20); }
+  /* The bar, its hairline, and a gap. A bare space-20 parks a focused or anchored element flush under the
+     header — and at fractional scroll offsets half a pixel beneath it, which reads as clipped and fails
+     2.4.11. The extra space-2 is the breathing room, not a fudge factor. */
+  html { background: var(--dp-surface); color: var(--dp-ink); -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--dp-space-20) + var(--dp-space-2)); }
   body {
     margin: 0;
     font-family: var(--dp-font-text);
