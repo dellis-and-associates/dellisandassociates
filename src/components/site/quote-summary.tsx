@@ -24,13 +24,13 @@ export function QuoteSummaryForm({ data, productNames }: { data: QuoteData; prod
   return (
     <div className="mx-auto grid max-w-measure-shell gap-8 px-gutter py-10" data-quote-summary>
       <div className="grid max-w-measure-body gap-6">
-        <h1>Request the analysis</h1>
+        <h1>Request a quote</h1>
         <Stepper step={4} total={4} label="Check and send" steps={STEPS.map((s) => s.label)} />
         <form action={formAction} method="post" className="grid gap-6" noValidate aria-busy={pending || undefined}>
           <ErrorSummary errors={errors} />
           {section("What to compare", 1, <>{row("Lines", productNames.join(", "))}{row("ZIP code", data.zip)}</>)}
           {section("About you", 2, <>{row("Name", data.name)}{row("Email", data.email)}{row("Phone", data.phone)}{row("Date of birth", data.dob)}{row("Address", data.address)}</>)}
-          {section("Details", 3, <>{(data.vehicles ?? []).map((v, i) => row(`Vehicle ${i + 1}`, [v.year, v.make, v.model].filter(Boolean).join(" ")))}{data.property?.yearBuilt ? row("Year built", data.property.yearBuilt) : null}{data.property?.roof ? row("Roof", data.property.roof) : null}{data.property?.ownership ? row("You are the", data.property.ownership) : null}{row("Notes", data.notes)}</>)}
+          {section("Details", 3, <>{(data.vehicles ?? []).map((v, i) => row(`Vehicle ${i + 1}`, [[v.year, v.make, v.model].filter(Boolean).join(" "), v.vin ? `VIN ${v.vin}` : ""].filter(Boolean).join(" · ")))}{data.property?.yearBuilt ? row("Year built", data.property.yearBuilt) : null}{data.property?.roof ? row("Roof", data.property.roof) : null}{data.property?.ownership ? row("You are the", data.property.ownership) : null}{row("Notes", data.notes)}</>)}
           <fieldset className="grid gap-2" aria-describedby={errors.find((e) => e.field === "consent") ? "consent-error" : undefined}>
             <legend className="sr-only">Consent</legend>
             <label htmlFor="consent" className="flex items-start gap-3 font-text text-copy">

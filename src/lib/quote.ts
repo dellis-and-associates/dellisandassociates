@@ -8,7 +8,7 @@ import { randomBytes } from "node:crypto";
 import { cookies } from "next/headers";
 import { env } from "../env.ts";
 import { db } from "./content.ts";
-import { isDate, isEmail, isPhone, isYear, isZip, type FieldError } from "./validate.ts";
+import { isDate, isEmail, isPhone, isVin, isYear, isZip, type FieldError } from "./validate.ts";
 
 export const COOKIE = "dp_quote";
 export const STEPS = [
@@ -28,7 +28,7 @@ export type QuoteData = {
   phone?: string;
   dob?: string;
   address?: string;
-  vehicles?: { year: string; make: string; model: string }[];
+  vehicles?: { year: string; make: string; model: string; vin: string }[];
   property?: { yearBuilt?: string; roof?: string; ownership?: string };
   notes?: string;
   consent?: boolean;
@@ -88,7 +88,12 @@ export function validateStep(step: number, d: QuoteData): FieldError[] {
     if (d.products?.includes("auto-insurance")) {
       const v = d.vehicles ?? [];
       if (!v.length || !v[0]?.make?.trim()) e.push({ field: "vehicle-0-make", message: "Enter the make of your first vehicle." });
-      v.forEach((x, i) => { if (x.year && !isYear(x.year)) e.push({ field: `vehicle-${i}-year`, message: `Enter a four-digit year for vehicle ${i + 1}.` }); });
+      v.forEach((x, i) => {
+        if (x.year && !isYear(x.year)) e.push({ field: `vehicle-${i}-year`, message: `Enter a four-digit year for vehicle ${i + 1}.` });
+        // The VIN is required for every vehicle entered: it is what a carrier rates on, not the make and model.
+        if (!x.vin?.trim()) e.push({ field: `vehicle-${i}-vin`, message: `Enter the 17-character VIN for vehicle ${i + 1}.` });
+        else if (!isVin(x.vin)) e.push({ field: `vehicle-${i}-vin`, message: `A VIN is 17 letters and digits, with no I, O or Q. Check vehicle ${i + 1}.` });
+      });
     }
     if (d.products?.includes("home-insurance") && d.property?.yearBuilt && !isYear(d.property.yearBuilt)) e.push({ field: "property-yearBuilt", message: "Enter a four-digit year the home was built." });
   }

@@ -6,6 +6,8 @@ export const isPhone = (v: string) => v.replace(/\D/g, "").length >= 10;
 export const isZip = (v: string) => /^\d{5}(-\d{4})?$/.test(v.trim());
 export const isDate = (v: string) => /^\d{4}-\d{2}-\d{2}$/.test(v) && !Number.isNaN(Date.parse(v));
 export const isYear = (v: string) => /^(19|20)\d{2}$/.test(v.trim());
+/** 17 characters; the standard omits I, O and Q so they cannot be confused with 1 and 0. */
+export const isVin = (v: string) => /^[A-HJ-NPR-Z0-9]{17}$/i.test(v.trim());
 
 export function validateField(def: { name: string; label: string; type: string; required?: boolean | null }, value: string): FieldError | null {
   const v = (value ?? "").trim();

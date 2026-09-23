@@ -57,7 +57,7 @@ export function QuoteStepForm({ step, data, products }: { step: number; data: Qu
   return (
     <div className="mx-auto grid max-w-measure-shell gap-8 px-gutter py-10">
       <div className="grid max-w-measure-body gap-6">
-        <h1>Request the analysis</h1>
+        <h1>Request a quote</h1>
         <Stepper step={step} total={4} label={meta.label} steps={STEPS.map((s) => s.label)} />
         <form key={state ? `attempt-${errors.length}-${JSON.stringify(state.values ?? "")}` : "initial"} ref={formRef} action={formAction} method="post" className="grid gap-6" noValidate aria-busy={pending || undefined} onChange={mirror}>
           <ErrorSummary errors={errors} />
@@ -91,10 +91,13 @@ export function QuoteStepForm({ step, data, products }: { step: number; data: Qu
                     const v = data.vehicles?.[i];
                     if (i > 0 && !data.vehicles?.[i - 1] && i > (data.vehicles?.length ?? 0)) return null;
                     return (
-                      <div key={i} className="grid gap-3 rounded-surface border border-border p-4 sm:grid-cols-3">
+                      <div key={i} className="grid gap-3 rounded-surface border border-border p-4">
+                        <div className="grid gap-3 sm:grid-cols-3">
                         <TextField id={`vehicle-${i}-year`} name={`vehicle-${i}-year`} label={`Vehicle ${i + 1} year`} inputMode="numeric" pattern="[0-9]{4}" maxLength={4} defaultValue={val(`vehicle-${i}-year`, v?.year)} error={err(`vehicle-${i}-year`)} required={i === 0} optionalLabel={i > 0} />
                         <TextField id={`vehicle-${i}-make`} name={`vehicle-${i}-make`} label="Make" defaultValue={val(`vehicle-${i}-make`, v?.make)} error={err(`vehicle-${i}-make`)} required={i === 0} optionalLabel={i > 0} />
                         <TextField id={`vehicle-${i}-model`} name={`vehicle-${i}-model`} label="Model" defaultValue={val(`vehicle-${i}-model`, v?.model)} required={i === 0} optionalLabel={i > 0} />
+                        </div>
+                        <TextField id={`vehicle-${i}-vin`} name={`vehicle-${i}-vin`} label="VIN" help="17 letters and digits, on the plate at the base of the windshield, the door jamb sticker or the registration." maxLength={17} autoCapitalize="characters" spellCheck={false} className="tabular uppercase" defaultValue={val(`vehicle-${i}-vin`, v?.vin)} error={err(`vehicle-${i}-vin`)} required={i === 0} optionalLabel={i > 0} />
                       </div>
                     );
                   })}

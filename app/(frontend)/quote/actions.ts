@@ -17,7 +17,7 @@ export async function saveStep(step: number, _prev: StepState | undefined, fd: F
   if (step === 1) Object.assign(patch, { products: fd.getAll("products").map(String), zip: str(fd, "zip"), state: str(fd, "state") || undefined, city: str(fd, "city") || undefined });
   if (step === 2) Object.assign(patch, { name: str(fd, "name"), email: str(fd, "email"), phone: str(fd, "phone"), dob: str(fd, "dob") || undefined, address: str(fd, "address") || undefined });
   if (step === 3) {
-    const vehicles = [0, 1, 2].map((i) => ({ year: str(fd, `vehicle-${i}-year`), make: str(fd, `vehicle-${i}-make`), model: str(fd, `vehicle-${i}-model`) })).filter((v) => v.year || v.make || v.model);
+    const vehicles = [0, 1, 2].map((i) => ({ year: str(fd, `vehicle-${i}-year`), make: str(fd, `vehicle-${i}-make`), model: str(fd, `vehicle-${i}-model`), vin: str(fd, `vehicle-${i}-vin`).toUpperCase() })).filter((v) => v.year || v.make || v.model || v.vin);
     Object.assign(patch, { vehicles, property: { yearBuilt: str(fd, "property-yearBuilt") || undefined, roof: str(fd, "property-roof") || undefined, ownership: str(fd, "property-ownership") || undefined }, notes: str(fd, "notes") || undefined });
   }
   const merged = { ...(await loadSession()).data, ...patch };
