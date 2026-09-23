@@ -8,7 +8,7 @@ import { hasTodo } from "@/src/fields";
 export const revalidate = false;
 export async function generateMetadata() {
   const page = await getPage("/locations/");
-  return pageMetadata({ title: "Locations we serve", description: "Every city in Arizona, Nevada, Utah and Idaho where Desert Peak Insurance writes policies, with local pages for the ten lines people search for most.", path: "/locations/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
+  return pageMetadata({ title: "Locations we serve", description: "Desert Peak Insurance writes in every city in Arizona, Nevada, Utah and Idaho. These cities have local pages for the ten lines people search for most.", path: "/locations/", indexable: page ? isIndexable(page, { promotedWave: await getPromotedWave() }) : false });
 }
 
 export default async function Locations() {
@@ -18,7 +18,7 @@ export default async function Locations() {
     <div className="mx-auto grid max-w-measure-shell gap-10 px-gutter py-10">
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbJsonLd([{label: "Locations", href: "/locations/"}], SITE))} />
       <Breadcrumb items={[{ label: "Locations", href: "/locations/" }]} />
-      <header className="grid gap-4"><h1>Cities we serve</h1><p className="lead max-w-measure-body">{cities.length} cities across four states. Each city has local pages for the lines with real local demand; everything else is written statewide.</p></header>
+      <header className="grid gap-4"><h1>Cities we serve</h1><p className="lead max-w-measure-body">We write in every city and town in Arizona, Nevada, Utah and Idaho. The {cities.length} below have local pages, for the lines with real local demand; every other city is written statewide, on the same terms.</p></header>
       <div className="grid gap-10 md:grid-cols-2">
         {states.map((s) => {
           const list = cities.filter((c) => (typeof c.state === "object" ? c.state.id : c.state) === s.id);
