@@ -44,7 +44,7 @@ export default async function InsuranceHub() {
         </section>
       ))}
       <PageBlocks layout={page?.layout} />
-      <CtaBand heading="Not sure which line you need?" body="Tell us what you own and what you are worried about. We will say which policies matter and which do not." action={{ label: "Request the analysis", href: "/quote/" }} />
+      <CtaBand heading="Not sure which line you need?" body="Tell us what you own and what you are worried about. We will say which policies matter and which do not." action={{ label: "Request a quote", href: "/quote/" }} />
       <p className="font-text text-copy text-ink-muted">States: {states.map((s) => <Link key={s.id} href={statePath(s)} className="mr-3">{s.name}</Link>)}</p>
     </div>
   );

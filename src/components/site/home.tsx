@@ -11,7 +11,7 @@ import { RichText } from "./richtext.tsx";
 import { Reveal } from "./reveal.tsx";
 import certificates from "../../../public/certificates/manifest.json";
 
-export const CTA = "Request the analysis";
+export const CTA = "Request a quote";
 const primary = "inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink no-underline hover:bg-brand-hover";
 /** Secondary action on a light surface: hairline border, no fill, no shadow. */
 const secondary = "inline-flex min-h-11 items-center gap-2 rounded-control border border-border-strong px-5 font-text text-copy font-semibold text-ink no-underline hover:border-ink";

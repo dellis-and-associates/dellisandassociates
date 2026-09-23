@@ -69,7 +69,7 @@ export function minimumsFor(state: State, productId: number) {
   return (state.statutoryMinimums ?? []).filter((m) => (typeof m.product === "object" ? m.product?.id : m.product) === productId);
 }
 
-export const ctaLabel = (product?: Pick<Product, "name" | "medicareTouching"> | null) => (product?.medicareTouching ? "Request a plan review" : "Request the analysis");
+export const ctaLabel = (product?: Pick<Product, "name" | "medicareTouching"> | null) => (product?.medicareTouching ? "Request a plan review" : "Request a quote");
 
 export const titles = {
   product: (p: Pick<Product, "name">) => `${p.name}`,

@@ -6,7 +6,7 @@ import { IconChevron, IconClose, IconMenu, IconPhone } from "../ui/icons.tsx";
 import { Lockup, Mark } from "../ui/logo.tsx";
 import { HeaderBehaviour, SearchDialog } from "./header-client.tsx";
 
-const CTA = "Request the analysis";
+const CTA = "Request a quote";
 const TOP = [["Resources", "/resources/"], ["Claims", "/claims/"], ["For partners", "/partners/"]] as const;
 
 /**

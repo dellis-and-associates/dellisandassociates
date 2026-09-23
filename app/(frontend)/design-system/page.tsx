@@ -55,11 +55,11 @@ export default async function DesignSystem() {
       </Section>
 
       <Section id="buttons" title="Buttons" note="44 px minimum. One primary per view. Destructive is outlined, never solid. Disabled stays in the tab order with aria-disabled when temporary.">
-        <Row label="Primary"><Button>Request the analysis</Button><Button loading>Request the analysis</Button><Button disabled>Request the analysis</Button></Row>
+        <Row label="Primary"><Button>Request a quote</Button><Button loading>Request a quote</Button><Button disabled>Request a quote</Button></Row>
         <Row label="Secondary"><Button variant="secondary">Compare limits</Button><Button variant="secondary" disabled>Compare limits</Button></Row>
         <Row label="Quiet"><Button variant="quiet">Edit vehicles</Button><LinkButton href="/quote/" variant="quiet">Save and come back later</LinkButton></Row>
         <Row label="Destructive"><Button variant="destructive">Remove driver</Button></Row>
-        <Row label="On brand"><div className="rounded-surface bg-brand p-4"><LinkButton href="/quote/" className="border border-brand-ink bg-brand-ink text-brand hover:bg-surface">Request the analysis</LinkButton></div></Row>
+        <Row label="On brand"><div className="rounded-surface bg-brand p-4"><LinkButton href="/quote/" className="border border-brand-ink bg-brand-ink text-brand hover:bg-surface">Request a quote</LinkButton></div></Row>
       </Section>
 
       <Section id="fields" title="Inputs" note="Labels above, help below, error in critical with the field described by it. Phones open the right keyboard.">
@@ -125,7 +125,7 @@ export default async function DesignSystem() {
         <Skeleton lines={4} className="max-w-measure-narrow" />
         <EmptyState as="h3" title="Talk to a licensed advisor" action={{ label: "Contact the office", href: "/contact/" }}>Call or send a message and a licensed advisor will answer.</EmptyState>
         <Row label="Tags"><Tag>Every city</Tag><Tag>Statewide</Tag><Tag>Commercial</Tag></Row>
-        <CtaBand heading="Request the analysis for auto insurance in Chandler" body="Or call the office. A licensed agent, not a call centre." action={{ label: "Request the analysis", href: "/quote/" }} secondary={{ label: "Talk to a person", href: "/contact/" }} />
+        <CtaBand heading="Request a quote for auto insurance in Chandler" body="Or call the office. A licensed agent, not a call centre." action={{ label: "Request a quote", href: "/quote/" }} secondary={{ label: "Talk to a person", href: "/contact/" }} />
       </Section>
 
       <Section id="brand" title="Brand marks and the strata rule" note="Daniel's badge with the brand wordmark. Lockup in the header (40 px, 32 on phones); the badge alone under 360 px and at 24 px and above where the name appears elsewhere; stacked where the width is under about 200 px; the strata rule is the only ornament.">

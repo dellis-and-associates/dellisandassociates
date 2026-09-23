@@ -4,7 +4,7 @@ import { pageMetadata } from "@/src/lib/seo";
 import { QuoteSummaryForm } from "@/src/components/site/quote-summary";
 
 export const dynamic = "force-dynamic";
-export const metadata = pageMetadata({ title: "Request the analysis · Check and send", description: "Check what you entered, then send.", path: "/quote/summary/", indexable: false });
+export const metadata = pageMetadata({ title: "Request a quote · Check and send", description: "Check what you entered, then send.", path: "/quote/summary/", indexable: false });
 
 export default async function Summary() {
   const [session, products] = await Promise.all([loadSession(), getProducts()]);

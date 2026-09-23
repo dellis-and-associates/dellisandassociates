@@ -8,7 +8,7 @@ export const dynamic = "force-dynamic";
 export async function generateMetadata({ params }: { params: Promise<{ step: string }> }) {
   const n = Number((await params).step);
   const s = STEPS.find((x) => x.n === n);
-  return pageMetadata({ title: s ? `Request the analysis · ${s.label}` : "Request the analysis", description: "Four short steps, saved as you go.", path: `/quote/${n}/`, indexable: false });
+  return pageMetadata({ title: s ? `Request a quote · ${s.label}` : "Request a quote", description: "Four short steps, saved as you go.", path: `/quote/${n}/`, indexable: false });
 }
 export default async function QuoteStep({ params, searchParams }: { params: Promise<{ step: string }>; searchParams: Promise<Record<string, string>> }) {
   const n = Number((await params).step);

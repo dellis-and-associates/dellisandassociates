@@ -61,7 +61,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ sectio
           {products.length ? <nav aria-label="Lines this applies to" className="grid gap-2"><h2 className="font-text text-title-sm">Applies to</h2><ul className="grid gap-1 font-text text-copy">{products.map((p) => <li key={p.id}><Link href={productPath(p)} className="ui-link">{p.name}</Link></li>)}</ul></nav> : null}
         </aside>
       </div>
-      <CtaBand heading="Want this applied to your policy?" body="Send us what you have. We compare it against the carriers we represent and show the math." action={{ label: "Request the analysis", href: "/quote/" }} />
+      <CtaBand heading="Want this applied to your policy?" body="Send us what you have. We compare it against the carriers we represent and show the math." action={{ label: "Request a quote", href: "/quote/" }} />
       <RelatedLinks title="Related guides" items={articles.map((r) => ({ label: r.title, href: articlePath(r.section, r.slug), note: r.excerpt ?? undefined }))} />
     </article>
   );

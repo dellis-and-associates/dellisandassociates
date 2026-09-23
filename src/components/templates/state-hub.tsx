@@ -8,7 +8,9 @@ import { CtaBand, StrataRule } from "../ui/misc.tsx";
 import { TableWrap, td, th } from "../ui/table.tsx";
 import { RichText } from "../site/richtext.tsx";
 
-/** State hub: the statutory minimums table is the bold element; every row cited; then every line and every city. */
+/** State hub: the statutory minimums table is the bold element; every row cited; then every line, and the cities that
+ *  have local pages — which is not the service area. The agency writes in every city in a licensed state (client,
+ *  2026-09-23), so the list is labelled as pages rather than as coverage. */
 export function StateHubTemplate({ state, cities, products }: { state: State; cities: City[]; products: Product[] }) {
   const crumbs = [{ label: "Insurance", href: "/insurance/" }, { label: state.name, href: statePath(state) }];
   const tier1 = products.filter((p) => p.tier === "1");
@@ -21,7 +23,7 @@ export function StateHubTemplate({ state, cities, products }: { state: State; ci
       <header className="grid gap-4">
         <h1>Insurance in {state.name}</h1>
         {state.updatedAt ? <p className="font-text text-meta text-ink-muted tabular">Last reviewed {new Date(state.updatedAt).toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" })}</p> : null}
-        <p className="lead max-w-measure-body">What {state.name} requires, the lines we write there, and the {cities.length} cities where we have local pages. Every minimum below is cited to its source; where we have not verified one, we say so.</p>
+        <p className="lead max-w-measure-body">What {state.name} requires and the lines we write there. We write in every city and town in {state.name}; the {cities.length} below have pages of their own. Every minimum is cited to its source; where we have not verified one, we say so.</p>
         <StrataRule />
       </header>
       <section aria-labelledby="req" className="grid gap-4" data-minimums>
@@ -55,12 +57,13 @@ export function StateHubTemplate({ state, cities, products }: { state: State; ci
         </div>
       </section>
       <section aria-labelledby="cities" className="grid gap-4">
-        <h2 id="cities">Cities we serve in {state.name}</h2>
+        <h2 id="cities">Cities in {state.name} with local pages</h2>
+        <p className="max-w-measure-editorial font-text text-copy text-ink-secondary">Coverage is not limited to this list. We write in every city and town in {state.name}; these are the ones with a page of their own.</p>
         <ul className="grid gap-2 font-text text-copy sm:grid-cols-2 lg:grid-cols-4">
           {cities.map((c) => <li key={c.id}><Link href={productCityPath(tier1[0] ?? { slug: "auto-insurance" }, state, c)} className="ui-link ui-link-inline text-ink">{c.name}</Link>{c.cityFacts?.county && !hasTodo(c.cityFacts.county) ? <span className="block text-ink-muted">{c.cityFacts.county}</span> : null}</li>)}
         </ul>
       </section>
-      <CtaBand heading={`Request the analysis in ${state.name}`} body="Send what you have. We compare it against the carriers we represent and show the math." action={{ label: "Request the analysis", href: `/quote/?state=${state.slug}` }} />
+      <CtaBand heading={`Request a quote in ${state.name}`} body="Send what you have. We compare it against the carriers we represent and show the math." action={{ label: "Request a quote", href: `/quote/?state=${state.slug}` }} />
     </div>
   );
 }
