@@ -39,7 +39,12 @@ async function readPassword(): Promise<string> {
   const fromEnv = process.env.NEW_USER_PASSWORD;
   if (fromEnv) return fromEnv;
   if (!stdin.isTTY) {
-    console.error("No TTY to prompt on. Set NEW_USER_PASSWORD instead.");
+    // Piped in: `printf %s 'secret' | pnpm create:user --email ...`. Keeps it out of argv and out of history.
+    const chunks: Buffer[] = [];
+    for await (const c of stdin) chunks.push(c as Buffer);
+    const piped = Buffer.concat(chunks).toString("utf8").replace(/\r?\n$/, "");
+    if (piped) return piped;
+    console.error("No terminal to prompt on. Pipe the password in, or set NEW_USER_PASSWORD.");
     process.exit(1);
   }
   const rl = createInterface({ input: stdin, output: stdout, terminal: true });

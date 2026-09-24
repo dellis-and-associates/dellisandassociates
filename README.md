@@ -76,11 +76,17 @@ admin UI cannot mint the first account. This does it through the local API:
 pnpm create:user --email you@example.com --role admin --name "Your Name"
 ```
 
-Roles are `admin`, `editor`, `agent`, `partner`. The password is never taken
-from the command line — argv is visible to `ps` and lands in shell history —
-so the script prompts for it, or reads `NEW_USER_PASSWORD`. Run it again for
-the same address to reset a password or change a role. Then sign in at
-`/admin`.
+Roles are `admin`, `editor`, `agent`, `partner`. Run it again for the same
+address to reset a password or change a role. Then sign in at `/admin`.
+
+The password never goes on the command line — argv is visible to `ps` and
+lands in shell history. The script takes it three ways, in this order:
+
+| | |
+|---|---|
+| `NEW_USER_PASSWORD=… pnpm create:user …` | for CI and scripts |
+| `printf %s 'secret' \| pnpm create:user …` | piped, when there is no terminal |
+| nothing set | prompts twice, input hidden |
 
 ## Documents
 
