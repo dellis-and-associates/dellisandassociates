@@ -66,6 +66,22 @@ desert-peak-insurance-sitemap/ IA and data files; full-sitemap.xml is a test fix
 docs/             the briefs this was built from, the Phase 0 records, and the design-process evidence
 ```
 
+## CMS access
+
+Users can only be created by an admin, and Payload offers its "create first
+user" screen only while the users table is empty — so from any other state the
+admin UI cannot mint the first account. This does it through the local API:
+
+```
+pnpm create:user --email you@example.com --role admin --name "Your Name"
+```
+
+Roles are `admin`, `editor`, `agent`, `partner`. The password is never taken
+from the command line — argv is visible to `ps` and lands in shell history —
+so the script prompts for it, or reads `NEW_USER_PASSWORD`. Run it again for
+the same address to reset a password or change a role. Then sign in at
+`/admin`.
+
 ## Documents
 
 Operational documents live at the root; everything that records how the site
