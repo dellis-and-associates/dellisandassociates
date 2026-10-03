@@ -109,6 +109,14 @@ export const schema = {
   NEXT_PUBLIC_TURNSTILE_SITE_KEY: { required: true, validate: nonEmpty },
   TURNSTILE_SECRET_KEY: { required: true, validate: nonEmpty },
 
+  // Admin login bot check. "off" disables the Turnstile gate on /admin/login — the way back in if the
+  // widget cannot load (blocked script, Cloudflare outage) and nobody can sign in.
+  ADMIN_LOGIN_TURNSTILE: {
+    required: false,
+    default: "on",
+    validate: (v: string) => (["on", "off"].includes(v) ? null : "must be \"on\" or \"off\""),
+  },
+
   // Referral engine
   REFERRAL_COOKIE_DAYS: {
     required: false,

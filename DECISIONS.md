@@ -805,3 +805,32 @@ one, on Node 22.
 
 Lesson recorded for the next dependency change: a build that passes locally
 proves nothing about undeclared imports until it also passes with hoisting off.
+
+## Admin sign-in: Turnstile on the login form (2026-10-03)
+
+**The token travels in a cookie, because Payload's login is not a form post.**
+The admin UI submits JSON to `/api/users/login`, so a hidden `cf-turnstile-response`
+input rendered beside the form — the way the three public forms do it — would
+never reach the server. The widget registered through `admin.components.beforeLogin`
+writes its token to `dp-admin-turnstile`, scoped to `/api`, SameSite=Strict, five
+minutes; the `beforeLogin` hook on the users collection reads it and calls the same
+`verifyTurnstile` the public forms use.
+
+**It gates the session, not the password comparison.** Payload's login operation
+authenticates first (`authenticateLocalStrategy`) and runs `beforeLogin` afterwards,
+so a wrong password is still rejected earlier and a correct one is refused at the
+hook. Automated credential stuffing cannot obtain a session, but the brute-force
+counting is Payload's own `maxLoginAttempts`, not this check.
+
+**There is a kill switch, and it is not optional.** An auth gate with no way around
+it is one bad key or one Cloudflare outage away from locking every administrator out
+of a CMS whose only repair path is behind that same login. `ADMIN_LOGIN_TURNSTILE=off`
+skips the hook. It is documented in `.env.example` and the README beside the risk it
+exists for.
+
+**`create:user` must not set `PAYLOAD_MIGRATING`.** It was copied from the seed
+script's command line, and that flag routes Payload at the direct 5432 connection
+instead of the pooler. The direct endpoint was refusing connections while this was
+being built, so creating a user failed with ECONNRESET while the site itself was
+serving fine — the flag belongs to migrations, which need a session connection;
+ordinary writes go through the pooler.

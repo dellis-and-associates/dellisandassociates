@@ -51,6 +51,8 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     importMap: { baseDir: path.resolve(dirname, "..") },
+    // Bot check above the sign-in form; the matching server check is the beforeLogin hook on Users.
+    components: { beforeLogin: ["@/src/components/admin/turnstile-login#TurnstileLogin"] },
   },
   collections: [Products, States, Cities, LocationOverrides, Articles, GlossaryTerms, Pages, Agents, Carriers, Users, Media, Redirects, Forms, Leads, QuoteSessions, RumSamples],
   globals: [SiteSettings, ComplianceSettings],

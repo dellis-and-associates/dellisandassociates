@@ -88,6 +88,26 @@ lands in shell history. The script takes it three ways, in this order:
 | `printf %s 'secret' \| pnpm create:user …` | piped, when there is no terminal |
 | nothing set | prompts twice, input hidden |
 
+## Admin sign-in
+
+`/admin/login` carries a Cloudflare Turnstile check. Payload's login posts JSON
+rather than a form, so the widget leaves its token in a short-lived cookie
+scoped to `/api`, and a `beforeLogin` hook on the users collection verifies it
+and refuses the session if it fails.
+
+Payload runs that hook *after* it has checked the password, so this gates the
+session rather than the comparison — repeated password guessing is still
+Payload's own `maxLoginAttempts` lockout, not this.
+
+```
+ADMIN_LOGIN_TURNSTILE="off"
+```
+
+That is the way back in. If the widget cannot load — a blocked script, a
+Cloudflare outage, a bad key — nobody can sign in and the admin UI offers no
+way to fix it from the browser. Set it in the deployment environment,
+redeploy, sign in, put it back.
+
 ## Documents
 
 Operational documents live at the root; everything that records how the site
