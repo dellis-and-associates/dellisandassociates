@@ -5,12 +5,14 @@ import { submitQuote, type StepState } from "../../../app/(frontend)/quote/actio
 import type { QuoteData } from "../../lib/quote.ts";
 import { STEPS } from "../../lib/quote-steps.ts";
 import { publicEnv } from "../../env.public.ts";
+import { TurnstileWaiting, useTurnstileGate } from "./turnstile-gate.tsx";
 import { ErrorSummary } from "../ui/field.tsx";
 import { Stepper } from "../ui/misc.tsx";
 
 /** Everything entered, editable in place (each section links back to its step). Consent is exact and never pre-checked. */
 export function QuoteSummaryForm({ data, productNames }: { data: QuoteData; productNames: string[] }) {
   const [state, formAction, pending] = useActionState<StepState | undefined, FormData>(submitQuote, undefined);
+  const { waiting } = useTurnstileGate(publicEnv.TURNSTILE_SITE_KEY);
   const errors = state?.errors ?? [];
   const row = (label: string, value?: string | null) => (
     <div className="grid grid-cols-[minmax(0,10rem)_1fr] gap-3 py-2 font-text text-copy"><dt className="text-ink-muted">{label}</dt><dd className="tabular">{value || <span className="text-ink-muted">not given</span>}</dd></div>
@@ -26,7 +28,7 @@ export function QuoteSummaryForm({ data, productNames }: { data: QuoteData; prod
       <div className="grid max-w-measure-body gap-6">
         <h1>Request a quote</h1>
         <Stepper step={4} total={4} label="Check and send" steps={STEPS.map((s) => s.label)} />
-        <form action={formAction} method="post" className="grid gap-6" noValidate aria-busy={pending || undefined}>
+        <form action={formAction} onSubmit={(e) => { if (waiting) e.preventDefault(); }} method="post" className="grid gap-6" noValidate aria-busy={pending || undefined}>
           <ErrorSummary errors={errors} />
           {section("What to compare", 1, <>{row("Lines", productNames.join(", "))}{row("ZIP code", data.zip)}</>)}
           {section("About you", 2, <>{row("Name", data.name)}{row("Email", data.email)}{row("Phone", data.phone)}{row("Date of birth", data.dob)}{row("Address", data.address)}</>)}
@@ -39,10 +41,11 @@ export function QuoteSummaryForm({ data, productNames }: { data: QuoteData; prod
             </label>
             {errors.find((e) => e.field === "consent") ? <p id="consent-error" className="font-text text-meta font-semibold text-critical">{errors.find((e) => e.field === "consent")!.message}</p> : null}
           </fieldset>
-          <div className="cf-turnstile" data-sitekey={publicEnv.TURNSTILE_SITE_KEY} data-size="flexible" />
+          <div className="cf-turnstile" data-sitekey={publicEnv.TURNSTILE_SITE_KEY} data-size="flexible" data-callback="dpTurnstileSolved" data-expired-callback="dpTurnstileExpired" />
           <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
           <div className="flex flex-wrap items-center gap-4">
-            <button className="inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending}>Request my comparison</button>
+            <button className="inline-flex min-h-11 items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending} aria-disabled={waiting || undefined} data-gated={waiting || undefined}>Request my comparison</button>
+            {waiting ? <TurnstileWaiting /> : null}
             <Link href="/quote/3/" className="ui-link font-text text-copy underline">Back</Link>
           </div>
         </form>

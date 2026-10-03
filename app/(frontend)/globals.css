@@ -133,6 +133,9 @@
   /* Focus on an inverse surface: the default ring is ink (neutral-900), which is the inverse surface itself since
      surface-inverse moved there — invisible. Light ring, dark offset, same 2px geometry. */
   [data-inverse] :focus-visible { outline-color: var(--dp-ink-inverse); box-shadow: 0 0 0 2px var(--dp-surface-inverse); }
+  /* A submit held by the bot check: dimmed and inert, but still focusable, so a keyboard user can reach it and
+     hear why it is unavailable rather than tabbing into nothing. */
+  [data-gated] { opacity: 0.6; cursor: not-allowed; }
   /* UI links (nav, lists, cards): 24 px minimum target (WCAG 2.2), underline on hover only. Links inside prose are not ui-links. */
   .ui-link { text-decoration: none; display: inline-flex; align-items: center; min-height: var(--dp-space-6); }
   .ui-link:hover { text-decoration: underline; }

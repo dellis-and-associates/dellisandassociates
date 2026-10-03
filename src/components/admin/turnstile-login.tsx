@@ -44,7 +44,7 @@ export function TurnstileLogin() {
   }, []);
 
   if (!publicEnv.TURNSTILE_SITE_KEY) return null;
-  return <div ref={box} style={{ marginBottom: "1rem" }} />;
+  return <div ref={box} className="dp-admin-turnstile" />;
 }
 
 export default TurnstileLogin;

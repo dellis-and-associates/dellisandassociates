@@ -14,6 +14,11 @@ const type = async (page: Page, selector: string, value: string) => {
   await page.keyboard.type(value);
 };
 
+/** The summary page holds its submit until the bot check answers; a visitor waits for it, so the test does too. */
+async function waitForBotCheck(page: import("@playwright/test").Page) {
+  await page.waitForFunction(() => !document.querySelector("[data-gated]"), null, { timeout: 15000 });
+}
+
 test.describe("quote flow", () => {
   test.skip(() => !["mobile", "desktop"].includes(test.info().project.name), "mobile and desktop only");
   test("completes with the keyboard, keeps data across errors, back and reload", async ({ page }) => {
@@ -48,6 +53,8 @@ test.describe("quote flow", () => {
     await type(page, "#vehicle-0-year", "2019");
     await type(page, "#vehicle-0-make", "Toyota");
     await type(page, "#vehicle-0-model", "Tacoma");
+    // The VIN is required on every vehicle (client, 2026-09-23); step 3 does not advance without it.
+    await type(page, "#vehicle-0-vin", "1HGCM82633A004352");
     // Back keeps step 2 values
     await tabTo(page, "a[href='/quote/2/']");
     await page.keyboard.press("Enter");
@@ -55,9 +62,11 @@ test.describe("quote flow", () => {
     await page.goto("/quote/3/");
     await page.reload();
     await expect(page.locator("#vehicle-0-make")).toHaveValue("Toyota");
+    await expect(page.locator("#vehicle-0-vin")).toHaveValue("1HGCM82633A004352");
     await tabTo(page, "form button[type=submit], form button:not([type])");
     await page.keyboard.press("Enter");
     await expect(page).toHaveURL(/\/quote\/summary\/$/);
+    await waitForBotCheck(page);
     const text = await page.locator("[data-quote-summary]").innerText();
     for (const v of ["Sam Tester", "sam@example.com", "8015550100", "85224", "2019 Toyota Tacoma", "Auto Insurance"]) expect(text).toContain(v);
     await expect(page.locator("#consent")).not.toBeChecked();

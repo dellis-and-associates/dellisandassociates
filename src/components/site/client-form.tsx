@@ -2,6 +2,7 @@
 import { useActionState } from "react";
 import { submitForm, type FormState } from "../../../app/(frontend)/actions/submit-form.ts";
 import { ChoiceGroup, ErrorSummary, SelectField, TextArea, TextField } from "../ui/field.tsx";
+import { TurnstileWaiting, useTurnstileGate } from "./turnstile-gate.tsx";
 
 export type FieldDef = { name: string; label: string; type: string; required: boolean; help?: string; placeholder?: string; autocomplete?: string; inputmode?: string; options: { label: string; value: string }[] };
 
@@ -16,8 +17,9 @@ export function ClientForm({ slug, page, fields, submitLabel, siteKey }: { slug:
   const errors = state?.errors ?? [];
   const values = state?.values ?? {};
   const errorFor = (name: string) => errors.find((e) => e.field === name)?.message;
+  const { waiting } = useTurnstileGate(siteKey);
   return (
-    <form key={state ? `attempt-${errors.length}-${JSON.stringify(values)}` : "initial"} action={formAction} method="post" className="grid max-w-measure-body gap-6" noValidate aria-busy={pending || undefined} data-form={slug}>
+    <form key={state ? `attempt-${errors.length}-${JSON.stringify(values)}` : "initial"} action={formAction} onSubmit={(e) => { if (waiting) e.preventDefault(); }} method="post" className="grid max-w-measure-body gap-6" noValidate aria-busy={pending || undefined} data-form={slug}>
       <ErrorSummary errors={errors} />
       {fields.map((f) => {
         const common = { id: f.name, name: f.name, label: f.label, help: f.help, required: f.required, error: errorFor(f.name), autoComplete: f.autocomplete, inputMode: f.inputmode as "tel" | "email" | "numeric" | "text" | undefined, defaultValue: values[f.name], placeholder: f.placeholder };
@@ -28,10 +30,13 @@ export function ClientForm({ slug, page, fields, submitLabel, siteKey }: { slug:
         if (f.type === "hidden") return <input key={f.name} type="hidden" name={f.name} value={values[f.name] ?? ""} />;
         return <TextField key={f.name} {...common} type={f.type === "address" ? "text" : f.type} />;
       })}
-      <div className="cf-turnstile" data-sitekey={siteKey} data-size="flexible" />
+      <div className="cf-turnstile" data-sitekey={siteKey} data-size="flexible" data-callback="dpTurnstileSolved" data-expired-callback="dpTurnstileExpired" />
       <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer />
       <p className="font-text text-meta text-ink-muted">Desert Peak Insurance is an independent agency, not an insurer. No coverage is bound by this form. We use what you send only to prepare your comparison.</p>
-      <button className="inline-flex min-h-11 w-fit items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending}>{submitLabel}</button>
+      <div className="flex flex-wrap items-center gap-4">
+        <button className="inline-flex min-h-11 w-fit items-center rounded-control bg-brand px-5 font-text text-copy font-semibold text-brand-ink hover:bg-brand-hover" disabled={pending} aria-disabled={waiting || undefined} data-gated={waiting || undefined}>{submitLabel}</button>
+        {waiting ? <TurnstileWaiting /> : null}
+      </div>
     </form>
   );
 }

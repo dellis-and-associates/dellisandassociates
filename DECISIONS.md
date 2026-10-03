@@ -834,3 +834,34 @@ instead of the pooler. The direct endpoint was refusing connections while this w
 being built, so creating a user failed with ECONNRESET while the site itself was
 serving fine — the flag belongs to migrations, which need a session connection;
 ordinary writes go through the pooler.
+
+## Forms: holding submit until Turnstile answers (2026-10-03)
+
+**The gate closes only after hydration, and opens again on its own.** Disabling the
+submit in the markup would break the two things these forms are built around: a
+visitor without JavaScript posts natively and the server accepts their lead with no
+token, flagged for review, because a lost lead costs more than a reviewed one; and a
+visitor whose browser cannot reach Cloudflare must not be left with a dead button.
+So `useTurnstileGate` reports `waiting: false` in the server render and the first
+client render — hydration matches — closes once React is live, and releases after an
+eight-second grace whether or not the widget ever answered.
+
+**It polls the token field as well as listening for the callback.** Turnstile can
+solve before React hydrates, which it does routinely with an auto-pass key; the
+callback then fires at a global that does not exist yet and the button stays held for
+the full grace period. Polling `input[name="cf-turnstile-response"]` catches a solve
+from either side of hydration. Measured: released ~1.6s with Cloudflare reachable,
+~8.0s when it is blocked.
+
+**The held button keeps its place in the tab order.** `disabled` removes a control
+from the tab sequence, so a keyboard user tabs to the end of the form and finds
+nothing where the submit should be — the quote-flow test, which navigates entirely by
+keyboard, could no longer reach it. It is `aria-disabled` with a `data-gated` hook for
+the dimmed styling, the form's `onSubmit` refuses while gated, and a `role="status"`
+line says why.
+
+**Both suites were made deterministic rather than re-baselined.** The visual spec was
+screenshotting whichever side of the ~1.6s gate the shutter happened to fall on; it
+now waits for the settled state, and the two form baselines match their existing
+images unchanged. The quote-flow spec waits for the check before submitting, which is
+what a visitor does.

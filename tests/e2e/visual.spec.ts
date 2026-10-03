@@ -18,6 +18,9 @@ test.describe("visual baseline", () => {
       await page.addStyleTag({ content: '@font-face{font-family:"Instrument Serif";src:url("/fonts/instrument-serif-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}@font-face{font-family:"Figtree";src:url("/fonts/figtree-variable.woff2") format("woff2");font-weight:400 600;font-style:normal;font-display:block}@font-face{font-family:"DM Mono";src:url("/fonts/dm-mono-400.woff2") format("woff2");font-weight:400;font-style:normal;font-display:block}' });
       await page.evaluate((faces) => Promise.all(faces.map((f) => document.fonts.load(f))), FACES);
       await page.evaluate(() => document.fonts.ready);
+      // A form held by the bot check shows a status line and a dimmed submit until Turnstile answers, which would
+      // make the baseline depend on when the shutter fell. Wait for the settled state.
+      await page.waitForFunction(() => !document.querySelector("[data-gated]"), null, { timeout: 15000 }).catch(() => {});
       // The Turnstile widget is third-party content that renders on its own schedule; its box is reserved in CSS and masked here.
       await expect(page).toHaveScreenshot(`${slug(url)}.png`, { fullPage: true, mask: [page.locator(".cf-turnstile")] });
     });
